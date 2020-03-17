@@ -1,0 +1,26 @@
+image: nixorg/nix
+
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+
+test:
+  stage: test
+  script:
+  - nix-shell --run hugo -D
+  artifacts:
+    paths:
+    - public
+  only:
+  - master
+
+pages:
+  stage: deploy
+  script:
+  - nix-shell --run hugo
+  artifacts:
+    paths:
+    - public
+  only:
+  - tags
+  except:
+  - /.*(?<!DEPLOY-STAGING)$/i 
