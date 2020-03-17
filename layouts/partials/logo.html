@@ -1,0 +1,7 @@
+<div class="{{ if .isHome}}logo-home{{ else }}logo{{ end }}">
+  {{ if eq .Site.Params.DefaultTheme "light" }} 
+    <img src="{{ .context.Site.Params.Logo.Light.path }}" />
+  {{ else }}
+    <img src="{{ .context.Site.Params.Logo.Dark.path }}" />
+  {{ end }}
+</div>
