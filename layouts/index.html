@@ -1,11 +1,7 @@
 {{ define "main" }}
     <main aria-role="main">
-        <div>
-            {{ partial "logo.html" (dict "isHome" true "context" .) }}
-            <h1>{{ .Site.Title }}</h1>
-            {{- with .Site.Params.homeSubtitle }}
-                <p>{{.}}</p>
-            {{- end }}
-        </div>
+      {{ partial "logo.html" (dict "isHome" true "context" .) }}
+
+      <p class="home-subtitle">{{.Site.Params.homeSubtitle}}</p>
     </main>
 {{ end }}

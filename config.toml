@@ -29,8 +29,10 @@ baseURL = "http://madrhacks.org/"
     logoText = "MadrHacks"
     logoHomeLink = "/"
     [params.logo.light]
+      brandPath = "/svg/logo-green.svg"
       path = "/svg/logo-m-green.svg"
     [params.logo.dark]
+      brandPath = "/svg/logo-white.svg"
       path = "/svg/logo-m-white.svg"
 
 [languages]

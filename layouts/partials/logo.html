@@ -1,7 +1,15 @@
-<div class="{{ if .isHome}}logo-home{{ else }}logo{{ end }}">
-  {{ if eq .Site.Params.DefaultTheme "light" }} 
-    <img src="{{ .context.Site.Params.Logo.Light.path }}" />
-  {{ else }}
-    <img src="{{ .context.Site.Params.Logo.Dark.path }}" />
-  {{ end }}
+{{ $theme := .context.Site.Params.Logo.Dark }}
+{{ if eq .context.Site.Params.DefaultTheme "light" }}
+  {{ $theme := .context.Site.Params.Logo.Light }}
+{{ end }}
+
+{{ if .isHome }}
+<div class="logo-home">
+    <img src="{{ $theme.brandPath }}" />
 </div>
+{{ else }}
+<div class="logo">
+    <img src="{{ $theme.path }}" />
+    <span class="logo-brand">{{ slicestr .context.Site.Title 1 }}</span>
+</div>
+{{ end }}
