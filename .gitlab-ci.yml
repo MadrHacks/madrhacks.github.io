@@ -1,4 +1,4 @@
-image: nixorg/nix
+image: nixos/nix
 
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
@@ -6,6 +6,7 @@ variables:
 test:
   stage: test
   script:
+  - export NIX_PATH="nixpkgs=https://github.com/NixOS/nixpkgs/archive/19.09.tar.gz"
   - nix-shell --run hugo -D
   artifacts:
     paths:
@@ -16,6 +17,7 @@ test:
 pages:
   stage: deploy
   script:
+  - export NIX_PATH="nixpkgs=https://github.com/NixOS/nixpkgs/archive/19.09.tar.gz"
   - nix-shell --run hugo
   artifacts:
     paths:
@@ -23,4 +25,4 @@ pages:
   only:
   - tags
   except:
-  - /.*(?<!DEPLOY-STAGING)$/i 
+  - /.*(?<!-STAGING)$/i 
