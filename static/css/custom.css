@@ -1,0 +1,7 @@
+.logo-home {
+  display: flex;
+  justify-content: center;
+}
+.logo-home img {
+  width: 48%;
+}
