@@ -5,11 +5,11 @@
 
 {{ if .isHome }}
 <div class="logo-home">
-    <img src="{{ $theme.brandPath }}" />
+  <img id="logo-home" src="{{ $theme.brandPath }}" />
 </div>
 {{ else }}
 <div class="logo">
-    <img src="{{ $theme.path }}" />
-    <span class="logo-brand">{{ slicestr .context.Site.Title 1 }}</span>
+  <img id="logo-header" src="{{ $theme.path }}" />
+  <span class="logo-brand">{{ slicestr .context.Site.Title 1 }}</span>
 </div>
 {{ end }}
