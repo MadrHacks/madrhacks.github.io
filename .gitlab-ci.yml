@@ -24,5 +24,3 @@ pages:
     - public
   only:
   - tags
-  except:
-  - /.*(?<!-STAGING)$/i 
