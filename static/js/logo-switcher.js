@@ -20,10 +20,14 @@ function switchLogoTo(theme) {
   var logoHead = document.getElementById("logo-header");
   var logoHome = document.getElementById("logo-home");
 
-  const headPath = logoHead.src;
-  const homePath = logoHome.src;
-  logoHead.src = getPathOfTheme(headPath, theme);
-  logoHome.src = getPathOfTheme(homePath, theme);
+  if (logoHead) {
+    const headPath = logoHead.src;
+    logoHead.src = getPathOfTheme(headPath, theme);
+  }
+  if (logoHome) {
+    const homePath = logoHome.src;
+    logoHome.src = getPathOfTheme(homePath, theme);
+  }
 };
 
 function initLogo(isDark) {
