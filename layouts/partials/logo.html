@@ -1,0 +1,15 @@
+{{ $theme := .context.Site.Params.Logo.Dark }}
+{{ if eq .context.Site.Params.DefaultTheme "light" }}
+  {{ $theme := .context.Site.Params.Logo.Light }}
+{{ end }}
+
+{{ if .isHome }}
+<div class="logo-home">
+  <img id="logo-home" src="{{ $theme.brandPath }}" />
+</div>
+{{ else }}
+<div class="logo">
+  <img id="logo-header" src="{{ $theme.path }}" />
+  <span class="logo-brand">{{ slicestr .context.Site.Title 1 }}</span>
+</div>
+{{ end }}

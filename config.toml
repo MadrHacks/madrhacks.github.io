@@ -21,24 +21,29 @@ baseURL = "http://madrhacks.org/"
   # Directory name of your blog content (default is `content/posts`)
   contentTypeName = "posts"
 
+  customCSS = ["/css/custom.css"]
+  customJS = ["/js/logo-switcher.js"]
+
   # Default theme "light" or "dark"
   defaultTheme = "dark"
+  [params.logo]
+    logoText = "MadrHacks"
+    logoHomeLink = "/"
+    [params.logo.light]
+      brandPath = "/svg/logo-green.svg"
+      path = "/svg/logo-m-green.svg"
+    [params.logo.dark]
+      brandPath = "/svg/logo-white.svg"
+      path = "/svg/logo-m-white.svg"
 
 [languages]
   [languages.en]
     title = "MadrHacks"
-    subtitle = "A lodge of Ethical Hackers, based in Udine"
+    subtitle = "A lodge of Ethical Hackers"
+    homeSubtitle = "A lodge of Ethical Hackers"
     keywords = ""
     copyright = ""
     readOtherPosts = "Read other posts"
-
-    [languages.en.params.logo]
-      logoText = "MadrHacks"
-      logoHomeLink = "/"
-    # or
-    #
-    # path = "/img/your-example-logo.svg"
-    # alt = "Your example logo alt text"
 
   # And you can even create generic menu
   [[menu.main]]
