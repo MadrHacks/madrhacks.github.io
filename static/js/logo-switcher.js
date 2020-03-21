@@ -36,7 +36,12 @@ function initLogo(isDark) {
 }
 
 try {
-  initLogo(isDark);
+  // The default logo is set in Hugo
+  // Initialize dinamic logo only if the getTheme exists
+  if (getTheme) {
+    // isDark is related with getTheme
+    initLogo(isDark);
+  }
 
   // Listener to change logo color
   themeToggle.addEventListener("click", () => {
