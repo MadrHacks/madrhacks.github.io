@@ -1,7 +1,9 @@
 { pkgs ? import <nixpkgs> {} }:
 let
-  libraries = {
+  libraries = with pkgs.elmPackages; {
     hugo = import ./nix/hugo.nix {};
+    elm = elm;
+    elm-format = elm-format;
   };
 
   # Pull out values from the set
