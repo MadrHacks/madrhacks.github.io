@@ -1,10 +1,8 @@
-# Hello
+---
+title: Greetings
+---
+We are MadrHacks, 
 
-We are MadrHacks, a group of people with a common denominator: Hacking.
+a group of people with a common denominator: computer science + later thinking = (ethical) hacking.
 
-We love to use things differently.
-
-We love computer science. (even if sometimes you would throw it away)
-
-# Play time
-{{< elm id="easter" module="Easter" >}}
+We represent the hacking group of the [University of Udine](https://uniud.it) and we love to play CTF.
