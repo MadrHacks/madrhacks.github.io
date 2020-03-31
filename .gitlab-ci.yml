@@ -7,7 +7,7 @@ test:
   stage: test
   script:
   - export NIX_PATH="nixpkgs=https://github.com/NixOS/nixpkgs/archive/19.09.tar.gz"
-  - nix-shell --run hugo -D
+  - nix-shell --run hugo
   artifacts:
     paths:
     - public
