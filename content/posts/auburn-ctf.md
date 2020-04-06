@@ -6,7 +6,7 @@ tags: ["CTF", "PartyHard", "Auburn CTF"]
 
 ### Ready, Steady, Go!
 
-We, MadrHacks group, wanted to have some fun and improve our skills and team collaboration so we joined the [Auburn CTF](https://ctf.auburn.edu/). This is our first CTF match! 🎉. The competition had a monstrous amount of playing teams, almost 1200! The CTF included ~55 challenges divided into multiple categories:
+We, MadrHacks group, wanted to have some fun and improve our skills and team collaboration so we joined the [Auburn CTF](https://ctf.auburn.edu/). This is our first CTF match! 🎉. The competition started on Friday 3rd April at 8:00 AM CST (For us it was at 3 PM) and lasted 2 days until 5th at 11: PM CST (5 AM for us 😴). The CTF had a monstrous amount of playing teams, almost 1200! It included ~55 challenges divided into multiple categories:
 - **OSINT** aka Open Source INtelligence: This included some challenges to lookup the internet and find clues.
 - **Crypto**: Cryptographic challenges (RSA, ...)
 - **BASH**: Set of bash scripts to exploit (most of them solved with privilege escalation)
