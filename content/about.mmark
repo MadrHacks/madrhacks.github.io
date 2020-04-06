@@ -4,9 +4,14 @@ math: true
 ---
 We are MadrHacks, 
 
-We couldn't find a perfect text to describe us, but we found this formula:
-
-$$ \frac{PEOPLE}{(ComputerScience + LateralThinking)᛫Love}=MADRHACKS $$
-
-
 We represent the hacking group of the [University of Udine](https://uniud.it) and we love to play CTF.
+
+We tried hard to write a perfect text to describe us, but the only thing we came up with was this formula:
+
+$$ 
+\begin{matrix}
+  \Bigg(\dfrac{PEOPLE}{(CS + LateralThinking)᛫Love}\Bigg)^{-1} \\
+  \Vert \\
+  MADRHACKS
+\end{matrix}
+$$
