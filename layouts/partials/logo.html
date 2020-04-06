@@ -1,6 +1,6 @@
 {{ $theme := .context.Site.Params.Logo.Dark }}
 {{ if eq .context.Site.Params.DefaultTheme "light" }}
-  {{ $theme := .context.Site.Params.Logo.Light }}
+{{ $theme := .context.Site.Params.Logo.Light }}
 {{ end }}
 
 {{ if .isHome }}
@@ -8,7 +8,7 @@
   <img id="logo-home" src="{{ $theme.brandPath }}" />
 </div>
 {{ else }}
-<a class="logo" href="{{ .context.URL }}">
+<a class="logo" href="{{ .context.Site.BaseURL }}">
   <img id="logo-header" src="{{ $theme.path }}" />
   <span class="logo-brand">{{ slicestr .context.Site.Title 1 }}</span>
 </a>
