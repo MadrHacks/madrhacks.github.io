@@ -68,8 +68,7 @@ disableHugoGeneratorInject = false
     title = "MadrHacks"
     subtitle = "A lodge of Ethical Hackers"
     homeSubtitle = "A lodge of Ethical Hackers"
-    keywords = ""
-    copyright = ""
+    keywords = "Block, Hackers, CTF"
     readOtherPosts = "Read other posts"
 
   # And you can even create generic menu
