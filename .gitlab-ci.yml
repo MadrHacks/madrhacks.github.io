@@ -7,7 +7,7 @@ test:
   stage: test
   script:
   - export NIX_PATH="nixpkgs=https://github.com/NixOS/nixpkgs/archive/19.09.tar.gz"
-  - nix-shell --run hugo
+  - make build
   artifacts:
     paths:
     - public
@@ -18,7 +18,7 @@ pages:
   stage: deploy
   script:
   - export NIX_PATH="nixpkgs=https://github.com/NixOS/nixpkgs/archive/19.09.tar.gz"
-  - nix-shell --run hugo
+  - make build
   artifacts:
     paths:
     - public
