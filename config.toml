@@ -1,5 +1,5 @@
 title = "MadrHacks"
-baseURL = "http://www.madrhacks.org/"
+baseURL = "https://www.madrhacks.org/"
 
 theme = "madrhacks"
 
