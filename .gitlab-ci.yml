@@ -4,6 +4,7 @@ variables:
   GIT_SUBMODULE_STRATEGY: recursive
 
 test:
+  cache: {}
   stage: test
   script:
   - export NIX_PATH="nixpkgs=https://github.com/NixOS/nixpkgs/archive/19.09.tar.gz"
@@ -15,6 +16,7 @@ test:
   - master
 
 pages:
+  cache: {}
   stage: deploy
   script:
   - export NIX_PATH="nixpkgs=https://github.com/NixOS/nixpkgs/archive/19.09.tar.gz"
