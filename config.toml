@@ -80,3 +80,7 @@ disableHugoGeneratorInject = false
     identifier = "about"
     name       = "About"
     url        = "/about"
+  [[menu.main]]
+    identifier = "play"
+    name       = "Play"
+    url        =  "/play"
