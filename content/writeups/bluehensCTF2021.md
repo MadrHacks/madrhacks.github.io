@@ -1,9 +1,3 @@
----
-title: "BlueHens 2021"
-date: "2021-03-22"
-tags: ["CTF", "BlueHens"]
----
-
 # Crypto
 
 ## Hot diggity dog
@@ -33,7 +27,128 @@ print(long_to_bytes(pt))
 
 UDCTF{5t1ck_t0_65537}
 
+## OTP2 (points 422)
+
+### Description
+
+Part 2/3
+
+Author: ProfNinja
+
+_otp2.php_
+
+### Gathering information
+
+The php file contains the code and two strings encoded using it.
+This time the key used to encrypt is the flag padded to 128 bytes, both left and right by a random quantity.
+Since we couldn't find the right quote in our dataset, let's crib it.
+
+### Exploitation
+
+We found a lovely software on github to ease this task, which is called [cribdrag](https://github.com/SpiderLabs/cribdrag).
+
+Let's start by using what we know: the flag starts with `UDCTF{`.
+
+From the second string, we can clearly crib a few words in the text.
+The first one is `TAHUND`, so we can get the next piece of the flag completing it as `TAHUNDRED`, and we get `UDCTF{m3d`.
+
+By cribbing the new piece of the flag, we can see at offset 517 the words `THINGHAP`, and complete it as `THINGHAPPEN`, expanding out flag to `UDCTF{m3d1um`.
+
+We can use our new knowledge to get another piece of the text. So, we obtain the words `NDREDPEOPLEW` at offset 133. By completing it as `NDREDPEOPLEWERE` get the next piece of the flag: `UDCTF{m3d1um_X0`.
+
+At this points it looks like we cannot find anything more on the first string, so let's go to the first one.
+
+At position 517, we can find the text `INGONEOFTHEMINO`, and try to guess it as `INGONEOFTHEMINOR`, and find the next letter of the flag, which is `r`.
+
+So, let's crib again using `UDCTF{m3d1um_X0r_` and find, at position 389, the words `ISMOTHERSAYSHEBE`. Let's guess it as `ISMOTHERSAYSHEBELIEVES` and we get a new piece of flag as `UDCTF{m3d1um_X0r_str3ng`.
+
+Since we cannot guess any other word, let's go to the second text using the new piece of flag we obtained.
+We can clearly read `GHEVERYMORNINUDCUREACHA` at offset 389. By googling it, we find out the following [page](https://en.wikisource.org/wiki/Page:The_Secret_Garden.djvu/249) which contains the words `every mornin' 'ud cure a chap as was makin' ready for typhus fever`.
+
+So we crib again using `EVERYMORNINUDCUREACHAPASWASMAKIN`.
+
+### The Flag
+
+CTF{m3d1um_X0r_str3ng7h_f7w}
+
+### Conclusion
+
+Very hard if you can't find the reference and needs a bit of luck to find the words if doing this type of attack.
+
+
 # Minecraft
+
+## MineR Code (points 50)
+
+### Description
+
+Start here for your intro to mc86, we hope you enjoy.
+
+Challenge source
+
+(It's a 0 not an O)
+
+Our mc86 problems introduce a new vanilla Minecraft CPU (java edition). It helps to have Java Edition Minecraft but if you don't they can still be solved the old fashioned way. Here is a video introducing the architecture and the book to build the CPU:
+
+mc86 Intro on YouTube
+
+mc86 init book
+
+Author: ProfNinja
+
+### Gathering information
+
+### Exploitation
+
+When executed, the code produces a qr code which leads us to [this](https://gist.github.com/AndyNovo/30aa5b2665aa388dc81545f79ccb380f) page. The page contains a minecraft code which generates the flag.
+
+### The Flag
+
+UDCTF{M1N3CR4FT_4SS3MBLY_Y0}
+
+### Conclusion
+
+Easy and fun c:.
+
+
+## Modest Cipher (points 50)
+
+### Description
+
+mc mc86 crypto
+Just couldn't resist...
+
+challenge source
+
+Wrap your result in UDCTF{} all caps.
+
+Our mc86 problems introduce a new vanilla Minecraft CPU (java edition). It helps to have Java Edition Minecraft but if you don't they can still be solved the old fashioned way. Here is a video introducing the architecture and the book to build the CPU:
+
+mc86 Intro on YouTube
+
+mc86 init book
+
+Authors: Izzy and ProfNinja
+
+
+### Gathering information
+
+When run, the source code writes a ciphertext. The ciphertext contains symbols made with fences and some letters contain a pig.
+
+The pig gives us a huge hint, since we know a cipher called _pigpen_!
+
+### Exploitation
+
+By reading the code in pigpen, we obtain the following plaintext: _LITERALPIGPENS_.
+
+### The Flag
+
+UDCTF{LITERALPIGPENS}
+
+### Conclusion
+
+Easy challenge, nice as introduction to minecraft challenges.
+
 
 ## Morse Craft (147)
 
@@ -91,6 +206,47 @@ Translating this code did bear results and we ended up with `CRAFTINGMORSEFORTHE
 
 ### Flag
 `UDCTF{CRAFTINGMORSEFORTHEWIN}`
+
+# Misc
+
+## Rise and Shine (points 271)
+
+### Description
+
+Breakfast is the most important meal of the day.
+
+Wrap your result in UDCTF{} all caps.
+
+Hint: it is one common english word encoded in Baconian
+
+Author: Sophia and Charlie
+
+_breakfast.png_
+
+### Gathering information
+
+The image contains the following quote from Sun Tzu:
+_The whole secret lies in confusing the enemy, so that he cannot fathom our real intent_.
+
+Some letters of the text are underlined and/or italic, but as the text says this is only made to confuse us.
+
+The first hint is given by the filename, which is breakfast. After a few searches about the words "cipher" and "breakfast", we find out the "Bacon's cipher" (the hint in the description was not yet given), which uses two characters (a & b) to encode the plaintext.
+
+By looking carefully at the image we notice that the text is surrounded by two type of star figures: hexagram and heptagram.
+
+### Exploitation
+
+Try to substitute the hexagram with a's and the heptagram with b's. Then read it from the top-left border in counterclockwise direction.
+The result is: _aaabaaabbbaaaaaababbabbbaabaaaabbababbaa_, which is the word _CHAMPION_ encoded using Bacon Cipher.
+
+### The Flag
+
+UDCTF{CHAMPION}
+
+### Conclusion
+
+Easy beginner challenge, still fun tho.
+
 
 # Pwn
 
@@ -883,7 +1039,92 @@ I usually dislike format string vulnerabilities. They are tedious and, let me sa
 
 Nonetheless, I enjoyed this challenge a lot. Executing a ropchain via format string was very funny and a good learning experience.
 
-# Rev
+# Reverse
+
+## Entropy (points 468)
+
+### Description
+
+If you can find a 12-eye you can do this...
+
+Author: ProfNinja
+
+_entropy_
+
+### Gathering information
+
+The challenge gives us a binary called entropy, which requires an argument, print it as number and gives us segfault.
+
+By reversing it with ghidra, we can see that it applies a function to our argument, and uses it as a key to translate a function, which is then called.
+
+The code gives us a hint, telling us we're good if the provided argument, after 100 execution of the mysterious function, is equal to 0xfd94e6e84a0a.
+
+The argument is updated each time using the following line:
+
+```C
+param_1 = *param_1 * 0x5deece66d + 0xb & 0xffffffffffff
+```
+
+By googlin its values, we find out that this is the random function used in java.util.Random!
+This is known to be not secure, and we can find the inverse function on [stackoverflow](https://stackoverflow.com/questions/15236151/inverse-function-of-javas-random-function).
+
+### Exploitation
+
+We create a simple program to obtain the right value required as argument:
+
+```C
+#include <stdio.h>
+
+unsigned long reverse(unsigned long* key){
+    *key = ((*key - 0xBL) * 0xdfe05bcb1365L) & ((1L << 48) - 1);
+    return *key;
+}
+
+int main(){
+    unsigned long key =  0xfd94e6e84a0a;
+    for(int i =0; i < 100; i++)
+        reverse(&key);
+    printf("%lx\n", key);
+    return 0;
+}
+```
+
+Now we have our argument, which is 0x483d34347a46.
+
+So, let's execute `./entropy $(python -c "print('\x46\x7a\x34\x34\x3d\x48')"\)` and we get:
+```
+Fz44=H
+79427706059334
+looking good
+```
+
+This means it's working, but still we get segmentation fault and can't read the flag.
+By debugging it with gdb, we can clearly read that it executes the function and push the flag onto the stack. So we can just read it from here before the execution produces the segfault.
+
+```
+ ► 0x555555601020    xor    rbx, rbx
+   0x555555601023    push   rbx
+   0x555555601024    push   0x7d307470
+   0x555555601029    push   0x7972635f
+   0x55555560102e    push   0x76756c5f
+   0x555555601033    push   0x7961735f
+   0x555555601038    push   0x495f6e34
+   0x55555560103d    push   0x635f7434
+   0x555555601042    push   0x68777b46
+   0x555555601047    push   0x54434455
+   0x55555560104c    mov    rax, 1
+```
+
+So, let's just convert the hex string using cyberchef and reverse it.
+
+### The Flag
+
+UDCTF{wh4t_c4n_I_say_luv_crypt0}
+
+### Conclusion
+
+The writeup make the challenge looks easy, but this was indeed pretty hard (mostly the part of finding the inverse of the PRNG). Still, had fun!
+
 
 ## Me, Crack (296)
 
