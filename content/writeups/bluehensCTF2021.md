@@ -1,3 +1,10 @@
+---
+title: "BlueHens 2021"
+date: "2021-03-22"
+tags: ["CTF", "BlueHens 2021"]
+---
+
+
 # Crypto
 
 ## Hot diggity dog
