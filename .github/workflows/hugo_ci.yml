@@ -4,7 +4,7 @@ name: github pages
 on:
   push:
     branches:
-      - main  # Set a branch to deploy
+      - master
   pull_request:
 
 jobs:
