@@ -33,6 +33,7 @@ disableHugoGeneratorInject = false
 [taxonomies]
   tag      = "tags"
   category = "categories"
+  author   = "authors"
 
 [params]
   dateFormat  = "2 January, 2006"
@@ -60,8 +61,8 @@ disableHugoGeneratorInject = false
       brandPath = "/svg/logo-green.svg"
       path = "/svg/logo-m-green.svg"
     [params.logo.dark]
-      brandPath = "/svg/logo-white.svg"
-      path = "/svg/logo-m-white.svg"
+      brandPath = "/svg/logo-green.svg"
+      path = "/svg/logo-m-green.svg"
 
 [languages]
   [languages.en]
@@ -85,6 +86,6 @@ disableHugoGeneratorInject = false
     name       = "About"
     url        = "/about"
   [[menu.main]]
-    identifier = "play"
-    name       = "Play"
-    url        = "/play"
+    identifier = "resources"
+    name       = "Resources"
+    url        = "/resources"
