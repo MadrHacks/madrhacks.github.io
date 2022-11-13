@@ -85,6 +85,6 @@ disableHugoGeneratorInject = false
     name       = "About"
     url        = "/about"
   [[menu.main]]
-    identifier = "resources"
+    identifier = "resource"
     name       = "Resources"
-    url        = "/resources"
+    url        = "/resource"
