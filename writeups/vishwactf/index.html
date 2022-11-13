@@ -1,0 +1,676 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="ie=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=author content><meta name=description content="Thoughts on the CTF This was the first CTF in which our fresh recruits (from CC.IT 2021 program) participated in.
+It was a rather guessy CTF, but we&amp;rsquo;re pretty happy about the result: 1st place!
+Anyway, here are the writeups, divided in categories!
+Crypto A typical day at work The manager at mcgronalds seemed very happy today, after a tedious day at work, he shed tears of joy and said this “yonvkahj_on_jeyonx_jeajon”… can you tell us what he said?"><meta name=keywords content="Block,Hackers,CTF,CTF,vishwaCTF"><meta name=robots content="noodp"><meta name=theme-color content><link rel=canonical href=https://madrhacks.github.io/writeups/vishwactf/><title>vishwaCTF :: MadrHacks — A lodge of Ethical Hackers</title><link href=https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css rel=stylesheet type=text/css><link rel=stylesheet href=https://madrhacks.github.io/main.min.cf2feab91842b47fcc27f6ec2324f47128f7f3e5b55ec73b78b4795b15cc662e.css integrity="sha256-zy/quRhCtH/MJ/bsIyT0cSj38+W1Xsc7eLR5WxXMZi4="><meta itemprop=name content="vishwaCTF"><meta itemprop=description content="Thoughts on the CTF This was the first CTF in which our fresh recruits (from CC.IT 2021 program) participated in.
+It was a rather guessy CTF, but we&rsquo;re pretty happy about the result: 1st place!
+Anyway, here are the writeups, divided in categories!
+Crypto A typical day at work The manager at mcgronalds seemed very happy today, after a tedious day at work, he shed tears of joy and said this “yonvkahj_on_jeyonx_jeajon”… can you tell us what he said?"><meta itemprop=datePublished content="2021-03-15T00:00:00+00:00"><meta itemprop=dateModified content="2021-03-15T00:00:00+00:00"><meta itemprop=wordCount content="7515"><meta itemprop=image content="https://madrhacks.github.io"><meta itemprop=keywords content="CTF,vishwaCTF,"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://madrhacks.github.io"><meta name=twitter:title content="vishwaCTF"><meta name=twitter:description content="Thoughts on the CTF This was the first CTF in which our fresh recruits (from CC.IT 2021 program) participated in.
+It was a rather guessy CTF, but we&rsquo;re pretty happy about the result: 1st place!
+Anyway, here are the writeups, divided in categories!
+Crypto A typical day at work The manager at mcgronalds seemed very happy today, after a tedious day at work, he shed tears of joy and said this “yonvkahj_on_jeyonx_jeajon”… can you tell us what he said?"><meta property="article:published_time" content="2021-03-15 00:00:00 +0000 UTC"><link rel=stylesheet href=https://madrhacks.github.io/custom.min.d2b8de14cdbd978d02fa505b7e22808ee7a1babfa264242aa6bcd257ee3960d6.css integrity="sha256-0rjeFM29l40C+lBbfiKAjuehur+iZCQqprzSV+45YNY="></head><body class=dark-theme><div class=container><header class=header><span class=header__inner><a class=logo href=https://madrhacks.github.io><img id=logo-header src=https://madrhacks.github.io/svg/logo-m-green.svg>
+<span class=logo-brand>adrHacks</span></a>
+<span class=header__right><nav class=menu><ul class=menu__inner><li><a href=https://madrhacks.github.io/about>About</a></li><li><a href=https://madrhacks.github.io/posts>Blog</a></li><li><a href=https://madrhacks.github.io/res>Resources</a></li><li><a href=https://madrhacks.github.io/writeups>Writeups</a></li></ul></nav><span class=menu-trigger><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg></span><span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 41c10.4934.0 19-8.5066 19-19C41 11.5066 32.4934 3 22 3 11.5066 3 3 11.5066 3 22s8.5066 19 19 19zM7 22C7 13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22z"/></svg></span></span></span></header><div class=content><main class=post><article><h1 class=post-title><a href=https://madrhacks.github.io/writeups/vishwactf/>vishwaCTF</a></h1><div class=post-meta><p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>15 March, 2021</p><p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83.0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7" y2="7"/></svg><span class=tag><a href=https://madrhacks.github.io/tags/ctf>CTF</a></span><span class=tag><a href=https://madrhacks.github.io/tags/vishwactf>vishwaCTF</a></span></p></div><div class=post-content><h1 id=thoughts-on-the-ctf>Thoughts on the CTF</h1><p>This was the first CTF in which our fresh recruits (from CC.IT 2021 program) participated in.</p><p>It was a rather guessy CTF, but we&rsquo;re pretty happy about the result: 1st place!</p><p>Anyway, here are the writeups, divided in categories!</p><h1 id=crypto>Crypto</h1><h2 id=a-typical-day-at-work>A typical day at work</h2><p><code>The manager at mcgronalds seemed very happy today, after a tedious day at work, he shed tears of joy and said this “yonvkahj_on_jeyonx_jeajon”… can you tell us what he said?</code></p><p>The description of the challenge says that we have to decode the message above: “yonvkahj_on_jeyonx_jeajon”</p><p>It is obviously a monoalphabetic cipher. That means that we have to analyse the characters used to compose the words and try to identify the correct ones.</p><p>We notice that the last word has the first and the fourth character identical, so by using a dictionary (a list of all english words) we can search for a word made up of two identical letters (at first and fourth position) and four different letters. Using this information, we can now search for 8-characters and 6-characters words which have this property:</p><ul><li>the 8-character word has 4 characters belonging to the last word and the others all different</li><li>the 6-character word has 4 characters belonging to the last word and the other all different</li></ul><p>For each last word found in our dictionary, we can now search for all possible 8-characters and 6-characters words that satisfy those requirements.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span>f <span style=color:#f92672>=</span> open(<span style=color:#e6db74>&#34;dictionary.txt&#34;</span>, <span style=color:#e6db74>&#34;r&#34;</span>)
+</span></span><span style=display:flex><span>lines <span style=color:#f92672>=</span> f<span style=color:#f92672>.</span>readlines()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>substitution</span>(phrase, line, lines):
+</span></span><span style=display:flex><span>	string <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>for</span> c <span style=color:#f92672>in</span> phrase:
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span> c <span style=color:#f92672>==</span> <span style=color:#e6db74>&#39;j&#39;</span>:
+</span></span><span style=display:flex><span>			string <span style=color:#f92672>=</span> string <span style=color:#f92672>+</span> line[<span style=color:#ae81ff>0</span>:<span style=color:#ae81ff>1</span>]
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>elif</span> c <span style=color:#f92672>==</span> <span style=color:#e6db74>&#39;e&#39;</span>:
+</span></span><span style=display:flex><span>			string <span style=color:#f92672>=</span> string <span style=color:#f92672>+</span> line[<span style=color:#ae81ff>1</span>:<span style=color:#ae81ff>2</span>]
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>elif</span> c <span style=color:#f92672>==</span> <span style=color:#e6db74>&#39;a&#39;</span>:
+</span></span><span style=display:flex><span>			string <span style=color:#f92672>=</span> string <span style=color:#f92672>+</span> line[<span style=color:#ae81ff>2</span>:<span style=color:#ae81ff>3</span>]
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>elif</span> c <span style=color:#f92672>==</span> <span style=color:#e6db74>&#39;o&#39;</span>:
+</span></span><span style=display:flex><span>			string <span style=color:#f92672>=</span> string <span style=color:#f92672>+</span> line[<span style=color:#ae81ff>4</span>:<span style=color:#ae81ff>5</span>]
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>elif</span> c <span style=color:#f92672>==</span> <span style=color:#e6db74>&#39;n&#39;</span>:
+</span></span><span style=display:flex><span>			string <span style=color:#f92672>=</span> string <span style=color:#f92672>+</span> line[<span style=color:#ae81ff>5</span>:<span style=color:#ae81ff>6</span>]
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>			string <span style=color:#f92672>=</span> string <span style=color:#f92672>+</span> c
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>if</span> string[<span style=color:#ae81ff>9</span>:<span style=color:#ae81ff>11</span>] <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;is&#34;</span> <span style=color:#f92672>or</span> string[<span style=color:#ae81ff>9</span>:<span style=color:#ae81ff>11</span>] <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;on&#34;</span> <span style=color:#f92672>or</span> string[<span style=color:#ae81ff>9</span>:<span style=color:#ae81ff>11</span>] <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;at&#34;</span> <span style=color:#f92672>or</span> string[<span style=color:#ae81ff>9</span>:<span style=color:#ae81ff>11</span>] <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;if&#34;</span> <span style=color:#f92672>or</span> string[<span style=color:#ae81ff>9</span>:<span style=color:#ae81ff>11</span>] <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;it&#34;</span> <span style=color:#f92672>or</span> string[<span style=color:#ae81ff>9</span>:<span style=color:#ae81ff>11</span>] <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;or&#34;</span> <span style=color:#f92672>or</span> string[<span style=color:#ae81ff>9</span>:<span style=color:#ae81ff>11</span>] <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;to&#34;</span> <span style=color:#f92672>or</span> string[<span style=color:#ae81ff>9</span>:<span style=color:#ae81ff>11</span>] <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;an&#34;</span>:
+</span></span><span style=display:flex><span>		print(string)
+</span></span><span style=display:flex><span>		print_different_words_8(lines,line)
+</span></span><span style=display:flex><span>		print_different_words_6(lines,line)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>word_with_different_chars_8</span>(line):
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(<span style=color:#ae81ff>8</span>):
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span> (line[i:i<span style=color:#f92672>+</span><span style=color:#ae81ff>1</span>] <span style=color:#f92672>in</span> line[:i]<span style=color:#f92672>+</span>line[i<span style=color:#f92672>+</span><span style=color:#ae81ff>1</span>:]):
+</span></span><span style=display:flex><span>			<span style=color:#66d9ef>return</span> <span style=color:#66d9ef>False</span>
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>return</span> <span style=color:#66d9ef>True</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>print_different_words_8</span>(lines, line):
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>for</span> l <span style=color:#f92672>in</span> lines:
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span> ((len(l[:len(l)<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>]) <span style=color:#f92672>==</span> <span style=color:#ae81ff>8</span>)):
+</span></span><span style=display:flex><span>			<span style=color:#66d9ef>if</span> (l[<span style=color:#ae81ff>7</span>:<span style=color:#ae81ff>8</span>] <span style=color:#f92672>==</span> line[<span style=color:#ae81ff>0</span>:<span style=color:#ae81ff>1</span>] <span style=color:#f92672>and</span> l[<span style=color:#ae81ff>1</span>:<span style=color:#ae81ff>2</span>] <span style=color:#f92672>==</span> line[<span style=color:#ae81ff>4</span>:<span style=color:#ae81ff>5</span>] <span style=color:#f92672>and</span> l[<span style=color:#ae81ff>2</span>:<span style=color:#ae81ff>3</span>] <span style=color:#f92672>==</span> line[<span style=color:#ae81ff>5</span>:<span style=color:#ae81ff>6</span>] <span style=color:#f92672>and</span> l[<span style=color:#ae81ff>5</span>:<span style=color:#ae81ff>6</span>] <span style=color:#f92672>==</span> line[<span style=color:#ae81ff>2</span>:<span style=color:#ae81ff>3</span>]):
+</span></span><span style=display:flex><span>				<span style=color:#66d9ef>if</span> (word_with_different_chars_8(l)):
+</span></span><span style=display:flex><span>					print(l)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>word_with_different_chars_6</span>(line):
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(<span style=color:#ae81ff>6</span>):
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span> (line[i:i<span style=color:#f92672>+</span><span style=color:#ae81ff>1</span>] <span style=color:#f92672>in</span> line[:i]<span style=color:#f92672>+</span>line[i<span style=color:#f92672>+</span><span style=color:#ae81ff>1</span>:]):
+</span></span><span style=display:flex><span>			<span style=color:#66d9ef>return</span> <span style=color:#66d9ef>False</span>
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>return</span> <span style=color:#66d9ef>True</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>print_different_words_6</span>(lines, line):
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>for</span> l <span style=color:#f92672>in</span> lines:
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span> ((len(l[:len(l)<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>]) <span style=color:#f92672>==</span> <span style=color:#ae81ff>6</span>)):
+</span></span><span style=display:flex><span>			<span style=color:#66d9ef>if</span> (l[<span style=color:#ae81ff>0</span>:<span style=color:#ae81ff>1</span>] <span style=color:#f92672>==</span> line[<span style=color:#ae81ff>0</span>:<span style=color:#ae81ff>1</span>] <span style=color:#f92672>and</span> l[<span style=color:#ae81ff>1</span>:<span style=color:#ae81ff>2</span>] <span style=color:#f92672>==</span> line[<span style=color:#ae81ff>1</span>:<span style=color:#ae81ff>2</span>] <span style=color:#f92672>and</span> l[<span style=color:#ae81ff>3</span>:<span style=color:#ae81ff>4</span>] <span style=color:#f92672>==</span> line[<span style=color:#ae81ff>4</span>:<span style=color:#ae81ff>5</span>] <span style=color:#f92672>and</span> l[<span style=color:#ae81ff>4</span>:<span style=color:#ae81ff>5</span>] <span style=color:#f92672>==</span> line[<span style=color:#ae81ff>5</span>:<span style=color:#ae81ff>6</span>]):
+</span></span><span style=display:flex><span>				<span style=color:#66d9ef>if</span> (word_with_different_chars_6(l)):
+</span></span><span style=display:flex><span>					print(l)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>print_words</span>(lines):
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>for</span> l <span style=color:#f92672>in</span> lines:
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span> ((len(l[:len(l)<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>]) <span style=color:#f92672>==</span> <span style=color:#ae81ff>8</span>)):
+</span></span><span style=display:flex><span>			<span style=color:#66d9ef>if</span> (word_with_different_chars_8(l)) :
+</span></span><span style=display:flex><span>				print(l)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>for</span> line <span style=color:#f92672>in</span> lines:
+</span></span><span style=display:flex><span>	phrase <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;yonvkahj_on_jeyonx_jeajon&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>if</span> (len(line[:len(line)<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>]) <span style=color:#f92672>==</span> <span style=color:#ae81ff>6</span>):
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span> (line[<span style=color:#ae81ff>0</span>:<span style=color:#ae81ff>1</span>] <span style=color:#f92672>==</span> line[<span style=color:#ae81ff>3</span>:<span style=color:#ae81ff>4</span>]):
+</span></span><span style=display:flex><span>			<span style=color:#66d9ef>if</span> (line[<span style=color:#ae81ff>1</span>:<span style=color:#ae81ff>2</span>] <span style=color:#f92672>!=</span> line [<span style=color:#ae81ff>0</span>:<span style=color:#ae81ff>1</span>] <span style=color:#f92672>and</span> line[<span style=color:#ae81ff>1</span>:<span style=color:#ae81ff>2</span>] <span style=color:#f92672>!=</span> line[<span style=color:#ae81ff>2</span>:<span style=color:#ae81ff>3</span>] <span style=color:#f92672>and</span> line[<span style=color:#ae81ff>1</span>:<span style=color:#ae81ff>2</span>] <span style=color:#f92672>!=</span> line[<span style=color:#ae81ff>3</span>:<span style=color:#ae81ff>4</span>] <span style=color:#f92672>and</span> line[<span style=color:#ae81ff>1</span>:<span style=color:#ae81ff>2</span>] <span style=color:#f92672>!=</span> line[<span style=color:#ae81ff>4</span>:<span style=color:#ae81ff>5</span>] <span style=color:#f92672>and</span> line[<span style=color:#ae81ff>1</span>:<span style=color:#ae81ff>2</span>] <span style=color:#f92672>!=</span> line[<span style=color:#ae81ff>5</span>:<span style=color:#ae81ff>6</span>]):
+</span></span><span style=display:flex><span>				<span style=color:#66d9ef>if</span> (line[<span style=color:#ae81ff>2</span>:<span style=color:#ae81ff>3</span>] <span style=color:#f92672>!=</span> line [<span style=color:#ae81ff>0</span>:<span style=color:#ae81ff>1</span>] <span style=color:#f92672>and</span> line[<span style=color:#ae81ff>2</span>:<span style=color:#ae81ff>3</span>] <span style=color:#f92672>!=</span> line[<span style=color:#ae81ff>3</span>:<span style=color:#ae81ff>4</span>] <span style=color:#f92672>and</span> line[<span style=color:#ae81ff>2</span>:<span style=color:#ae81ff>3</span>] <span style=color:#f92672>!=</span> line[<span style=color:#ae81ff>4</span>:<span style=color:#ae81ff>5</span>] <span style=color:#f92672>and</span> line[<span style=color:#ae81ff>2</span>:<span style=color:#ae81ff>3</span>] <span style=color:#f92672>!=</span> line[<span style=color:#ae81ff>5</span>:<span style=color:#ae81ff>6</span>]):
+</span></span><span style=display:flex><span>					<span style=color:#66d9ef>if</span> (line[<span style=color:#ae81ff>3</span>:<span style=color:#ae81ff>4</span>] <span style=color:#f92672>!=</span> line [<span style=color:#ae81ff>4</span>:<span style=color:#ae81ff>5</span>] <span style=color:#f92672>and</span> line[<span style=color:#ae81ff>3</span>:<span style=color:#ae81ff>4</span>] <span style=color:#f92672>!=</span> line[<span style=color:#ae81ff>5</span>:<span style=color:#ae81ff>6</span>]):
+</span></span><span style=display:flex><span>						<span style=color:#66d9ef>if</span> (line[<span style=color:#ae81ff>4</span>:<span style=color:#ae81ff>5</span>] <span style=color:#f92672>!=</span> line [<span style=color:#ae81ff>0</span>:<span style=color:#ae81ff>1</span>] <span style=color:#f92672>and</span> line[<span style=color:#ae81ff>4</span>:<span style=color:#ae81ff>5</span>] <span style=color:#f92672>!=</span> line[<span style=color:#ae81ff>5</span>:<span style=color:#ae81ff>6</span>]):
+</span></span><span style=display:flex><span>							substitution(phrase, line[:len(line)], lines)
+</span></span></code></pre></div><p><code>vishwaCTF{congrats_on_second_season}</code></p><h2 id=can-you-see>Can you see??</h2><p>This challenge gave us a text file, <code>can_you_see.txt</code>, which contained 5 binary matrices, all 3-bits high.
+It took us a while to figure out the <code>1</code>s and <code>0</code>s were used to represent words in braille.
+By using a braille translator, we managed to arrive to <code>vvho n33ds 3y3s 7o 5ee</code> which was the correct flag.
+<code>vishwaCTF{vvho n33ds 3y3s 7o 5ee}</code></p><h2 id=from-the-future>From the FUTURE</h2><p>We were given an image, <code>note.png</code>, which featured a messagge written in an unfamiliar alphabet.
+Since the challenge&rsquo;s description talked about <code>Futurama</code> we were able to find the series&rsquo; alien alphabet and used it to decipher the message which was: WEARENOTALONE.</p><p>vishwaCTF{WEARENOTALONE}</p><h2 id=mosha>Mosha</h2><p>We were given an image, <code>moshatxt.jpg</code>, which featured a message written in an unfamiliar alphabet.
+I found an account on IG called mosha_font and here I found the strange alphabet.
+Using this alphabet we decipher the message which was the flag.</p><p>vishwaCTF{Y0u4reM05hAnoW}</p><h2 id=please-help>Please help!!</h2><p>This challenge provides a file with some binary strings on it. The strings are twelve binary digits each.</p><p>In the description, we can clearly read the words <em>distortion</em>,<em>noise</em>, <em>correct</em> and <em>decode</em>.
+This makes us think about some kind of correction code.</p><p>Given the fact that the strings are 12 binary digits, we think of the <em>hamming code</em> and try to apply that and extract the data. By applying correction code in the string, we don&rsquo;t get anything useful, but doing that in the reversed string and the reversing the result (Same as doing that enumerating the bits in the opposite order).</p><p>So, we have some work to do:</p><pre tabindex=0><code>1. (check)
+
+    1  2  3  4  5  6  7  8  9  10 11 12
+    P  P  D  P  D  D  D  P  D  D  D  D
+    0  0  1  1  0  1  1  0  0  1  1  1
+p1  0     1     0     1     0     1    = 1
+p2     0  1        1  1        1  1    = 1
+p4           1  0  1  1              1 = 0
+p8                       0  0  1  1  1 = 1 
+1011=11
+10110101 -&gt; garbage
+
+    12 11 10 9  8  7  6  5  4  3  2  1
+    D  D  D  D  P  D  D  D  P  D  P  P
+    1  1  1  0  0  1  1  0  1  1  0  0
+p1     1     0     1     0     1     0 = 1
+p2     1  1        1  1        1  0    = 1
+p4  1              1  1  0  1          = 0
+p8  1  1  1  0  0                      = 1 
+1011= 11
+10110101 -&gt; garbage
+
+2. (check)
+    12 11 10 9  8  7  6  5  4  3  2  1
+    D  D  D  D  P  D  D  D  P  D  P  P
+    0  1  0  0  1  0  0  1  1  0  0  0
+p1     1     0     0     1     0     0 = 0
+p2     1  0        0  0        0  0    = 1
+p4  0              0  0  1  1          = 0
+p8  0  1  0  0  1                      = 0 
+0010= 2
+01000010 -&gt; B
+
+    12 11 10 9  8  7  6  5  4  3  2  1
+    D  D  D  D  P  D  D  D  P  D  P  P
+    0  0  0  1  1  0  0  1  0  0  1  0
+p1     0     1     0     1     0     0 = 0
+p2     0  0        0  0        0  1    = 1
+p4  0              0  0  1  0          = 1
+p8  0  0  0  1  1                      = 0 
+0110= 6
+01101000 -&gt; h
+
+
+3.
+    12 11 10 9  8  7  6  5  4  3  2  1
+    D  D  D  D  P  D  D  D  P  D  P  P
+    0  1  0  1  1  1  0  0  1  0  1  1
+p1     1     1     1     1     0     1 = 1
+p2     1  0        1  0        0  1    = 1
+p4  0              1  0  0  1          = 0
+p8  0  1  0  1  1                      = 1 
+1011= 11
+00011000 -&gt; garbage
+
+    12 11 10 9  8  7  6  5  4  3  2  1
+    D  D  D  D  P  D  D  D  P  D  P  P
+    1  1  0  1  0  0  1  1  1  0  1  0
+p1     1     1     0     1     0     0 = 1
+p2     1  0        0  1        0  1    = 1
+p4  1              0  1  1  1          = 0
+p8  1  1  0  1  0                      = 1 
+1011= 11
+01101001 -&gt; i
+
+4.
+    12 11 10 9  8  7  6  5  4  3  2  1
+    D  D  D  D  P  D  D  D  P  D  P  P
+    1  1  0  1  0  1  0  0  0  1  0  1
+p1     1     1     1     0     1     1 = 1
+p2     1  0        1  0        1  0    = 1
+p4  1              1  0  0  0          = 0
+p8  1  1  0  1  0                      = 1 
+1011= 11
+10011001 -&gt; garbage
+
+    12 11 10 9  8  7  6  5  4  3  2  1
+    D  D  D  D  P  D  D  D  P  D  P  P
+    1  0  1  0  0  0  1  0  1  0  1  1
+p1     0     0     0     0     0     1 = 1
+p2     0  1        0  1        0  1    = 1
+p4  1              0  1  0  1          = 1
+p8  1  0  1  0  0                      = 0 
+0111= 7
+00110101 -&gt; 5
+
+5.
+    12 11 10 9  8  7  6  5  4  3  2  1
+    D  D  D  D  P  D  D  D  P  D  P  P
+    0  0  0  1  1  0  1  0  1  1  1  1
+p1     0     1     0     0     1     1 = 1
+p2     0  0        0  1        1  1    = 1
+p4  0              0  1  0  1          = 0
+p8  0  0  0  1  1                      = 0 
+0011= 3
+00010100 -&gt; garbage
+
+    12 11 10 9  8  7  6  5  4  3  2  1
+    D  D  D  D  P  D  D  D  P  D  P  P
+    1  1  1  1  0  1  0  1  1  0  0  0
+p1     1     1     1     1     0     0 = 0
+p2     1  1        1  0        0  0    = 1
+p4  1              1  0  1  1          = 0
+p8  1  1  1  1  0                      = 0 
+0010= 2
+01011111 -&gt; _
+
+6.
+    12 11 10 9  8  7  6  5  4  3  2  1
+    D  D  D  D  P  D  D  D  P  D  P  P
+    1  0  0  1  1  0  1  0  0  1  1  0
+p1     0     1     0     0     1     0 = 0
+p2     0  0        0  1        1  1    = 1
+p4  1              0  1  0  0          = 0
+p8  1  0  0  1  1                      = 1 
+1010= 10
+10110101 -&gt; garbage
+
+    12 11 10 9  8  7  6  5  4  3  2  1
+    D  D  D  D  P  D  D  D  P  D  P  P
+    0  1  1  0  0  1  0  1  1  0  0  1
+p1     1     0     1     1     0     1 = 0
+p2     1  1        1  0        0  0    = 1
+p4  0              1  0  1  1          = 1
+p8  0  1  1  0  0                      = 0 
+0110= 6
+01101110  -&gt; n
+01110110  -&gt; v
+
+7.
+    12 11 10 9  8  7  6  5  4  3  2  1
+    D  D  D  D  P  D  D  D  P  D  P  P
+    1  0  0  1  1  1  1  0  0  1  1  1
+p1     0     1     1     0     1     1 = 0
+p2     0  0        1  1        1  1    = 0
+p4  1              1  1  0  0          = 1
+p8  1  0  0  1  1                      = 1 
+1100= 12
+00011101 -&gt; garbage
+
+    12 11 10 9  8  7  6  5  4  3  2  1
+    D  D  D  D  P  D  D  D  P  D  P  P
+    1  1  1  0  0  1  1  1  1  0  0  1
+p1     1     0     1     1     0     1 = 0
+p2     1  1        1  1        0  0    = 0
+p4  1              1  1  1  1          = 1
+p8  1  1  1  0  0                      = 1 
+1100= 12
+01101110 -&gt; n
+01110110 -&gt; v
+
+8.
+    12 11 10 9  8  7  6  5  4  3  2  1
+    D  D  D  D  P  D  D  D  P  D  P  P
+    1  1  1  1  1  1  0  1  0  0  0  1 
+p1     1     1     1     1     0     1 = 1
+p2     1  1        1  0        0  0    = 1
+p4  1              1  0  1  0          = 1
+p8  1  1  1  1  1                      = 1 
+1111=  ??????
+
+    12 11 10 9  8  7  6  5  4  3  2  1
+    D  D  D  D  P  D  D  D  P  D  P  P
+    1  0  0  0  1  0  1  1  1  1  1  1 
+p1     0     0     0     1     1     1 = 1
+p2     0  0        0  1        1  1    = 1
+p4  1              0  1  1  1          = 0
+p8  1  0  0  0  1                      = 0 
+0011= 3
+01100001 -&gt; a
+
+9.
+    12 11 10 9  8  7  6  5  4  3  2  1
+    D  D  D  D  P  D  D  D  P  D  P  P
+    1  1  0  1  0  1  1  0  0  1  0  0
+p1     1     1     1     0     1     0 = 0
+p2     1  0        1  1        1  0    = 0
+p4  1              1  1  0  0          = 1
+p8  1  1  0  1  0                      = 1 
+1100=12
+01011101 -&gt; ]
+
+    12 11 10 9  8  7  6  5  4  3  2  1
+    D  D  D  D  P  D  D  D  P  D  P  P
+    0  0  1  0  0  1  1  0  1  0  1  1 
+p1     0     0     1     0     0     1 = 0
+p2     0  1        1  1        0  1    = 0
+p4  0              1  1  0  1          = 1
+p8  0  0  1  0  0                      = 1 
+1100= 12
+00110101 -&gt; 5
+
+10.
+    12 11 10 9  8  7  6  5  4  3  2  1
+    D  D  D  D  P  D  D  D  P  D  P  P
+    0  1  0  1  1  0  1  0  1  1  0  1
+p1     1     1     0     0     1     1 = 0
+p2     1  0        0  1        1  0    = 1
+p4  0              0  1  0  1          = 0
+p8  0  1  0  1  1                      = 1 
+1010=10
+01110101 -&gt; u
+
+    12 11 10 9  8  7  6  5  4  3  2  1
+    D  D  D  D  P  D  D  D  P  D  P  P
+    1  0  1  1  0  1  0  1  1  0  1  0 
+p1     0     1     1     1     0     0 = 1
+p2     0  1        1  0        0  1    = 1
+p4  1              1  0  1  1          = 0
+p8  1  0  1  1  0                      = 1 
+1011= 11
+01011111 -&gt; _
+
+11.
+    12 11 10 9  8  7  6  5  4  3  2  1
+    D  D  D  D  P  D  D  D  P  D  P  P
+    0  1  0  0  1  1  0  0  0  1  0  0
+p1     1     0     1     0     1     0 = 1
+p2     1  0        1  0        1  0    = 1
+p4  0              1  0  0  0          = 1
+p8  0  1  0  0  1                      = 0 
+0111=7
+01000001 -&gt; A
+
+    12 11 10 9  8  7  6  5  4  3  2  1
+    D  D  D  D  P  D  D  D  P  D  P  P
+    0  0  1  0  0  0  1  1  0  0  1  0 
+p1     0     0     0     1     0     0 = 1
+p2     0  1        0  1        0  1    = 1
+p4  0              0  1  1  0          = 0
+p8  0  0  1  0  0                      = 1
+1011= 11
+01100110 -&gt; f
+
+12.
+
+    12 11 10 9  8  7  6  5  4  3  2  1
+    D  D  D  D  P  D  D  D  P  D  P  P
+    0  0  1  1  1  0  1  0  0  1  0  1
+p1     0     1     0     0     1     1 = 1
+p2     0  1        0  1        1  0    = 1
+p4  0              0  1  0  0          = 1
+p8  0  0  1  1  1                      = 1 
+111 = ????
+
+    12 11 10 9  8  7  6  5  4  3  2  1
+    D  D  D  D  P  D  D  D  P  D  P  P
+    1  0  1  0  0  1  0  1  1  1  0  0 
+p1     0     0     1     1     1     0 = 1
+p2     0  1        1  0        1  0    = 1
+p4  1              1  0  1  1          = 0
+p8  1  0  1  0  0                      = 0
+0011= 3
+01010101 -&gt; U
+
+13.
+
+    12 11 10 9  8  7  6  5  4  3  2  1
+    D  D  D  D  P  D  D  D  P  D  P  P
+    1  1  0  0  1  1  0  1  1  1  1  1
+p1     1     0     1     1     1     1 = 1
+p2     1  0        1  0        1  1    = 0
+p4  1              1  0  1  1          = 0
+p8  1  1  0  0  1                      = 1 
+1001=9
+11011011 -&gt; garbage
+
+    12 11 10 9  8  7  6  5  4  3  2  1
+    D  D  D  D  P  D  D  D  P  D  P  P
+    1  1  1  1  1  0  1  1  0  0  1  1 
+p1     1     1     0     1     0     1 = 0
+p2     1  1        0  1        0  1    = 0
+p4  1              0  1  1  0          = 1
+p8  1  1  1  1  1                      = 1
+1100= 12
+01110110 -&gt; v
+01101110 -&gt; n
+</code></pre><p>We couldn&rsquo;t recover the first character, but we can clearly read the flag as <code>7hi5_vva5_fUn</code>/<code>thi5_vva5_fUn</code>.
+The flag is <code>vishwaCTF{7hi5_vva5_fUn}</code>.</p><h2 id=please-help-2>Please Help 2</h2><p>We are given some binary data organized in chunks of 8 bits (with are not plain ASCII btw, we checked). In addition, the challenge description states that this challenge is similar to the previous one, thus involving some kind of Hamming Code FEC.</p><p>Searching deep in the web, we found <a href="https://www.youtube.com/watch?v=b3NxrZOu_CE">this video</a> that explains a FEC scheme based on Hamming that works on 16-bit 4x4 squares and uses 5 bits of parity and 11 bits of data. It works as follows:</p><pre tabindex=0><code>PPPX
+PXXX
+PXXX
+XXXX
+</code></pre><p>The &lsquo;P&rsquo; places are parity bits, while the &lsquo;X&rsquo; places are data bits. The places are numbered by rows. You can compute where a single bit error is by applying XOR operation in the following patterns:</p><pre tabindex=0><code>OOOO
+OOOO
+XXXX
+XXXX
+</code></pre><pre tabindex=0><code>OOOO
+XXXX
+OOOO
+XXXX
+</code></pre><pre tabindex=0><code>OOXX
+OOXX
+OOXX
+OOXX
+</code></pre><pre tabindex=0><code>OXOX
+OXOX
+OXOX
+OXOX
+</code></pre><p>Then you concatenare the four XOR bits, and this gives you the position of the incorrect bit, starting from zero.</p><p>Therefore, we try this code on the given binary data, pairing the chunks two by two. Follows a little scheme that summarizes what we did by hand (just the first chunks):</p><pre tabindex=0><code class=language-CHUNK data-lang=CHUNK>0011  0
+1011  0
+0010  1
+1011  1
+-&gt; Error on 3rd bit
+-&gt; Data bits: 0-011-010-1011
+
+CHUNK 2:
+0010  1
+0100  0
+1001  0
+1011  1
+-&gt; Error on 9th bit
+-&gt; Data bits: 0-100-101-1011
+
+...
+</code></pre><p>By performing the described procedure, we were able to find a single incorrect bit for each 16-bit chunk of data, and therefore extracted the 11 bits of data in each block. Finally, using CyberChef, we decoded this data and got the flag (that needed to be enclosed in the standard format, btw)!</p><p><code>vishwaCTF{5imil4r_y37_diff3r3n7!}</code></p><h2 id=weird-message>Weird Message</h2><p>We are given a long bitstring. This string is 50879 bit long (50880 - 1 newline). It has a lot of 0s, so we decide to plot it on an image.</p><p>We do that using <code>PIL</code>. Given the resulting image is still confused (the odd rows are reversed (?)), we decided to plot only the even rows.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>from</span> PIL <span style=color:#f92672>import</span> Image
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>with</span> open(<span style=color:#e6db74>&#34;message.txt&#34;</span>, <span style=color:#e6db74>&#34;r&#34;</span>) <span style=color:#66d9ef>as</span> f:
+</span></span><span style=display:flex><span>    pixels <span style=color:#f92672>=</span> f<span style=color:#f92672>.</span>readline()[:<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    w, h <span style=color:#f92672>=</span> <span style=color:#ae81ff>613</span>, <span style=color:#ae81ff>83</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    img <span style=color:#f92672>=</span> Image<span style=color:#f92672>.</span>new(<span style=color:#e6db74>&#34;L&#34;</span>, (w, h))
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> i, p <span style=color:#f92672>in</span> enumerate(pixels):
+</span></span><span style=display:flex><span>        x <span style=color:#f92672>=</span> i <span style=color:#f92672>%</span> w
+</span></span><span style=display:flex><span>        y <span style=color:#f92672>=</span> i <span style=color:#f92672>//</span> w
+</span></span><span style=display:flex><span>        c <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span> <span style=color:#66d9ef>if</span> p <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;0&#34;</span> <span style=color:#66d9ef>else</span> <span style=color:#ae81ff>255</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> y <span style=color:#f92672>%</span> <span style=color:#ae81ff>2</span> <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>:
+</span></span><span style=display:flex><span>            img<span style=color:#f92672>.</span>putpixel((x, y), c)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    img<span style=color:#f92672>.</span>save(<span style=color:#e6db74>&#34;plot.png&#34;</span>)
+</span></span></code></pre></div><p>With that code we get the flag: <code>vishwaCTF{pr1m35_4r3_w31rd}</code>.</p><h1 id=forensics>Forensics</h1><h2 id=barcode-scanner>Barcode Scanner</h2><p>We are given a simple jpeg image. The challenge description states that it is unreadable and that we should find a way to read it.</p><p>We tried to open it with Gimp, invert its colors (i.e. black becomes white and viceversa), then we scanned it with Google Lens and there it is! We enclosed the flag in the usual format and this challenge is solved.</p><h2 id=bubblegum>Bubblegum</h2><p>We were given an audio file, <code>bkk.wav</code>, and told to simplify the lyrics of a particular section of the song.
+By playing the audio file we noticed noise around the <code>00:18</code> mark. Inspecting the spectogram, the noise was added to visualize in the spectogram the phrase <code>0.55-1.07</code>.
+We understood that this was the section of the lyrics to simplify and looked them up.
+We ended up <code>oh bubble gum dear im yours forever i would never let them take your bubblegum away</code>, which was the correct flag.
+<code>vishwaCTF{oh bubble gum dear im yours forever i would never let them take your bubblegum away}</code></p><h2 id=comments>Comments</h2><p>We are given a docx file. Given a docx is just a zip with custom extension we can extract the contents. We are left with three folders and one file. The interesting folder is <code>word</code>, as it contains all the pages data.</p><p>We use <code>cat word/* | grep wishwaCTF</code> and we find <code>&lt;!--vishwaCTF{comm3nts_@r3_g00d}--></code>, that gives us the flag: <code>vishwaCTF{comm3nts_@r3_g00d}</code>.</p><h2 id=dancing-leds>Dancing LEDs</h2><p>We are given a screen recording. We write down the led values: 1 for ON, 0 for OFF.</p><p>We get:</p><pre tabindex=0><code>0110100
+1101001
+1110000
+1011010
+1001010
+1001000
+1111010
+1111000
+0110100
+0110001
+</code></pre><p>We decode the binary: <code>4ipZJHzx41</code>. This is not the flag. The video title is <code>Video58</code>, so we apply Base58. We get <code>b1!nk3r</code>. The flag is <code>vishwaCTF{b1!nk3r}</code>.</p><h2 id=peace>Peace</h2><p>We are given a simple rar archive. It is password-protected. With hashcat we crack the password: <code>india</code>. We find a wav file. It is clearly a morse-code transmission. We use <code>fldigi</code> to decode that.</p><p>We get <code>76 69 73 68 77 61 63 74 66 7B 37 68 33 79 5F 34 72 45 5F 46 30 72 33 66 65 37 31 6E 67</code>.</p><p>By decoding the hex we get the flag: <code>vishwactf{7h3y_4rE_F0r3fe71ng}</code>.</p><h2 id=comments-1>Comments</h2><p>We are given a two files. We execute <code>file</code> on them, and we get <code>MS Windows registry file, NT/2000 or above</code>. So we use <code>regripper</code> to understand them.</p><p>With <code>regripper -r file2 -p samparse</code> we find the information needed:</p><pre tabindex=0><code>Username        : Shreyas Gopal [1001]
+Full Name       : 
+User Comment    : 
+Account Type    : 
+Name            :  
+Password Hint   : 
+Last Login Date : 2013-01-10 08:24:36Z
+Pwd Reset Date  : 2013-01-10 08:24:36Z
+Pwd Fail Date   : Never
+Login Count     : 5
+Embedded RID    : 1001
+  --&gt; Password not required
+  --&gt; Password does not expire
+  --&gt; Normal user account
+</code></pre><p>We check that the weekday for <code>2013-01-10 08:24:36</code> was a Thursday, and thus we get the flag: <code>vishwaCTF{thursday_january_10_08_24_36_2013}</code>.</p><h2 id=sherlock>Sherlock</h2><p>We are given a JPEG image. We open it with <code>stegsolve</code>. Plotting the <em>Gray bits</em> we notice a noisy column on the right. With <code>Analyse -> Data Extract</code> we get the flag by extracting the <em>LSB</em> of the <em>green channel</em> by <em>columns</em>.</p><p>We submit the flag: <code>vishwaCTF{@w3s0Me_sh3Rl0cK_H0m3s}</code>.</p><h1 id=general>General</h1><h2 id=bigh-issue>BiGh Issue</h2><p>The challenge description mentions the frontpage website for the CTF and a <em>very big issue</em>. Maybe we could try searching on GitHub?</p><p>We can easily find the <a href=https://github.com/CybercellVIIT/vishwaCTFWebsite21>link to the github repo</a>, so let&rsquo;s look at the closed issues.</p><p>We can find an issue named <a href=https://github.com/CybercellVIIT/vishwaCTFWebsite21/issues/28>Huge Issue</a> and by carefully looking at the comments we can see that one of these was edited, let&rsquo;s see what was changed.. and sure enough in the history we have our flag!</p><p><code>vishwaCTF{bh41yy4_g1thub_0P}</code></p><h2 id=findthepass>Findthepass</h2><p>We are given a rar file. This file contains a VM (a VirtualBox save). We import it into <code>VirtualBox</code>.</p><p>In the home directory we find <code>this_is_what_you_need/wordlist.txt</code>. We try all the listed passwords (with <code>su</code>). The password <code>password</code> gives us a root shell (this is confirmed with <code>whoami</code>).</p><p>We submit the flag: <code>vishwaCTF{password}</code>.</p><h2 id=find-the-room>Find the room</h2><p>This challenge asks you to find the room number for the principal&rsquo;s office in VIIT.
+Searching with Google Maps for <code>Vishwakarma Institute of Information Technology</code>, we found the building and used <code>street view</code> to look for the correct room.
+This lead us to a courtyard where the plaque <code>Principal's Office</code> was visible and under it was the room number <code>A 003</code>, which we used as our flag.
+<code>vishwaCTF{A 003}</code></p><h2 id=front-pages>Front Pages</h2><p>What is the front page (TM) of the internet? Reddit obviously, so let&rsquo;s search.</p><p>Searching for <code>vishwaCTF</code>on reddit gives us an interesting user: <code>u/vishwaCTF</code></p><p>Looking through the post history of the account we can find a <a href=https://www.reddit.com/user/vishwaCTF/comments/lt1gzm/could_this_be_the_flag_for_a_vishwactf_2021>post</a> that mentions a deleted flag!</p><p>Let&rsquo;s search for this post inside <a href=http://web.archive.org>wayback machine</a>.. and sure enough we have a flag on the <a href=http://web.archive.org/web/20210226163747/https://www.reddit.com/user/vishwaCTF/comments/lt1gzm/could_this_be_the_flag_for_a_vishwactf_2021/>first snapshot!</a></p><p>flag: <code>vishwaCTF{0$dVl_1z_kFV3g_0a3mT0graD}</code></p><p>This flag is not correct though, we first need to decrypt it using the vigenere chiper.
+With the key <code>VISHACTF</code> we obtain the correct flag:</p><p><code>vishwaCTF{0$iNt_1s_oFT3n_0v3rL0okeD}</code></p><h2 id=git-up-and-dance>Git up and dance</h2><p>We are given a zip file. This file contains a git repo. We start by investigating all the history of the files.</p><p>With <code>git log -p workspace.a4362daf.js | grep vish</code> we get (among other lines) <code>This is the flag vishwaCTF{d4nc3_4nd_giitupp}</code>.</p><p>So we submit the flag: <code>vishwaCTF{d4nc3_4nd_giitupp}</code>.</p><h2 id=good-driver-bad-driver>Good Driver Bad Driver</h2><p>For this challege we split the labelled set in : 75% training set and 25% of validation set.
+The features were distance and speeding. We decide to use the Random Forest Classifier as model.
+We train that model using the training set.
+For computing the accuracy, we use the validation set in order to compute the accuracy, which was of 1.0.</p><p>Finally, we do the prediction on the unlabelled set (test set) and we find the driving class for each item.</p><p><code>vishwaCTF{d4t4_5c13nc3_15_n3c3554ry}</code></p><h2 id=magician>Magician</h2><p>This was a cron job, giving us a single character of the flag at a time.
+After collecting all the characters, we managed to assemble the flag.
+<code>vishwaCTF{cr0nj0bs_m4k3_l1f3_s1mp13}</code></p><h2 id=prison-break>Prison Break</h2><p>We are given a link to <a href=https://prisonbreak.vishwactf.com/>https://prisonbreak.vishwactf.com/</a>, which is a simple web decision-based game. The challenge description states that we need to make the correct choiches in order to get out of prison (in the game) and obtain thus the flag.</p><p>The game is about a man named Zed, who is a thief and has been put in jail for stealing gold from a bank. In the game, we impersonate Zed and we need to get out of jail.+</p><p>First of all we need to press two times <code>1</code> in order to start the game. The first choiche asks us about whether we want to accept the carceration and stay in jail, or if we would like to try and escape. Obviously, we press <code>2</code>. At the following step we decide to be kind and greet the jailer (<code>1</code>), then we tell him we have understood what he tells us about the prison rules (again <code>1</code>). After that, we decide to arrange out things and take some rest (<code>1</code>).</p><p>The following day we are waken up by an alarm bell and our cell neighbour greets us. Again, we decide to be kind and we introduce ourselves (<code>1</code> and then <code>1</code> again). At the following step we decide to go and find Ted, our cell neighbour (<code>2</code>). Being a little bit shy, we decide not to tell him why we were put in jail (<code>2</code>), but after that we tell him anyway in order not to look rude. After Ted&rsquo;s question, we decide to go for the wood workshop (<code>1</code>). When presented to Fred, we decide to accept the gum (<code>1</code>) as it may be useful later.</p><p>At lunch we decide once again to be kind with Ted and we ask him where he works (<code>1</code> and then <code>1</code> again).</p><p>After a couple of weeks of observing and gathering information, we decide that it&rsquo;s time to plan our escape (<code>1</code>). In order to fabricate the cell keys, we decide to hide our pieces of wood in our bottle (<code>2</code> and then <code>1</code>). After having built the keys, we decide to use the broom to open the cell door as this is the only way of escaping we have right now (<code>1</code>). Unfortunately, the keys get stuck and falls on the floor, so we decide to use the gums we got previously to try to pick them up (<code>1</code> and then <code>1</code> again).</p><p>At the alarm sounding (<code>1</code>) we are inspected because we didn&rsquo;t wake up, and the guard notices a piece of wood in our cell. We answer that it is used to propup the photos (<code>2</code>), then we decide to hide our keys properly (<code>1</code>). After that, we decide to ask Fred map of the outside (<code>1</code>) and to wait for a chance to get to know what&rsquo;s there between the cell and the outside (<code>1</code> and then <code>1</code> again).</p><p>We finally decide to escape from the south-east gate (<code>2</code>) and at early day (<code>1</code>) as there is more people and we have less chances of being discovered. At the end, we made it! We just press <code>1</code> to get the flag:</p><pre tabindex=0><code>vishwaCTF(G@mE_0f_DeC1$ions)
+</code></pre><p>To summarize, the entire sequence to win the game and obtain the flag is the following:</p><pre tabindex=0><code>(1 1 2 1 1 1 1 1 2 2 1 1 1 1 1 2 1 1 1 1 1 2 1 1 1 1 2 1 1)
+</code></pre><h2 id=pub>pub</h2><p>For this challenge we were given an <code>apk</code> and told to go through a list of Marvel movies.
+After installing the apk on an Android emulator, we noticed that one of the movies was called <code>external_package</code>.
+At this point we tried going through the apk&rsquo;s archive but didn&rsquo;t find anything useful.
+We then tried to see if the name of the app was of any use. We tried going to <code>pub.dev</code>, Flutter&rsquo;s package repository, and looked for this <code>external_package</code> and found it.
+On its page there was a link to a github repository and by looking at the commits, we noticed <code>pubspec.yaml</code>.
+Going through the file we found a long string of <code>pub/spec</code>: <code>pubpubpubspec pubpub pubpubpub pubpubpubpub pubspecspec pubspec specpubspecpub spec pubpubspecpub{pubpubspec pubpubpub pubpubpubspecspec pubpubspecpub pubpubspec pubspecspecspecspec pubpubspecspecpubspec pubpubspecpub pubspecspecspecspec pubpubspec spec spec pubpubpubspecspec pubspecpub pubpubspecspecpubspec pubspecspecpub pubspecspecpubspecpub specpubspecpub specpubspec pubspec specspecpub pub</code>
+Given that the string was fairly long, we tried to convert it to morse (using <code>pub</code> as <code>.</code>, and spec as <code>-</code>) and deciphered the morsed code.
+The result was <code>vishwaCTF{US3FU1_F1UTT3R_P@CKAGE}</code></p><h2 id=secret-service>Secret Service</h2><p>The challenge provides an image called <code>cicada.png</code> and tells us to find 3 prime numbers.
+The first number is provided in the description <code>3301</code>. After inspecting the image and its properties, the other two prime numbers are found in its dimension: <code>1019x911</code> pixels.
+Referring to the original Cicada 3301 puzzle, we multiplied the three numbers and used them as the needed string, leading to correct flag:
+<code>vishwaCTF{www.3064348009.com}</code></p><h2 id=treasure-hunt>Treasure Hunt</h2><p>The challenge was about finding three parts of a flag in three different social media accounts.
+We were provided with an Instagram, a Linkedin and a Twitter account.
+The first part, <code>w31c0m3</code>, was found in a comment on a post in the Instagram account.
+The second part, <code>_t0_</code>, was also found in the comment section of a post but this time in the Linkedin account.
+The third part, <code>v1shw4ctf</code>, was easily found on a tweet in the third account.
+Assemblying the flag we ended up getting: <code>w31c0m3_t0_v1shw4ctf</code> which was the correct flag.
+vishwaCTF{w31c0m3_t0_v1shw4ctf}</p><h1 id=networking>Networking</h1><h2 id=commenting-is-the-key>Commenting is the key</h2><p>We are given a simple pcapng. We opened it with Wireshark. Packet 5 and 12 are commented. The comment is <code>flag==packets_are_editable</code>. The flag is thus: <code>vishwaCTF{packets_are_editable}</code>.</p><h2 id=invalid>Invalid</h2><p>We are given a simple pcapng (the same as in <em>Commenting is the key</em>). We opened it with Wireshark. Packet 32 is a <code>SIP 403 Wrong Password</code>. The conversation starts at Packet 20. The source IP is 212.242.33.35, so the flag is <code>vishwaCTF{212.242.33.35}</code>.</p><h1 id=reversing>Reversing</h1><h2 id=apollo11>Apollo11</h2><p>This challenge provides an <em>iso</em> image.</p><p>By running the command <code>strings</code> on the <em>iso</em>, we obtain all the printable strings which are contained in the file.
+At this point, we only need to filter them in some way.
+Since we know the flag format, which starts with <code>vishwaCTF{</code>, we can use the command <code>grep</code> to filter the result of <code>strings</code> and get only what we&rsquo;re looking for!</p><p>By running <code>strings Apollo11.iso | grep vishwaCTF</code>, we get the output <code>vishwaCTF{I50_1s_A_MEs5}</code>, which is the flag for the challenge.</p><h2 id=facile>Facile</h2><p>For this challenge we have a file with a weird extension, let&rsquo;s inspect it</p><pre tabindex=0><code> &gt; file s1mple.gzf 
+s1mple.gzf: Java serialization data, version 5
+</code></pre><p>This doesn&rsquo;t seem to help.
+Maybe <code>binwalk</code> can help us, let&rsquo;s see what it finds.</p><pre tabindex=0><code> &gt; binwalk s1mple.gzf                   
+
+DECIMAL       HEXADECIMAL     DESCRIPTION
+--------------------------------------------------------------------------------
+56            0x38            Zip archive data, at least v2.0 to extract, name: FOLDER_ITEM
+
+                                                                                               
+</code></pre><p>Let&rsquo;s extract the archive!</p><pre tabindex=0><code> &gt; binwalk -e s1mple.gzf
+ &gt; cd _s1mple.gzf.extracted/
+ &gt; ls
+38.zip   FOLDER_ITEM 
+</code></pre><p>We have something interesting!</p><pre tabindex=0><code> &gt; file FOLDER_ITEM
+FOLDER_ITEM: data
+</code></pre><p>Okay, simply trying with <code>strings</code> we can extract a lot from this file that seems to contain executable informations.
+This is enough to find the flag:</p><pre tabindex=0><code> &gt; strings FOLDER_ITEM | grep vishwa
+vishwaCTF{r3v_1t_1s5s5s}
+</code></pre><h2 id=give-it-to-get-it>Give it to get it</h2><p>This challenge gives us the flag, but asks to provide the right input for the given program to produce the flag.</p><p>By executing it, we clearly see that it prints something based on the argument given.
+So we try to execute it with the following command:
+<code>/a.out 444444555555555</code>
+and we get the output:</p><pre tabindex=0><code>Here&#39;s your flag darling...
+DDDUUUU
+</code></pre><p>Since we know that 44 is the hexadecimal value for the character <em>D</em>, and 55 is the hexadecimal value for the character <em>U</em>, the execution of the program looks clear to us: it translates every digits we give to ascii, reading it as hex, and print it back to us.</p><p>Now, let&rsquo;s go on cyberchef and encode the desired payload to hex:<code>7669736877614354467b663134675f31735f57683372335f5468335f68336152745f4c3145737d</code>.</p><p>When we run <code>a.out</code> with this payload, we get the response:</p><pre tabindex=0><code>Here&#39;s your flag darling...
+vishwaCTF{f14g_1s_Wh3r3_Th3_h3aRt_L1Es
+</code></pre><p>So, it looks like we need to add something more to it.
+Let&rsquo;s run it with the argument <code>7669736877614354467b663134675f31735f57683372335f5468335f68336152745f4c3145737d00</code></p><pre tabindex=0><code>Here&#39;s your flag darling...
+vishwaCTF{f14g_1s_Wh3r3_Th3_h3aRt_L1Es}
+</code></pre><p>We got the full flag, and now just submit <code>7669736877614354467b663134675f31735f57683372335f5468335f68336152745f4c3145737d00</code> in the website and get the points.</p><h2 id=misleading-steps>Misleading Steps</h2><p>The challenge description suggests that we might have something misleading inside, and sure enough when running strings on the binary we find something that is not our flag:</p><p><code>vishwaCTF{1_0ft3n_M1sl3ad_pPl}</code></p><p>So let&rsquo;s search some more!</p><p>By inspecting the binary with objdump we can find something interesting inside the main section:</p><pre tabindex=0><code>&gt; objdump -d mislead -M intel
+...
+    126f:       c7 85 50 ff ff ff 76    mov    DWORD PTR [rbp-0xb0],0x76
+    1276:       00 00 00 
+    1279:       c7 85 54 ff ff ff 69    mov    DWORD PTR [rbp-0xac],0x69
+    1280:       00 00 00 
+    1283:       c7 85 58 ff ff ff 73    mov    DWORD PTR [rbp-0xa8],0x73
+    128a:       00 00 00 
+    128d:       c7 85 5c ff ff ff 68    mov    DWORD PTR [rbp-0xa4],0x68
+    1294:       00 00 00 
+    1297:       c7 85 60 ff ff ff 77    mov    DWORD PTR [rbp-0xa0],0x77
+    129e:       00 00 00 
+...
+</code></pre><p>and so on..</p><p>Taking all the values up to the end of the section we can recover the flag in hexadecimal:
+<code>7669736877614354467b556d4d5f77336952446f6f6f305f315f416d5f7468335f7233346c5f306e337d</code></p><p>And by converting it to ASCII we get our points!
+<code>vishwaCTF{UmM_w3iRDooo0_1_Am_th3_r34l_0n3}</code></p><h2 id=rotations>Rotations</h2><p>Let&rsquo;s download the binary and run it</p><pre tabindex=0><code>&gt; file mm
+mm: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=9d1420344c3a7c70c70b68b947ef2ec8ae498eb1, for GNU/Linux 3.2.0, not stripped
+
+&gt; ./mm
+</code></pre><p>The binary waits for some input so let&rsquo;s see what happens</p><pre tabindex=0><code>&gt; ./mm
+hello
+EWWWW DUMBBB 
+</code></pre><p>Okay.. I don&rsquo;t think this will lead anywhere so let&rsquo;s debug the program since it&rsquo;s not stripped.</p><pre tabindex=0><code>gdb mm
+
+gdb&gt; start
+</code></pre><p>We can now check if we have some interesting function inside the binary</p><pre tabindex=0><code>gdb&gt; info functions
+</code></pre><p>And sure enough we find something:</p><pre tabindex=0><code>0x00005555555551a9  flag
+</code></pre><p>We can try to call it and see what happens</p><pre tabindex=0><code>gdb&gt; jump flag
+Continuing at 0x5555555551b1.
+ivfujnPGS{s1Nt_1f_e0g4gRq_Ol_!3}[Inferior 1 (process 2578) exited normally]
+</code></pre><p>We have something that looks like a flag, but it&rsquo;s not quite correct.
+Remembering the name of the challenge we can easily see it&rsquo;s rotated with the caeser cipher, so let&rsquo;s try to decrypt it.</p><p>Trying a couple of rotations we can finally get our flag with a shift of 13:
+<code>vishwaCTF{f1Ag_1s_r0t4tEd_By_!3}</code></p><h2 id=flowrev>FlowRev</h2><p>We are given a binary. Reversing it with ghidra we can find that there is a weird int array.</p><p><img src=flowrev.png alt></p><p>There was also a very basic buffer overflow (notice the use of <code>gets()</code>), but as we didn&rsquo;t have a server to connect it was pretty much useless.</p><p>It wasn&rsquo;t really clear, but the string <code>4+3+3-2 conversion required</code> was pointing that the weird int array was encoded using octal.
+Decoding them from octal gave us the flag: <code>vishwaCTF{U_M4naGeD_t0_m0D1fYYY_W3ll_d3ser\/3d}</code></p><h2 id=suisse>Suisse</h2><p>We are given a binary. The description says stuff about the LUHN checksum, but that&rsquo;s totally useless.
+We can simply reverse it with ghidra or use gdb to call the function <code>_flag()</code>, which prints out the following chars:</p><pre tabindex=0><code>111 88 107 81 113 93 52 118 56 104 102 88 85 104
+</code></pre><p>As the description was hinting, we subtract 3 from each of these and convert it to ascii:</p><pre tabindex=0><code>lUhNnZ1s5ecURe
+</code></pre><p>So the flag was: <code>vishwaCTF{lUhNnZ1s5ecURe}</code></p><h2 id=useless-app>Useless App</h2><p>We&rsquo;re given an apk. It appears that it is not possible to install it using adb/qemu, not even after signing it correctly.</p><p>We can extract it&rsquo;s content using jadx or apktools.</p><p>The MainActivity is the following:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#f92672>package</span> com.example.demo_app<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> io.flutter.embedding.android.FlutterActivity<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> kotlin.Metadata<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>@Metadata</span><span style=color:#f92672>(</span>bv <span style=color:#f92672>=</span> <span style=color:#f92672>{</span>1<span style=color:#f92672>,</span> 0<span style=color:#f92672>,</span> 3<span style=color:#f92672>},</span> d1 <span style=color:#f92672>=</span> <span style=color:#f92672>{</span><span style=color:#e6db74>&#34;\u0000\f\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\u0018\u00002\u00020\u0001B\u0005¢\u0006\u0002\u0010\u0002¨\u0006\u0003&#34;</span><span style=color:#f92672>},</span> d2 <span style=color:#f92672>=</span> <span style=color:#f92672>{</span><span style=color:#e6db74>&#34;Lcom/example/demo_app/MainActivity;&#34;</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#34;Lio/flutter/embedding/android/FlutterActivity;&#34;</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#34;()V&#34;</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#34;app_debug&#34;</span><span style=color:#f92672>},</span> k <span style=color:#f92672>=</span> 1<span style=color:#f92672>,</span> mv <span style=color:#f92672>=</span> <span style=color:#f92672>{</span>1<span style=color:#f92672>,</span> 1<span style=color:#f92672>,</span> 15<span style=color:#f92672>})</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>/* compiled from: MainActivity.kt */</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>final</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>MainActivity</span> <span style=color:#66d9ef>extends</span> FlutterActivity <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span></code></pre></div><p>We can clearly find out that the apk is made using Flutter, probably in debug mode (<code>app_debug</code>).
+Searching online for a bit we found out that a Flutter app compiled in debug mode contains the source code in the <code>kernel_blob.bin</code> file.</p><p>That file contained an interesting function (found out via <code>strings kernel_blob.bin | grep '$flag' -C 20</code>:</p><pre tabindex=0><code>void getthefl0g() {
+    String text = &#34;&#34;;
+    String flag = &#34;&#34;;
+    int y = 0, d = 0;
+    for (y = 0; y &lt; 32 - 1; y += 2, d++) {
+      String te = &#34;0x&#34; + text.substring(y, y + 2);
+      if (d % 2 == 0) {
+        flag = flag + String.fromCharCode((int.parse(te) ^ 0x32));
+      } else {
+        flag = flag + String.fromCharCode((int.parse(te) ^ 0x23));
+      }
+    }
+    print(&#34;$flag&#34;);
+}
+</code></pre><p>But we are missing the text variable!</p><p>We also noticed a comment (which are left untouched in debug mode):</p><pre tabindex=0><code>//what is triangular number series ?
+</code></pre><p>After a lot of fiddling, we found an interesting hex string in the app&rsquo;s resources (in the <code>resources/res/values</code> directory).</p><pre tabindex=0><code>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;
+&lt;resources&gt;
+    &lt;string name=&#34;status_bar_notification_info_overflow&#34;&gt;999+&lt;/string&gt;
+    &lt;string name=&#34;string_name&#34;&gt;4b616e316e404467796c67207265c065617455646c792673616964217468617420086f6c6d65735077617320696073706972656425627920746865206265616c2d6c69665520666967757265256f66204a6f736570642042656c6c2c20612043757267656f6e2061745074686520526f79616c25496e6669726d617279206166204564696e62757267680c2077686f6d20436f6e616e50446f796c65206d6574206966203138373720616e642068616720776f726b656420666f722061c3206120636c65726b2e204c696b1520486f6c6d65732c2042656c6c23776173206e6f74656420666f722061726177696e672062726f616420636f4e636c7573696f6e732066726f6d206d696e757465206f62736572766174696f6e732e5b31325d20486f77657665722c206865206c617465722077726f746520746f20436f6e616e20446f796c653a2022596f752061726520796f757273656c6620536865726c6f636b20486f6c6d657320616e642077656c6c20796f75206b6e6f77206974222e5b31335d205369722048656e7279204c6974746c656a6f686e2c204368616972206f66204d65646963616c204a7572697370727564656e63652061742074686520556e6976657273697479206f66204564696e6275726768204d65646963616c205363686f6f6c2c20697320616c736f20636974656420617320616e20696e737069726174696f6e20666f7220486f6c6d65732e204c6974746c656a6f686e2c2077686f2077617320616c736f20506f6c6963652053757267656f6e20616e64204d65646963616c204f666669636572206f66204865616c746820696e204564696e62757267682c2070726f766964656420436f6e616e20446f796c6520776974682061206c696e6b206265747765656e206d65646963616c20696e7665737469676174696f6e20616e642074686520646574656374696f6e206f66206372696d652e&lt;/string&gt;
+&lt;/resources&gt;
+</code></pre><p>Decoding the string from hex gave us the following sentence:</p><pre tabindex=0><code>Kan1n@Dgylg reÀeatUdly&amp;said!that .olmesPwas i`spired%by the beal-lifU figure%of Josepd Bell, a Curgeon atPthe Royal%Infirmary af Edinburgh. whom ConanPDoyle met if 1877 and hag worked for aÃ a clerk. Lik. Holmes, Bell#was noted for arawing broad coNclusions from minute observations.[12] However, he later wrote to Conan Doyle: &#34;You are yourself Sherlock Holmes and well you know it&#34;.[13] Sir Henry Littlejohn, Chair of Medical Jurisprudence at the University of Edinburgh Medical School, is also cited as an inspiration for Holmes. Littlejohn, who was also Police Surgeon and Medical Officer of Health in Edinburgh, provided Conan Doyle with a link between medical investigation and the detection of crime.
+</code></pre><p>Searching for the last part of the string, which seems to be unchanged, we can find out this was a sentence from wikipedia, but it wasn&rsquo;t useful.</p><p>After a lot of time and many failures, we found out that we had to eventually extract half bytes from the hex string following the triangular number series as indexes.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#75715e>#!/usr/bin/env python</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>string_hex <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;4b616e316e404467796c67207265c065617455646c792673616964217468617420086f6c6d65735077617320696073706972656425627920746865206265616c2d6c69665520666967757265256f66204a6f736570642042656c6c2c20612043757267656f6e2061745074686520526f79616c25496e6669726d617279206166204564696e62757267680c2077686f6d20436f6e616e50446f796c65206d6574206966203138373720616e642068616720776f726b656420666f722061c3206120636c65726b2e204c696b1520486f6c6d65732c2042656c6c23776173206e6f74656420666f722061726177696e672062726f616420636f4e636c7573696f6e732066726f6d206d696e757465206f62736572766174696f6e732e5b31325d20486f77657665722c206865206c617465722077726f746520746f20436f6e616e20446f796c653a2022596f752061726520796f757273656c6620536865726c6f636b20486f6c6d657320616e642077656c6c20796f75206b6e6f77206974222e5b31335d205369722048656e7279204c6974746c656a6f686e2c204368616972206f66204d65646963616c204a7572697370727564656e63652061742074686520556e6976657273697479206f66204564696e6275726768204d65646963616c205363686f6f6c2c20697320616c736f20636974656420617320616e20696e737069726174696f6e20666f7220486f6c6d65732e204c6974746c656a6f686e2c2077686f2077617320616c736f20506f6c6963652053757267656f6e20616e64204d65646963616c204f666669636572206f66204865616c746820696e204564696e62757267682c2070726f766964656420436f6e616e20446f796c6520776974682061206c696e6b206265747765656e206d65646963616c20696e7665737469676174696f6e20616e642074686520646574656374696f6e206f66206372696d652e&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>original_hex <span style=color:#f92672>=</span> original<span style=color:#f92672>.</span>hex()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>tn</span>(n, start_from<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>):
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> start_from <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>:
+</span></span><span style=display:flex><span>        i, t <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>elif</span> start_from <span style=color:#f92672>==</span> <span style=color:#ae81ff>1</span>:
+</span></span><span style=display:flex><span>        i, t <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>while</span> i <span style=color:#f92672>&lt;=</span> n:
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>yield</span> t
+</span></span><span style=display:flex><span>        t <span style=color:#f92672>+=</span> i
+</span></span><span style=display:flex><span>        i <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>pick_tn</span>(fromhere, tnstart):
+</span></span><span style=display:flex><span>    c_string <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> list(tn(<span style=color:#ae81ff>32</span>, tnstart)):
+</span></span><span style=display:flex><span>        c_string <span style=color:#f92672>+=</span> fromhere[i]
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> c_string
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#e6db74>&#34;&#34;&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>void getthefl0g() {
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    String text = &#34;&#34;;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    String flag = &#34;&#34;;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    int y = 0, d = 0;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    for (y = 0; y &lt; 32 - 1; y += 2, d++) {
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>      String te = &#34;0x&#34; + text.substring(y, y + 2);
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>      if (d % 2 == 0) {
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        flag = flag + String.fromCharCode((int.parse(te) ^ 0x32));
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>      } else {
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        flag = flag + String.fromCharCode((int.parse(te) ^ 0x23));
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>      }
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    }
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    print(&#34;$flag&#34;);
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>&#34;&#34;&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>get_flag</span>(text):
+</span></span><span style=display:flex><span>    flag <span style=color:#f92672>=</span> <span style=color:#e6db74>b</span><span style=color:#e6db74>&#34;&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>assert</span>(len(text) <span style=color:#f92672>==</span> <span style=color:#ae81ff>32</span>)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>16</span>):
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> i <span style=color:#f92672>%</span> <span style=color:#ae81ff>2</span> <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>:
+</span></span><span style=display:flex><span>            flag <span style=color:#f92672>+=</span> bytes([ord(bytes<span style=color:#f92672>.</span>fromhex(text[i<span style=color:#f92672>*</span><span style=color:#ae81ff>2</span>:i<span style=color:#f92672>*</span><span style=color:#ae81ff>2</span><span style=color:#f92672>+</span><span style=color:#ae81ff>2</span>])) <span style=color:#f92672>^</span> <span style=color:#ae81ff>0x32</span>])
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>            flag <span style=color:#f92672>+=</span> bytes([ord(bytes<span style=color:#f92672>.</span>fromhex(text[i<span style=color:#f92672>*</span><span style=color:#ae81ff>2</span>:i<span style=color:#f92672>*</span><span style=color:#ae81ff>2</span><span style=color:#f92672>+</span><span style=color:#ae81ff>2</span>])) <span style=color:#f92672>^</span> <span style=color:#ae81ff>0x23</span>])
+</span></span><span style=display:flex><span>        <span style=color:#75715e>#print(flag.hex())</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> flag
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>text <span style=color:#f92672>=</span> pick_tn(string_hex, <span style=color:#ae81ff>0</span>)
+</span></span><span style=display:flex><span>print(text)
+</span></span><span style=display:flex><span>flag <span style=color:#f92672>=</span> get_flag(text)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>print(flag)
+</span></span></code></pre></div><p>This was the flag: <code>vishwaCTF{y0u_d3buggg3d_!7}</code></p><h1 id=warmup>Warmup</h1><h2 id=discord-bot>Discord bot</h2><p>We knew from the description that bot commands started with <code>$</code>.
+After trying to get some <code>$help</code> from the bot, we tried <code>$flag</code>, which gave us the flag: <code>vishwaCTF{d15c0rd_5p1ll3d_th3_b34n5}</code>.</p><h2 id=flag-format>Flag Format</h2><p>We are given the flag in the challenge description: <code>vishwaCTF{welcome_to_vishwaCTF}</code>.</p><h1 id=web>Web</h1><h2 id=bot-not-not-bot>Bot not not bot</h2><p>The challenge has a page with 500 links on it.</p><p>We can write a simple command to download them all:</p><pre tabindex=0><code>touch out
+for i in {1..500}
+do
+  curl &#34;https://bot-not-not-bot.vishwactf.com/page$i.html&#34; &gt;&gt; out
+done
+</code></pre><p>this way we can obtain all indexes.</p><p>Most of them are like <code>&lt;html>&lt;head>&lt;title>bot-not-not-bot1&lt;/title>&lt;/head>&lt;body>&lt;p>Useless Page&lt;br>-1&lt;/p>&lt;/body>&lt;/html></code>, but on some you can find <code>&lt;html>&lt;head>&lt;title> bot-not-not-bot8&lt;/title>&lt;/head>&lt;body>&lt;h1>v&lt;/h1>&lt;p>Useful Page&lt;br>0&lt;/p>&lt;/body>&lt;/html></code>.
+On the latest example you can find the letter of the flag, <code>v</code>, and its position on the flag, <code>0</code>.</p><p>The flag is <code>vishwaCTF{r0b0t_15_t00_0P}</code>.</p><h2 id=inspect-the-un-inspected>Inspect the un-Inspected</h2><p>This challenge has no links, and tells us something about <em>home</em>, <em>practice</em> and <em>ask question</em>.</p><p>The idea is to look in the home of the ctf website for something in the source code. So we go to <code>https://vishwactf.com/</code>, right click and look for the source code. By looking for the word flag, we find the first part of the flag in the comment <code>//Flag part 1/3 : vishwaCTF{EvEry_</code>.</p><p>By looking on the <code>practice</code> section, we get redirected to <code>play-vishwactf-mini.ml</code> and we can find the <code>flag</code> link in links above, near <code>Users</code>,<code>Teams</code> and the CTF logo. By looking at the html code, we get the second part of the flag which is <code>C0iN_ha$</code>.</p><p>The last part of the flag is on the <code>faq</code> page source code, and it is <code>_3_s1Des}</code>.</p><p>We now have the full flag, which is <code>vishwaCTF{EvEry_C0iN_ha$_3_s1Des}</code>.</p><h2 id=is-js-necessary>Is Js Necessary?</h2><p>This one take us to a page from where we are immediately redirected to google. We can disable redirect to view the page content.
+Example (firefox)</p><pre tabindex=0><code>about:config
+search for javascript
+set javascript.enabled to false
+</code></pre><p>If we reload the page without javascript, we find the question &ldquo;how many days did Brendan take to develop this language?&rdquo;. Look for the answer on google, we find the answer which is <code>10</code>.
+We type it, submit the answer and get the flag <code>vishwaCTF{2ava5cr1pt_can_be_Dis@bleD}</code>.</p><h2 id=my-awesome-youtube-recommendation>My awesome youtube recommendation</h2><p>This challenge has an app make in <em>Flask</em>, and redirects us to <em>youtube</em> querying our input.</p><p>First, we need to block the redirection. We can done this on firefox with</p><pre tabindex=0><code>about:config
+search for accessibility.blockautorefresh
+set it to true
+</code></pre><p>Now, by submitting our query, we get redirected to <code>results?query=examplequery</code>.
+Since the app is made in <em>Flask</em> and the text is displayed in the response, we immediately think about <em>Server Side Template Injection</em>. One way to try this vulnerability for <em>Flask</em>, is to use the common payload <code>{{7*7}}</code> in the query field. This gives us the expected result, by substituting the payload with the result (<code>49</code>) in the response.
+We can try to look for common configuration object in <em>Flask</em>, such as <code>config</code>.
+This gives us the configuration of the server, and we can find the flag inside.</p><p>The flag is <code>vishwaCTF{th3_f14g_ln_c0nflg}</code>.</p><h2 id=redeem>Redeem</h2><p>Redeem propose us to buy some flags, but it also state that we&rsquo;re poor.</p><p>Open it on firefox, and open the <em>Network</em> section of the developer tools. We try to buy the flag, and we can see the request to <code>handle.php</code>. In the request parameter, we can see the fields <code>current</code> and <code>buy</code>.
+We then press <em>Edit and Resend</em>, set <code>current</code> to <code>10000</code> and <code>buy</code> to <code>0</code>. We click on the new generated request, and we can find the flag in the <em>response</em> section.</p><h2 id=time-is-an-illusion>Time is an illusion</h2><p>This challenge allows us to see the source code.</p><p>From the source code, we can see two things:</p><ul><li>The key must be of 5 characters, otherwise we get an error</li><li>Every character of the key is compared to the variable <code>let_check</code> one by one, and if the character matches the program executes a <code>usleep(1000000)</code>, so the loading time will be <code>1</code> second longer.</li></ul><p>We can write a simple script to automate the requests and find the flag:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#75715e>#!/usr/bin/env python</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> requests
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> string <span style=color:#f92672>import</span> ascii_letters, digits
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> time
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> pwn <span style=color:#f92672>import</span> <span style=color:#f92672>*</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>url <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;https://time-is-an-illusion.vishwactf.com/handle.php&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>alphabet <span style=color:#f92672>=</span> ascii_letters <span style=color:#f92672>+</span> digits
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>p <span style=color:#f92672>=</span> log<span style=color:#f92672>.</span>progress(<span style=color:#e6db74>&#39;PASSWORD&#39;</span>)
+</span></span><span style=display:flex><span>p2 <span style=color:#f92672>=</span> log<span style=color:#f92672>.</span>progress(<span style=color:#e6db74>&#39;ELAPSED&#39;</span>)
+</span></span><span style=display:flex><span>pwd <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;K&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>while</span> len(pwd) <span style=color:#f92672>!=</span> <span style=color:#ae81ff>5</span>:
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> l <span style=color:#f92672>in</span> alphabet:
+</span></span><span style=display:flex><span>        time<span style=color:#f92672>.</span>sleep(<span style=color:#ae81ff>0.1</span>)
+</span></span><span style=display:flex><span>        curr_pwd <span style=color:#f92672>=</span> pwd <span style=color:#f92672>+</span> l 
+</span></span><span style=display:flex><span>        curr_pwd <span style=color:#f92672>+=</span> <span style=color:#e6db74>&#39;?&#39;</span> <span style=color:#f92672>*</span> (<span style=color:#ae81ff>5</span><span style=color:#f92672>-</span>len(curr_pwd))
+</span></span><span style=display:flex><span>        p<span style=color:#f92672>.</span>status(curr_pwd)
+</span></span><span style=display:flex><span>        start <span style=color:#f92672>=</span> time<span style=color:#f92672>.</span>time()
+</span></span><span style=display:flex><span>        response <span style=color:#f92672>=</span> requests<span style=color:#f92672>.</span>get(url, params<span style=color:#f92672>=</span>{<span style=color:#e6db74>&#39;key&#39;</span>:curr_pwd})
+</span></span><span style=display:flex><span>        elapsed <span style=color:#f92672>=</span> time<span style=color:#f92672>.</span>time() <span style=color:#f92672>-</span> start
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        p2<span style=color:#f92672>.</span>status(str(elapsed))
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> elapsed <span style=color:#f92672>&gt;</span> len(pwd) <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>:
+</span></span><span style=display:flex><span>            pwd <span style=color:#f92672>+=</span> l
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>break</span>
+</span></span></code></pre></div><h2 id=uwu>UwU</h2><p>UwU welcomes us with a cool music and video.</p><p>Since there&rsquo;s nothing on the <em>home</em> and <em>about</em> sections, we try to look for a hint in the description of the challenge. The description states <em>when php, anime and robot come together&mldr;</em>, and we get the hint! We try to look for the <em>robots.txt</em> file and we get the text:
+<code>this time.. there might be a directory called as robots lol</code>
+So we connect to the <code>/robot</code> directory, where there&rsquo;s a php file and we can see its source.
+The source looks for the get parameter <code>php_is_hard</code>, and compare it to <code>suzuki_harumiya</code> after replacing the occurrence <code>suzuki_harumiya</code> in its value with nothing.
+To bypass this simple check, we enter the get parameter <code>suzuki_suzuki_harumiyaharumiya</code>. By doing this, the <code>preg_replace</code> function will replace the occurrence which is found in the middle of the string, leaving it as <code>suzuki_harumiya</code>.
+We get the flag in the response, which is <code>vishwaCTF{well_this_was_a_journey}</code>.</p></div></article></main></div><footer class=footer><div class=footer__inner><div class=footer__content><span>&copy; 2022</span>
+<span><a href=https://madrhacks.github.io/posts/index.xml target=_blank title=rss><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 019 9"/><path d="M4 4a16 16 0 0116 16"/><circle cx="5" cy="19" r="1"/></svg></a></span></div></div><div class=footer__inner><div class=footer__content><span>Powered by <a href=http://gohugo.io>Hugo</a></span>
+<span>Made with &#10084;</span></div></div></footer></div><script type=text/javascript src=https://madrhacks.github.io/bundle.min.fbf016a5f89be88f4916a0898302f777692ee6600991c3b6108fc423ed982dc83b470742cc92dd796861136f5ca96988b35e049b5f4cb4b1343686784a58c8ce.js integrity="sha512-+/AWpfib6I9JFqCJgwL3d2ku5mAJkcO2EI/EI+2YLcg7RwdCzJLdeWhhE29cqWmIs14Em19MtLE0NoZ4SljIzg=="></script></body></html>

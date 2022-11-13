@@ -1,0 +1,27 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on MadrHacks</title><link>https://madrhacks.github.io/posts/</link><description>Recent content in Posts on MadrHacks</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 06 Apr 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://madrhacks.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Our first CTF</title><link>https://madrhacks.github.io/posts/2020/04/our-first-ctf/</link><pubDate>Mon, 06 Apr 2020 00:00:00 +0000</pubDate><guid>https://madrhacks.github.io/posts/2020/04/our-first-ctf/</guid><description>Ready, Steady, Go! We, MadrHacks group, wanted to have some fun and improve our skills and team collaboration so we joined the Auburn CTF. This is our first CTF match! 🎉. The competition started on Friday 3rd April at 8:00 AM CST (For us it was at 3 PM) and lasted 2 days until 5th at 11: PM CST (5 AM for us 😴). The CTF had a monstrous amount of playing teams, almost 1200!</description><content type="html"><![CDATA[<h3 id="ready-steady-go">Ready, Steady, Go!</h3>
+<p>We, MadrHacks group, wanted to have some fun and improve our skills and team collaboration so we joined the <a href="https://ctf.auburn.edu/">Auburn CTF</a>. This is our first CTF match! 🎉. The competition started on Friday 3rd April at 8:00 AM CST (For us it was at 3 PM) and lasted 2 days until 5th at 11: PM CST (5 AM for us 😴). The CTF had a monstrous amount of playing teams, almost 1200! It included ~55 challenges divided into multiple categories:</p>
+<ul>
+<li><strong>OSINT</strong> aka Open Source INtelligence: This included some challenges to lookup the internet and find clues.</li>
+<li><strong>Crypto</strong>: Cryptographic challenges (RSA, &hellip;)</li>
+<li><strong>BASH</strong>: Set of bash scripts to exploit (most of them solved with privilege escalation)</li>
+<li><strong>Reversing</strong>: Reverse engineering of binaries</li>
+<li><strong>Pwn</strong>: Still binary stuff 👀</li>
+<li><strong>Web</strong>: Web challenges summarized in: CVE Apache, API testing, HTTP header, &hellip;</li>
+<li><strong>Forensics</strong>: Seach clues into network dumps</li>
+<li><strong>Password Cracking</strong>: The old way 🔨</li>
+<li><strong>Signals</strong>: Challenges made of sinusoidal data (Audio, Radio transmissions, &hellip;)</li>
+<li><strong>Sequence</strong>: Math sequences</li>
+</ul>
+<blockquote>
+<p>If you want to jump into the problems and the solutions -&gt;  <a href="https://github.com/auehc/AUCTF-2020">LOOK HERE</a></p>
+</blockquote>
+<h3 id="the-problems">The problems</h3>
+<p>Well, like every journey, there were problems like the server-side issues which caused the CTF site to respond very slowly (a turtle was faster 🐢). This slowness manifested also in the servers of the challenges, like bash, which went down multiple times leading our scripts to fail.</p>
+<p>These issues made us very angry but, at the end, all that slowness is comprehensible because of this was the first time <a href="https://www.auburn.edu/">Auburn university</a> made a CTF and because of the astonishing amount of playing teams (remember that a lot of teams had more than one player!).</p>
+<h3 id="the-unexpected-position">The unexpected position</h3>
+<p>Every competition is fun because of the challenges, the players and the rollercoaster of emotions. Angry when cannot solve a problem after hours of tries and that uncontainable happiness when the flag appears. But there is another reason why every team join a game: the scoreboard. Everyone tries to be in the lead, putting everything to gain that 1st place. The same we did. Put together our individually skills, a mix of different language accents and we become an (almost) unstoppable superpower.</p>
+<p>We finished the match on the <strong>17th place</strong>.</p>
+<p>We are only at the beginning,</p>
+<p>We know we get that 1st position, because</p>
+<p>We are the MadrHacks!</p>
+]]></content></item></channel></rss>
