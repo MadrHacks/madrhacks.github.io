@@ -1,3 +1,0 @@
-{{ $logoSwitcher := resources.Get "js/logo-switcher.js" }}
-{{ $secureJS := slice $logoSwitcher | resources.Concat "custom.js" | resources.Minify | resources.Fingerprint "sha512" }}
-<script type="text/javascript" src="{{ $secureJS.RelPermalink }}" integrity="{{ $secureJS.Data.Integrity }}"></script>
