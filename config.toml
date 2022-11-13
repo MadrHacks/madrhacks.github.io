@@ -50,7 +50,6 @@ disableHugoGeneratorInject = false
   contentTypeName = "posts"
 
   customCSS = ["/css/custom.css"]
-  customJS = ["/js/logo-switcher.js"]
 
   # Default theme "light" or "dark"
   defaultTheme = "dark"
