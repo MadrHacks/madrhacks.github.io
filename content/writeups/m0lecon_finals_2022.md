@@ -11,7 +11,7 @@ TODO
 TODO
 
 # Speedruns
-The CTF featured a number of four speedrun challenges, which were Jeopardy-style challenges released every 2 hours. Unfortunately, we only solved the second one, but we got really close to solve the first one too!
+The CTF featured a number of four speedrun challenges, which were Jeopardy-style challenges released regularly. Unfortunately, we only solved the second one, but we got really close to solve the first one too!
 
 Unfortunately, as the first one was related to making a scanner (which was on-site) scan an image, we cannot really try to solve it afterward the CTF ended 😔.
 
