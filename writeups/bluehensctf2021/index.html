@@ -94,18 +94,18 @@ The result is: <em>aaabaaabbbaaaaaababbabbbaabaaaabbababbaa</em>, which is the w
 </span></span><span style=display:flex><span>	<span style=color:#66d9ef>char</span> first_buffer[<span style=color:#ae81ff>16</span>];
 </span></span><span style=display:flex><span>	<span style=color:#66d9ef>int</span> var_to_change <span style=color:#f92672>=</span> <span style=color:#ae81ff>7</span>;
 </span></span><span style=display:flex><span>	
-</span></span><span style=display:flex><span>	puts(<span style=color:#e6db74>&#34;Enter your Name: &#34;</span>);
-</span></span><span style=display:flex><span>	fgets(first_buffer, <span style=color:#ae81ff>16</span>, stdin);
-</span></span><span style=display:flex><span>	puts(<span style=color:#e6db74>&#34;Enter your password: &#34;</span>);
-</span></span><span style=display:flex><span>	fgets(second_buffer, <span style=color:#ae81ff>336</span>, stdin);
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>puts</span>(<span style=color:#e6db74>&#34;Enter your Name: &#34;</span>);
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fgets</span>(first_buffer, <span style=color:#ae81ff>16</span>, stdin);
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>puts</span>(<span style=color:#e6db74>&#34;Enter your password: &#34;</span>);
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fgets</span>(second_buffer, <span style=color:#ae81ff>336</span>, stdin);
 </span></span><span style=display:flex><span>	<span style=color:#66d9ef>if</span> (var_to_change <span style=color:#f92672>==</span> <span style=color:#f92672>-</span><span style=color:#ae81ff>0x21524111</span>)  <span style=color:#75715e>// 0xdeadbeef
 </span></span></span><span style=display:flex><span><span style=color:#75715e></span>	{
 </span></span><span style=display:flex><span>		flag <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>;
-</span></span><span style=display:flex><span>		puts(<span style=color:#e6db74>&#34;Wow you overflowed the right value! Now try to find the flag !</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>);
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>puts</span>(<span style=color:#e6db74>&#34;Wow you overflowed the right value! Now try to find the flag !</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>);
 </span></span><span style=display:flex><span>	}
 </span></span><span style=display:flex><span>	<span style=color:#66d9ef>else</span> 
 </span></span><span style=display:flex><span>	{
-</span></span><span style=display:flex><span>		puts(<span style=color:#e6db74>&#34;Try again!</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>);
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>puts</span>(<span style=color:#e6db74>&#34;Try again!</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>);
 </span></span><span style=display:flex><span>	}
 </span></span><span style=display:flex><span>	<span style=color:#66d9ef>return</span>;
 </span></span><span style=display:flex><span>}
@@ -116,20 +116,20 @@ The result is: <em>aaabaaabbbaaaaaababbabbbaabaaaabbababbaa</em>, which is the w
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>	<span style=color:#66d9ef>if</span> ((((param_2 <span style=color:#f92672>|</span> param_1 <span style=color:#f92672>^</span> <span style=color:#ae81ff>0x14b4da55</span>) <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>) <span style=color:#f92672>&amp;&amp;</span> ((param_3 <span style=color:#f92672>^</span> <span style=color:#ae81ff>0x67616c66</span> <span style=color:#f92672>|</span> param_4) <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>)) <span style=color:#f92672>&amp;&amp;</span> (flag <span style=color:#f92672>==</span> <span style=color:#ae81ff>1</span>)) 
 </span></span><span style=display:flex><span>	{
-</span></span><span style=display:flex><span>		file_ptr <span style=color:#f92672>=</span> fopen(<span style=color:#e6db74>&#34;./flag.txt&#34;</span>,<span style=color:#e6db74>&#34;r&#34;</span>);
+</span></span><span style=display:flex><span>		file_ptr <span style=color:#f92672>=</span> <span style=color:#a6e22e>fopen</span>(<span style=color:#e6db74>&#34;./flag.txt&#34;</span>,<span style=color:#e6db74>&#34;r&#34;</span>);
 </span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span> (file_ptr <span style=color:#f92672>==</span> (FILE <span style=color:#f92672>*</span>)<span style=color:#ae81ff>0x0</span>) 
 </span></span><span style=display:flex><span>		{
-</span></span><span style=display:flex><span>			puts(<span style=color:#e6db74>&#34;flag.txt not found - ping us on discord if this is happening on the shell server</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>);
+</span></span><span style=display:flex><span>			<span style=color:#a6e22e>puts</span>(<span style=color:#e6db74>&#34;flag.txt not found - ping us on discord if this is happening on the shell server</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>);
 </span></span><span style=display:flex><span>		}
 </span></span><span style=display:flex><span>		<span style=color:#66d9ef>else</span> 
 </span></span><span style=display:flex><span>		{
-</span></span><span style=display:flex><span>			fgets(flag_buffer,<span style=color:#ae81ff>0x100</span>,file_ptr);
-</span></span><span style=display:flex><span>			printf(<span style=color:#e6db74>&#34;flag: %s</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>,flag_buffer);
+</span></span><span style=display:flex><span>			<span style=color:#a6e22e>fgets</span>(flag_buffer,<span style=color:#ae81ff>0x100</span>,file_ptr);
+</span></span><span style=display:flex><span>			<span style=color:#a6e22e>printf</span>(<span style=color:#e6db74>&#34;flag: %s</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>,flag_buffer);
 </span></span><span style=display:flex><span>		}
 </span></span><span style=display:flex><span>		<span style=color:#66d9ef>return</span>;
 </span></span><span style=display:flex><span>	}
-</span></span><span style=display:flex><span>	puts(<span style=color:#e6db74>&#34;Close, but not quite.</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>);
-</span></span><span style=display:flex><span>	exit(<span style=color:#ae81ff>1</span>);
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>puts</span>(<span style=color:#e6db74>&#34;Close, but not quite.</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>);
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>exit</span>(<span style=color:#ae81ff>1</span>);
 </span></span><span style=display:flex><span>}
 </span></span></code></pre></div><p>So, as an high level overview, we need to:</p><ol><li>Trigger a buffer overflow</li><li>Rewrite the variable checked against <code>0xdeadbeef</code> on the <code>myFun</code> function</li><li>Rewrite the instruction pointer to redirect the execution to the <code>win</code> function</li><li>Set the right arguments to pass the if-statement and trigger the <code>fopen</code> call</li></ol><h3 id=exploitation-5>Exploitation</h3><p>We can write a script with <code>pwntools</code> to exploit the remote server:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#75715e>#!/usr/bin/env python3</span>
 </span></span><span style=display:flex><span>
@@ -166,15 +166,15 @@ The result is: <em>aaabaaabbbaaaaaababbabbbaabaaaabbababbaa</em>, which is the w
 </span></span><span style=display:flex><span>{
 </span></span><span style=display:flex><span>  <span style=color:#66d9ef>char</span> buffer [<span style=color:#ae81ff>336</span>];
 </span></span><span style=display:flex><span>  
-</span></span><span style=display:flex><span>  init(param_1);
-</span></span><span style=display:flex><span>  puts(<span style=color:#e6db74>&#34;Oh no!! Full RELRO, PIE enabled, and no obvious buffer overflow.:(&#34;</span>);
-</span></span><span style=display:flex><span>  puts(<span style=color:#e6db74>&#34;Thankfully, I</span><span style=color:#ae81ff>\&#39;</span><span style=color:#e6db74>m generous and will grant you two leaks&#34;</span>);
-</span></span><span style=display:flex><span>  printf(<span style=color:#e6db74>&#34;This stack leak might be useful %p</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>,buffer);
-</span></span><span style=display:flex><span>  printf(<span style=color:#e6db74>&#34;And this PIE leak might be useful %p</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>,main);
-</span></span><span style=display:flex><span>  puts(<span style=color:#e6db74>&#34;Now gimme your payload&#34;</span>);
-</span></span><span style=display:flex><span>  fgets(buffer,<span style=color:#ae81ff>0x150</span>,stdin);
-</span></span><span style=display:flex><span>  printf(<span style=color:#e6db74>&#34;Is this what you meant? &#34;</span>);
-</span></span><span style=display:flex><span>  printf(buffer);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>init</span>(param_1);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>puts</span>(<span style=color:#e6db74>&#34;Oh no!! Full RELRO, PIE enabled, and no obvious buffer overflow.:(&#34;</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>puts</span>(<span style=color:#e6db74>&#34;Thankfully, I</span><span style=color:#ae81ff>\&#39;</span><span style=color:#e6db74>m generous and will grant you two leaks&#34;</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>printf</span>(<span style=color:#e6db74>&#34;This stack leak might be useful %p</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>,buffer);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>printf</span>(<span style=color:#e6db74>&#34;And this PIE leak might be useful %p</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>,main);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>puts</span>(<span style=color:#e6db74>&#34;Now gimme your payload&#34;</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>fgets</span>(buffer,<span style=color:#ae81ff>0x150</span>,stdin);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>printf</span>(<span style=color:#e6db74>&#34;Is this what you meant? &#34;</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>printf</span>(buffer);
 </span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;
 </span></span><span style=display:flex><span>}
 </span></span></code></pre></div><p>As 0x150 = 336, there is no buffer overflow. But there is indeed a format string vulnerability (<a href="https://www.youtube.com/watch?v=CyazDp-Kkr0">if you have no idea what this is, check this link</a>) as the program uses <code>printf</code> on our input buffer without any check.</p><h3 id=exploitation-6>Exploitation</h3><p>The idea is the following: we can use the format string vulnerability to write and execute a ropchain. Having this in mind, it&rsquo;s relatively simple to exploit the vulnerability.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#75715e>#!/usr/bin/env python3</span>
@@ -319,10 +319,10 @@ The main function looks like this:</p><div class=highlight><pre tabindex=0 style
 </span></span><span style=display:flex><span>{
 </span></span><span style=display:flex><span>  undefined buffer [<span style=color:#ae81ff>16</span>];
 </span></span><span style=display:flex><span>  
-</span></span><span style=display:flex><span>  init(param_1);
-</span></span><span style=display:flex><span>  init_seccomp();
-</span></span><span style=display:flex><span>  puts(<span style=color:#e6db74>&#34;pwn dis shit&#34;</span>);
-</span></span><span style=display:flex><span>  read(<span style=color:#ae81ff>0</span>,buffer,<span style=color:#ae81ff>0x200</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>init</span>(param_1);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>init_seccomp</span>();
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>puts</span>(<span style=color:#e6db74>&#34;pwn dis shit&#34;</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>read</span>(<span style=color:#ae81ff>0</span>,buffer,<span style=color:#ae81ff>0x200</span>);
 </span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;
 </span></span><span style=display:flex><span>}
 </span></span></code></pre></div><p>We can already notice the buffer overflow. This time, though, there&rsquo;s a catch.</p><p>The <code>init_seccomp()</code> function has included some seccomp rules. These are basically rules that are placed in the program to make it behave in some secure way. Check the manual for more informations.</p><p>The decompiled function looks like this:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c data-lang=c><span style=display:flex><span><span style=color:#66d9ef>void</span> <span style=color:#a6e22e>init_seccomp</span>(<span style=color:#66d9ef>void</span>)
@@ -330,13 +330,13 @@ The main function looks like this:</p><div class=highlight><pre tabindex=0 style
 </span></span><span style=display:flex><span>{
 </span></span><span style=display:flex><span>  undefined8 seccomp_filter;
 </span></span><span style=display:flex><span>  
-</span></span><span style=display:flex><span>  seccomp_filter <span style=color:#f92672>=</span> seccomp_init(<span style=color:#ae81ff>0</span>);
-</span></span><span style=display:flex><span>  seccomp_rule_add(seccomp_filter,<span style=color:#ae81ff>0x7fff0000</span>,<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>0</span>);
-</span></span><span style=display:flex><span>  seccomp_rule_add(seccomp_filter,<span style=color:#ae81ff>0x7fff0000</span>,<span style=color:#ae81ff>0</span>,<span style=color:#ae81ff>0</span>);
-</span></span><span style=display:flex><span>  seccomp_rule_add(seccomp_filter,<span style=color:#ae81ff>0x7fff0000</span>,<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>0</span>);
-</span></span><span style=display:flex><span>  seccomp_rule_add(seccomp_filter,<span style=color:#ae81ff>0x7fff0000</span>,<span style=color:#ae81ff>0xe7</span>,<span style=color:#ae81ff>0</span>);
-</span></span><span style=display:flex><span>  seccomp_rule_add(seccomp_filter,<span style=color:#ae81ff>0x7fff0000</span>,<span style=color:#ae81ff>0x101</span>,<span style=color:#ae81ff>0</span>);
-</span></span><span style=display:flex><span>  seccomp_load(seccomp_filter);
+</span></span><span style=display:flex><span>  seccomp_filter <span style=color:#f92672>=</span> <span style=color:#a6e22e>seccomp_init</span>(<span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>seccomp_rule_add</span>(seccomp_filter,<span style=color:#ae81ff>0x7fff0000</span>,<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>seccomp_rule_add</span>(seccomp_filter,<span style=color:#ae81ff>0x7fff0000</span>,<span style=color:#ae81ff>0</span>,<span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>seccomp_rule_add</span>(seccomp_filter,<span style=color:#ae81ff>0x7fff0000</span>,<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>seccomp_rule_add</span>(seccomp_filter,<span style=color:#ae81ff>0x7fff0000</span>,<span style=color:#ae81ff>0xe7</span>,<span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>seccomp_rule_add</span>(seccomp_filter,<span style=color:#ae81ff>0x7fff0000</span>,<span style=color:#ae81ff>0x101</span>,<span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>seccomp_load</span>(seccomp_filter);
 </span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span>;
 </span></span><span style=display:flex><span>}
 </span></span></code></pre></div><p>This function is initializing and loading a seccomp filter that basically forbids every syscall but the read, write, open, exit_group and openat ones.</p><p>Hence, we need to develop an exploit using these syscall only.</p><h3 id=exploitation-7>Exploitation</h3><p>The main idea of the exploit is to:</p><ul><li>Leak libc in order to be able to call <code>open</code> (we are missing a sycall instruction!)</li><li>Write <code>/pwn/flag.txt</code> to memory and call <code>open</code> with it</li><li>Read from the opened file descriptor, then output what we&rsquo;ve read</li></ul><p>We&rsquo;ve developed a small POC before trying to exploit this, in order to make sure that the idea would have worker:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c data-lang=c><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;stdio.h&gt;</span><span style=color:#75715e>
@@ -348,22 +348,22 @@ The main function looks like this:</p><div class=highlight><pre tabindex=0 style
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>(){
 </span></span><span style=display:flex><span>  
-</span></span><span style=display:flex><span>    scmp_filter_ctx uVar1 <span style=color:#f92672>=</span> seccomp_init(<span style=color:#ae81ff>0</span>), uVar2;
-</span></span><span style=display:flex><span>    seccomp_rule_add(uVar1,<span style=color:#ae81ff>0x7fff0000</span>,<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>0</span>);
-</span></span><span style=display:flex><span>    seccomp_rule_add(uVar1,<span style=color:#ae81ff>0x7fff0000</span>,<span style=color:#ae81ff>0</span>,<span style=color:#ae81ff>0</span>);
-</span></span><span style=display:flex><span>    seccomp_rule_add(uVar1,<span style=color:#ae81ff>0x7fff0000</span>,<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>0</span>);
-</span></span><span style=display:flex><span>    seccomp_rule_add(uVar1,<span style=color:#ae81ff>0x7fff0000</span>,<span style=color:#ae81ff>0xe7</span>,<span style=color:#ae81ff>0</span>);
-</span></span><span style=display:flex><span>    seccomp_rule_add(uVar1,<span style=color:#ae81ff>0x7fff0000</span>,<span style=color:#ae81ff>0x101</span>,<span style=color:#ae81ff>0</span>);
-</span></span><span style=display:flex><span>    seccomp_load(uVar1);
+</span></span><span style=display:flex><span>    scmp_filter_ctx uVar1 <span style=color:#f92672>=</span> <span style=color:#a6e22e>seccomp_init</span>(<span style=color:#ae81ff>0</span>), uVar2;
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>seccomp_rule_add</span>(uVar1,<span style=color:#ae81ff>0x7fff0000</span>,<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>seccomp_rule_add</span>(uVar1,<span style=color:#ae81ff>0x7fff0000</span>,<span style=color:#ae81ff>0</span>,<span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>seccomp_rule_add</span>(uVar1,<span style=color:#ae81ff>0x7fff0000</span>,<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>seccomp_rule_add</span>(uVar1,<span style=color:#ae81ff>0x7fff0000</span>,<span style=color:#ae81ff>0xe7</span>,<span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>seccomp_rule_add</span>(uVar1,<span style=color:#ae81ff>0x7fff0000</span>,<span style=color:#ae81ff>0x101</span>,<span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>seccomp_load</span>(uVar1);
 </span></span><span style=display:flex><span>    
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>int</span> fd <span style=color:#f92672>=</span> open(<span style=color:#e6db74>&#34;./flag.txt&#34;</span>,O_RDONLY);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>int</span> fd <span style=color:#f92672>=</span> <span style=color:#a6e22e>open</span>(<span style=color:#e6db74>&#34;./flag.txt&#34;</span>,O_RDONLY);
 </span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span>(fd <span style=color:#f92672>==</span> <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>){
-</span></span><span style=display:flex><span>        write(<span style=color:#ae81ff>1</span>, <span style=color:#e6db74>&#34;Did you create the flag.txt file?</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>, <span style=color:#ae81ff>34</span>);
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>write</span>(<span style=color:#ae81ff>1</span>, <span style=color:#e6db74>&#34;Did you create the flag.txt file?</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>, <span style=color:#ae81ff>34</span>);
 </span></span><span style=display:flex><span>    }
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>    <span style=color:#66d9ef>char</span> buff[<span style=color:#ae81ff>20</span>] <span style=color:#f92672>=</span> {<span style=color:#ae81ff>0</span>};
-</span></span><span style=display:flex><span>    read(fd, buff, <span style=color:#ae81ff>20</span>);
-</span></span><span style=display:flex><span>    write(<span style=color:#ae81ff>1</span>, buff, <span style=color:#ae81ff>20</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>read</span>(fd, buff, <span style=color:#ae81ff>20</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>write</span>(<span style=color:#ae81ff>1</span>, buff, <span style=color:#ae81ff>20</span>);
 </span></span><span style=display:flex><span>}
 </span></span></code></pre></div><p>Compiling it with gcc (the <code>-lseccomp</code> flag was needed) and executing printed out our fake flag, so we were good to go!</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#75715e>#!/usr/bin/env python3</span>
 </span></span><span style=display:flex><span>
@@ -521,15 +521,15 @@ The main function looks like this:</p><div class=highlight><pre tabindex=0 style
 </span></span><span style=display:flex><span>{
 </span></span><span style=display:flex><span>  <span style=color:#66d9ef>char</span> buffer [<span style=color:#ae81ff>336</span>];
 </span></span><span style=display:flex><span>  
-</span></span><span style=display:flex><span>  init(param_1);
-</span></span><span style=display:flex><span>  puts(<span style=color:#e6db74>&#34;Oh no!! Full RELRO, PIE enabled, and no obvious buffer overflow.:(&#34;</span>);
-</span></span><span style=display:flex><span>  puts(<span style=color:#e6db74>&#34;Thankfully, I</span><span style=color:#ae81ff>\&#39;</span><span style=color:#e6db74>m generous and will grant you two leaks&#34;</span>);
-</span></span><span style=display:flex><span>  printf(<span style=color:#e6db74>&#34;This stack leak might be useful %p</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>,buffer);
-</span></span><span style=display:flex><span>  printf(<span style=color:#e6db74>&#34;And this PIE leak might be useful %p</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>,main);
-</span></span><span style=display:flex><span>  puts(<span style=color:#e6db74>&#34;Now gimme your payload&#34;</span>);
-</span></span><span style=display:flex><span>  fgets(buffer,<span style=color:#ae81ff>0x150</span>,stdin);
-</span></span><span style=display:flex><span>  printf(<span style=color:#e6db74>&#34;Is this what you meant? &#34;</span>);
-</span></span><span style=display:flex><span>  printf(buffer);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>init</span>(param_1);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>puts</span>(<span style=color:#e6db74>&#34;Oh no!! Full RELRO, PIE enabled, and no obvious buffer overflow.:(&#34;</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>puts</span>(<span style=color:#e6db74>&#34;Thankfully, I</span><span style=color:#ae81ff>\&#39;</span><span style=color:#e6db74>m generous and will grant you two leaks&#34;</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>printf</span>(<span style=color:#e6db74>&#34;This stack leak might be useful %p</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>,buffer);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>printf</span>(<span style=color:#e6db74>&#34;And this PIE leak might be useful %p</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>,main);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>puts</span>(<span style=color:#e6db74>&#34;Now gimme your payload&#34;</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>fgets</span>(buffer,<span style=color:#ae81ff>0x150</span>,stdin);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>printf</span>(<span style=color:#e6db74>&#34;Is this what you meant? &#34;</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>printf</span>(buffer);
 </span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;
 </span></span><span style=display:flex><span>}
 </span></span></code></pre></div><p>As 0x150 = 336, there is no buffer overflow. But there is indeed a format string vulnerability (<a href="https://www.youtube.com/watch?v=CyazDp-Kkr0">if you have no idea what this is, check this link</a>) as the program uses <code>printf</code> on our input buffer without any check.</p><h3 id=exploitation-8>Exploitation</h3><p>The idea is the following: we can use the format string vulnerability to write and execute a ropchain. Having this in mind, it&rsquo;s relatively simple to exploit the vulnerability.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#75715e>#!/usr/bin/env python3</span>
@@ -679,8 +679,8 @@ This is known to be not secure, and we can find the inverse function on <a href=
 </span></span><span style=display:flex><span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>(){
 </span></span><span style=display:flex><span>    <span style=color:#66d9ef>unsigned</span> <span style=color:#66d9ef>long</span> key <span style=color:#f92672>=</span>  <span style=color:#ae81ff>0xfd94e6e84a0a</span>;
 </span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span>(<span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>; i <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>100</span>; i<span style=color:#f92672>++</span>)
-</span></span><span style=display:flex><span>        reverse(<span style=color:#f92672>&amp;</span>key);
-</span></span><span style=display:flex><span>    printf(<span style=color:#e6db74>&#34;%lx</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>, key);
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>reverse</span>(<span style=color:#f92672>&amp;</span>key);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>printf</span>(<span style=color:#e6db74>&#34;%lx</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>, key);
 </span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;
 </span></span><span style=display:flex><span>}
 </span></span></code></pre></div><p>Now we have our argument, which is 0x483d34347a46.</p><p>So, let&rsquo;s execute <code>./entropy $(python -c "print('\x46\x7a\x34\x34\x3d\x48')"\)</code> and we get:</p><pre tabindex=0><code>Fz44=H
