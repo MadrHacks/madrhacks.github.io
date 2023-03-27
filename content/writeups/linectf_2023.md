@@ -44,11 +44,12 @@ for (i = 0; i < arrayLen; i = i + 1) {
 ```
 
 By running the program in `x64dbg` we can easily find in memory how our `generatedArray` and manipulated input look so the things we have are:
--our input
--our manipulated input
--the encrypted flag
--the array we can generate
-So with some math:
+
+- our input
+- our manipulated input
+- the encrypted flag
+- the array we can generate
+  So, with some math:
 
 ```
 we have
