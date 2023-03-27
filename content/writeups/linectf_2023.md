@@ -4,6 +4,117 @@ date: "2023-03-25"
 tags: ["CTF", "LINE", "jeopardy"]
 ---
 
+# Reversing
+
+## Fishing
+
+Watching the executable with `Ghidra` we can see that it has some anti-disassemble techniques that prevent Ghidra to fully disassemble some functions so when we find them we can just manually tell `ghidra` to disassemble them again by pressing `D` on the starting address and then `F`.
+
+We can also see that the executable gives an error message when using a debugger which can be bypassed patching the file.
+
+```
+140001b49 74 52           JZ        LAB_140001b9d
+to
+140001b49 75 52           JNZ        LAB_140001b9d
+
+140001c7a 75 0a           JNZ         LAB_140001c86
+to
+140001c7a 74 0a           JZ         LAB_140001c86
+
+
+140001c84 74 52           JZ        LAB_140001cd8
+to
+140001c84 75 52           JNZ        LAB_140001cd8
+```
+
+Those are not the only things the program does to prevent it being reversed in fact it also uses `DR0` to `DR3` registers to alter the execution of some functions when debugging but with our solution we can ignore them!
+
+The program after asking and receiving for our input starts a thread where it does some data manipulations and then compares a constant array with an array the program generates with our input.
+The generated array is kind of created like this:
+
+```
+//something_1 and something_2 are different for every i
+//but even with different inputs they are sequentially the same!
+for (i = 0; i < arrayLen; i = i + 1) {
+    ...
+    //something_1 and something_2 manipulations
+
+    generatedArray[i] = manipulatedInput[i] ^ something_1 ^ something_2
+}
+```
+
+By running the program in `x64dbg` we can easily find in memory how our `generatedArray` and manipulated input look so the things we have are:
+-our input
+-our manipulated input
+-the encrypted flag
+-the array we can generate
+So with some math:
+
+```
+we have
+encryptedFlag = manipulatedFlag ^ something_1 ^ something_2
+generatedFlag = manipulatedInput ^ something_1 ^ something_2
+
+so we can do
+encryptedFlag ^ generatedFlag = manipulatedFlag ^ manipulatedInput
+
+and then xor away the manipulatedInput to remain with the manipulatedFlag
+```
+
+Once we have the `manipulatedFlag` we can just map our input chars to their manipulated version and then just map the `manipulatedFlag` chars to their right chars (I forgot to mention that characters are manipulated character-wise and not string-wise so that the same character is mapped to the same value).
+
+We need to input a string as long as the array we need to generate which has length `0x29` (41). Since the format of flags is `LINECTF{[0-9a-f]{32}}` our input can be something like `1234567890abcdef1234567890abcdef123456789` and in memory we get:
+
+```
+manipulated input:
+5E 76 6E 86 7E 96 8E A6 9E 66 E0 F8 F0 08 00 18
+5E 76 6E 86 7E 96 8E A6 9E 66 E0 F8 F0 08 00 18
+5E 76 6E 86 7E 96 8E A6 9E 00 00 00 00 00 00 00
+
+array we need to generate
+D0 BE 9F 5A BD F0 34 B5 D0 6F FB E2 99 BA AE D7
+36 D5 2D C2 22 45 B0 03 9D 63 66 53 C7 28 CC 2A
+2B 14 BB 09 9B E3 60 46 3A 00 00 00 00 00 00 00
+
+array generated from our input
+C7 E9 A8 DD 32 EF A3 A3 4E 7F 65 64 99 BA 4E B9
+16 BB 1D A4 FA 33 A8 CB 85 FD E8 F5 B1 5E 6A 3A
+03 62 25 09 83 0B 16 76 64 00 AB AB AB AB AB AB
+```
+
+Then we can just script the solution!
+(since I knew the first 9 letters would be `LINECTF{` and the last one would be `}` I skipped those bytes and shifted the alphabet I used) (yes I am very lazy).
+
+```py
+manipulatedInput = [
+    0x9E, 0x66, 0xE0, 0xF8, 0xF0, 0x08, 0x00, 0x18,
+    0x5E, 0x76, 0x6E, 0x86, 0x7E, 0x96, 0x8E, 0xA6
+    ]
+
+encFlag = [
+    0xD0, 0x6F, 0xFB, 0xE2, 0x99, 0xBA, 0xAE, 0xD7,
+    0x36, 0xD5, 0x2D, 0xC2, 0x22, 0x45, 0xB0, 0x03,
+    0x9D, 0x63, 0x66, 0x53, 0xC7, 0x28, 0xCC, 0x2A,
+    0x2B, 0x14, 0xBB, 0x09, 0x9B, 0xE3, 0x60, 0x46
+    ]
+
+encInput = [
+    0x4E, 0x7F, 0x65, 0x64, 0x99, 0xBA, 0x4E, 0xB9,
+    0x16, 0xBB, 0x1D, 0xA4, 0xFA, 0x33, 0xA8, 0xCB,
+    0x85, 0xFD, 0xE8, 0xF5, 0xB1, 0x5E, 0x6A, 0x3A,
+    0x03, 0x62, 0x25, 0x09, 0x83, 0x0B, 0x16, 0x76
+    ]
+alphabet = '90abcdef12345678'
+
+print("LINECTF{", end="")
+for i in range(len(encFlag)):
+	manipulatedFlag = encFlag[i] ^ encInput[i] ^ manipulatedInput[i%16]
+	flag = alphabet[manipulatedInput.index(manipulatedFlag)]
+	print(flag, end="")
+
+print("}")
+```
+
 # Pwn
 
 ## Simple blogger
@@ -133,7 +244,7 @@ if __name__ == "__main__":
 
 ## Imagexif
 
-This challenge featured a ~~simple~~ web server written in flask that uses `exiftool` to provide information about an uploaded image. Jinja2 is used to serve html pages, but no SSTI there for today. Instead, after poking and reading the code for a while we noticed something in the Dockerfile:
+This challenge featured a ~~simple~~ web server written in `flask` that uses `exiftool` to provide information about an uploaded image. Jinja2 is used to serve HTML pages, but no SSTI there for today. Instead, after poking and reading the code for a while we noticed something in the Dockerfile:
 
 ```dockerfile
 FROM python:3.11.2
@@ -182,9 +293,9 @@ RUN chmod o-x /usr/local/bin/python3.11 && \
     rm /usr/lib/x86_64-linux-gnu/perl-base/socket.pm
 ```
 
-The Dockerfile downloads a slightly outdated version of `exiftool`. From other CTFs, we know that `exiftool` had some problems in the past, so we looked around for CVEs related to this version. With little surprise, we found that this version is vulnerable to [CVE-2021-22204](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-22204), allowing a quite simple RCE. After quickly getting an PoC exploit from [this repo](https://github.com/UNICORDev/exploit-CVE-2021-22204), we got the flag... or so we thought.
+The Dockerfile downloads a slightly outdated version of `exiftool`. From other CTFs, we knew that `exiftool` had some problems in the past, so we looked around for CVEs related to this version. With little surprise, we found that this version is vulnerable to [CVE-2021-22204](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-22204), allowing a quite simple RCE. After quickly getting an PoC exploit from [this repo](https://github.com/UNICORDev/exploit-CVE-2021-22204), we got the flag... or so we thought.
 
-There is a catch: the backend container is completely isolated from external networks, so no reverse shell, curl, or DNS exfiltration here! We decided to use a side-channel: time (e.g. `sleep`). Fairly enough, we can find a utility script already on the backend that allows to convert a character to its ASCII (decimal) representation. We also knew that flag letters only included hexadecimal digits, making it easier to optimize the side-channel.
+There is a catch: the backend container is completely isolated from external networks, so no reverse shell, curl, or even DNS exfiltration here! We decided to use a side-channel: time (e.g. `sleep`). Fairly enough, we can find a utility script already on the backend that allows to convert a character to its ASCII (decimal) representation. We also knew that flag letters only included hexadecimal digits, making it easier to optimize the side-channel.
 The following is the script used to extract the flag with success. Notice that we could not use some characters (e.g. parenthesis), making the scripting part a little more frustrating. The final script is fairly fast and reliable:
 
 ```py
@@ -208,8 +319,8 @@ while True:
     #    we will sleep from 0 to 9 seconds for characters in 0-9
     #
     # TL;DR;
-    #  - sleep >= 10 -> a-f
-    #  - sleep < 10 -> 0-9
+    #  - 0 <= sleep < 10 -> 0-9
+    #  - 10 <= sleep <= 15 -> a-f
     cmd = (
         "X=`/src/ascii.sh ${FLAG:%d:1}`; sleep `expr $X - 87` || sleep `expr $X - 48`"
         % i
