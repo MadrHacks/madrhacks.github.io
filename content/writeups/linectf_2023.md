@@ -322,50 +322,6 @@ for i in range(len(encFlag)):
 print("}")
 ```
 
-# Misc
-
-## abhs
-
-This challenge featured a modified version of /bin/sh that, when prompted with a command, would reorder the letters in the name of the command and in each of the arguments so that the resulting characters in each string would be in alphabetical order.
-
-The first command we can issue is `ls`. This shows us that the file `flag.txt` containing the flag is indeed in the current working directory.
-
-We should then find a way to read this file. We can't use `cat`, as we would actually issue the command `act`, and the shell would indeed error out with `sh: act: not found`.
-
-Luckily, `ls /bin` is the letters in each word are reordered, so we can use this command to list all the available commands, then filter them to keep only those that we can actually use.
-We are left with a bunch of standard linux commands. After trying some of them, I noticed a command named `fmt`, which apparently is something we can use to format files.
-We can simply issue the command `fmt *` to get the flag:
-`bctf{gr34t_I_gu3ss_you_g0t_that_5orted_out:P}`
-
-## ez-class
-
-This challenge featured a service that would let us define Python classes.
-The service would let us specify the name of the class, the base class to inherit from, the names, the arguments and the body of the methods we wanted in it.
-It would save the resulting code to a file, exec() it and then instantiate an object of our class.
-
-The first thing to note is that we can easily execute code by putting it inside the constructor of a class, as it gets called when the object is instantiated by the server.
-The only problem is that the service put some restrictions on the characters we could use for the code inside our functions: a function `get_legal_code` would get called that used `input()` to get the code; the function would then throw an error if the code contained the characters "(", ")", "." or "\n".
-
-An easy (and perhaps unintended?) way to solve this challenge is to request a class with the following structure:
-
-```py
-def A:
-    def __init__(self):
-        global get_legal_code; get_legal_code = input
-```
-
-This way, in the following requests, our code won't be checked against the blacklisted characters!
-We can then simply request the following class:
-
-```py
-def B:
-    def __init__(self)
-        print(open("flag.txt", "r").read())
-```
-
-which will print out the flag:
-`bctf{m3ta_c4l1abl3_b5e478f33eb890a2ee65}`
-
 # Pwn
 
 ## Simple blogger
