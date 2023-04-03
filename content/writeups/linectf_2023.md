@@ -6,6 +6,42 @@ tags: ["CTF", "LINE", "jeopardy"]
 
 # Web
 
+## baby-simple-gocurl
+
+The challenge consists of a web page that makes requests for us.
+
+There are two endpoints that tickle our interest:
+
+- `/curl/`: makes a HTTP request for us and returns the body and the status code;
+- `/flag/`: retrieves the flag if the requested IP is localhost.
+
+The request made using the endpoint `/curl/` checks whether the requesting IP is `127.0.0.1`, the URL constains the words `flag` or `curl` (to prevent chains of requests), and disallow redirects by defining a `redirectChecker` function.
+
+There's a trivial logical issue with the way the check is done.
+The following code contains the mistake:
+
+```go
+if c.ClientIP() != "127.0.0.1" && (strings.Contains(reqUrl, "flag") || strings.Contains(reqUrl, "curl") || strings.Contains(reqUrl, "%")) { // CANNOT HAVE flag, curl or %
+    c.JSON(http.StatusBadRequest, gin.H{"message": "Something wrong"})
+    return
+}
+```
+
+The condition implies that if the client IP is `127.0.0.1` it is not necessary to check whether the URL contains one of the blocked words. (Notice the `&&` operator!)
+
+After examining the documentation of the [go-gin function `clientIP` function](https://pkg.go.dev/github.com/gin-gonic/gin#Context.ClientIP), we notice that it does the best to return the real IP of the client. In doing so, it considers the presence of one or more proxies and parses the corrisponding headers.
+
+We can create a request that utilizes one of those headers (e.g., `X-Forwarded-For`) to deceive the server into thinking that the packet is from localhost.
+
+In the end, we're able to retrieve the flag with the following request:
+
+```
+GET /curl/?url=http://127.0.0.1:8080/flag/&header_key=&header_value= HTTP/1.1
+Host: <server ip>:<server port>
+X-Forwarded-For: 127.0.0.1
+Connection: close
+```
+
 ## oldpal
 
 This challenge featured a web page with a Perl backend that would get a parameter `password`, perform some checks against it, and if it were the correct one, the server would echo out the flag.
