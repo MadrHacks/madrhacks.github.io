@@ -123,6 +123,70 @@ if __name__ == "__main__":
     main()
 ```
 
+# Web
+
+## hackerchat
+
+After registering and logging in, we notice that the endpoint `/dashboard` causes a POST request on the `/search` endpoint with our username as body (json encoded).
+
+So we start playing with it and immediately notice that the character `'` causes the application to crash and return an internal server error.
+
+First, we get all the users with the search term `' OR '1'='1`.
+We start playing with the `order by` to get the number of fields returned by the select statement, and with `' OR 1=1 order by 2 -- |` we discover the admin account.
+In the notes of the admin account a base64 secret is contained.
+
+We notice that the login is saved via a JWT token in a cookie.
+By decoding the jwt in [jwt.io](jwt.io) we verify that it is signed with the admin secret!
+
+So we change the `sub` field value in the jwt, which contains our username, to `admin` and sign it again with the secret found.
+Once logged as admin, we find the flag in one of the messages displayed in the dashboard.
+
+## Penguinator
+
+The description of the challenge contains the admin cookie: `/SsLocjiwUwqJW7uuAaD2ufL2ok0RaOZTXokZ77E1rjtIqkQpTKGuvkE0s+8vC3qlpRciGEo4PnE0BuYMOGYtA==`.
+
+First we try to log in with a new fresh account, and we immediately see that the authentication is made with a cookie named `auth`.
+
+We then proceed by setting the admin cookie, but the page returns the error `checkAuth: expired auth bundle`. This tells us that the cookie contains information related to its expiration.
+
+If we try to login with the username set to `admin` we receive the following error: `Hey, admins aren't allowed to log in during a CTF!`.
+
+The main page of the challenge consists on a form that allow us to encrypt an image with `AES-256`. From the [penguin](https://github.com/robertdavidgraham/ecb-penguin) we understand that the encryption is made in ECB mode. The use of ECB mode implies that equal blocks are encrypted in the same ciphertext. If the username is contained in our cookie, by changing the username block to the one of the admin cookie we are able to login as admin!
+
+First, we generate two fresh `auth` cookie by logging in three times:
+
+- `admon` -> `+UYTW+4246JXbTNBJxvQFpM22GUNDsWmb1eyJfuOhBlxQ5Q4cXM0bXn8JuoS3J9OJ3oeCqtTs7FlNOzXWOu1dA==`
+- `admon` -> `+UYTW+4246JXbTNBJxvQFpM22GUNDsWmb1eyJfuOhBn+eFpEz6WXnE2IUXRBIGAq1ZT15QlBfVG9smXMt1Sh3A==`
+- `admow` -> `m05IKB6+a6SY1vncwOBTpJM22GUNDsWmb1eyJfuOhBnh3xsyyb0BjCv6FzJEJbAScYoLDlhsBdxJiX0kpZN7OQ==`
+
+By comparing the first two cookies we see a difference in the last blocks. This probably means that it has to do with the time of generation/expiration, since the username is the same.
+The last cookie, compared to the previous two, contains a difference on the first part. We can safely assume that the first part is the username.
+
+By taking the first block of the admin cookie and the last part of our cookie, we can generate a valid login cookie with username `admin`!
+
+`/SsLocjiwUwqJW7uuAaD2` + `pM22GUNDsWmb1eyJfuOhBloQnwLsg1jLXEWPfK2wrYSeYK33B7FQ4qeQVmBc9zRbw==` = `/SsLocjiwUwqJW7uuAaD2pM22GUNDsWmb1eyJfuOhBloQnwLsg1jLXEWPfK2wrYSeYK33B7FQ4qeQVmBc9zRbw==`
+By using this cookie we logged in as admin and get the flag.
+
+## wolfhowl
+
+The challenge description states "Log into WolfHowl to get the flag".
+
+If we try to log in we get the error "Registration Disabled", so we understand that we have to find another way to obtain access.
+
+By playing with the search form we can clearly see that the query `"` causes the error `You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '"""' at line 1 `.
+
+First, we search for the number of parameters in the select statement. To do so, we change the order by until we get an error:
+
+- `" order by 4 -- |` is okay;
+- `" order by 5 -- |` gives an error;
+
+Now we can estrapolate tables and column with a union!
+With the payload `" union select 1,2,3,4 -- |` we understand that the first three parameters are visible in the response.
+With the payload `" union select table_name,group_concat(column_name),3, 4 from information_schema.columns group by table_name-- |` we get all table and column names.
+We notice an employee table with fields EmployeeId,LastName,FirstName,Title,ReportsTo,BirthDate,HireDate,Address,City,State,Country,PostalCode,Phone,Fax,Email,Password.
+
+So, we fetch the emails and passwords with the query `" union select email, password, 3, 4 from employee -- |` and we are able to log in and get the flag.
+
 # Misc
 
 ## Low code low security
