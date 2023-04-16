@@ -1,5 +1,5 @@
 ---
-title: "hackpack ctf 2022"
+title: "hackpack ctf 2023"
 date: "2023-04-14"
 tags: ["CTF", "hackpack", "jeopardy"]
 ---
