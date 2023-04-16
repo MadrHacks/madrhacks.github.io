@@ -238,3 +238,275 @@ uid=1001(ezila) gid=1000(ctfuser) groups=1000(ctfuser)
 $ cat flag.txt
 flag{n3v3r_7ru57_a_ch@7b07_t0_cl3@n_th3_3nv1r0nm3n7}
 ```
+
+# Rev
+
+## Speed-Rev: Bots
+
+In this challenge we were given a remote host and we were asked to complete six levels in three minutes.
+
+Each level we were given a base-64 encoded ELF and we were asked for a "flag".
+
+By looking at the ELFs we can see that this "flag" is validated through the function `validate` which changes for every level. The "flag" looks to be 16 bytes long and it conains only alphanumeric characters.
+
+Since this challenge was pretty much the same as `Speed-Rev: Humans`, this solution can also solve that challenge.
+
+### Level 1
+
+---
+
+The first level is pretty simple, we can see that the function `validate` is just a simple `strncmp` with an hardcoded string which is randomly generated at each run.
+
+![Level 1 Ghidra](/images/hackpackctf2023_level1_ghidra.png)
+
+By examining the binary with `strings -t d` we can see that the requested string is just 17 bytes before the "%16s" string, so we can just search for that string in the binary and take the 16 bytes we need for our "flag".
+
+![Level 1 Strings](/images/hackpackctf2023_level1_strings.png)
+
+```python
+def solveRead(elf) -> str:
+    offset = next(elf.search(b"%16s")) - 17
+    return elf.read(offset, 16).decode()
+```
+
+### Level 2 and 3
+
+---
+
+Both the second and the third level follow the same model. This time the string isn't saved in the binary and the validation happens by checking each character against a value.
+
+![Level 2 Ghidra](/images/hackpackctf2023_level2_ghidra.png)
+
+By looking at the disassembly of the function `validate` we see that each character is compared with the instruction `cmp`, so we can just disassemble the function and look for every instance of `cmp` and take the value of the immediate operand.
+
+![Level 2 Objdump](/images/hackpackctf2023_level2_objdump.png)
+
+```python
+cs = Cs(CS_ARCH_X86, CS_MODE_64)
+cs.detail = True
+
+def disassValidate(elf) -> CsInsn:
+    method = elf.read(elf.sym['validate'], elf.sym['main'] - elf.sym['validate'])
+    return cs.disasm(method, elf.sym['validate'])
+
+def solveDisass(elf) -> str:
+    disass = disassValidate(elf)
+
+    psw = ""
+    for ins in disass:
+        if ins.id == X86_INS_CMP:
+            psw += chr(ins.operands[1].imm)
+    return psw
+```
+
+Another, and possibly faster, approach would be just to look for the hex sequence preceding the `cmp` instruction (`\x0f\xb6\x00\x3c`) and take the value of the byte right after, but the time constraints weren't so tight so I chose the more readable alternative.
+
+### Level 4
+
+---
+
+The validation function for the fourth level is a bit more complex.
+
+```
+in[0] + in[1] == V0
+in[1] + in[2] == V1
+in[2] + in[3] == V2
+...
+
+in[14] + in[15] == V14
+```
+
+Where Vn are constant 1-byte values and `in[i]` is the i-th character of the input string.
+
+![Level 4 Ghidra](/images/hackpackctf2023_level4_ghidra.png)
+
+Looking at this kind of check I immediately thought of using z3. We can get the constant values in the same way we did for the previous level and then we can just create a z3 solver and add the constraints.
+
+One small problem I had was the solver creating solutions with invalid characters, so I also had to add a constraint for each character to be alphanumeric, as the "flag" can only contain alphanumeric characters.
+
+```python
+cs = Cs(CS_ARCH_X86, CS_MODE_64)
+cs.detail = True
+
+def disassValidate(elf) -> CsInsn:
+    method = elf.read(elf.sym['validate'], elf.sym['main'] - elf.sym['validate'])
+    return cs.disasm(method, elf.sym['validate'])
+
+def solveZ3(elf) -> str:
+    values = []
+    disass = disassValidate(elf)
+
+    for ins in disass:
+        if ins.id == X86_INS_CMP:
+            values.append(ins.operands[1].imm) # Save the value
+
+    s = Solver()
+    x = IntVector('x', 16)
+
+    # Solving constaints
+    for i, val in enumerate(values):
+        s.add(x[i] + x[i+1] == val)
+
+    # Alphanumeric constraints
+    for i in range(16):
+        s.add(Or(And(x[i] >= ord('0'), x[i] <= ord('9')), And(x[i] >= ord('A'), x[i] <= ord('Z')), And(x[i] >= ord('a'), x[i] <= ord('z'))))
+
+    if s.check() == sat:
+        m = s.model()
+        psw = ''.join(chr(m.eval(x[i]).as_long()) for i in range(16))
+        return psw
+    else:
+        log.error("No solution found")
+        exit(-1)
+```
+
+### Level 5 and 6
+
+---
+
+The fifth and sixth levels are pretty much just a mix of the fourth, second and third levels.
+That is, some constraints are in the form `in[i] == V` and some are in the form `in[i] + in[i+1] == V`.
+
+![Level 5 Ghidra](/images/hackpackctf2023_level5_ghidra.png)
+
+The way I distinguished between the two types of constraints was by looking at the previous instruction. If the previous instruction was an `add` then the constraint was in the form `in[i] + in[i+1] == V`, otherwise it was in the form `in[i] == V`.
+
+![Level 5 Objdump](/images/hackpackctf2023_level5_objdump.png)
+
+Since level two, three, and four were just special cases of these levels where every constraint was either in the form `in[i] + in[i+1] == V` or `in[i] == V`, the following code can also work with those levels.
+
+```python
+cs = Cs(CS_ARCH_X86, CS_MODE_64)
+cs.detail = True
+
+def disassValidate(elf) -> CsInsn:
+    method = elf.read(elf.sym['validate'], elf.sym['main'] - elf.sym['validate'])
+    return cs.disasm(method, elf.sym['validate'])
+
+def solveZ3(elf) -> str:
+    values = []
+    disass = disassValidate(elf)
+
+    for ins in disass:
+        if ins.id == X86_INS_CMP:
+            values.append((ins.operands[1].imm, prevInstr.id == X86_INS_ADD)) # Save the value and whether it's an x[i] == v or an x[i] + x[i+1] == v constraint
+        prevInstr = ins
+
+    s = Solver()
+    x = IntVector('x', 16)
+
+    # Solving constaints
+    for i, (val, isEq) in enumerate(values):
+        s.add(x[i] + x[i+1] == val if isEq else x[i] == val)
+
+    # Alphanumeric constraints
+    for i in range(16):
+        s.add(Or(And(x[i] >= ord('0'), x[i] <= ord('9')), And(x[i] >= ord('A'), x[i] <= ord('Z')), And(x[i] >= ord('a'), x[i] <= ord('z'))))
+
+    if s.check() == sat:
+        m = s.model()
+        psw = ''.join(chr(m.eval(x[i]).as_long()) for i in range(16))
+        return psw
+    else:
+        log.error("No solution found")
+        exit(-1)
+```
+
+### Final script
+
+```python
+#!/usr/bin/env python3
+
+from pwn import *
+from z3 import *
+from capstone import *
+from capstone.x86 import *
+from base64 import b64decode
+
+r = remote("cha.hackpack.club", 41702)
+
+cs = Cs(CS_ARCH_X86, CS_MODE_64)
+cs.detail = True
+
+def getBinary(filename) -> ELF:
+    r.recvuntil(b"here is the binary!\n")
+    r.recvuntil(b"b'")
+    b64 = b64decode(r.recvuntil(b"'")[:-1].decode())
+    with open(filename, "wb") as f:
+        f.write(b64)
+
+    log.info(f"Got {filename}")
+
+    return ELF(filename, checksec=False)
+
+def solveRead(elf) -> str:
+    offset = next(elf.search(b"%16s")) - 17
+    return elf.read(offset, 16).decode()
+
+def disassValidate(elf) -> CsInsn:
+    method = elf.read(elf.sym['validate'], elf.sym['main'] - elf.sym['validate'])
+    return cs.disasm(method, elf.sym['validate'])
+
+'''
+This solution is faster for levels 2 and 3 but the z3 one works as well.
+
+def solveDisass(elf) -> str:
+    disass = disassValidate(elf)
+
+    psw = ""
+    for ins in disass:
+        if ins.id == X86_INS_CMP:
+            psw += chr(ins.operands[1].imm)
+    return psw
+'''
+
+def solveZ3(elf) -> str:
+    values = []
+    disass = disassValidate(elf)
+
+    for ins in disass:
+        if ins.id == X86_INS_CMP:
+            values.append((ins.operands[1].imm, prevInstr.id == X86_INS_ADD)) # Save the value and whether it's an x[i] == v or an x[i] + x[i+1] == v constraint
+        prevInstr = ins
+
+    s = Solver()
+    x = IntVector('x', 16)
+
+    # Solving constaints
+    for i, (val, isEq) in enumerate(values):
+        s.add(x[i] + x[i+1] == val if isEq else x[i] == val)
+
+    # Alphanumeric constraints
+    for i in range(16):
+        s.add(Or(And(x[i] >= ord('0'), x[i] <= ord('9')), And(x[i] >= ord('A'), x[i] <= ord('Z')), And(x[i] >= ord('a'), x[i] <= ord('z'))))
+
+    if s.check() == sat:
+        m = s.model()
+        psw = ''.join(chr(m.eval(x[i]).as_long()) for i in range(16))
+        return psw
+    else:
+        log.error("No solution found")
+        exit(-1)
+
+def solveLvl(n):
+    elf = getBinary(f"binary-lv{n}")
+
+    if n == 1:
+        psw = solveRead(elf)
+    else:
+        psw = solveZ3(elf)
+
+    r.sendlineafter(b"What is the flag?\n", psw.encode())
+    log.info(f"LV{n} PSW: {psw}")
+
+def solve():
+    for i in range(6):
+        solveLvl(i+1)
+
+    [log.success(x.strip()) for x in r.recvuntil(b'}').decode().split("\n")]
+
+    r.close()
+
+if __name__ == "__main__":
+    solve()
+```
