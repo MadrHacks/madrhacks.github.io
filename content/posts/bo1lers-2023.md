@@ -4,9 +4,9 @@ date: "2023-03-17"
 tags: ["CTF", "bo1lers", "jeopardy"]
 ---
 
-# Web
+## Web
 
-## php.galf
+### php.galf
 
 This challenge consists of a web page that presents itself as a php interpreter.
 The page allow us to insert some commands and arguments in a text area, execute them, and print the output of the code.
@@ -208,7 +208,7 @@ The last argument of the constructor will be the function called in its `__toStr
 
 Lots of function are disabled from the `php.ini` file:
 
-```
+```text
 disable_functions=exec,passthru,shell_exec,system,proc_open,popen,curl_exec,curl_multi_exec,parse_ini_file,show_source,fopen
 allow_url_fopen=Off
 allow_url_include=Off
@@ -220,7 +220,7 @@ So we constructed the following payload:
 
 code:
 
-```
+```text
 ohce
 ohce
 ohce
@@ -230,7 +230,7 @@ ohce
 
 args:
 
-```
+```text
 index.php, 0, asd, highlight_file, orez_dda, orez_vid, syntaxreader, 0, 0
 ```
 
@@ -240,9 +240,9 @@ To recap, the payload will be executed by instantiating a `orez_dda` (`add_zero`
 
 This way we obtain the flag.
 
-# Misc
+## Misc
 
-## abhs
+### abhs
 
 This challenge featured a modified version of /bin/sh that, when prompted with a command, would reorder the letters in the name of the command and in each of the arguments so that the resulting characters in each string would be in alphabetical order.
 
@@ -255,7 +255,7 @@ We are left with a bunch of standard linux commands. After trying some of them, 
 We can simply issue the command `fmt *` to get the flag:
 `bctf{gr34t_I_gu3ss_you_g0t_that_5orted_out:P}`
 
-## ez-class
+### ez-class
 
 This challenge featured a service that would let us define Python classes.
 The service would let us specify the name of the class, the base class to inherit from, the names, the arguments and the body of the methods we wanted in it.

