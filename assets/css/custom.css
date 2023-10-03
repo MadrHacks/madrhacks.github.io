@@ -1,20 +1,20 @@
 @font-face {
   font-family: 'Comfortaa';
-	src: url('/fonts/Comfortaa-Bold.ttf') format('truetype'),
+	src: url('/fonts/Comfortaa-Bold.ttf') format('truetype');
 	font-weight: bold;
 	font-style: normal;
 }
 
 @font-face {
   font-family: 'Comfortaa';
-	src: url('/fonts/Comfortaa-Regular.ttf') format('truetype'),
+	src: url('/fonts/Comfortaa-Regular.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
 
 @font-face {
   font-family: 'Comfortaa';
-	src: url('/fonts/Comfortaa-Medium.ttf') format('truetype'),
+	src: url('/fonts/Comfortaa-Medium.ttf') format('truetype');
 	font-weight: medium;
 	font-style: normal;
 }
@@ -102,7 +102,7 @@
 
 
 .tag.pwn:before {
-  font-family: FontAwesome;
+  font-family: ForkAwesome;
   content: "\f1e2  ";
   vertical-align: middle;
 }
@@ -112,7 +112,7 @@
 }
 
 .tag.web:before {
-  font-family: FontAwesome;
+  font-family: ForkAwesome;
   content: "\f26b  ";
   font-size: 90%;
   vertical-align: middle;
@@ -123,7 +123,7 @@
 }
 
 .tag.crypto:before {
-  font-family: FontAwesome;
+  font-family: ForkAwesome;
   content: "\f12e  ";
   vertical-align: middle;
 }
@@ -133,7 +133,7 @@
 }
 
 .tag.rev:before {
-  font-family: FontAwesome;
+  font-family: ForkAwesome;
   content: "\f04a  ";
   font-size: 90%;
 }
@@ -143,7 +143,7 @@
 }
 
 .tag.network:before {
-  font-family: FontAwesome;
+  font-family: ForkAwesome;
   content: "\f1e0  ";
   font-size: 90%;
 }
@@ -178,7 +178,7 @@ justify-content: center;
 /*   color: #0e76a8; */
 /* } */
 /**/
-.mail {
+.member-social.mail {
   /* color: var(--text-color); */
   font-size: 95%;
 }

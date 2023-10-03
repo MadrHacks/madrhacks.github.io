@@ -1,7 +1,7 @@
 ---
 title: "We are MadrHacks!"
 draft: false
-hideToc: true 
+hideToc: true
 ---
 
 ## Team members
@@ -24,9 +24,8 @@ hideToc: true
         {{< tags "web" >}}
     {{< /member >}}
 
-    {{< member image="" name="Matteo Paier" affiliation="PhD @ University of Udine" >}}
+    {{< member image="" name="Matteo Paier" affiliation="PhD @ University of Udine" github="MatteoPaier" matrix="@matteo:paier.xyz">}}
         {{< tags "network" >}}
     {{< /member >}}
 
 {{< /members >}}
-

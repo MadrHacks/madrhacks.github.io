@@ -20,6 +20,10 @@
       <a class="member-social twitter" href="https://nitter.net/{{ . }}"><i class="fa fa-twitter"></i></a>
       {{ end }}
 
+      {{ with .Get "matrix" }}
+      <a class="member-social matrix" href="https://matrix.to/#/{{ . }}"><i class="fa fa-matrix-org"></i></a>
+      {{ end }}
+
       {{ with .Get "mail" }}
       <a class="member-social mail" href="mailto:{{ . }}"><i class="fa fa-envelope-o"></i></a>
       {{ end }}
