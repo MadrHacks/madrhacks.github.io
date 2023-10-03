@@ -8,7 +8,7 @@ tags: ["CTF", "m0lecon", "finals", "AttackDefence"]
 
 ### Shellcode storage
 
-This was a pwn challenge. The binary is available [here](/downloadables/m0lecon_finals_2022_s3). We could not find the vulnerability in time during the CTF, but it featured a very nice (and ~~potentially~~ destructive) unintended solution which I wanted to cover.
+This was a pwn challenge. The binary is available [here](/posts/downloads/m0lecon_finals_2022_s3). We could not find the vulnerability in time during the CTF, but it featured a very nice (and ~~potentially~~ destructive) unintended solution which I wanted to cover.
 
 #### Exploration
 
@@ -288,7 +288,7 @@ Unfortunately, as the first one was related to making a scanner (which was on-si
 
 #### Exploration
 
-This pwn challenge was pretty interesting, as it was illustrating how it is (kinda) possible to use the stack to allocate memory dynamically (spoiler alert: don't **_ever_** do it for real). The binary and other files that came with it are available [here](/downloadables/m0lecon_finals_2022_vfs.zip).
+This pwn challenge was pretty interesting, as it was illustrating how it is (kinda) possible to use the stack to allocate memory dynamically (spoiler alert: don't **_ever_** do it for real). The binary and other files that came with it are available [here](/posts/downloads/m0lecon_finals_2022_vfs.zip).
 
 The binaries' protections are the following (checksec output):
 

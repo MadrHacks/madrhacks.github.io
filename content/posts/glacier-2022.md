@@ -73,7 +73,7 @@ io.interactive()
 
 ### Old dayz
 
-This is a heap challenge, but with the novelty being that it uses libc2.23 (basically, the libc used by ubuntu 16.04). The challenge files can be downloaded [here](/downloadables/glacier_old_dayz.zip).
+This is a heap challenge, but with the novelty being that it uses libc2.23 (basically, the libc used by ubuntu 16.04). The challenge files can be downloaded [here](/posts/downloads/glacier_old_dayz.zip).
 
 Inside the binary, we have the standard menu: we can malloc up to 0x1000 bytes, free our previously allocated memory, write on it and read it.
 The issue is that the free functionality is implemented incorrectly: it does _not_ zero out the pointers, therefore leaving us with a dangling reference and the possibility to manipulate the heap at our wish.
@@ -249,7 +249,7 @@ _Our new 110% legit cryptocurrency is so cool, it does not even use blockchains.
 #### Solution
 
 The fist thing we see is a simple login screen:
-![](/images/glacierctf2022_flagcoin_login.png)
+![](/posts/images/glacierctf2022_flagcoin_login.png)
 
 We can notice that the registration is disabled, so we can only log in existing profiles.
 Looking at the source code, we notice nothing special.
@@ -290,7 +290,7 @@ That's how I did this:
 ```
 
 4. Than we can login with the new account:
-   ![](/images/glacierctf2022_flagcoin_solved_login.png)
+   ![](/posts/images/glacierctf2022_flagcoin_solved_login.png)
 
 After logging in, we are welcomed with the flag:
 `glacierctf{bUy_Th3_d1P_br0h}`
@@ -426,7 +426,7 @@ print(send_rce(["/flag.txt"],
 
 ### Glacier Top News
 
-A Flask API with a Vue front-end is given us. The code is available [here](/downloadables/glacier_glacier_top_news.zip). Note that this challenge is running on Python 2. There are a few routes that are weirdly written, but that is probably due to Vue being used for the front-end.
+A Flask API with a Vue front-end is given us. The code is available [here](/posts/downloads/glacier_glacier_top_news.zip). Note that this challenge is running on Python 2. There are a few routes that are weirdly written, but that is probably due to Vue being used for the front-end.
 
 Then, there is an endpoint that smells of SSRF really badly:
 

@@ -513,11 +513,11 @@ It took a while, but the best approach is for sure to first try to gain a less r
 
 First, to do it we need to have on the stack the address of the highest byte of the `i` variable. However, we cannot be the ones writing it due to lack of sufficient space. We need to find a way to have the address on stack without writing it... and the best way is to use what we have on the stack already. First, we want to find a pointer to a stack address on stack. This would allow us to overwrite the address it points to so that it then points to an address of our choice. From GDB, we can see that such an address exist:
 
-![](/images/angstrom2023_slack_gdb_1.png)
+![](/posts/images/angstrom2023_slack_gdb_1.png)
 
 We can now overwrite that address lowest byte so that it points to the loop variable highest byte. This requires some simple arithmetic. Second format string available to us also gone.
 
-![](/images/angstrom2023_slack_gdb_2.png)
+![](/posts/images/angstrom2023_slack_gdb_2.png)
 
 Finally, we can overwrite the loop counter highest byte with anything greater than 0x80 (highest bit set to one) to obtain a negative loop counter, leading to a huge loop! Third format string gone... but now we have basically unlimited format strings available to us.
 
@@ -1082,7 +1082,7 @@ The payload to exploit this challenge is `(__builtins__:=__import__('os'))and((l
 4.  The lambda function is executed via `()`, and spawn a shell for us.
 
 Once we have the shell, we can list and cat the flag:
-![Exploit execution](/images/angstrom2023_obligatory_execution.jpg)
+![Exploit execution](/posts/images/angstrom2023_obligatory_execution.jpg)
 
 ## Network
 
@@ -1107,4 +1107,4 @@ We're able to extract the flag from the data with the following CyberChef filter
 Split('00786c','0d0a00786c')Split('786d6c','786d6c0d0a')From_Hex('None')Fork('\\r\\n','\\n',true)Raw_Inflate(0,0,'Adaptive',false,false)Merge(true)Regular_expression('User defined','ctf{[a-zA-Z0-9_]*}',true,true,false,false,false,false,'List matches')
 ```
 
-![CyberChef screenshot of the applied filters](/images/angstrom2023_cyberchef.jpg "CyberChef filters to extract the flag")
+![CyberChef screenshot of the applied filters](/posts/images/angstrom2023_cyberchef.jpg "CyberChef filters to extract the flag")

@@ -1,0 +1,5 @@
+{{$allparams := .Params }}
+
+{{range $i, $e :=  $allparams }}
+  <span class="tag {{ $e }}">{{ $e }}</span>
+{{ end }}

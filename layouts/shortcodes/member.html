@@ -1,0 +1,28 @@
+<div class="team-member">
+  <img class="team-member-image" src="{{ with .Get "image" }}{{ . }}{{ else }}/images/svg/logo-m-green.svg{{ end }}"/>
+  <div>
+    <p class="team-member-name">{{ .Get "name" }}</p>
+    <p class="team-member-nick">{{ with .Get "nick" }}@{{ . }}{{end}}</p>
+    <p class="team-member-affiliation">{{ .Get "affiliation" }}</p>
+    {{ .Inner }}
+  </div>
+  <div class="socials-outer">
+    <div class="socials">
+      {{ with .Get "github" }}
+      <a class="member-social github" href="https://www.github.com/{{ . }}"><i class="fa fa-github"></i></a>
+      {{ end }} 
+
+      {{ with .Get "linkedin" }}
+      <a class="member-social linkedin" href="https://linkedin.com/in/{{ . }}"><i class="fa fa-linkedin-square"></i></a>
+      {{ end }}
+
+      {{ with .Get "twitter" }}
+      <a class="member-social twitter" href="https://nitter.net/{{ . }}"><i class="fa fa-twitter"></i></a>
+      {{ end }}
+
+      {{ with .Get "mail" }}
+      <a class="member-social mail" href="mailto:{{ . }}"><i class="fa fa-envelope-o"></i></a>
+      {{ end }}
+    </div>
+  </div>
+</div>
