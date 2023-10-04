@@ -47,7 +47,7 @@ Wonder where our name originates from? _Madrac_ in [Friulan](https://en.wikipedi
 
 {{< members >}}
 
-    {{< member image="" name="Davide Della Giustina" nick="ddellagiustina" affiliation="University of Udine" >}}
+    {{< member image="" name="Davide Della Giustina" nick="dsquareg" affiliation="University of Udine" github="davidedellagiustina" linkedin="ddellagiustina" mail="davide@dellagiustina.com" matrix="@dsquareg:matrix.org" >}}
         {{< tags "network" "forensics" >}}
     {{< /member >}}
 
