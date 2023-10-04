@@ -25,7 +25,7 @@ Wonder where our name originates from? _Madrac_ in [Friulan](https://en.wikipedi
         {{< tags "crypto" "web" >}}
     {{< /member >}}
 
-    {{< member image="" name="Stefano Pessotto" nick="peszr" affiliation="University of Udine" >}}
+    {{< member image="" name="Stefano Pessotto" nick="peszr" affiliation="University of Udine" github="stefanopessotto" linkedin="stefano-pessotto-0b292b238" mail="stefano_pessotto@protonmail.com" twitter="stuckinvim" >}}
         {{< tags "web" >}}
     {{< /member >}}
 
