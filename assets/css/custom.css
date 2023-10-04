@@ -1,0 +1,191 @@
+@font-face {
+  font-family: "Comfortaa";
+  src: url("/fonts/Comfortaa-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Comfortaa";
+  src: url("/fonts/Comfortaa-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Comfortaa";
+  src: url("/fonts/Comfortaa-Medium.ttf") format("truetype");
+  font-weight: medium;
+  font-style: normal;
+}
+
+.sidebar-about img {
+  border: none;
+  border-radius: 0px;
+}
+
+.sidebar-about h1 {
+  font-size: 1.4em;
+  color: #00755c;
+  font-family: "Comfortaa", monospace;
+  font-weight: bold;
+}
+
+.sidebar-sticky {
+  text-align: center;
+}
+
+.sidebar-sticky > nav {
+  text-align: left;
+}
+
+/* ----------------------------------------------------------- */
+
+.members {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.team-member {
+  background-color: var(--sidebar-bg-color);
+  padding: 1em;
+  display: flex;
+  gap: 15px;
+  justify-content: flex-start;
+  border-radius: 0.3em;
+}
+
+@media only screen and (min-width: 992px) {
+  .team-member {
+    max-width: 45%;
+  }
+}
+
+.team-member-image {
+  border-radius: 0%;
+  max-width: 20%;
+  height: auto;
+  margin-bottom: 0px;
+}
+
+.team-member-name {
+  font-family: Comfortaa;
+  font-weight: 500;
+  margin-bottom: 0px;
+}
+
+.team-member-nick {
+  margin-bottom: 0px;
+}
+
+.team-member-affiliation {
+  font-size: 90%;
+  margin-bottom: 0px;
+  color: var(--sidebar-p-color);
+}
+
+.tag {
+  vertical-align: baseline;
+  font-size: 75%;
+  padding: 0.25em 0.4em;
+  line-height: 1;
+  text-align: center;
+  border-radius: 0.25rem;
+  font-weight: 700;
+}
+
+.tag.pwn:before {
+  font-family: ForkAwesome;
+  content: "\f1e2  ";
+  vertical-align: middle;
+}
+
+.tag.pwn {
+  background-color: #81171b;
+}
+
+.tag.web:before {
+  font-family: ForkAwesome;
+  content: "\f26b  ";
+  font-size: 90%;
+  vertical-align: middle;
+}
+
+.tag.web {
+  background-color: #1b4079;
+}
+
+.tag.crypto:before {
+  font-family: ForkAwesome;
+  content: "\f12e  ";
+  vertical-align: middle;
+}
+
+.tag.crypto {
+  background-color: #916e00;
+}
+
+.tag.rev:before {
+  font-family: ForkAwesome;
+  content: "\f04a  ";
+  font-size: 90%;
+  vertical-align: middle;
+}
+
+.tag.rev {
+  background-color: #32965d;
+}
+
+.tag.network:before {
+  font-family: ForkAwesome;
+  content: "\f1e0  ";
+  font-size: 90%;
+  vertical-align: middle;
+}
+
+.tag.network {
+  background-color: #E072A4;
+}
+
+.tag.forensics:before {
+  font-family: ForkAwesome;
+  content: "\f06e  ";
+  font-size: 95%;
+}
+
+.tag.forensics {
+  background-color: #4A7B9D;
+}
+
+.socials-outer {
+  margin-left: auto;
+}
+
+.socials {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 0px;
+}
+
+.member-social {
+  margin: 0;
+  color: var(--text-color);
+}
+
+/* .github { */
+/*   color: var(--text-color); */
+/* } */
+/**/
+/* .linkedin { */
+/*   color: #0e76a8; */
+/* } */
+/**/
+.member-social.mail {
+  /* color: var(--text-color); */
+  font-size: 95%;
+}

@@ -1,0 +1,42 @@
+baseURL = '/'
+languageCode = 'en-gb'
+title = 'MadrHacks'
+
+theme = 'poison'
+
+paginate = 10
+pluralizelisttitles = false   # removes the automatically appended "s" on sidebar entries
+
+[params]
+    brand = "MadrHacks"                      # name of your site - appears in the sidebar
+    brand_image = "/images/svg/logo-m-green.svg"    # path to the image shown in the sidebar
+    description = "Ethical hacking team of the University of Udine" # Used as default meta description if not specified in front matter
+    dark_mode = true                      # optional - defaults to false
+    favicon = "/images/favicon.ico"             # path to favicon (defaults to favicon.png)
+  
+    # Landing page
+    front_page_content = ["about"]
+
+    # MENU PLACEHOLDER
+    # Menu dict keys:
+        # Name:         The name to display on the menu.
+        # URL:          The directory relative to the content directory.
+        # HasChildren:  If the directory's files should be listed.  Default is true.
+        # Limit:        If the files should be listed, how many should be shown.
+    menu = [
+        {Name = "Writeups", URL = "/writeups/", Pre = "Recent", HasChildren = true, Limit = 5},
+    ]
+
+    # Links to socials
+    github_url = "https://github.com/MadrHacks"
+    instagram_url = "https://instagram.com/MadrHacks"
+    email_url = "mailto://madrhacks@gmail.com"
+    
+    # Uncomment and populate the following to use Umami for analytics
+    # umami = true
+    # umami_script = "http://127.0.0.1"
+    # umami_website_id = "123123123" 
+
+[taxonomies]
+    series = 'series'
+    tags = 'tags'

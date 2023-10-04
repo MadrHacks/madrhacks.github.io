@@ -1,7 +1,11 @@
-{{ define "main" }}
-    <main aria-role="main">
-      {{ partial "logo.html" (dict "isHome" true "context" .) }}
+{{ define "main" -}}
+<div class="posts">
+    {{ $frontPageTypes := default (slice "posts") .Site.Params.front_page_content }}
+    {{ range (.Paginate (where .Site.RegularPages "Type" "in" $frontPageTypes)).Pages }}
+        {{ partial "post/info.html" . }}
+        {{ .Content }} <!-- Overridden from .Summary to .Content -->
+    {{- end }}
+</div>
+{{ partial "pagination.html" . }}
+{{- end }}
 
-      <p class="home-subtitle">{{.Site.Params.homeSubtitle}}</p>
-    </main>
-{{ end }}

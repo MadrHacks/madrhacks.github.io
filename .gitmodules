@@ -1,3 +1,6 @@
-[submodule "themes/madrhacks"]
-	path = themes/madrhacks
-	url = git@github.com:MadrHacks/madrhacks.github.io-theme.git
+[submodule "themes/poison"]
+	path = themes/poison
+	url = https://github.com/lukeorth/poison.git
+[submodule "static/Fork-Awesome"]
+	path = static/Fork-Awesome
+	url = https://github.com/ForkAwesome/Fork-Awesome
