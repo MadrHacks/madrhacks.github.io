@@ -321,11 +321,11 @@ Since this challenge was pretty much the same as `Speed-Rev: Humans`, this solut
 
 The first level is pretty simple, we can see that the function `validate` is just a simple `strncmp` with an hardcoded string which is randomly generated at each run.
 
-![Level 1 Ghidra](/posts/images/hackpackctf2023_level1_ghidra.png)
+![Level 1 Ghidra](/writeups/images/hackpackctf2023_level1_ghidra.png)
 
 By examining the binary with `strings -t d` we can see that the requested string is just 17 bytes before the "%16s" string, so we can just search for that string in the binary and take the 16 bytes we need for our "flag".
 
-![Level 1 Strings](/posts/images/hackpackctf2023_level1_strings.png)
+![Level 1 Strings](/writeups/images/hackpackctf2023_level1_strings.png)
 
 ```python
 def solveRead(elf) -> str:
@@ -339,11 +339,11 @@ def solveRead(elf) -> str:
 
 Both the second and the third level follow the same model. This time the string isn't saved in the binary and the validation happens by checking each character against a value.
 
-![Level 2 Ghidra](/posts/images/hackpackctf2023_level2_ghidra.png)
+![Level 2 Ghidra](/writeups/images/hackpackctf2023_level2_ghidra.png)
 
 By looking at the disassembly of the function `validate` we see that each character is compared with the instruction `cmp`, so we can just disassemble the function and look for every instance of `cmp` and take the value of the immediate operand.
 
-![Level 2 Objdump](/posts/images/hackpackctf2023_level2_objdump.png)
+![Level 2 Objdump](/writeups/images/hackpackctf2023_level2_objdump.png)
 
 ```python
 cs = Cs(CS_ARCH_X86, CS_MODE_64)
@@ -382,7 +382,7 @@ in[14] + in[15] == V14
 
 Where Vn are constant 1-byte values and `in[i]` is the i-th character of the input string.
 
-![Level 4 Ghidra](/posts/images/hackpackctf2023_level4_ghidra.png)
+![Level 4 Ghidra](/writeups/images/hackpackctf2023_level4_ghidra.png)
 
 Looking at this kind of check I immediately thought of using z3. We can get the constant values in the same way we did for the previous level and then we can just create a z3 solver and add the constraints.
 
@@ -431,11 +431,11 @@ def solveZ3(elf) -> str:
 The fifth and sixth levels are pretty much just a mix of the fourth, second and third levels.
 That is, some constraints are in the form `in[i] == V` and some are in the form `in[i] + in[i+1] == V`.
 
-![Level 5 Ghidra](/posts/images/hackpackctf2023_level5_ghidra.png)
+![Level 5 Ghidra](/writeups/images/hackpackctf2023_level5_ghidra.png)
 
 The way I distinguished between the two types of constraints was by looking at the previous instruction. If the previous instruction was an `add` then the constraint was in the form `in[i] + in[i+1] == V`, otherwise it was in the form `in[i] == V`.
 
-![Level 5 Objdump](/posts/images/hackpackctf2023_level5_objdump.png)
+![Level 5 Objdump](/writeups/images/hackpackctf2023_level5_objdump.png)
 
 Since level two, three, and four were just special cases of these levels where every constraint was either in the form `in[i] + in[i+1] == V` or `in[i] == V`, the following code can also work with those levels.
 

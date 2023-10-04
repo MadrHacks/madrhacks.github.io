@@ -1,0 +1,11 @@
+{{ define "main" -}}
+<div class="posts">
+    {{ $frontPageTypes := default (slice "posts") .Site.Params.front_page_content }}
+    {{ range (.Paginate (where .Site.RegularPages "Type" "in" $frontPageTypes)).Pages }}
+        {{ partial "post/info.html" . }}
+        {{ .Content }} <!-- Overridden from .Summary to .Content -->
+    {{- end }}
+</div>
+{{ partial "pagination.html" . }}
+{{- end }}
+
