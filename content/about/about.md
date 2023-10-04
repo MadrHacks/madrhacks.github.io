@@ -5,7 +5,7 @@ hideToc: true
 layout: single
 ---
 
-We are a team of ethical hackers born during CyberChallenge.IT 2020 at the [University of Udine](https://www.uniud.it/en/uniud-international?set_language=en)!
+We are a team of ethical hackers born during [CyberChallenge.IT](https://cyberchallenge.it/) 2020 at the [University of Udine](https://www.uniud.it/en/uniud-international?set_language=en)!
 
 Wonder where our name originates from? _Madrac_ in [Friulan](https://en.wikipedia.org/wiki/Friulian_language) means _snake_, and the combination of it with _hackers_ became _MadrHacks_!
 
