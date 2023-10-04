@@ -37,7 +37,7 @@ Wonder where our name originates from? _Madrac_ in [Friulan](https://en.wikipedi
         {{< tags "pwn" >}}
     {{< /member >}}
 
-    {{< member image="" name="Diego Cirillo" nick="emp.cat" >}}
+    {{< member image="" name="Diego Cirillo" nick="1dieci0" affiliation="University of Udine" >}}
         {{< tags "rev" >}}
     {{< /member >}}
 
