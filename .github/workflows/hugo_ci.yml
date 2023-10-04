@@ -1,3 +1,4 @@
+# From: https://gohugo.io/hosting-and-deployment/hosting-on-github/
 name: Deploy Hugo site to Pages
 
 on:
