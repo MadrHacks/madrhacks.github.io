@@ -21,7 +21,7 @@ Wonder where our name originates from? _Madrac_ in [Friulan](https://en.wikipedi
         {{< tags "rev" "crypto" >}}
     {{< /member >}}
 
-    {{< member image="" name="Luca Campa" nick="campa1102" affiliation="University of Udine" >}}
+    {{< member image="" name="Luca Campa" nick="campa1102" affiliation="University of Udine" github="CampaLuca" linkedin="luca-campa-sec" mail="campa1102@gmail.com" >}}
         {{< tags "crypto" "web" >}}
     {{< /member >}}
 
