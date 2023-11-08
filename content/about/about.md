@@ -42,7 +42,7 @@ Wonder where our name originates from? _Madrac_ in [Friulan](https://en.wikipedi
     {{< /member >}}
 
     {{< member image="" name="Federico Bertossi" nick="mrBymax" affiliation="University of Udine" github="mrBymax" linkedin="federico-bertossi" mail="hello@federicobertossi.com" twitter="mrBymax" >}}
-        {{< tags "web" >}}
+        {{< tags "osint" "web" >}}
     {{< /member >}}
 
 {{< /members >}}
