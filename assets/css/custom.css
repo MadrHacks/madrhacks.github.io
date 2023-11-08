@@ -146,7 +146,7 @@
 }
 
 .tag.network {
-  background-color: #E072A4;
+  background-color: #e072a4;
 }
 
 .tag.forensics:before {
@@ -156,7 +156,17 @@
 }
 
 .tag.forensics {
-  background-color: #4A7B9D;
+  background-color: #4a7b9d;
+}
+
+.tag.osint::before {
+  font-family: ForkAwesome;
+  content: "\f002  ";
+  font-size: 95%;
+}
+
+.tag.osint {
+  background-color: darkslateblue;
 }
 
 .socials-outer {
