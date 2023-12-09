@@ -2,7 +2,7 @@
 title: "srdnlen CTF 2023"
 date: "2023-10-28"
 tags: ["CTF", "srdnlen", "jeopardy"]
-draft: true
+draft: false
 hideToc: false
 ---
 
