@@ -49,7 +49,7 @@ Wonder where our name originates from? _Madrac_ in [Friulan](https://en.wikipedi
         {{< tags "network" "osint" >}}
     {{< /member >}}
     
-    {{< member image="" name="Sebastiano Morson" nick="justAMonkey" affiliation="University of Udine" github="SebastianoMorson" linkedin="sebastiano-morson-34a825221" mail="sebastiano.mors@outlook.com"> }}
+    {{< member image="" name="Sebastiano Morson" nick="justAMonkey" affiliation="University of Udine" github="SebastianoMorson" linkedin="sebastiano-morson-34a825221" mail="sebastiano.mors@outlook.com" >}}
         {{< tags "web" "network" >}}
     {{< /member >}}
 
