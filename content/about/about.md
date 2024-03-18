@@ -48,7 +48,10 @@ Wonder where our name originates from? _Madrac_ in [Friulan](https://en.wikipedi
     {{< member image="" name="Gabriele Voltan" nick="GabryV00" affiliation="University of Udine" github="GabryV00" linkedin="gabriele-voltan-065380241" mail="voltan.gabriele@icloud.com" >}}
         {{< tags "network" "osint" >}}
     {{< /member >}}
-
+    
+    {{< member image="" name="Sebastiano Morson" nick="justAMonkey" affiliation="University of Udine" github="SebastianoMorson" linkedin="sebastiano-morson-34a825221" ma>
+        {{< tags "web" "network" >}}
+    {{< /member >}}
 {{< /members >}}
 
 ## Former team members
