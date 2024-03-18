@@ -49,9 +49,14 @@ Wonder where our name originates from? _Madrac_ in [Friulan](https://en.wikipedi
         {{< tags "network" "osint" >}}
     {{< /member >}}
     
-    {{< member image="" name="Sebastiano Morson" nick="justAMonkey" affiliation="University of Udine" github="SebastianoMorson" linkedin="sebastiano-morson-34a825221" ma>
+    {{< member image="" name="Sebastiano Morson" nick="justAMonkey" affiliation="University of Udine" github="SebastianoMorson" linkedin="sebastiano-morson-34a825221" mail="sebastiano.mors@outlook.com"> }}
         {{< tags "web" "network" >}}
     {{< /member >}}
+
+    {{< member image="" name="Gianluca Zavan" nick="gianzav" affiliation="University of Udine" github="gianzav" linkedin="gianluca-zavan-0a3031293" mail="gianlucagianluca18@gmail.com" >}}
+        {{< tags "pwn" "osint" >}}
+    {{< /member >}}
+
 {{< /members >}}
 
 ## Former team members
