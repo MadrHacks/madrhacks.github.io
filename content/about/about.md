@@ -49,6 +49,10 @@ Wonder where our name originates from? _Madrac_ in [Friulan](https://en.wikipedi
         {{< tags "network" "osint" >}}
     {{< /member >}}
 
+    {{< member image="" name="Gianluca Zavan" nick="gianzav" affiliation="University of Udine" github="gianzav" linkedin="gianluca-zavan-0a3031293" mail="gianlucagianluca18@gmail.com" >}}
+        {{< tags "pwn" "osint" >}}
+    {{< /member >}}
+
 {{< /members >}}
 
 ## Former team members
