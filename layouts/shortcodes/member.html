@@ -9,23 +9,23 @@
   <div class="socials-outer">
     <div class="socials">
       {{ with .Get "github" }}
-      <a class="member-social github" href="https://www.github.com/{{ . }}"><i class="fa fa-github"></i></a>
+      <a class="member-social github" target="_blank" href="https://www.github.com/{{ . }}"><i class="fa fa-github"></i></a>
       {{ end }} 
 
       {{ with .Get "linkedin" }}
-      <a class="member-social linkedin" href="https://linkedin.com/in/{{ . }}"><i class="fa fa-linkedin-square"></i></a>
+      <a class="member-social linkedin" target="_blank" href="https://linkedin.com/in/{{ . }}"><i class="fa fa-linkedin-square"></i></a>
       {{ end }}
 
       {{ with .Get "twitter" }}
-      <a class="member-social twitter" href="https://twitter.com/{{ . }}"><i class="fa fa-twitter"></i></a>
+      <a class="member-social twitter" target="_blank" href="https://twitter.com/{{ . }}"><i class="fa fa-twitter"></i></a>
       {{ end }}
 
       {{ with .Get "matrix" }}
-      <a class="member-social matrix" href="https://matrix.to/#/{{ . }}"><i class="fa fa-matrix-org"></i></a>
+      <a class="member-social matrix" target="_blank" href="https://matrix.to/#/{{ . }}"><i class="fa fa-matrix-org"></i></a>
       {{ end }}
 
       {{ with .Get "mail" }}
-      <a class="member-social mail" href="mailto:{{ . }}"><i class="fa fa-envelope-o"></i></a>
+      <a class="member-social mail" target="_blank" href="mailto:{{ . }}"><i class="fa fa-envelope-o"></i></a>
       {{ end }}
     </div>
   </div>
