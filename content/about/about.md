@@ -57,6 +57,10 @@ Wonder where our name originates from? _Madrac_ in [Friulan](https://en.wikipedi
         {{< tags "pwn" "osint" >}}
     {{< /member >}}
 
+    {{< member image="" name="Marco Ceccon" nick="macedonga" affiliation="High School Student" github="macedonga" linkedin="macedonga" twitter="_macedonga_" mail="me@marco.win" >}}
+        {{< tags "web" "network" >}}
+    {{< /member >}}
+
 {{< /members >}}
 
 ## Former team members
