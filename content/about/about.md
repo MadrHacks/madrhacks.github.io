@@ -61,6 +61,10 @@ Wonder where our name originates from? _Madrac_ in [Friulan](https://en.wikipedi
         {{< tags "web" "network" >}}
     {{< /member >}}
 
+    {{< member image="" name="John Toniutti" nick="jotone" affiliation="University of Udine" github="jotonedev" linkedin="john-toniutti" mail="john.toniutti@gmail.com" >}}
+        {{< tags "network" "forensics">}}
+    {{< /member >}}
+
 {{< /members >}}
 
 ## Former team members
