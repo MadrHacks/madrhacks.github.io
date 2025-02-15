@@ -42,11 +42,7 @@ Wonder where our name originates from? _Madrac_ in [Friulan](https://en.wikipedi
     {{< /member >}}
 
     {{< member image="" name="Federico Bertossi" nick="mrBymax" affiliation="University of Udine" github="mrBymax" linkedin="federico-bertossi" mail="hello@federicobertossi.com" twitter="mrBymax" >}}
-        {{< tags "osint" >}}
-    {{< /member >}}
-
-    {{< member image="" name="Gabriele Voltan" nick="GabryV00" affiliation="University of Udine" github="GabryV00" linkedin="gabriele-voltan-065380241" mail="voltan.gabriele@icloud.com" >}}
-        {{< tags "network" "osint" >}}
+        {{< tags "osint" "web" >}}
     {{< /member >}}
     
     {{< member image="" name="Gianluca Zavan" nick="gianzav" affiliation="University of Udine" github="gianzav" linkedin="gianluca-zavan-0a3031293" mail="gianlucagianluca18@gmail.com" >}}
@@ -69,6 +65,10 @@ Wonder where our name originates from? _Madrac_ in [Friulan](https://en.wikipedi
 
     {{< member image="" name="Davide Della Giustina" nick="dsquareg" affiliation="University of Udine" github="davidedellagiustina" linkedin="ddellagiustina" mail="davide@dellagiustina.com" matrix="@dsquareg:matrix.org" >}}
         {{< tags "network" "forensics" >}}
+    {{< /member >}}
+
+    {{< member image="" name="Gabriele Voltan" nick="GabryV00" affiliation="University of Udine" github="GabryV00" linkedin="gabriele-voltan-065380241" mail="voltan.gabriele@icloud.com" >}}
+        {{< tags "network" "osint" >}}
     {{< /member >}}
 
 {{< /members >}}
