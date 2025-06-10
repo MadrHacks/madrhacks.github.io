@@ -57,6 +57,18 @@ Wonder where our name originates from? _Madrac_ in [Friulan](https://en.wikipedi
         {{< tags "network" "forensics">}}
     {{< /member >}}
 
+    {{< member image="" name="Roberto Van Eeden" nick="rw-r-r-0644" affiliation="University of Udine" github="rw-r-r-0644" linkedin="roberto-van-eeden-649935253" >}}
+        {{< tags "rev" "crypto" >}}
+    {{< /member >}}
+
+    {{< member image="" name="Massimiliano Gregoretti" nick="doc" affiliation="University of Udine" github="DocMax17" >}}
+        {{< tags "crypto" "web" >}}
+    {{< /member >}}
+
+    {{< member image="" name="Martina Siderini" nick="MartinaSide" affiliation="University of Udine" github="MartinaSide" linkedin="martina-siderini" >}}
+        {{< tags "rev" "crypto" >}}
+    {{< /member >}}
+
 {{< /members >}}
 
 ## Former team members
