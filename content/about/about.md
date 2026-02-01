@@ -73,6 +73,10 @@ Wonder where our name originates from? _Madrac_ in [Friulan](https://en.wikipedi
         {{< tags "crypto" "rev" >}}
     {{< /member >}}
 
+    {{< member image="" name="Matteo Cancian" nick="Man-Chan" affiliation="University of Udine" github="cancianmatteo" linkedin="matteo-cancian-911871252" mail="cancian2003@gmail.com" >}}
+        {{< tags "network" "forensics">}}
+    {{< /member >}}
+
 {{< /members >}}
 
 ## Former team members
