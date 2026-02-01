@@ -77,6 +77,10 @@ Wonder where our name originates from? _Madrac_ in [Friulan](https://en.wikipedi
         {{< tags "network" "forensics">}}
     {{< /member >}}
 
+    {{< member image="" name="Alessandro De Biasi" nick="lilvirgola" affiliation="University of Udine" github="lilvirgola" linkedin="alessandro-de-biasi-25b315199" mail="alessandro.debiasi@protonmail.com" >}}
+        {{< tags "network" "web" >}}
+    {{< /member >}}
+
 {{< /members >}}
 
 ## Former team members
