@@ -67,6 +67,7 @@ Wonder where our name originates from? _Madrac_ in [Friulan](https://en.wikipedi
 
     {{< member image="" name="Martina Siderini" nick="MartinaSide" affiliation="University of Udine" github="MartinaSide" linkedin="martina-siderini" >}}
         {{< tags "rev" "crypto" >}}
+    {{< /member >}}
 
     {{< member image="" name="Leonardo Cosmacini" nick="LeoCosma" affiliation="ISIS A. Malignani" github="LeoCosma" mail="cosmacinileonardo@gmail.com" >}}
         {{< tags "web" >}}
