@@ -19,3 +19,35 @@
   start: "2026-01-09T00:00:00Z"
   end: "2026-01-12T00:00:00Z"
   url: "https://ctftime.org/event/3402/"
+
+- name: "Jeanne d'Hack CTF 2026"
+  start: "2026-01-30T09:00:00Z"
+  end: "2026-01-30T18:00:00Z"
+  url: "https://ctftime.org/event/2941"
+
+- name: "Srdnlen CTF 2026 Quals"
+  start: "2026-02-28T18:00:00Z"
+  end: "2026-03-01T18:00:00Z"
+  url: "https://ctftime.org/event/3043"
+  open: true
+  format: "Jeopardy"
+  location: "SMACT3 lab, uniud"
+
+- name: "Crackmes.one Reverse Engineering CTF 2026"
+  start: '2026-02-14T00:00:00Z'
+  end: '2026-02-21T00:00:00Z'
+  url: "https://ctftime.org/event/3014"
+
+- name: "CodeVinci CTF 2026"
+  start: '2026-03-07T14:00:00Z'
+  end: '2026-03-07T19:00:00Z'
+  url: "https://ctftime.org/event/3101"
+  open: true
+  location: "SMACT3 lab, uniud"
+  description: "Good for beginners!"
+
+
+- name: "Midnight Flag CTF - EXECUTION"
+  start: '2026-03-13T20:00:00Z'
+  end: '2026-03-15T20:00:00Z'
+  url: "https://ctftime.org/event/3105"
