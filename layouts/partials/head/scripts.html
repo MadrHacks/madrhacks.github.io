@@ -7,6 +7,9 @@
       (resources.Get "js/lib/katex.js")
       (resources.Get "js/lib/auto-render.js") }}
 
+{{/* Locally hosted code for FullCalendar */}}
+{{ $js = $js | append (resources.Get "js/lib/fullcalendar.min.js") }}
+
 {{/* Personal/custom scripts for KaTeX */}}
 {{ $js = $js | append (resources.Get "js/katex.js") }}
 
@@ -17,11 +20,12 @@
 
 {{/* Personal/custom scripts for codeblocks */}}
 {{ $js = $js | append (resources.Get "js/codeblock.js") }}
+{{/* Personal/custom scripts for calendar */}}
+{{ $js = $js | append (resources.Get "js/calendar.js") }}
 
 {{ $js_bundle := $js | resources.Concat "js/bundle.js" | minify | fingerprint }}
 
 <script defer language="javascript" type="text/javascript" src="{{ $js_bundle.RelPermalink }}"></script>
-
 
 {{ if .Site.Params.plausible }}
 <script defer data-domain="{{ .Site.Params.plausible_domain }}" src="{{ .Site.Params.plausible_script }}"></script>

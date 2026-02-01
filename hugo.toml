@@ -4,8 +4,10 @@ title = 'MadrHacks'
 
 theme = 'poison'
 
-paginate = 10
 pluralizelisttitles = false   # removes the automatically appended "s" on sidebar entries
+
+[pagination]
+    pagerSize=10
 
 [params]
     brand = "MadrHacks"                      # name of your site - appears in the sidebar
@@ -24,6 +26,7 @@ pluralizelisttitles = false   # removes the automatically appended "s" on sideba
         # HasChildren:  If the directory's files should be listed.  Default is true.
         # Limit:        If the files should be listed, how many should be shown.
     menu = [
+        {Name = "Calendar", URL = "/calendar", HasChildren = false},
         {Name = "Writeups", URL = "/writeups/", Pre = "Recent", HasChildren = true, Limit = 5},
     ]
 
@@ -36,7 +39,7 @@ pluralizelisttitles = false   # removes the automatically appended "s" on sideba
     # Uncomment and populate the following to use Umami for analytics
     # umami = true
     # umami_script = "http://127.0.0.1"
-    # umami_website_id = "123123123" 
+    # umami_website_id = "123123123"
 
 [taxonomies]
     series = 'series'
