@@ -87,4 +87,5 @@ Wonder where our name originates from? _Madrac_ in [Friulan](https://en.wikipedi
 
 ## Other members
 
-Many others from the annual CyberChallenge.IT event keep helping us!
+Many others from the annual CyberChallenge.IT event keep helping us!  
+If you want to join us check our [calendar](/calendar/) for the next Open CTf event.

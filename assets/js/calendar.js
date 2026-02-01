@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else if (props.ccit) {
         bodyHTML += `<p><strong>Participation:</strong> CCIT members only</p>`;
         } else {
-        bodyHTML += `<p><strong>Participation:</strong> Madrhacks team members only</p>`;
+        bodyHTML += `<p><strong>Participation:</strong> MadrHacks team members only</p>`;
         }
         
         document.getElementById("modalBody").innerHTML = bodyHTML;
