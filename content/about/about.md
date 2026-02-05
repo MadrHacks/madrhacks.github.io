@@ -9,6 +9,8 @@ We are a team of ethical hackers born during [CyberChallenge.IT](https://cyberch
 
 Wonder where our name originates from? _Madrac_ in [Friulan](https://en.wikipedia.org/wiki/Friulian_language) means _snake_, and the combination of it with _hackers_ became _MadrHacks_!
 
+We are the organizers of _snakeCTF_, an exciting annual cybersecurity competition where teams compete online, with the top 15 advancing to the in-person finals in Lignano Sabbiadoro, Italy. Visit [snakectf.org](https://snakectf.org/) for registration and details!
+
 {{< banner title="Want to join us?" >}}
 Check our [calendar](/calendar/) for the next Open CTF event!
 {{< /banner >}}
@@ -91,5 +93,4 @@ Check our [calendar](/calendar/) for the next Open CTF event!
 
 ## Other members
 
-Many others from the annual CyberChallenge.IT event keep helping us!  
-If you want to join us check our [calendar](/calendar/) for the next Open CTf event.
+Many others from the annual CyberChallenge.IT event keep helping us!
