@@ -3,6 +3,7 @@ title: 'We are MadrHacks!'
 draft: false
 hideToc: true
 layout: single
+disableHeadline: true
 ---
 
 We are a team of ethical hackers born during [CyberChallenge.IT](https://cyberchallenge.it/) 2020 at the [University of Udine](https://www.uniud.it/en/uniud-international?set_language=en)!
