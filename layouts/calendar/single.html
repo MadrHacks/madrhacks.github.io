@@ -27,66 +27,14 @@
     </div>
   </div>
 
-  {{/* Upcoming events (next 30 days for now, can be changed) */}}
-  {{ $now := now }}
-  {{ $oneMonthLater := $now.AddDate 0 1 0 }}
-  {{ $upcomingEvents := slice }}
-
-  {{ range .Site.Data.ctfs }}
-    {{ $startTime := time .start }}
-    {{ if and (ge $startTime $now) (le $startTime $oneMonthLater) }}
-      {{ $upcomingEvents = $upcomingEvents | append . }}
-    {{ end }}
-  {{ end }}
-
-  {{ $upcomingEvents = sort $upcomingEvents "start" "asc" }}
+  {{/* Upcoming events */}}
   <div class="upcoming-events">
     <h2>Upcoming CTFs (Next Month)</h2>
     <p class="upcoming-events-intro">Here are the CTF competitions we're gearing up for in the next month:</p>
-  {{ if gt (len $upcomingEvents) 0 }}
-  
-    <div class="events-grid">
-      {{ range $upcomingEvents }}
-        <div class="event-card">
-          <div class="event-header">
-            <h3>{{ .name }}</h3>
-            {{ if .open }}
-              <span class="event-badge badge-open">Open</span>
-            {{ else if .ccit }}
-              <span class="event-badge badge-ccit">CCIT</span>
-            {{ else }}
-              <span class="event-badge badge-team">Team</span>
-            {{ end }}
-          </div>
-          
-          <div class="event-details">
-            {{ $startDate := time .start }}
-            {{ $endDate := time .end }}
-            <p><strong>Date:</strong> {{ $startDate.Format "Jan 2, 2006 15:04" }} - {{ $endDate.Format "Jan 2, 2006 15:04" }}</p>
-            
-            {{ if .location }}
-              <p><strong>Location:</strong> {{ .location }}</p>
-            {{ end }}
-            
-            {{ if .description }}
-              <p class="event-description">{{ .description }}</p>
-            {{ end }}
-            
-            {{ if .weight }}
-              <p><strong>Weight:</strong> {{ .weight }}</p>
-            {{ end }}
-          </div>
-          
-          {{ if .url }}
-            <a href="{{ .url }}" target="_blank" class="event-link">View on CTFtime →</a>
-          {{ end }}
-        </div>
-      {{ end }}
+    <div id="upcoming-events-container">
+      {{/* JavaScript will populate this */}}
     </div>
   </div>
-  {{ else }}
-    <p class="no-events">No upcoming events in the next month. Stay tuned!</p>
-  {{ end }}
 
   <div id="calendar"></div>
 
@@ -97,61 +45,16 @@
   <div class="past-events">
     <h2>Past CTF Competitions</h2>
     <p class="past-events-intro">Here's a history of CTF competitions we've participated in:</p>
-    
-    {{ $pastEvents := slice }}
-    
-    {{ range .Site.Data.ctfs }}
-      {{ $endTime := time .end }}
-      {{ if lt $endTime $now }}
-        {{ $pastEvents = $pastEvents | append . }}
-      {{ end }}
-    {{ end }}
-    
-    {{ $pastEvents = sort $pastEvents "start" "desc" }}
-    
-    {{ if gt (len $pastEvents) 0 }}
-      <div class="events-grid">
-        {{ range $pastEvents }}
-          <div class="event-card">
-            <div class="event-header">
-              <h3>{{ .name }}</h3>
-              {{ if .open }}
-                <span class="event-badge badge-open">Open</span>
-              {{ else if .ccit }}
-                <span class="event-badge badge-ccit">CCIT</span>
-              {{ else }}
-                <span class="event-badge badge-team">Team</span>
-              {{ end }}
-            </div>
-            
-            <div class="event-details">
-              {{ $startDate := time .start }}
-              {{ $endDate := time .end }}
-              <p><strong>Date:</strong> {{ $startDate.Format "Jan 2, 2006" }} - {{ $endDate.Format "Jan 2, 2006" }}</p>
-              
-              {{ if .location }}
-                <p><strong>Location:</strong> {{ .location }}</p>
-              {{ end }}
-              
-              {{ if .description }}
-                <p class="event-description">{{ .description }}</p>
-              {{ end }}
-              
-              {{ if .weight }}
-                <p><strong>Weight:</strong> {{ .weight }}</p>
-              {{ end }}
-            </div>
-            
-            {{ if .url }}
-              <a href="{{ .url }}" target="_blank" class="event-link">View on CTFtime →</a>
-            {{ end }}
-          </div>
-        {{ end }}
-      </div>
-    {{ else }}
-      <p class="no-events">No past events yet. Check back soon!</p>
-    {{ end }}
+    <div id="past-events-container">
+      {{/* JavaScript will populate this */}}
+    </div>
   </div>
+
+  {{/* Build all events data for JavaScript */}}
+  {{ $allEventsData := slice }}
+  {{ range .Site.Data.ctfs }}
+    {{ $allEventsData = $allEventsData | append . }}
+  {{ end }}
 
   {{/* Build events for calendar */}}
   {{ $events := slice }}
@@ -181,8 +84,100 @@
   {{ end }}
 
   <script>
+  window.allCTFEvents = {{ $allEventsData | jsonify | safeJS }};
   window.ctfEvents = {{ $events | jsonify | safeJS }};
+  
+ 
+  
+  // Get current date
+  function getCurrentDate() {
+    return new Date();
+  }
+
+  // Function to render event card HTML
+  function renderEventCard(event, showTime = true) {
+    const startDate = new Date(event.start);
+    const endDate = new Date(event.end);
+    
+    const timeFormat = showTime ? 
+      `${startDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })} ${startDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })} - ${endDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })} ${endDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}` :
+      `${startDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })} - ${endDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}`;
+    
+    let badgeHTML = '';
+    if (event.open) {
+      badgeHTML = '<span class="event-badge badge-open">Open</span>';
+    } else if (event.ccit) {
+      badgeHTML = '<span class="event-badge badge-ccit">CCIT</span>';
+    } else {
+      badgeHTML = '<span class="event-badge badge-team">Team</span>';
+    }
+    
+    return `
+      <div class="event-card">
+        <div class="event-header">
+          <h3>${event.name}</h3>
+          ${badgeHTML}
+        </div>
+        <div class="event-details">
+          <p><strong>Date:</strong> ${timeFormat}</p>
+          ${event.location ? `<p><strong>Location:</strong> ${event.location}</p>` : ''}
+          ${event.description ? `<p class="event-description">${event.description}</p>` : ''}
+          ${event.weight ? `<p><strong>Weight:</strong> ${event.weight}</p>` : ''}
+        </div>
+        ${event.url ? `<a href="${event.url}" target="_blank" class="event-link">View on CTFtime →</a>` : ''}
+      </div>
+    `;
+  }
+
+  // Function to update upcoming and past events
+  function updateEventLists() {
+    const now = getCurrentDate();
+    const oneMonthLater = new Date(now);
+    oneMonthLater.setMonth(oneMonthLater.getMonth() + 1);
+    
+    // Filter upcoming events
+    const upcomingEvents = window.allCTFEvents
+      .filter(event => {
+        const startDate = new Date(event.start);
+        return startDate >= now && startDate <= oneMonthLater;
+      })
+      .sort((a, b) => new Date(a.start) - new Date(b.start));
+    
+    // Filter past events
+    const pastEvents = window.allCTFEvents
+      .filter(event => {
+        const endDate = new Date(event.end);
+        return endDate < now;
+      })
+      .sort((a, b) => new Date(b.start) - new Date(a.start));
+    
+    // Render upcoming events
+    const upcomingContainer = document.getElementById('upcoming-events-container');
+    if (upcomingEvents.length > 0) {
+      upcomingContainer.innerHTML = '<div class="events-grid">' + 
+        upcomingEvents.map(event => renderEventCard(event, true)).join('') +
+        '</div>';
+    } else {
+      upcomingContainer.innerHTML = '<p class="no-events">No upcoming events in the next month. Stay tuned!</p>';
+    }
+    
+    // Render past events
+    const pastContainer = document.getElementById('past-events-container');
+    if (pastEvents.length > 0) {
+      pastContainer.innerHTML = '<div class="events-grid">' + 
+        pastEvents.map(event => renderEventCard(event, false)).join('') +
+        '</div>';
+    } else {
+      pastContainer.innerHTML = '<p class="no-events">No past events yet. Check back soon!</p>';
+    }
+  }
+
+  // Update lists when page loads
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', updateEventLists);
+  } else {
+    updateEventLists();
+  }
   </script>
 </div>
 {{- end }}
-
