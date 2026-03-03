@@ -42,12 +42,19 @@
   start: '2026-03-07T14:00:00Z'
   end: '2026-03-07T19:00:00Z'
   url: "https://ctftime.org/event/3101"
-  open: true
   location: "SMACT3 lab, uniud"
-  description: "Good for beginners!"
 
 
-- name: "Midnight Flag CTF - EXECUTION"
-  start: '2026-03-13T20:00:00Z'
-  end: '2026-03-15T20:00:00Z'
-  url: "https://ctftime.org/event/3105"
+- name: "UTCTF 2026"
+  start: '2026-03-13T00:23:00Z'
+  end: '2026-03-15T00:23:00Z'
+  url: "https://ctftime.org/event/3133"
+  location: "SMACT3 lab, uniud"
+  ccit: true
+
+- name: "TAMUctf 2025"
+  start: '2026-03-28T22:00:00Z'
+  end: '2026-03-31T22:00:00Z'
+  url: "https://ctftime.org/event/2681"
+  location: "SMACT3 lab, uniud"
+  open: true
