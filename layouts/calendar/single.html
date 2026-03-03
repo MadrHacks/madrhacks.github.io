@@ -87,31 +87,11 @@
   window.allCTFEvents = {{ $allEventsData | jsonify | safeJS }};
   window.ctfEvents = {{ $events | jsonify | safeJS }};
   
-  //Test date override (null = use real current date)
-  let testDate = null;
+ 
   
-  // Get current date (or test date override)
+  // Get current date
   function getCurrentDate() {
-    return testDate ? new Date(testDate) : new Date();
-  }
-  
-  // Apply test date
-  function applyTestDate() {
-    const input = document.getElementById('test-date');
-    if (input.value) {
-      testDate = input.value;
-      updateEventLists();
-      document.getElementById('current-test-date').textContent = 
-        `Testing as: ${new Date(testDate).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}`;
-    }
-  }
-  
-  // Reset to today
-  function resetToToday() {
-    testDate = null;
-    document.getElementById('test-date').value = '';
-    document.getElementById('current-test-date').textContent = '';
-    updateEventLists();
+    return new Date();
   }
 
   // Function to render event card HTML
