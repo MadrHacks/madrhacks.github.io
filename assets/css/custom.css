@@ -52,8 +52,9 @@
   background-color: var(--sidebar-bg-color);
   padding: 1em;
   display: flex;
-  gap: 15px;
+  gap: 1.25em;
   justify-content: flex-start;
+  align-items: center;
   border-radius: 0.3em;
 }
 
@@ -65,7 +66,7 @@
 
 .team-member-image {
   border-radius: 0%;
-  max-width: 20%;
+  max-width: 17.5%;
   height: auto;
   margin-bottom: 0px;
 }
@@ -324,7 +325,7 @@
 .fc-col-header-cell-cushion {
   color: #00755c !important;
   text-decoration: none !important;
-  padding: 0.5em 0 !important; 
+  padding: 0.5em 0 !important;
 }
 
 /* Calendar legend styling */
@@ -343,10 +344,14 @@
   font-size: 1.2em;
 }
 
+.calendar-legend p {
+  margin-bottom: 0px;
+}
+
 .legend-items {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5em;
+  gap: 1em 1.5em;
 }
 
 .legend-item {
@@ -402,10 +407,14 @@
 
 .event-card {
   background-color: var(--sidebar-bg-color);
+  display: flex;
+  flex-direction: column;
   padding: 1.5em;
   border-radius: 0.3em;
   border-left: 4px solid #00755c;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
 }
 
 .event-card:hover {
@@ -417,7 +426,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
   gap: 1em;
 }
 
@@ -453,7 +462,7 @@
 }
 
 .event-details p {
-  margin: 0.5em 0;
+  margin: 0;
   font-size: 0.9em;
   color: var(--text-color);
 }
@@ -466,7 +475,8 @@
 
 .event-link {
   display: inline-block;
-  margin-top: 1em;
+  padding-top: 0.5em;
+  margin-top: auto;
   color: #00755c;
   text-decoration: none;
   font-family: "Comfortaa", sans-serif;
@@ -484,4 +494,8 @@
   padding: 2em;
   color: var(--text-color);
   font-style: italic;
+}
+
+#calendar table {
+  margin-bottom: 0px;
 }
