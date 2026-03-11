@@ -52,9 +52,9 @@
   location: "SMACT3 lab, uniud"
   ccit: true
 
-- name: "TAMUctf 2025"
-  start: '2026-03-28T22:00:00Z'
-  end: '2026-03-31T22:00:00Z'
-  url: "https://ctftime.org/event/2681"
+- name: "KalmarCTF 2026"
+  start: '2026-03-27T17:00:00Z'
+  end: '2026-03-29T17:00:00Z'
+  url: "https://ctftime.org/event/2983"
   location: "SMACT3 lab, uniud"
   open: true
