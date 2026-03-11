@@ -35,6 +35,7 @@ pluralizelisttitles = false   # removes the automatically appended "s" on sideba
     instagram_url = "https://instagram.com/MadrHacks"
     email_url = "mailto:info@madrhacks.org"
     linkedin_url = "https://www.linkedin.com/company/madrhacks"
+    wikipedia_url = "https://en.wikipedia.org/wiki/MadrHacks"
     
     # Uncomment and populate the following to use Umami for analytics
     # umami = true
