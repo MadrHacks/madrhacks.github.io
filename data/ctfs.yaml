@@ -58,3 +58,19 @@
   url: "https://ctftime.org/event/2983"
   location: "SMACT3 lab, uniud"
   open: true
+
+
+- name: "b01lers CTF 2026"
+  start: '2026-04-18T00:00:00Z'
+  end: '2026-04-20T00:00:00Z'
+  url: "https://ctftime.org/event/3153"
+  location: "SMACT3 lab, uniud"
+
+
+
+- name: "TRX CTF 2026"
+  start: '2026-04-26T11:00:00Z'
+  end: '2026-04-26T17:00:00Z'
+  url: "https://ctftime.org/event/3141"
+  location: "SMACT3 lab, uniud"
+  open: true
