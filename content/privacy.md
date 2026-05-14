@@ -10,6 +10,7 @@ layout: single
 Ai sensi del Regolamento (UE) 2016/679 (di seguito "Regolamento"), questa pagina descrive le modalità di trattamento dei dati personali degli utenti che consultano i siti web dell'Associazione MadrHacks (di seguito "MadrHacks") accessibili per via telematica ai seguenti indirizzi:
 
 - https://madrhacks.org
+- https://*.madrhacks.org
 
 Le presenti informazioni non riguardano altri siti, pagine o servizi online raggiungibili tramite link ipertestuali eventualmente pubblicati nei siti ma riferiti a risorse esterne ai domini MadrHacks.
 
@@ -65,4 +66,4 @@ Ogni browser Internet permette di utilizzare, gestire o cancellare i cookie rela
 
 ## Diritti degli interessati
 
-Gli interessati hanno il diritto di ottenere da MadrHacks, nei casi previsti, l'accesso ai propri dati personali e la rettifica o la cancellazione degli stessi o la limitazione del trattamento che li riguarda o di opporsi al trattamento (artt. 15 e ss. del Regolamento). L'apposita istanza è presentata contattando MadrHacks agli indirizzi sopra forniti.
+Gli interessati hanno il diritto di ottenere da MadrHacks, nei casi previsti, l'accesso ai propri dati personali e la rettifica o la cancellazione degli stessi o la limitazione del trattamento che li riguarda o di opporsi al trattamento (artt. 15 e ss. del GDPR). L'apposita istanza è presentata contattando MadrHacks agli indirizzi sopra forniti.
